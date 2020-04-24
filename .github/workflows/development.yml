@@ -2,12 +2,14 @@ name: CI/CD
 
 on:
   push:
-    branches: [master]
+    branches-ignore:
+      - 'master'
   pull_request:
-    branches: [master]
+    branches-ignore:
+      - 'master'
 
 jobs:
-  build, test and deploy:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,26 +57,3 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
-
-      - uses: akhileshns/heroku-deploy@v3.0.4
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: 'strapi'
-        env:
-          NODE_ENV: production
-          CI: true
-          CD: true
-
-      - name: Netlify Deploy Action
-        uses: South-Paw/action-netlify-deploy@v1.0.3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: www/build/
-        env:
-          NODE_ENV: production
-          CI: true
-          CD: true
