@@ -24,17 +24,38 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Use cached node_modules
+      - name: Reuse cached node_modules
         uses: actions/cache@v1
-        id: yarn-cache
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             node_modules
-            */*/node_modules
+            strapi/node_modules
+            www/node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
+      - name: Reuse strapi build caches
+        uses: actions/cache@v1
+        with:
+          path: |
+            strapi/.cache
+            strapi/build
+            strapi/exports
+          key: ${{ runner.os }}-strapi-${{ hashFiles('strapi/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-strapi-
+
+      - name: Reuse www build caches
+        uses: actions/cache@v1
+        with:
+          path: |
+            www/.cache
+            www/public
+          key: ${{ runner.os }}-www-${{ hashFiles('www/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-www-
 
       - name: yarn install
         run: yarn install --frozen-lockfile
@@ -58,3 +79,15 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
+
+      - name: Save strapi artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: strapi-dist
+          path: strapi/build
+
+      - name: Save www artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: www-dist
+          path: www/public
