@@ -27,16 +27,16 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             node_modules
-            strapi/node_modules
-            www/node_modules
+            'strapi\/node_modules'
+            'www\/node_modules'
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Reuse www build caches
         uses: actions/cache@v1
         with:
           path: |
-            www/.cache
-            www/public
+            www\/.cache
+            www\/public
           key: www-${{ hashFiles('www/gatsby-config.js') }}
 
       - name: yarn install

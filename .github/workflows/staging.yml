@@ -30,25 +30,25 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             node_modules
-            strapi/node_modules
-            www/node_modules
+            strapi\/node_modules
+            www\/node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Reuse strapi build caches
         uses: actions/cache@v1
         with:
           path: |
-            strapi/.cache
-            strapi/build
-            strapi/exports
+            strapi\/.cache
+            strapi\/build
+            strapi\/exports
           key: strapi-${{ hashFiles('strapi/**/*') }}
 
       - name: Reuse www build caches
         uses: actions/cache@v1
         with:
           path: |
-            www/.cache
-            www/public
+            www\/.cache
+            www\/public
           key: www-${{ hashFiles('www/gatsby-*') }}
 
       - name: yarn install
