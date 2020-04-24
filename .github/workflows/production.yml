@@ -33,17 +33,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Reuse strapi build caches
-        uses: actions/cache@v1
-        with:
-          path: |
-            strapi/.cache
-            strapi/build
-            strapi/exports
-          key: ${{ runner.os }}-strapi-${{ hashFiles('strapi/**/*') }}
-          restore-keys: |
-            ${{ runner.os }}-strapi-
-
       - name: Reuse www build caches
         uses: actions/cache@v1
         with:
@@ -100,12 +89,6 @@ jobs:
           NODE_ENV: production
           CI: true
           CD: true
-
-      - name: Save strapi artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: strapi-dist
-          path: strapi/build
 
       - name: Save www artifacts
         uses: actions/upload-artifact@v1
