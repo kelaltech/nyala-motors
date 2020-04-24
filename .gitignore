@@ -690,5 +690,3 @@ reduxcache*/
 www/public
 www/graphql-types.ts
 www/src/app/graphql.tsx
-schema.graphql
-schema.json

@@ -43,14 +43,20 @@ jobs:
         env:
           CI: true
 
-      - name: yarn build
-        run: yarn build
+      - name: yarn codegen
+        run: yarn codegen
         env:
           NODE_ENV: production
           CI: true
 
-      - name: yarn test
-        run: yarn test
+      - name: yarn build:www
+        run: yarn build:www
+        env:
+          NODE_ENV: production
+          CI: true
+
+      - name: yarn test:www
+        run: yarn test:www
         env:
           NODE_ENV: production
           CI: true

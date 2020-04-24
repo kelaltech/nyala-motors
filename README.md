@@ -13,8 +13,8 @@ yarn install
 ## Setup
 
 1. Install [PostgreSQL v10.0+](https://www.postgresql.org/download/)
-2. Create a database in Postgres
-3. Configure your environment with values for the [database variables](strapi/config/environments/development/). _(`.env` works!)_
+2. Create a new database in Postgres
+3. Configure your environment with values for the [database variables](strapi/config/environments/development/database.json). _(`.env` works!)_
 
 ## Development
 
