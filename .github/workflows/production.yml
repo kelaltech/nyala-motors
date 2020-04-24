@@ -29,9 +29,7 @@ jobs:
             node_modules
             strapi/node_modules
             www/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Reuse www build caches
         uses: actions/cache@v1
@@ -39,9 +37,7 @@ jobs:
           path: |
             www/.cache
             www/public
-          key: ${{ runner.os }}-www-${{ hashFiles('www/gatsby-config.js') }}
-          restore-keys: |
-            ${{ runner.os }}-www-
+          key: www-${{ hashFiles('www/gatsby-config.js') }}
 
       - name: yarn install
         run: yarn install --frozen-lockfile
