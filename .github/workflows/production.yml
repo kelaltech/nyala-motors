@@ -22,22 +22,22 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Reuse cached node_modules
-        uses: actions/cache@v1
+        uses: actions/cache@master
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             node_modules
-            'strapi\/node_modules'
-            'www\/node_modules'
+            strapi/node_modules
+            www/node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Reuse www build caches
-        uses: actions/cache@v1
+        uses: actions/cache@master
         with:
           path: |
-            www\/.cache
-            www\/public
-          key: www-${{ hashFiles('www/gatsby-config.js') }}
+            www/.cache
+            www/public
+          key: www-${{ hashFiles('www/gatsby-*') }}
 
       - name: yarn install
         run: yarn install --frozen-lockfile
