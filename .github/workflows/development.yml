@@ -1,0 +1,59 @@
+name: CI/CD
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+  pull_request:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.2
+        with:
+          node-version: ^12.16.2
+
+      - name: Use workspace cached node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: nodeModules-
+
+      - name: Use strapi cached node_modules
+        uses: actions/cache@v1
+        with:
+          path: strapi/node_modules
+          key: nodeModules-strapi-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: nodeModules-strapi-
+
+      - name: Use www cached node_modules
+        uses: actions/cache@v1
+        with:
+          path: www/node_modules
+          key: nodeModules-www-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: nodeModules-www-
+
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: yarn build
+        run: yarn build
+        env:
+          NODE_ENV: production
+          CI: true
+
+      - name: yarn test
+        run: yarn test
+        env:
+          NODE_ENV: production
+          CI: true
