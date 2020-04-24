@@ -1,5 +1,4 @@
-![CI/CD](https://github.com/kelaltech/nyala-motors/workflows/CI/CD/badge.svg)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9e9916c9-1841-42b1-bed0-df22786fe416/deploy-status)](https://app.netlify.com/sites/nmsc/deploys)
+[![CI/CD](https://github.com/kelaltech/nyala-motors/workflows/CI/CD/badge.svg)](https://github.com/kelaltech/nyala-motors/actions) [![Netlify Status](https://img.shields.io/netlify/9e9916c9-1841-42b1-bed0-df22786fe416)](https://app.netlify.com/sites/nmsc/deploys)
 
 # nyala-motors
 
