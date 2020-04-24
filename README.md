@@ -1,3 +1,5 @@
+![CI/CD](https://github.com/kelaltech/nyala-motors/workflows/CI/CD/badge.svg)
+
 # nyala-motors
 
 Official website of [Nyala Motors S.C.](https://www.nyalamotors.com/)
