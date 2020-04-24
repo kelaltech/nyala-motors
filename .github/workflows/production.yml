@@ -17,26 +17,21 @@ jobs:
         with:
           node-version: ^12.16.2
 
-      - name: Use workspace cached node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: nodeModules-
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Use strapi cached node_modules
+      - name: Use cached node_modules
         uses: actions/cache@v1
+        id: yarn-cache
         with:
-          path: strapi/node_modules
-          key: nodeModules-strapi-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: nodeModules-strapi-
-
-      - name: Use www cached node_modules
-        uses: actions/cache@v1
-        with:
-          path: www/node_modules
-          key: nodeModules-www-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: nodeModules-www-
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: yarn install
         run: yarn install --frozen-lockfile
