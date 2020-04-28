@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vacancies",
+  "info": {
+    "name": "Vacancy"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "FULL_TIME",
+        "PART_TIME",
+        "CONTRACTUAL",
+        "INTERNSHIP",
+        "SEASONAL"
+      ],
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "deadline": {
+      "type": "date"
+    },
+    "salary": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "requirements": {
+      "type": "richtext",
+      "required": true
+    },
+    "attachments": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "howToApply": {
+      "type": "richtext",
+      "required": true
+    },
+    "salaryPeriod": {
+      "type": "enumeration",
+      "enum": [
+        "ONE_TIME",
+        "HOURLY",
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "YEARLY"
+      ],
+      "required": false,
+      "default": "MONTHLY"
+    }
+  }
+}
