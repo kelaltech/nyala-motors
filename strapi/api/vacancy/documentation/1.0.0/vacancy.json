@@ -520,9 +520,11 @@
           "title",
           "type",
           "location",
+          "deadline",
           "description",
           "requirements",
-          "howToApply"
+          "howToApply",
+          "quantity"
         ],
         "properties": {
           "id": {
@@ -546,9 +548,6 @@
           },
           "deadline": {
             "type": "string"
-          },
-          "salary": {
-            "type": "number"
           },
           "description": {
             "type": "string"
@@ -634,6 +633,12 @@
               "MONTHLY",
               "YEARLY"
             ]
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "salary": {
+            "type": "string"
           }
         }
       },
@@ -642,9 +647,11 @@
           "title",
           "type",
           "location",
+          "deadline",
           "description",
           "requirements",
-          "howToApply"
+          "howToApply",
+          "quantity"
         ],
         "properties": {
           "title": {
@@ -666,9 +673,6 @@
           "deadline": {
             "type": "string"
           },
-          "salary": {
-            "type": "number"
-          },
           "description": {
             "type": "string"
           },
@@ -689,6 +693,12 @@
               "MONTHLY",
               "YEARLY"
             ]
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "salary": {
+            "type": "string"
           }
         }
       }

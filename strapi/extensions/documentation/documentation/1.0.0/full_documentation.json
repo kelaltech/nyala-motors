@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/28/2020 11:58:28 AM"
+    "x-generation-date": "04/28/2020 3:31:14 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2720,9 +2720,11 @@
           "title",
           "type",
           "location",
+          "deadline",
           "description",
           "requirements",
-          "howToApply"
+          "howToApply",
+          "quantity"
         ],
         "properties": {
           "id": {
@@ -2746,9 +2748,6 @@
           },
           "deadline": {
             "type": "string"
-          },
-          "salary": {
-            "type": "number"
           },
           "description": {
             "type": "string"
@@ -2834,6 +2833,12 @@
               "MONTHLY",
               "YEARLY"
             ]
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "salary": {
+            "type": "string"
           }
         }
       },
@@ -2842,9 +2847,11 @@
           "title",
           "type",
           "location",
+          "deadline",
           "description",
           "requirements",
-          "howToApply"
+          "howToApply",
+          "quantity"
         ],
         "properties": {
           "title": {
@@ -2866,9 +2873,6 @@
           "deadline": {
             "type": "string"
           },
-          "salary": {
-            "type": "number"
-          },
           "description": {
             "type": "string"
           },
@@ -2889,6 +2893,12 @@
               "MONTHLY",
               "YEARLY"
             ]
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "salary": {
+            "type": "string"
           }
         }
       },
