@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reports",
+  "info": {
+    "name": "Report"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "ANNUALLY",
+        "QUARTERLY",
+        "SEMI_ANNUALLY",
+        "FINANCIAL"
+      ]
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "attachments": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
