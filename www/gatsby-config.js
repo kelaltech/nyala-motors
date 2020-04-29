@@ -100,15 +100,17 @@ module.exports = {
       resolve: `gatsby-plugin-react-svg`,
       options: { include: /icons/ },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       { family: `Open Sans`, variants: [`400`, `600`, `700`] },
-    //       { family: `Lato`, variants: [`300`, `400`, `700`] },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto`,
+            variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`],
+          },
+        ],
+      },
+    },
 
     //
     // COMPONENTS:
