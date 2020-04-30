@@ -4,6 +4,7 @@ import GatsbyImage from 'gatsby-image'
 
 import './header.scss'
 import { HeaderQuery } from '../../../../graphql-types'
+import Anchor from '../anchor/anchor'
 import Wordmark from '../../../assets/images/brand/wordmark.svg'
 import WordmarkAlt from '../../../assets/images/brand/wordmark-alt.svg'
 import Nav from './components/nav/nav'
@@ -22,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
       }`}
     >
       <div>
-        <div className="shared-header-brand">
+        <Anchor to="/" className="shared-header-brand">
           <GatsbyImage fixed={logo?.childImageSharp?.fixed as any} />
 
           {(['transparent', 'primary'] as HeaderProps['mode'][]).includes(
@@ -32,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
           ) : (
             <Wordmark />
           )}
-        </div>
+        </Anchor>
 
         <Nav />
       </div>

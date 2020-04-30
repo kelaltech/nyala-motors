@@ -15,6 +15,10 @@
     max-width: $crop;
     height: inherit;
 
+    > a {
+      box-shadow: none !important;
+    }
+
     .shared-header-brand {
       display: flex;
 
