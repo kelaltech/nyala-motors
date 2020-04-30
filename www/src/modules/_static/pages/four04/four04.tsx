@@ -3,7 +3,7 @@ import { Content, Block } from 'gerami'
 
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
-import Towing from '../../../../assets/images/four04/towing.svg'
+import Towing from '../../../../assets/images/_static/four04/towing.svg'
 
 type Four4 = {}
 
