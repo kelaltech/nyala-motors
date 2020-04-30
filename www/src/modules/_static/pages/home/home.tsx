@@ -10,7 +10,7 @@ const Home: React.FC<HomeProps> = () => {
     <>
       <SEO title="Home" />
 
-      <Layout>
+      <Layout headerProps={{ mode: 'transparent' }}>
         <>TODO: Home</>
       </Layout>
     </>

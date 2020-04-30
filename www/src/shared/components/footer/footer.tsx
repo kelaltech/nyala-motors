@@ -13,33 +13,34 @@ const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="shared-footer">
       <div className="shared-footer-top-row">
-        <div>
+        <div className="shared-footer-links">
           <Anchor to="/vacancies">Vacancies</Anchor>
-          <span className="padding-horizontal-normal">•</span>
           <Anchor to="/bids">Bids</Anchor>
-          <span className="padding-horizontal-normal">•</span>
           <Anchor to="/reports">Reports</Anchor>
         </div>
 
         <div className="shared-footer-social">
           <Anchor
-            to="https://www.facebook.com/TODO:"
+            to="https://www.facebook.com/NyalaMotors"
             target="_blank"
             rel="noopener nofollow"
+            title="Facebook"
           >
             <FaFacebookF />
           </Anchor>
           <Anchor
-            to="https://www.twitter.com/TODO:"
+            to="https://twitter.com/NMSC2016"
             target="_blank"
             rel="noopener nofollow"
+            title="Twitter"
           >
             <FaTwitter />
           </Anchor>
           <Anchor
-            to="https://www.youtube.com/TODO:"
+            to="https://www.youtube.com/channel/UCi5n-z1yLMrZCOebd5sEetQ"
             target="_blank"
             rel="noopener nofollow"
+            title="YouTube"
           >
             <FaYoutube />
           </Anchor>
