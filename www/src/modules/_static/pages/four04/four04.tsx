@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../layouts/layout-default/layout-default'
+import Layout from '../../../../shared/components/layout/layout'
 
 type Four4 = {}
 
@@ -10,9 +10,9 @@ const Four04: React.FC<Four4> = () => {
     <>
       <SEO title="Home" />
 
-      <LayoutDefault>
+      <Layout>
         <>TODO: Four04</>
-      </LayoutDefault>
+      </Layout>
     </>
   )
 }
