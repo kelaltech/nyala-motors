@@ -184,7 +184,7 @@ module.exports = {
         description: `Official website of Nyala Motors S.C.`,
         lang: `en`,
         display: `standalone`,
-        icon: `src/assets/images/brand/icon.png`,
+        icon: `src/assets/images/shared/brand/icon.png`,
         start_url: `/`,
         background_color: `rgb(255, 255, 255)`,
         theme_color: `#bd0504`,

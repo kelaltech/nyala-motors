@@ -1,9 +1,20 @@
 @import '../../../../../assets/styles/theme';
 
+$mobile-threshold: $mobile * 1.8;
+
 .shared-header-nav {
   display: flex;
 
   height: inherit;
+
+  .shared-header-nav-on-mobile {
+    @media (min-width: $mobile-threshold) {
+      display: none;
+    }
+    @media (width: $mobile-threshold) {
+      display: none;
+    }
+  }
 
   a {
     display: flex;
@@ -23,6 +34,12 @@
     > * {
       margin: auto;
     }
+
+    &:not(.shared-header-nav-on-mobile) {
+      @media (max-width: $mobile-threshold) {
+        display: none;
+      }
+    }
   }
 
   .shared-header-nav-important-link {
@@ -35,5 +52,41 @@
     color: $primary;
 
     opacity: 0.84;
+  }
+}
+
+.shared-header-nav-menu {
+  @extend .shared-header-nav-on-mobile;
+  @extend .shared-header-nav;
+
+  position: absolute;
+
+  flex-direction: column;
+
+  right: 32px;
+
+  padding: 32px 32px 24px;
+
+  width: calc(100% - 2 * 32px);
+  max-width: 320px;
+  height: initial;
+
+  border-radius: $radius;
+
+  background-color: white;
+  box-shadow: $shade-M;
+
+  a {
+    margin: 0 0 8px;
+
+    width: initial !important;
+    height: 48px !important;
+  }
+
+  @media (min-width: $mobile-threshold) {
+    display: none;
+  }
+  @media (width: $mobile-threshold) {
+    display: none;
   }
 }
