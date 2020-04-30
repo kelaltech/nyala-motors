@@ -23,7 +23,7 @@ module.exports = {
     title: `Nyala Motors S.C.`,
     description: `Official website of Nyala Motors S.C.`,
     author: `kelal tech.`,
-    twitter: `@nmsc2016`,
+    twitter: `@NMSC2016`,
     copyright: `© ${new Date().getFullYear()} Nyala Motors S.C. All Rights reserved.`,
 
     siteUrl: config.GATSBY_SITE_URL || `http://localhost:8000`,
@@ -117,7 +117,7 @@ module.exports = {
     //
     {
       resolve: `gatsby-plugin-nprogress`,
-      options: { color: /*TODO: */ `#00b478`, showSpinner: false },
+      options: { color: `#c71444`, showSpinner: false },
     },
 
     //
@@ -178,7 +178,7 @@ module.exports = {
         icon: `src/assets/images/brand/icon.png`,
         start_url: `/`,
         background_color: `rgb(255, 255, 255)`,
-        theme_color: /*TODO: */ `#00b478`,
+        theme_color: `#bd0504`,
       },
     },
     {
