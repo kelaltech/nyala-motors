@@ -2,17 +2,18 @@
 
 ::selection {
   background: $accent;
-  color: $bg;
+  color: white;
 }
 
-html,
 body {
+  background-color: #f6f6f6;
+
   font-family: $fontFam-body;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-body {
-  background-color: $bg;
+a {
+  @extend .gerami-anchor;
 }

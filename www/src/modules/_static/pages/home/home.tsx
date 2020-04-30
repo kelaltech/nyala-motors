@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../layouts/layout-default/layout-default'
+import Layout from '../../../../shared/components/layout/layout'
 
 type HomeProps = {}
 
@@ -10,9 +10,9 @@ const Home: React.FC<HomeProps> = () => {
     <>
       <SEO title="Home" />
 
-      <LayoutDefault>
+      <Layout>
         <>TODO: Home</>
-      </LayoutDefault>
+      </Layout>
     </>
   )
 }
