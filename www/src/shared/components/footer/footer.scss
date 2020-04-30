@@ -7,7 +7,7 @@
   color: transparentize(white, 1 - 0.84);
 
   @media (max-width: $mobile * 1.4) {
-    padding: 32px;
+    padding: 32px 0;
   }
 
   a {
@@ -27,6 +27,8 @@
 
     @media (max-width: $mobile * 1.4) {
       flex-direction: column-reverse;
+
+      padding: 0 32px;
     }
 
     > * {
@@ -35,11 +37,18 @@
   }
 
   .shared-footer-top-row {
-    padding: 32px 64px 64px;
+    padding-top: 32px;
+    padding-bottom: 64px;
 
     .shared-footer-links {
       a {
         margin-right: 48px;
+      }
+
+      @media (max-width: $mobile * 1.4) {
+        a {
+          margin-right: 32px;
+        }
       }
     }
 

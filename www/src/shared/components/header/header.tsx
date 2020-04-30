@@ -24,14 +24,17 @@ const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
     >
       <div>
         <Anchor to="/" className="shared-header-brand">
-          <GatsbyImage fixed={logo?.childImageSharp?.fixed as any} />
+          <GatsbyImage
+            fixed={logo?.childImageSharp?.fixed as any}
+            className="shared-header-mode-logo"
+          />
 
           {(['transparent', 'primary'] as HeaderProps['mode'][]).includes(
             mode
           ) ? (
-            <WordmarkAlt />
+            <WordmarkAlt className="shared-header-mode-wordmark" />
           ) : (
-            <Wordmark />
+            <Wordmark className="shared-header-mode-wordmark" />
           )}
         </Anchor>
 

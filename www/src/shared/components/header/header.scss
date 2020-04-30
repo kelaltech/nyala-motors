@@ -1,6 +1,8 @@
 @import '../../../assets/styles/theme';
 @import 'header-height';
 
+$mobile-threshold: $mobile * 1.8;
+
 .shared-header {
   height: $header-height;
 
@@ -24,6 +26,18 @@
 
       > * {
         margin: auto 16px auto 0;
+      }
+    }
+
+    @media (max-width: $mobile-threshold) {
+      padding: 0 32px;
+
+      .shared-header-mode-logo {
+        transform: scale3d(0.75, 0.75, 1) translate3d(-8px, 0, 0);
+      }
+
+      .shared-header-mode-wordmark {
+        display: none;
       }
     }
   }
