@@ -1,0 +1,50 @@
+@import '../../../assets/styles/theme';
+@import 'header-height';
+
+.shared-header {
+  height: $header-height;
+
+  > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 64px;
+
+    max-width: $crop;
+    height: inherit;
+
+    .shared-header-brand {
+      display: flex;
+
+      > * {
+        margin: auto 16px auto 0;
+      }
+    }
+  }
+}
+
+.shared-header-mode-white {
+  background-color: white;
+}
+
+.shared-header-mode-transparent {
+  .shared-header-nav {
+    a {
+      color: white;
+    }
+
+    .shared-header-nav-important-link {
+      border-color: white;
+
+      color: white;
+    }
+  }
+}
+
+.shared-header-mode-primary {
+  @extend .shared-header-mode-transparent;
+
+  background-color: $primary;
+}

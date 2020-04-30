@@ -10,7 +10,7 @@ const Four04: React.FC<Four4> = () => {
     <>
       <SEO title="Home" />
 
-      <Layout>
+      <Layout headerProps={{ mode: 'default' }}>
         <>TODO: Four04</>
       </Layout>
     </>

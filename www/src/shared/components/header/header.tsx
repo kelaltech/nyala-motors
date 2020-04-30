@@ -1,9 +1,55 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import GatsbyImage from 'gatsby-image'
 
-type HeaderProps = {}
+import './header.scss'
+import { HeaderQuery } from '../../../../graphql-types'
+import Wordmark from '../../../assets/images/brand/wordmark.svg'
+import WordmarkAlt from '../../../assets/images/brand/wordmark-alt.svg'
+import Nav from './components/nav/nav'
 
-const Header: React.FC<HeaderProps> = () => {
-  return <></>
+export type HeaderProps = {
+  mode?: 'default' | 'white' | 'transparent' | 'primary'
+}
+
+const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
+  const { logo } = useStaticQuery<HeaderQuery>(query)
+
+  return (
+    <header
+      className={`shared-header ${
+        mode !== 'default' ? `shared-header-mode-${mode}` : ''
+      }`}
+    >
+      <div>
+        <div className="shared-header-brand">
+          <GatsbyImage fixed={logo?.childImageSharp?.fixed as any} />
+
+          {(['transparent', 'primary'] as HeaderProps['mode'][]).includes(
+            mode
+          ) ? (
+            <WordmarkAlt />
+          ) : (
+            <Wordmark />
+          )}
+        </div>
+
+        <Nav />
+      </div>
+    </header>
+  )
 }
 
 export default Header
+
+const query = graphql`
+  query Header {
+    logo: file(relativePath: { eq: "brand/logo.png" }) {
+      childImageSharp {
+        fixed(height: 64, quality: 90) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
+  }
+`

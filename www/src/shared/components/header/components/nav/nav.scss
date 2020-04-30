@@ -1,0 +1,39 @@
+@import '../../../../../assets/styles/theme';
+
+.shared-header-nav {
+  display: flex;
+
+  height: inherit;
+
+  a {
+    display: flex;
+
+    height: inherit;
+
+    margin: auto 0 auto 48px;
+
+    font-weight: 500;
+    font-size: 21px;
+
+    box-shadow: none;
+    color: #424242;
+
+    opacity: 0.7;
+
+    > * {
+      margin: auto;
+    }
+  }
+
+  .shared-header-nav-important-link {
+    height: 50%;
+    width: 140px;
+
+    border: $border solid $primary;
+    border-radius: $radius;
+
+    color: $primary;
+
+    opacity: 0.84;
+  }
+}
