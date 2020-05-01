@@ -1,5 +1,5 @@
 import React from 'react'
-import { Block, Yoga, Content } from 'gerami'
+import { Block, Yoga } from 'gerami'
 import ReportCard from './components/report-card/report-card'
 const Report = () => {
   return (
@@ -9,14 +9,12 @@ const Report = () => {
           <h1>Report List</h1>
         </Block>
 
-        <Content>
-          <Yoga maxCol={3}>
-            <ReportCard />
-            <ReportCard />
-            <ReportCard />
-            <ReportCard />
-          </Yoga>
-        </Content>
+        <Yoga maxCol={2}>
+          <ReportCard />
+          <ReportCard />
+          <ReportCard />
+          <ReportCard />
+        </Yoga>
       </Block>
     </>
   )
