@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageRendererProps } from 'gatsby'
-
+import '../assets/styles/index.scss'
 import { PageProvider } from './contexts/page-context/page-context'
 import ApolloClientProvider from './configs/apollo-client-provider'
 
