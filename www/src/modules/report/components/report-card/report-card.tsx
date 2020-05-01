@@ -1,28 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './report-card.scss'
 import { Content, Block, Flex, FlexSpacer, Button } from 'gerami'
 import { FiDownload } from 'react-icons/fi'
+import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import * as moment from 'moment'
 
-const ReportCard = () => {
+type ReportCardProps = {
+  title: string
+  date: string | Date
+  type: string
+  excerpt: string
+}
+
+const ReportCard = ({ date, excerpt, title, type }: ReportCardProps) => {
+  const [expand, setExpand] = useState(false)
   return (
     <Block>
       <Content>
         <Block>
-          <h1 className="title">Annual report for share</h1>
+          <h4 className="report-card-title">{title}</h4>
           <Flex>
-            <span className="font-S fg-blackish">Mon 16 2019</span>
+            <span className="font-S fg-blackish">
+              {moment.default(date).format('ddd, MMMM Do YYYY')}
+            </span>
             <FlexSpacer />
             <span className="bg-whitish font-S fg-blackish padding-normal nyala-style-radius">
-              Anuual Report
+              {type}
             </span>
           </Flex>
         </Block>
+
         <Block className="excerpt-box">
-          <p className="fg-blackish font-M">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            eveniet adipisci quis ab distinctio eos, mollitia voluptatibus
-            reprehenderit culpa,
+          <p
+            className="fg-blackish font-M"
+            style={{ height: `${expand ? 'auto' : '70px'}` }}
+          >
+            {excerpt}
           </p>
+
+          <span
+            className="fg-blackish expandable-icon"
+            onClick={() => setExpand(!expand)}
+          >
+            {excerpt.length >= 200 ? (
+              <>{expand ? <MdExpandLess /> : <MdExpandMore />}</>
+            ) : (
+              <MdExpandLess style={{ visibility: 'hidden' }} />
+            )}
+          </span>
         </Block>
         <div className="right">
           <Button primary className="nyala-style-radius">
