@@ -1,0 +1,12 @@
+query Vacancies {
+  vacancies {
+    id
+    title
+    location
+    deadline
+    description
+    attachments {
+      url
+    }
+  }
+}
