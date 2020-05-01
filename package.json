@@ -27,7 +27,7 @@
     "run-s": "run-s",
     "schema": "graphql get-schema",
     "codegen": "echo TODO: graphql-codegen --config codegen.yml",
-    "gen": "run-s codegen --watch",
+    "gen": "run-s \"codegen --watch\"",
     "format:strapi": "cd strapi && run-s format",
     "format:www": "cd www && run-s format",
     "format": "run-p format:strapi format:www",
