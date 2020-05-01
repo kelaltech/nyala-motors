@@ -7,7 +7,7 @@ const ApolloClientProvider = ({ children }: PropsWithChildren<{}>) => {
   const apolloClient = useMemo(
     () =>
       new ApolloClient({
-        uri: process.env.GATSBY_GRAPHQL_URL || `http://localhost:4000/graphql`,
+        uri: process.env.GATSBY_GRAPHQL_URL || `http://localhost:1337/graphql`,
         fetch,
       }),
     []
