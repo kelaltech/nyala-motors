@@ -1,9 +1,9 @@
-name: CI/CD
+name: CI
 
 on:
-  push:
-    branches-ignore:
-      - 'master'
+  # push:
+  #   branches-ignore:
+  #     - 'master'
   pull_request:
     branches-ignore:
       - 'master'
@@ -73,15 +73,15 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
-
-      - name: Save strapi artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: strapi-dist
-          path: strapi/build
-
-      - name: Save www artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: www-dist
-          path: www/public
+      #
+      # - name: Save strapi artifacts
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: strapi-dist
+      #     path: strapi/build
+      #
+      # - name: Save www artifacts
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: www-dist
+      #     path: www/public

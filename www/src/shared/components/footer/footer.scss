@@ -1,0 +1,99 @@
+@import '../../../assets/styles/theme';
+
+.shared-footer {
+  padding: 32px 0;
+
+  background: $primary;
+  color: transparentize(white, 1 - 0.84);
+
+  @media (max-width: $mobile * 1.4) {
+    padding: 32px 0;
+  }
+
+  a {
+    color: transparentize(white, 1 - 1);
+  }
+
+  .shared-footer-top-row,
+  .shared-footer-bottom-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 64px;
+
+    max-width: $crop;
+
+    @media (max-width: $mobile * 1.4) {
+      flex-direction: column-reverse;
+
+      padding: 0 32px;
+    }
+
+    > * {
+      margin: auto 0;
+    }
+  }
+
+  .shared-footer-top-row {
+    padding-top: 32px;
+    padding-bottom: 64px;
+
+    .shared-footer-links {
+      a {
+        margin-right: 48px;
+      }
+
+      @media (max-width: $mobile * 1.4) {
+        a {
+          margin-right: 32px;
+        }
+      }
+    }
+
+    .shared-footer-social {
+      display: flex;
+
+      flex-direction: row;
+      justify-content: flex-end;
+
+      font-size: 32px;
+      line-height: 32px;
+
+      a {
+        display: flex;
+
+        margin: auto 0 auto 48px;
+
+        box-shadow: none !important;
+
+        > * {
+          margin: auto;
+        }
+      }
+
+      @media (max-width: $mobile * 1.4) {
+        justify-content: flex-start;
+
+        padding-bottom: 32px;
+
+        a {
+          margin: auto 32px auto 0;
+        }
+      }
+    }
+  }
+
+  .shared-footer-bottom-row {
+    font-size: 14px;
+
+    .right {
+      @media (max-width: $mobile * 1.4) {
+        padding-bottom: 32px;
+
+        text-align: left !important;
+      }
+    }
+  }
+}
