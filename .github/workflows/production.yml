@@ -85,9 +85,9 @@ jobs:
           NODE_ENV: production
           CI: true
           CD: true
-
-      - name: Save www artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: www-dist
-          path: www/public
+      #
+      # - name: Save www artifacts
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: www-dist
+      #     path: www/public
