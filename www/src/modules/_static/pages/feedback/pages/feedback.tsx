@@ -2,10 +2,18 @@ import React from 'react'
 
 import SEO from '../../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../../layouts/layout-default/layout-default'
+import { gql } from 'apollo-boost'
+import { useQuery } from '@apollo/react-hooks'
+// import { Loading} from 'gerami'
 
 type Feedback = {}
 
 const Feedback: React.FC<Feedback> = () => {
+  const { data, loading } = useQuery(query)
+  if (!loading) {
+    console.log(data)
+  }
+  //  console.log(Loading)
   return (
     <>
       <SEO title="Feedback" />
@@ -30,3 +38,24 @@ const Feedback: React.FC<Feedback> = () => {
 }
 
 export default Feedback
+
+const query = gql`
+  query branches {
+    allStrapiBranches {
+      edges {
+        node {
+          name
+          phoneNumber
+          physicalAddress
+          strapiId
+          updated_at(fromNow: false)
+          workingHours
+          created_at
+          dealerType
+          email
+          id
+        }
+      }
+    }
+  }
+`

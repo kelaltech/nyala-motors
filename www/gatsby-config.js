@@ -128,7 +128,7 @@ module.exports = {
       options: {
         apiURL: strapiApiBase,
         queryLimit: 10000,
-        contentTypes: [],
+        contentTypes: ['branches'],
       },
     },
 

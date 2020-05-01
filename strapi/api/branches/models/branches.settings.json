@@ -12,31 +12,25 @@
     "name": {
       "type": "string"
     },
-    "location": {
+    "dealerType": {
+      "type": "enumeration",
+      "enum": [
+        "PART_SALES",
+        "VEHICLE_SALES",
+        "SERVICES"
+      ]
+    },
+    "email": {
+      "type": "email"
+    },
+    "physicalAddress": {
       "type": "string"
     },
-    "deadline": {
-      "type": "date"
-    },
-    "requirements": {
+    "workingHours": {
       "type": "richtext"
     },
-    "attachment": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
-    "howToApply": {
-      "type": "richtext"
-    },
-    "description": {
-      "type": "richtext"
+    "phoneNumber": {
+      "type": "string"
     }
   }
 }
