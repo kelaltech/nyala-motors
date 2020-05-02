@@ -42,6 +42,10 @@ $mobile-threshold: $mobile * 1.8;
     }
   }
 
+  .shared-nav-link-active {
+    opacity: 1;
+  }
+
   .shared-header-nav-important-link {
     height: 50%;
     width: 140px;
