@@ -55,6 +55,8 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
+          GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
+          GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
 
       - name: yarn test:www
         run: yarn test:www
