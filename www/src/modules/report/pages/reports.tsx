@@ -1,46 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Block, Yoga } from 'gerami'
 import { graphql, useStaticQuery } from 'gatsby'
 import ReportCard from '../components/report-card/report-card'
-import { ReportsQuery } from '../../../../graphql-types'
-const Reports = () => {
-  const { allStrapiReports } = useStaticQuery<ReportsQuery>(QUERY)
+import { useReportsQuery } from '../../../app/graphql'
+import { ReportsStaticQuery } from '../../../../graphql-types'
+import SEO from '../../../shared/components/seo/seo'
+import Layout from '../../../shared/components/layout/layout'
+import HeroSearch from '../../../shared/components/hero-search/hero-search'
 
-  console.log(allStrapiReports)
+const Reports = () => {
+  const { data } = useReportsQuery()
+  const { heroBg } = useStaticQuery<ReportsStaticQuery>(query)
+
+  const [term, setTerm] = useState('')
   return (
     <>
-      <Block>
+      <SEO title="Reports" />
+
+      <Layout headerProps={{ mode: 'white' }}>
+        <HeroSearch
+          bg={heroBg?.childImageSharp?.fluid as any}
+          title={`Reports`}
+          term={term}
+          onTerm={setTerm}
+        />
+
         <Block>
-          <h1>Report List</h1>
+          <Block>
+            <h1>Report List</h1>
+          </Block>
+          <Yoga maxCol={2}>
+            {data?.reports?.map((node, i) => (
+              <ReportCard
+                key={i}
+                date={node?.created_at || ''}
+                excerpt={node?.excerpt || ''}
+                title={node?.Title!}
+                type={node?.type!}
+              />
+            ))}
+          </Yoga>
         </Block>
-        <Yoga maxCol={2}>
-          {allStrapiReports.edges.map((node, i) => (
-            <ReportCard
-              key={i}
-              date={node.node.created_at!}
-              excerpt={node.node.excerpt!}
-              title={node.node.Title!}
-              type={node.node.type!}
-            />
-          ))}
-        </Yoga>
-      </Block>
+      </Layout>
     </>
   )
 }
 
 export default Reports
 
-const QUERY = graphql`
-  query Reports {
-    allStrapiReports {
-      edges {
-        node {
-          Title
-          excerpt
-          featured
-          type
-          created_at
+const query = graphql`
+  query ReportsStatic {
+    heroBg: file(relativePath: { eq: "vacancy/hero-bg.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

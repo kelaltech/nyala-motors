@@ -5,6 +5,9 @@ $height: 24px;
   border-radius: 0;
   border-bottom-right-radius: $radius;
 }
+.report-date {
+  letter-spacing: 1.5px;
+}
 .report-card-title {
   line-height: $height;
   max-height: $height;

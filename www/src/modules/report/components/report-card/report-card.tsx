@@ -17,10 +17,10 @@ const ReportCard = ({ date, excerpt, title, type }: ReportCardProps) => {
   return (
     <Block>
       <Content>
-        <Block>
+        <Block first>
           <h4 className="report-card-title">{title}</h4>
           <Flex>
-            <span className="font-S fg-blackish">
+            <span className="font-S fg-blackish report-date">
               {moment.default(date).format('ddd, MMMM Do YYYY')}
             </span>
             <FlexSpacer />

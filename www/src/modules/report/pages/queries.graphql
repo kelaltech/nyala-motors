@@ -1,0 +1,9 @@
+query Reports {
+  reports {
+    Title
+    excerpt
+    featured
+    type
+    created_at
+  }
+}
