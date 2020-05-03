@@ -1,17 +1,19 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+import Markdown from 'markdown-to-jsx'
+import { Content, Block, Yoga } from 'gerami'
 
 import { BranchesQuery } from '../../../../../../graphql-types'
 import SEO from '../../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../../shared/components/layout/layout'
-import { Content, Block, Yoga } from 'gerami'
+import './branches.scss'
 // import { Loading} from 'gerami'
 
 type Branches = {}
 
 const Branches: React.FC<Branches> = () => {
   const data = useStaticQuery<BranchesQuery>(query)
-  console.log(data)
+  // console.log(data)
 
   //  console.log(Loading)
   return (
@@ -25,11 +27,25 @@ const Branches: React.FC<Branches> = () => {
               <div key={key}>
                 <h3> {val.node.name} </h3>
                 <Yoga maxCol={3}>
-                  <div>Dealer Type</div>
-                  <div>Address</div>
                   <div>
-                    <h5>Working Hours</h5>
-                    {val.node.workingHours}
+                    <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Dealer Type</h4>
+                    <div>
+                      {val.node.dealerTypes.map((val: any, key: any) => (
+                        <div key={key}>{val.dealerType}</div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Address</h4>
+                    <Markdown className={'markdown'}>
+                      {val.node.physicalAddress}
+                    </Markdown>
+                  </div>
+                  <div>
+                    <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Working Hours</h4>
+                    <Markdown className={'markdown'}>
+                      {val.node.workingHours}
+                    </Markdown>
                   </div>
                 </Yoga>
               </div>
