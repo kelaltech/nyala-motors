@@ -21,10 +21,11 @@ $mobile-threshold: $mobile * 1.8;
 
     height: inherit;
 
-    margin: auto 0 auto 48px;
+    margin: auto 0 auto 32px;
 
-    font-weight: 500;
-    font-size: 21px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
 
     box-shadow: none;
     color: #424242;
@@ -40,6 +41,10 @@ $mobile-threshold: $mobile * 1.8;
         display: none;
       }
     }
+  }
+
+  .shared-nav-link-active {
+    opacity: 1;
   }
 
   .shared-header-nav-important-link {
@@ -60,6 +65,7 @@ $mobile-threshold: $mobile * 1.8;
   @extend .shared-header-nav;
 
   position: absolute;
+  z-index: 99;
 
   flex-direction: column;
 
