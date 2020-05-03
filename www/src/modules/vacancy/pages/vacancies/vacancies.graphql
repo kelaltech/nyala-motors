@@ -1,11 +1,11 @@
-query Vacancies {
-  vacancies {
+query Vacancies($limit: Int, $where: JSON) {
+  vacancies(start: 0, limit: $limit, where: $where) {
     id
     title
     location
     deadline
     description
-    attachments {
+    attachment {
       url
     }
   }

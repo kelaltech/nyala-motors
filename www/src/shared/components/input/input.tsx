@@ -7,7 +7,7 @@ type InputProps = React.DetailedHTMLProps<
   HTMLInputElement
 > & {
   /** @default 'M' */
-  mode: 'M' | 'L'
+  mode?: 'M' | 'L'
 }
 
 const Input: React.FC<InputProps> = ({
