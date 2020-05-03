@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Block, Yoga } from 'gerami'
 import { graphql, useStaticQuery } from 'gatsby'
 import ReportCard from '../components/report-card/report-card'
@@ -13,6 +13,33 @@ const Reports = () => {
   const { heroBg } = useStaticQuery<ReportsStaticQuery>(query)
 
   const [term, setTerm] = useState('')
+  const [selected, setOnSelected] = useState<{
+    name: string
+    url?: string
+  } | null>()
+
+  const chips = useMemo(
+    () => [
+      {
+        name: 'ANNUALLY',
+        url: '',
+      },
+      {
+        name: 'QUARTELLY',
+        url: '',
+      },
+      {
+        name: 'FINANCIAL',
+        url: '',
+      },
+      {
+        name: 'SEMI-ANNUAL',
+        url: '',
+      },
+    ],
+    []
+  )
+  console.log('Selected: ', selected)
   return (
     <>
       <SEO title="Reports" />
@@ -23,6 +50,9 @@ const Reports = () => {
           title={`Reports`}
           term={term}
           onTerm={setTerm}
+          chips={chips}
+          selectedChip={selected}
+          onSelectedChip={setOnSelected}
         />
 
         <Block>
