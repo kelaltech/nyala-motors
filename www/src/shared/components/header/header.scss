@@ -4,6 +4,9 @@
 $mobile-threshold: $mobile * 1.8;
 
 .shared-header {
+  position: relative;
+  z-index: 99;
+
   height: $header-height;
 
   > div {
