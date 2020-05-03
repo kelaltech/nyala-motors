@@ -1,0 +1,38 @@
+@import '../../../assets/styles/theme';
+
+.shared-button {
+  margin: 0;
+  padding: 12px 24px;
+
+  border: 2px solid #e5e5e5;
+  border-radius: $radius;
+  outline: 0;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  background: rgba(245, 245, 245, 0.95);
+  color: #424242;
+
+  cursor: pointer;
+}
+
+.shared-button-mode-lite {
+  border-color: transparent;
+
+  background: transparent;
+  color: $primary;
+}
+.shared-button-mode-primary {
+  border-color: $primary;
+
+  background: $primary;
+  color: white;
+}
+.shared-button-mode-primary-outline {
+  border-color: $primary;
+
+  background: transparent;
+  color: $primary;
+}
