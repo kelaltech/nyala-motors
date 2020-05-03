@@ -46,9 +46,9 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
                   <span className="fg-primary">Closed</span> on
                 </>
               ) : (
-                <>Apply before</>
+                <>Apply by</>
               )}{' '}
-              {moment(deadline).format('MMM d, YYYY')}
+              {moment(deadline).format('MMMM d, YYYY')}
             </span>
           </div>
         </h5>

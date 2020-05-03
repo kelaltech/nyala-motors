@@ -6,6 +6,8 @@ import GatsbyImage from 'gatsby-image'
 import './vacancies.scss'
 import { VacanciesStaticQuery } from '../../../../../graphql-types'
 import { useVacanciesQuery } from '../../../../app/graphql'
+import { strapiApiBase } from '../../../../../constants'
+import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
 import HeroSearch from '../../../../shared/components/hero-search/hero-search'
@@ -14,12 +16,24 @@ import Button from '../../../../shared/components/button/button'
 
 type VacanciesProps = {}
 
+const COUNT = 12
+
 const Vacancies: React.FC<VacanciesProps> = () => {
   const { heroBg, midBg } = useStaticQuery<VacanciesStaticQuery>(query)
 
   const [term, setTerm] = useState('')
 
-  const { loading, error, data } = useVacanciesQuery()
+  const [limit, setLimit] = useState(COUNT)
+  const { loading, error, data } = useVacanciesQuery({
+    variables: { limit, where: term ? { _q: term } : {} },
+  })
+
+  const [total] = useLazy(0, (set) => {
+    fetch(`${strapiApiBase}/vacancies/count`)
+      .then((response) => response.json())
+      .then((data) => set(Number(data)))
+      .catch(console.error)
+  })
 
   return (
     <>
@@ -33,7 +47,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
           onTerm={setTerm}
         />
 
-        {loading ? (
+        {!data && loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
           </div>
@@ -43,18 +57,32 @@ const Vacancies: React.FC<VacanciesProps> = () => {
           </div>
         ) : (
           <>
-            <div
-              className="vacancy-vacancies-content"
-              style={{ marginTop: -48, paddingTop: 0 }}
-            >
-              <div className="vacancy-vacancies-content-grid">
-                {data?.vacancies
-                  ?.filter((vacancy) => !!vacancy)
-                  .map((vacancy, i) => (
-                    <VacancyCard key={i} vacancy={vacancy!} />
-                  ))}
+            {!data?.vacancies?.length ? (
+              <div className="margin-vertical-very-big padding-very-big center fg-blackish">
+                No result found
+                {!term ? null : (
+                  <>
+                    {' '}
+                    for <q>{term}</q>
+                  </>
+                )}
+                .
               </div>
-            </div>
+            ) : (
+              <div
+                className="vacancy-vacancies-content"
+                style={{ marginTop: -48, paddingTop: 0 }}
+              >
+                <div className="vacancy-vacancies-content-grid">
+                  {data?.vacancies
+                    ?.filter((vacancy) => !!vacancy)
+                    ?.slice(0, 4)
+                    .map((vacancy, i) => (
+                      <VacancyCard key={i} vacancy={vacancy!} />
+                    ))}
+                </div>
+              </div>
+            )}
 
             <div className="vacancy-vacancies-content-mid">
               <GatsbyImage
@@ -93,27 +121,33 @@ const Vacancies: React.FC<VacanciesProps> = () => {
               </div>
             </div>
 
-            <div className="vacancy-vacancies-content">
-              <div className="vacancy-vacancies-content-grid">
-                {data?.vacancies
-                  ?.filter((vacancy) => !!vacancy)
-                  .map((vacancy, i) => (
-                    <VacancyCard key={i} vacancy={vacancy!} />
-                  ))}
-              </div>
+            {!data?.vacancies || data.vacancies.length <= 4 ? null : (
+              <div className="vacancy-vacancies-content">
+                <div className="vacancy-vacancies-content-grid">
+                  {data?.vacancies
+                    ?.filter((vacancy) => !!vacancy)
+                    ?.slice(4)
+                    .map((vacancy, i) => (
+                      <VacancyCard key={i} vacancy={vacancy!} />
+                    ))}
+                </div>
 
-              {!true ? null : (
-                <Button
-                  mode="primary-outline"
-                  className="vacancy-vacancies-load-more"
-                  onClick={() => {
-                    /* TODO: */
-                  }}
-                >
-                  Load more
-                </Button>
-              )}
-            </div>
+                {!true ||
+                !data?.vacancies ||
+                data.vacancies.length >= total ? null : (
+                  <Button
+                    mode="primary-outline"
+                    className="vacancy-vacancies-load-more"
+                    onClick={() => {
+                      setLimit(limit + COUNT)
+                    }}
+                    disabled={loading}
+                  >
+                    Load more{loading ? '...' : ''}
+                  </Button>
+                )}
+              </div>
+            )}
           </>
         )}
       </Layout>
