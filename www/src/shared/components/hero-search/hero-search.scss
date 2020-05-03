@@ -1,0 +1,74 @@
+@import '../../../assets/styles/theme';
+
+.shared-hero-search {
+  position: relative;
+  height: 420px;
+
+  .shared-hero-search-underlay {
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: inherit;
+  }
+
+  .shared-hero-search-overlay {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: inherit;
+
+    padding: 64px 0;
+
+    background-color: transparentize($color: $primary, $amount: 1 - 0.84);
+    color: transparentize($color: white, $amount: 1 - 0.95);
+
+    .shared-hero-search-title,
+    .shared-hero-search-bar {
+      display: block;
+
+      margin: 0 auto;
+      padding: 0 64px;
+
+      max-width: $crop;
+
+      text-align: center;
+
+      @media (max-width: $mobile) {
+        padding: 0 32px;
+      }
+    }
+
+    .shared-hero-search-title {
+      padding-top: 64px;
+    }
+
+    .shared-hero-search-bar {
+      padding-top: 40px;
+      padding-bottom: 90px;
+
+      .shared-hero-search-field {
+        vertical-align: middle;
+
+        padding-right: 48px;
+      }
+
+      .shared-hero-search-icon {
+        vertical-align: middle;
+
+        width: 16px;
+        height: 16px;
+
+        margin: 0 16px 0 -32px;
+
+        color: black;
+      }
+    }
+  }
+}
