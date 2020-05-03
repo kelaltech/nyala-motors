@@ -48,9 +48,11 @@ const Vacancies: React.FC<VacanciesProps> = () => {
               style={{ marginTop: -48, paddingTop: 0 }}
             >
               <div className="vacancy-vacancies-content-grid">
-                {data?.vacancies?.map((vacancy, i) => (
-                  <VacancyCard key={i} vacancy={vacancy} />
-                ))}
+                {data?.vacancies
+                  ?.filter((vacancy) => !!vacancy)
+                  .map((vacancy, i) => (
+                    <VacancyCard key={i} vacancy={vacancy!} />
+                  ))}
               </div>
             </div>
 
@@ -93,9 +95,11 @@ const Vacancies: React.FC<VacanciesProps> = () => {
 
             <div className="vacancy-vacancies-content">
               <div className="vacancy-vacancies-content-grid">
-                {data?.vacancies?.map((vacancy, i) => (
-                  <VacancyCard key={i} vacancy={vacancy} />
-                ))}
+                {data?.vacancies
+                  ?.filter((vacancy) => !!vacancy)
+                  .map((vacancy, i) => (
+                    <VacancyCard key={i} vacancy={vacancy!} />
+                  ))}
               </div>
 
               {!true ? null : (

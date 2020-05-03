@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/theme';
 
-$mobile-threshold: $mobile * 1.4;
+$mobile-threshold: $mobile * 1.6;
 
 .vacancy-vacancies-content {
   position: relative;
@@ -15,6 +15,10 @@ $mobile-threshold: $mobile * 1.4;
 
     grid-template-columns: repeat(2, calc(50% - 1 / 2 * 96px));
     gap: 64px;
+
+    > * {
+      margin: 0 0 auto;
+    }
   }
 
   .vacancy-vacancies-load-more {

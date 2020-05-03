@@ -1,6 +1,8 @@
 @import '../../../assets/styles/theme';
 
 .shared-button {
+  display: inline-block;
+
   margin: 0;
   padding: 12px 24px;
 
@@ -13,26 +15,43 @@
   line-height: 16px;
 
   background: rgba(245, 245, 245, 0.95);
-  color: #424242;
+  color: #424242 !important;
+  box-shadow: none !important;
 
   cursor: pointer;
+
+  &:active {
+    filter: $shy;
+    transform: $touch;
+  }
+
+  > * {
+    vertical-align: middle;
+  }
+
+  > svg {
+    height: 16px;
+    width: auto;
+
+    margin-right: 8px;
+  }
 }
 
 .shared-button-mode-lite {
   border-color: transparent;
 
   background: transparent;
-  color: $primary;
+  color: $primary !important;
 }
 .shared-button-mode-primary {
   border-color: $primary;
 
   background: $primary;
-  color: white;
+  color: white !important;
 }
 .shared-button-mode-primary-outline {
   border-color: $primary;
 
   background: transparent;
-  color: $primary;
+  color: $primary !important;
 }

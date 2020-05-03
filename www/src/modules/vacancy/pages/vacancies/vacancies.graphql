@@ -5,7 +5,7 @@ query Vacancies {
     location
     deadline
     description
-    attachments {
+    attachment {
       url
     }
   }
