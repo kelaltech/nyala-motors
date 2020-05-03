@@ -12,25 +12,40 @@
     "name": {
       "type": "string"
     },
-    "dealerType": {
-      "type": "enumeration",
-      "enum": [
-        "PART_SALES",
-        "VEHICLE_SALES",
-        "SERVICES"
-      ]
-    },
-    "email": {
-      "type": "email"
-    },
     "physicalAddress": {
       "type": "string"
     },
     "workingHours": {
       "type": "richtext"
     },
-    "phoneNumber": {
+    "heroBG": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "dealerTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "dealer-types.dealer-types"
+    },
+    "mapCoordinates": {
       "type": "string"
+    },
+    "phoneNumbers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "phone-numbers.phone-number"
+    },
+    "emails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "email.emails"
     }
   }
 }

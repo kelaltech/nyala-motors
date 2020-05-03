@@ -525,25 +525,134 @@
           "name": {
             "type": "string"
           },
-          "dealerType": {
-            "type": "string",
-            "enum": [
-              "PART_SALES",
-              "VEHICLE_SALES",
-              "SERVICES"
-            ]
-          },
-          "email": {
-            "type": "string"
-          },
           "physicalAddress": {
             "type": "string"
           },
           "workingHours": {
             "type": "string"
           },
-          "phoneNumber": {
+          "heroBG": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
             "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -552,25 +661,70 @@
           "name": {
             "type": "string"
           },
-          "dealerType": {
-            "type": "string",
-            "enum": [
-              "PART_SALES",
-              "VEHICLE_SALES",
-              "SERVICES"
-            ]
-          },
-          "email": {
-            "type": "string"
-          },
           "physicalAddress": {
             "type": "string"
           },
           "workingHours": {
             "type": "string"
           },
-          "phoneNumber": {
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
             "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
