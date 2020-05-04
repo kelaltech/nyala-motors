@@ -50,6 +50,18 @@ jobs:
           NODE_ENV: production
           CI: true
 
+      - name: Deploy strapi on Heroku
+        uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          appdir: 'strapi'
+        env:
+          NODE_ENV: production
+          CI: true
+          CD: true
+
       - name: yarn build:www
         run: yarn build:www
         env:
@@ -65,18 +77,6 @@ jobs:
           CI: true
           GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
           GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
-
-      - name: Deploy strapi on Heroku
-        uses: akhileshns/heroku-deploy@v3.0.4
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: 'strapi'
-        env:
-          NODE_ENV: production
-          CI: true
-          CD: true
 
       - name: Deploy www on Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.3
