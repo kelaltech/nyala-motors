@@ -132,9 +132,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                     ))}
                 </div>
 
-                {!true ||
-                !data?.vacancies ||
-                data.vacancies.length >= total ? null : (
+                {!data?.vacancies || data.vacancies.length >= total ? null : (
                   <Button
                     mode="primary-outline"
                     className="vacancy-vacancies-load-more"
