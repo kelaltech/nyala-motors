@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_faxes_faxes",
+  "info": {
+    "name": "Faxes",
+    "icon": "broadcast-tower"
+  },
+  "options": {},
+  "attributes": {
+    "Fax": {
+      "type": "string"
+    }
+  }
+}

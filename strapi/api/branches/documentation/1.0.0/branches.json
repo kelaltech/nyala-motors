@@ -653,6 +653,23 @@
                 }
               }
             }
+          },
+          "fax": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Fax": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -721,6 +738,23 @@
                   "type": "string"
                 },
                 "email": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "fax": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Fax": {
                   "type": "string"
                 }
               }

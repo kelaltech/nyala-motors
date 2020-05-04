@@ -46,6 +46,11 @@
       "type": "component",
       "repeatable": true,
       "component": "email.emails"
+    },
+    "fax": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faxes.faxes"
     }
   }
 }

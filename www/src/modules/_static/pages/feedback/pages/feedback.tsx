@@ -11,14 +11,14 @@ const Feedback: React.FC<Feedback> = () => {
     <>
       <SEO title="Feedback" />
 
-      <LayoutDefault>
-        <Content>
+      <LayoutDefault headerProps={{ mode: 'white' }}>
+        <Content style={{ paddingTop: 64 }} transparent={true}>
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLScGr8rLqD-tntjntVT5TupqORR4wcCZ9DEmAXNqr_ptZD9yaw/viewform?embedded=true"
             frameBorder={0}
             scrolling={'no'}
-            width={800}
-            height={750}
+            width={'100%'}
+            height={750 + 128}
             marginHeight={0}
             marginWidth={0}
           >
