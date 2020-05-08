@@ -1,0 +1,19 @@
+@import './theme';
+
+::selection {
+  background: $accent;
+  color: white;
+}
+
+body {
+  background-color: #f6f6f6;
+
+  font-family: $fontFam-body;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+a {
+  @extend .gerami-anchor;
+}

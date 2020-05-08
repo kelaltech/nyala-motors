@@ -1,0 +1,21 @@
+@import '~gerami/src/styles/theme';
+
+$space: 16px;
+
+$crop: 1680px;
+
+$border: 2px;
+$radius: 7px;
+
+$fontFam-heading: 'Roboto', sans-serif;
+$fontFam-body: 'Roboto', sans-serif;
+$fontFam-article: 'Roboto', sans-serif;
+
+$primary: #bd0504;
+$accent: #c71444;
+
+$shade-S: 0px 1px 7px rgba(66, 66, 66, 0.07);
+$shade-M: 0px 1px 7px rgba(66, 66, 66, 0.1);
+$shade-L: 0px 1px 7px rgba(66, 66, 66, 0.14);
+
+$mobile: 560px;

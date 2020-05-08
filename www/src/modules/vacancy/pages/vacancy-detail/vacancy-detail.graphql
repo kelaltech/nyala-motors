@@ -1,0 +1,25 @@
+query VacancyDetail($id: ID!) {
+  vacancy(id: $id) {
+    id
+
+    title
+    attachment {
+      url
+    }
+
+    deadline
+    created_at
+
+    location
+    type
+
+    quantity
+    salaryPeriod
+    salary
+
+    description
+    requirements
+
+    howToApply
+  }
+}

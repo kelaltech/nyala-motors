@@ -40,8 +40,8 @@
       "type": "richtext",
       "required": true
     },
-    "attachments": {
-      "collection": "file",
+    "attachment": {
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "files",

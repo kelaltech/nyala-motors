@@ -23,7 +23,7 @@ module.exports = {
     title: `Nyala Motors S.C.`,
     description: `Official website of Nyala Motors S.C.`,
     author: `kelal tech.`,
-    twitter: `@nmsc2016`,
+    twitter: `@NMSC2016`,
     copyright: `© ${new Date().getFullYear()} Nyala Motors S.C. All Rights reserved.`,
 
     siteUrl: config.GATSBY_SITE_URL || `http://localhost:8000`,
@@ -100,22 +100,33 @@ module.exports = {
       resolve: `gatsby-plugin-react-svg`,
       options: { include: /icons/ },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       { family: `Open Sans`, variants: [`400`, `600`, `700`] },
-    //       { family: `Lato`, variants: [`300`, `400`, `700`] },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto`,
+            variants: [
+              `300`,
+              `300i`,
+              `400`,
+              `400i`,
+              `500`,
+              `500i`,
+              `700`,
+              `700i`,
+            ],
+          },
+        ],
+      },
+    },
 
     //
     // COMPONENTS:
     //
     {
       resolve: `gatsby-plugin-nprogress`,
-      options: { color: /*TODO: */ `#00b478`, showSpinner: false },
+      options: { color: `#c71444`, showSpinner: false },
     },
 
     //
@@ -126,7 +137,7 @@ module.exports = {
       options: {
         apiURL: strapiApiBase,
         queryLimit: 10000,
-        contentTypes: [],
+        contentTypes: ['branches'],
       },
     },
 
@@ -173,10 +184,10 @@ module.exports = {
         description: `Official website of Nyala Motors S.C.`,
         lang: `en`,
         display: `standalone`,
-        icon: `src/assets/images/brand/icon.png`,
+        icon: `src/assets/images/shared/brand/icon.png`,
         start_url: `/`,
         background_color: `rgb(255, 255, 255)`,
-        theme_color: /*TODO: */ `#00b478`,
+        theme_color: `#bd0504`,
       },
     },
     {

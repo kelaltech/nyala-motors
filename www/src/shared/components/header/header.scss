@@ -1,0 +1,71 @@
+@import '../../../assets/styles/theme';
+@import 'header-height';
+
+$mobile-threshold: $mobile * 1.8;
+
+.shared-header {
+  position: relative;
+  z-index: 99;
+
+  height: $header-height;
+
+  > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 64px;
+
+    max-width: $crop;
+    height: inherit;
+
+    > a {
+      box-shadow: none !important;
+    }
+
+    .shared-header-brand {
+      display: flex;
+
+      > * {
+        margin: auto 16px auto 0;
+      }
+    }
+
+    @media (max-width: $mobile-threshold) {
+      padding: 0 32px;
+
+      .shared-header-mode-logo {
+        transform: scale3d(0.75, 0.75, 1) translate3d(-8px, 0, 0);
+      }
+
+      .shared-header-mode-wordmark {
+        display: none;
+      }
+    }
+  }
+}
+
+.shared-header-mode-white {
+  background-color: white;
+}
+
+.shared-header-mode-transparent {
+  .shared-header-nav {
+    a {
+      color: white;
+    }
+
+    .shared-header-nav-important-link {
+      border-color: white;
+
+      color: white;
+    }
+  }
+}
+
+.shared-header-mode-primary {
+  @extend .shared-header-mode-transparent;
+
+  background-color: $primary;
+}

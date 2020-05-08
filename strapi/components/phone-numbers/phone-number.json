@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_phone_numbers_phone_numbers",
+  "info": {
+    "name": "phoneNumber",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "phoneNumber": {
+      "type": "string"
+    }
+  }
+}

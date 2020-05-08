@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_dealer_types_dealer_types",
+  "info": {
+    "name": "dealerTypes",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "dealerType": {
+      "type": "enumeration",
+      "enum": [
+        "VEHICLE_SALES",
+        "PART_SALES",
+        "SERVICE"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../assets/styles/theme';
+
+.shared-input {
+  margin: 0;
+  padding: 12px 16px;
+
+  width: 100%;
+  max-width: 352px;
+
+  border: 0;
+  border-radius: $radius;
+  outline: 0;
+
+  font-size: 14px;
+  line-height: 16px;
+
+  background: #f3f3f3;
+  color: black;
+}
+
+.shared-input-mode-L {
+  padding: 16px;
+
+  max-width: 420px;
+}

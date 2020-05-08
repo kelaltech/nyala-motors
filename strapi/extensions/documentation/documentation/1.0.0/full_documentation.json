@@ -3236,10 +3236,245 @@
           "name": {
             "type": "string"
           },
+          "physicalAddress": {
+            "type": "string"
+          },
+          "workingHours": {
+            "type": "string"
+          },
+          "heroBG": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewBranches": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "physicalAddress": {
+            "type": "string"
+          },
+          "workingHours": {
+            "type": "string"
+          },
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Vacancy": {
+        "required": [
+          "id",
+          "title",
+          "type",
+          "location",
+          "deadline",
+          "description",
+          "requirements",
+          "howToApply",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FULL_TIME",
+              "PART_TIME",
+              "CONTRACTUAL",
+              "INTERNSHIP",
+              "SEASONAL"
+            ]
+          },
           "location": {
             "type": "string"
           },
           "deadline": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           },
           "requirements": {
@@ -3303,141 +3538,6 @@
               },
               "related": {
                 "type": "string"
-              }
-            }
-          },
-          "howToApply": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        }
-      },
-      "NewBranches": {
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "location": {
-            "type": "string"
-          },
-          "deadline": {
-            "type": "string"
-          },
-          "requirements": {
-            "type": "string"
-          },
-          "howToApply": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        }
-      },
-      "Vacancy": {
-        "required": [
-          "id",
-          "title",
-          "type",
-          "location",
-          "deadline",
-          "description",
-          "requirements",
-          "howToApply",
-          "quantity"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "FULL_TIME",
-              "PART_TIME",
-              "CONTRACTUAL",
-              "INTERNSHIP",
-              "SEASONAL"
-            ]
-          },
-          "location": {
-            "type": "string"
-          },
-          "deadline": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "requirements": {
-            "type": "string"
-          },
-          "attachments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                }
               }
             }
           },
