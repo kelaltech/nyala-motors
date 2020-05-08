@@ -4,14 +4,17 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 import './hero-search.scss'
 import Input from '../input/input'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
 type HeroSearchProps = {
   bg?: FluidObject | FluidObject[]
   title?: string
-
   term?: string
   onTerm?: (term: string) => void
   onSubmit?: (term: string) => void
+  chips?: { name: string; url?: string }[]
+  selectedChip?: { name: string; url?: string } | null
+  onSelectedChip?: (chips: { name: string; url?: string } | null) => void
 }
 
 const HeroSearch: React.FC<HeroSearchProps> = ({
@@ -20,6 +23,9 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
   term,
   onTerm,
   onSubmit,
+  chips,
+  selectedChip,
+  onSelectedChip,
 }) => {
   return (
     <div className="shared-hero-search">
@@ -48,6 +54,34 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
           />
           <AiOutlineSearch className="shared-hero-search-icon" />
         </label>
+        <div className="shared-hero-search-chips">
+          {chips?.map((chip, i) => (
+            <div className="center">
+              <span
+                className={`${
+                  selectedChip === chip
+                    ? 'shared-hero-selected-filter-chip'
+                    : ' '
+                } shared-hero-filter-chip`}
+                key={i}
+                onClick={() => onSelectedChip && onSelectedChip(chip)}
+              >
+                {chip.name.toLocaleLowerCase()}
+              </span>
+              {chips.length - 1 !== i ? (
+                <span className="font-M padding-normal">|</span>
+              ) : selectedChip ? (
+                <span
+                  title={'clear all filters'}
+                  className="shared-hero-clear-icon"
+                  onClick={() => onSelectedChip && onSelectedChip(null)}
+                >
+                  <AiOutlineCloseCircle />
+                </span>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </form>
     </div>
   )

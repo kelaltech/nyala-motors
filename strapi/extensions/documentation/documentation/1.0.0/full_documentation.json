@@ -45,6 +45,14 @@
     }
   ],
   "paths": {
+    "/reports": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+
     "/branches": {
       "get": {
         "deprecated": false,
@@ -57,6 +65,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
+                    "$ref": "#/components/schemas/Report"
                     "$ref": "#/components/schemas/Branches"
                   }
                 }
@@ -96,6 +105,7 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "parameters": [
@@ -239,6 +249,14 @@
       },
       "post": {
         "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
         "description": "Create a new branches record",
         "responses": {
           "200": {
@@ -284,6 +302,7 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "requestBody": {
@@ -292,6 +311,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "$ref": "#/components/schemas/NewReport"
                 "$ref": "#/components/schemas/NewBranches"
               }
             }
@@ -299,6 +319,13 @@
         }
       }
     },
+    "/reports/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
     "/branches/count": {
       "get": {
         "deprecated": false,
@@ -351,11 +378,23 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "parameters": []
       }
     },
+    "/reports/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
     "/branches/{id}": {
       "get": {
         "deprecated": false,
@@ -404,6 +443,7 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "parameters": [
@@ -421,6 +461,14 @@
       },
       "put": {
         "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
         "description": "Update a single branches record",
         "responses": {
           "200": {
@@ -466,6 +514,7 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "requestBody": {
@@ -474,6 +523,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "$ref": "#/components/schemas/NewReport"
                 "$ref": "#/components/schemas/NewBranches"
               }
             }
@@ -494,6 +544,10 @@
       },
       "delete": {
         "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
         "description": "Delete a single branches record",
         "responses": {
           "200": {
@@ -540,6 +594,7 @@
         },
         "summary": "",
         "tags": [
+          "Report"
           "Branches"
         ],
         "parameters": [
@@ -3225,6 +3280,120 @@
   },
   "components": {
     "schemas": {
+      "Report": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "ANNUALLY",
+              "QUARTERLY",
+              "SEMI_ANNUALLY",
+              "FINANCIAL"
+            ]
+          },
+          "excerpt": {
+            "type": "string"
+          },
+          "attachments": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              }
+            }
+          },
+          "featured": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "NewReport": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "ANNUALLY",
+              "QUARTERLY",
+              "SEMI_ANNUALLY",
+              "FINANCIAL"
+            ]
+          },
+          "excerpt": {
+            "type": "string"
+          },
+          "featured": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "Vacancy": {
       "Branches": {
         "required": [
           "id"
@@ -3874,6 +4043,7 @@
   },
   "tags": [
     {
+      "name": "Report"
       "name": "Branches"
     },
     {
