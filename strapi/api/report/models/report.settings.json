@@ -9,7 +9,7 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "type": {
@@ -25,7 +25,7 @@
       "type": "text"
     },
     "attachments": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",

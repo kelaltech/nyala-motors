@@ -1,5 +1,5 @@
 # source: http://localhost:1337/graphql
-# timestamp: Sun May 03 2020 11:42:38 GMT+0300 (East Africa Time)
+# timestamp: Fri May 08 2020 17:39:04 GMT+0300 (East Africa Time)
 
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
@@ -121,10 +121,10 @@ input editFileInput {
 }
 
 input editReportInput {
-  Title: String
+  title: String
   type: ENUM_REPORT_TYPE
   excerpt: String
-  attachments: [ID]
+  attachments: ID
   featured: Boolean
 }
 
@@ -219,7 +219,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createReport(input: createReportInput): createReportPayload
@@ -281,11 +281,11 @@ type Report {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  Title: String
+  title: String
   type: ENUM_REPORT_TYPE
   excerpt: String
+  attachments: UploadFile
   featured: Boolean
-  attachments(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 type ReportAggregator {
@@ -297,6 +297,11 @@ type ReportConnection {
   values: [Report]
   groupBy: ReportGroupBy
   aggregate: ReportAggregator
+}
+
+type ReportConnectionAttachments {
+  key: ID
+  connection: ReportConnection
 }
 
 type ReportConnectionCreated_at {
@@ -338,17 +343,18 @@ type ReportGroupBy {
   id: [ReportConnectionId]
   created_at: [ReportConnectionCreated_at]
   updated_at: [ReportConnectionUpdated_at]
-  Title: [ReportConnectionTitle]
+  title: [ReportConnectionTitle]
   type: [ReportConnectionType]
   excerpt: [ReportConnectionExcerpt]
+  attachments: [ReportConnectionAttachments]
   featured: [ReportConnectionFeatured]
 }
 
 input ReportInput {
-  Title: String
+  title: String
   type: ENUM_REPORT_TYPE
   excerpt: String
-  attachments: [ID]
+  attachments: ID
   featured: Boolean
 }
 
