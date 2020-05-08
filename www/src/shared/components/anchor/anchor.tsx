@@ -1,7 +1,9 @@
 import React, { AnchorHTMLAttributes } from 'react'
 import { Link } from 'gatsby'
 
-type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & { to: string }
+export type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  to: string
+}
 
 const Anchor: React.FC<AnchorProps> = ({ to: _to, children, ...aProps }) => {
   let to = _to

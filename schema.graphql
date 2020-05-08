@@ -1,5 +1,5 @@
 # source: http://localhost:1337/graphql
-# timestamp: Fri Apr 24 2020 15:46:24 GMT+0300 (East Africa Time)
+# timestamp: Sun May 03 2020 16:59:58 GMT+0300 (East Africa Time)
 
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
@@ -30,6 +30,14 @@ input createUserInput {
 
 type createUserPayload {
   user: UsersPermissionsUser
+}
+
+input createVacancyInput {
+  data: VacancyInput
+}
+
+type createVacancyPayload {
+  vacancy: Vacancy
 }
 
 """
@@ -70,6 +78,14 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+input deleteVacancyInput {
+  where: InputID
+}
+
+type deleteVacancyPayload {
+  vacancy: Vacancy
+}
+
 input editFileInput {
   name: String
   alternativeText: String
@@ -107,6 +123,37 @@ input editUserInput {
   role: ID
 }
 
+input editVacancyInput {
+  title: String
+  type: ENUM_VACANCY_TYPE
+  location: String
+  deadline: Date
+  description: String
+  requirements: String
+  attachment: ID
+  howToApply: String
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int
+  salary: String
+}
+
+enum ENUM_VACANCY_SALARYPERIOD {
+  ONE_TIME
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum ENUM_VACANCY_TYPE {
+  FULL_TIME
+  PART_TIME
+  CONTRACTUAL
+  INTERNSHIP
+  SEASONAL
+}
+
 input FileInput {
   name: String!
   alternativeText: String
@@ -141,9 +188,13 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createVacancy(input: createVacancyInput): createVacancyPayload
+  updateVacancy(input: updateVacancyInput): updateVacancyPayload
+  deleteVacancy(input: deleteVacancyInput): deleteVacancyPayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -171,6 +222,9 @@ type Mutation {
 }
 
 type Query {
+  vacancy(id: ID!): Vacancy
+  vacancies(sort: String, limit: Int, start: Int, where: JSON): [Vacancy]
+  vacanciesConnection(sort: String, limit: Int, start: Int, where: JSON): VacancyConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -222,6 +276,15 @@ input updateUserInput {
 
 type updateUserPayload {
   user: UsersPermissionsUser
+}
+
+input updateVacancyInput {
+  where: InputID
+  data: editVacancyInput
+}
+
+type updateVacancyPayload {
+  vacancy: Vacancy
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -565,4 +628,153 @@ type UsersPermissionsUserGroupBy {
   confirmed: [UsersPermissionsUserConnectionConfirmed]
   blocked: [UsersPermissionsUserConnectionBlocked]
   role: [UsersPermissionsUserConnectionRole]
+}
+
+type Vacancy {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  type: ENUM_VACANCY_TYPE!
+  location: String!
+  deadline: Date!
+  description: String!
+  requirements: String!
+  attachment: UploadFile
+  howToApply: String!
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int!
+  salary: String
+}
+
+type VacancyAggregator {
+  count: Int
+  totalCount: Int
+  sum: VacancyAggregatorSum
+  avg: VacancyAggregatorAvg
+  min: VacancyAggregatorMin
+  max: VacancyAggregatorMax
+}
+
+type VacancyAggregatorAvg {
+  quantity: Float
+}
+
+type VacancyAggregatorMax {
+  quantity: Float
+}
+
+type VacancyAggregatorMin {
+  quantity: Float
+}
+
+type VacancyAggregatorSum {
+  quantity: Float
+}
+
+type VacancyConnection {
+  values: [Vacancy]
+  groupBy: VacancyGroupBy
+  aggregate: VacancyAggregator
+}
+
+type VacancyConnectionAttachment {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionCreated_at {
+  key: DateTime
+  connection: VacancyConnection
+}
+
+type VacancyConnectionDeadline {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionDescription {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionHowToApply {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionId {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionLocation {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionQuantity {
+  key: Int
+  connection: VacancyConnection
+}
+
+type VacancyConnectionRequirements {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionSalary {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionSalaryPeriod {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionTitle {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionType {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionUpdated_at {
+  key: DateTime
+  connection: VacancyConnection
+}
+
+type VacancyGroupBy {
+  id: [VacancyConnectionId]
+  created_at: [VacancyConnectionCreated_at]
+  updated_at: [VacancyConnectionUpdated_at]
+  title: [VacancyConnectionTitle]
+  type: [VacancyConnectionType]
+  location: [VacancyConnectionLocation]
+  deadline: [VacancyConnectionDeadline]
+  description: [VacancyConnectionDescription]
+  requirements: [VacancyConnectionRequirements]
+  attachment: [VacancyConnectionAttachment]
+  howToApply: [VacancyConnectionHowToApply]
+  salaryPeriod: [VacancyConnectionSalaryPeriod]
+  quantity: [VacancyConnectionQuantity]
+  salary: [VacancyConnectionSalary]
+}
+
+input VacancyInput {
+  title: String!
+  type: ENUM_VACANCY_TYPE!
+  location: String!
+  deadline: Date!
+  description: String!
+  requirements: String!
+  attachment: ID
+  howToApply: String!
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int!
+  salary: String
 }

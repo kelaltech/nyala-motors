@@ -26,7 +26,7 @@
     "run-p": "run-p",
     "run-s": "run-s",
     "schema": "graphql get-schema",
-    "codegen": "echo TODO: graphql-codegen --config codegen.yml",
+    "codegen": "graphql-codegen --config codegen.yml",
     "gen": "run-s \"codegen --watch\"",
     "format:strapi": "cd strapi && run-s format",
     "format:www": "cd www && run-s format",
@@ -40,7 +40,8 @@
     "prod": "cross-env NODE_ENV=production CI=true run-p \"run-s codegen build test\" format",
     "strapi": "cd strapi && run-s develop",
     "www": "cd www && run-s develop",
-    "start": "run-s codegen && run-p gen strapi www"
+    "start": "run-s codegen && run-p gen strapi www",
+    "all": "run-p start \"schema --watch\""
   },
   "husky": {
     "hooks": {
