@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/vacancies": {
+    "/branches": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the branches's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Vacancy"
+                    "$ref": "#/components/schemas/Branches"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new branches record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Vacancy"
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewVacancy"
+                "$ref": "#/components/schemas/NewBranches"
               }
             }
           }
         }
       }
     },
-    "/vacancies/count": {
+    "/branches/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of branches documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "parameters": []
       }
     },
-    "/vacancies/{id}": {
+    "/branches/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one branches record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Vacancy"
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single branches record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Vacancy"
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewVacancy"
+                "$ref": "#/components/schemas/NewBranches"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single branches record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single branches based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Vacancy"
+          "Branches"
         ],
         "parameters": [
           {
@@ -514,188 +514,217 @@
   },
   "components": {
     "schemas": {
-      "Vacancy": {
+      "Branches": {
         "required": [
-          "id",
-          "title",
-          "type",
-          "location",
-          "deadline",
-          "description",
-          "requirements",
-          "howToApply",
-          "quantity"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
+          "name": {
             "type": "string"
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "FULL_TIME",
-              "PART_TIME",
-              "CONTRACTUAL",
-              "INTERNSHIP",
-              "SEASONAL"
-            ]
-          },
-          "location": {
+          "physicalAddress": {
             "type": "string"
           },
-          "deadline": {
+          "workingHours": {
             "type": "string"
           },
-          "description": {
-            "type": "string"
-          },
-          "requirements": {
-            "type": "string"
-          },
-          "attachment": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
+          "heroBG": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                }
               }
             }
           },
-          "howToApply": {
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
             "type": "string"
           },
-          "salaryPeriod": {
-            "type": "string",
-            "default": "MONTHLY",
-            "enum": [
-              "ONE_TIME",
-              "HOURLY",
-              "DAILY",
-              "WEEKLY",
-              "MONTHLY",
-              "YEARLY"
-            ]
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "quantity": {
-            "type": "integer"
-          },
-          "salary": {
-            "type": "string"
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
-      "NewVacancy": {
-        "required": [
-          "title",
-          "type",
-          "location",
-          "deadline",
-          "description",
-          "requirements",
-          "howToApply",
-          "quantity"
-        ],
+      "NewBranches": {
         "properties": {
-          "title": {
+          "name": {
             "type": "string"
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "FULL_TIME",
-              "PART_TIME",
-              "CONTRACTUAL",
-              "INTERNSHIP",
-              "SEASONAL"
-            ]
-          },
-          "location": {
+          "physicalAddress": {
             "type": "string"
           },
-          "deadline": {
+          "workingHours": {
             "type": "string"
           },
-          "description": {
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
             "type": "string"
           },
-          "requirements": {
-            "type": "string"
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "howToApply": {
-            "type": "string"
-          },
-          "salaryPeriod": {
-            "type": "string",
-            "default": "MONTHLY",
-            "enum": [
-              "ONE_TIME",
-              "HOURLY",
-              "DAILY",
-              "WEEKLY",
-              "MONTHLY",
-              "YEARLY"
-            ]
-          },
-          "quantity": {
-            "type": "integer"
-          },
-          "salary": {
-            "type": "string"
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -703,7 +732,7 @@
   },
   "tags": [
     {
-      "name": "Vacancy"
+      "name": "Branches"
     }
   ]
 }

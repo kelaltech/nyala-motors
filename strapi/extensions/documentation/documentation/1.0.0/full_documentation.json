@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/08/2020 5:37:08 PM"
+    "x-generation-date": "04/29/2020 5:04:21 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -52,12 +52,21 @@
         "responses": {
           "200": {
             "description": "response",
+
+    "/branches": {
+      "get": {
+        "deprecated": false,
+        "description": "Find all the branches's records",
+        "responses": {
+          "200": {
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Report"
+                    "$ref": "#/components/schemas/Branches"
                   }
                 }
               }
@@ -97,6 +106,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "parameters": [
           {
@@ -247,6 +257,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Report"
+        "description": "Create a new branches record",
+        "responses": {
+          "200": {
+            "description": "Retrieve branches document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -285,6 +303,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "requestBody": {
           "description": "",
@@ -293,6 +312,7 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/NewReport"
+                "$ref": "#/components/schemas/NewBranches"
               }
             }
           }
@@ -306,6 +326,13 @@
         "responses": {
           "200": {
             "description": "response",
+    "/branches/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Retrieve the numver of branches documents",
+        "responses": {
+          "200": {
+            "description": "Retrieve branches document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -352,6 +379,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "parameters": []
       }
@@ -367,6 +395,17 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Report"
+    "/branches/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Find one branches record",
+        "responses": {
+          "200": {
+            "description": "Retrieve branches document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -405,6 +444,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "parameters": [
           {
@@ -429,6 +469,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Report"
+        "description": "Update a single branches record",
+        "responses": {
+          "200": {
+            "description": "Retrieve branches document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branches"
                 }
               }
             }
@@ -467,6 +515,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "requestBody": {
           "description": "",
@@ -475,6 +524,7 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/NewReport"
+                "$ref": "#/components/schemas/NewBranches"
               }
             }
           }
@@ -498,6 +548,10 @@
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
+        "description": "Delete a single branches record",
+        "responses": {
+          "200": {
+            "description": "deletes a single branches based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -541,6 +595,7 @@
         "summary": "",
         "tags": [
           "Report"
+          "Branches"
         ],
         "parameters": [
           {
@@ -3339,47 +3394,24 @@
         }
       },
       "Vacancy": {
+      "Branches": {
         "required": [
-          "id",
-          "title",
-          "type",
-          "location",
-          "deadline",
-          "description",
-          "requirements",
-          "howToApply",
-          "quantity"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
+          "name": {
             "type": "string"
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "FULL_TIME",
-              "PART_TIME",
-              "CONTRACTUAL",
-              "INTERNSHIP",
-              "SEASONAL"
-            ]
-          },
-          "location": {
+          "physicalAddress": {
             "type": "string"
           },
-          "deadline": {
+          "workingHours": {
             "type": "string"
           },
-          "description": {
-            "type": "string"
-          },
-          "requirements": {
-            "type": "string"
-          },
-          "attachments": {
+          "heroBG": {
             "type": "array",
             "items": {
               "required": [
@@ -3440,6 +3472,241 @@
                 "related": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewBranches": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "physicalAddress": {
+            "type": "string"
+          },
+          "workingHours": {
+            "type": "string"
+          },
+          "dealerTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string",
+                  "enum": [
+                    "VEHICLE_SALES",
+                    "PART_SALES",
+                    "SERVICE"
+                  ]
+                }
+              }
+            }
+          },
+          "mapCoordinates": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Vacancy": {
+        "required": [
+          "id",
+          "title",
+          "type",
+          "location",
+          "deadline",
+          "description",
+          "requirements",
+          "howToApply",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FULL_TIME",
+              "PART_TIME",
+              "CONTRACTUAL",
+              "INTERNSHIP",
+              "SEASONAL"
+            ]
+          },
+          "location": {
+            "type": "string"
+          },
+          "deadline": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "string"
+          },
+          "attachment": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
               }
             }
           },
@@ -3777,6 +4044,7 @@
   "tags": [
     {
       "name": "Report"
+      "name": "Branches"
     },
     {
       "name": "Vacancy"

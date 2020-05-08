@@ -42,6 +42,14 @@ const Nav: React.FC<NavProps> = () => {
           <span>News</span>
         </Anchor>
         <Anchor
+          to="/about"
+          className={`${
+            '/about' !== activePathname ? '' : 'shared-nav-link-active'
+          }`}
+        >
+          <span>About</span>
+        </Anchor>
+        <Anchor
           to="/contact"
           className={`shared-header-nav-important-link ${
             '/contact' !== activePathname ? '' : 'shared-nav-link-active'
@@ -87,6 +95,14 @@ const Nav: React.FC<NavProps> = () => {
             }`}
           >
             <span>News</span>
+          </Anchor>
+          <Anchor
+            to="/about"
+            className={`shared-header-nav-on-mobile ${
+              '/about' !== activePathname ? '' : 'shared-nav-link-active'
+            }`}
+          >
+            <span>About</span>
           </Anchor>
           <Anchor
             to="/contact"

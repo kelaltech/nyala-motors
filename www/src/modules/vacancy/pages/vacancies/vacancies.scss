@@ -1,0 +1,131 @@
+@import '../../../../assets/styles/theme';
+
+$mobile-threshold: $mobile * 1.6;
+
+.vacancy-vacancies-content {
+  position: relative;
+
+  margin: 0 auto;
+  padding: 64px;
+
+  max-width: $crop;
+
+  .vacancy-vacancies-content-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, calc(50% - 1 / 2 * 64px));
+    gap: 64px;
+
+    > * {
+      margin: 0 0 auto;
+    }
+  }
+
+  .vacancy-vacancies-load-more {
+    display: block;
+
+    margin: 64px auto 0;
+  }
+
+  @media (max-width: $mobile-threshold) {
+    padding: 32px;
+
+    .vacancy-vacancies-content-grid {
+      grid-template-columns: 100%;
+      gap: 32px;
+    }
+
+    .vacancy-vacancies-load-more {
+      margin: 32px auto 0;
+    }
+  }
+}
+
+.vacancy-vacancies-content-mid {
+  position: relative;
+  height: 475px;
+
+  @media (max-width: $mobile) {
+    height: 560px;
+  }
+  @media (max-width: $mobile * 0.84) {
+    height: 640px;
+  }
+  @media (max-width: $mobile * 0.7) {
+    height: 720px;
+  }
+
+  .vacancy-vacancies-content-mid-underlay {
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: inherit;
+  }
+
+  .vacancy-vacancies-content-mid-overlay {
+    display: flex;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: inherit;
+
+    background-color: transparentize($color: #141414, $amount: 1 - 0.84);
+    color: transparentize($color: white, $amount: 1 - 0.95);
+
+    > div {
+      display: grid;
+
+      grid-template-columns: 420px auto;
+
+      margin: auto;
+      padding: 0 64px;
+
+      max-width: $crop;
+
+      @media (max-width: $mobile-threshold * 1.4) {
+        grid-template-columns: 100%;
+
+        padding: 0 32px;
+      }
+
+      > * {
+        display: block;
+
+        margin: auto 0;
+
+        text-align: left;
+      }
+
+      > h1 {
+        font-size: 48px;
+        line-height: 56px;
+
+        @media (max-width: $mobile-threshold) {
+          font-size: 28px;
+          line-height: 33px;
+
+          padding-bottom: 16px;
+        }
+      }
+
+      > article {
+        overflow: hidden;
+
+        font-size: 16px;
+
+        opacity: 0.84;
+
+        @media (max-width: $mobile-threshold) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
