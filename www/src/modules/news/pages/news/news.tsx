@@ -14,7 +14,7 @@ const News: React.FC<NewsProps> = () => {
 
   return (
     <>
-      <SEO title="Reports" />
+      <SEO title="News" />
       <Layout>
         {loading ? (
           <div className="padding-very-big">
