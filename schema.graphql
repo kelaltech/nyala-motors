@@ -1,11 +1,127 @@
 # source: http://localhost:1337/graphql
-# timestamp: Sun May 03 2020 16:59:58 GMT+0300 (East Africa Time)
+# timestamp: Fri May 15 2020 10:05:49 GMT+0300 (East Africa Time)
 
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+type Branches {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  physicalAddress: String
+  workingHours: String
+  dealerTypes: [ComponentDealerTypesDealerTypes]
+  mapCoordinates: String
+  phoneNumbers: [ComponentPhoneNumbersPhoneNumber]
+  emails: [ComponentEmailEmails]
+  heroBG(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type BranchesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BranchesConnection {
+  values: [Branches]
+  groupBy: BranchesGroupBy
+  aggregate: BranchesAggregator
+}
+
+type BranchesConnectionCreated_at {
+  key: DateTime
+  connection: BranchesConnection
+}
+
+type BranchesConnectionId {
+  key: ID
+  connection: BranchesConnection
+}
+
+type BranchesConnectionMapCoordinates {
+  key: String
+  connection: BranchesConnection
+}
+
+type BranchesConnectionName {
+  key: String
+  connection: BranchesConnection
+}
+
+type BranchesConnectionPhysicalAddress {
+  key: String
+  connection: BranchesConnection
+}
+
+type BranchesConnectionUpdated_at {
+  key: DateTime
+  connection: BranchesConnection
+}
+
+type BranchesConnectionWorkingHours {
+  key: String
+  connection: BranchesConnection
+}
+
+type BranchesGroupBy {
+  id: [BranchesConnectionId]
+  created_at: [BranchesConnectionCreated_at]
+  updated_at: [BranchesConnectionUpdated_at]
+  name: [BranchesConnectionName]
+  physicalAddress: [BranchesConnectionPhysicalAddress]
+  workingHours: [BranchesConnectionWorkingHours]
+  mapCoordinates: [BranchesConnectionMapCoordinates]
+}
+
+input BranchInput {
+  name: String
+  physicalAddress: String
+  workingHours: String
+  heroBG: [ID]
+  dealerTypes: [ComponentDealerTypesDealerTypeInput]
+  mapCoordinates: String
+  phoneNumbers: [ComponentPhoneNumbersPhoneNumberInput]
+  emails: [ComponentEmailEmailInput]
+}
 
 enum CacheControlScope {
   PUBLIC
   PRIVATE
+}
+
+input ComponentDealerTypesDealerTypeInput {
+  dealerType: ENUM_COMPONENTDEALERTYPESDEALERTYPES_DEALERTYPE
+}
+
+type ComponentDealerTypesDealerTypes {
+  id: ID!
+  dealerType: ENUM_COMPONENTDEALERTYPESDEALERTYPES_DEALERTYPE
+}
+
+input ComponentEmailEmailInput {
+  email: String
+}
+
+type ComponentEmailEmails {
+  id: ID!
+  email: String
+}
+
+type ComponentPhoneNumbersPhoneNumber {
+  id: ID!
+  phoneNumber: String
+}
+
+input ComponentPhoneNumbersPhoneNumberInput {
+  phoneNumber: String
+}
+
+input createBranchInput {
+  data: BranchInput
+}
+
+type createBranchPayload {
+  branch: Branches
 }
 
 input createFileInput {
@@ -62,6 +178,14 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 """
 scalar DateTime
 
+input deleteBranchInput {
+  where: InputID
+}
+
+type deleteBranchPayload {
+  branch: Branches
+}
+
 input deleteFileInput {
   where: InputID
 }
@@ -100,6 +224,32 @@ input deleteVacancyInput {
 
 type deleteVacancyPayload {
   vacancy: Vacancy
+}
+
+input editBranchInput {
+  name: String
+  physicalAddress: String
+  workingHours: String
+  heroBG: [ID]
+  dealerTypes: [editComponentDealerTypesDealerTypeInput]
+  mapCoordinates: String
+  phoneNumbers: [editComponentPhoneNumbersPhoneNumberInput]
+  emails: [editComponentEmailEmailInput]
+}
+
+input editComponentDealerTypesDealerTypeInput {
+  id: ID
+  dealerType: ENUM_COMPONENTDEALERTYPESDEALERTYPES_DEALERTYPE
+}
+
+input editComponentEmailEmailInput {
+  id: ID
+  email: String
+}
+
+input editComponentPhoneNumbersPhoneNumberInput {
+  id: ID
+  phoneNumber: String
 }
 
 input editFileInput {
@@ -161,6 +311,12 @@ input editVacancyInput {
   salary: String
 }
 
+enum ENUM_COMPONENTDEALERTYPESDEALERTYPES_DEALERTYPE {
+  VEHICLE_SALES
+  PART_SALES
+  SERVICE
+}
+
 enum ENUM_REPORT_TYPE {
   ANNUALLY
   QUARTERLY
@@ -219,10 +375,12 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload  | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
-
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Branches | BranchesConnection | BranchesAggregator | BranchesGroupBy | BranchesConnectionId | BranchesConnectionCreated_at | BranchesConnectionUpdated_at | BranchesConnectionName | BranchesConnectionPhysicalAddress | BranchesConnectionWorkingHours | BranchesConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentDealerTypesDealerTypes | ComponentEmailEmails | ComponentPhoneNumbersPhoneNumber
 
 type Mutation {
+  createBranch(input: createBranchInput): createBranchPayload
+  updateBranch(input: updateBranchInput): updateBranchPayload
+  deleteBranch(input: deleteBranchInput): deleteBranchPayload
   createReport(input: createReportInput): createReportPayload
   updateReport(input: updateReportInput): updateReportPayload
   deleteReport(input: deleteReportInput): deleteReportPayload
@@ -257,6 +415,9 @@ type Mutation {
 }
 
 type Query {
+  branch(id: ID!): Branches
+  branches(sort: String, limit: Int, start: Int, where: JSON): [Branches]
+  branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchesConnection
   report(id: ID!): Report
   reports(sort: String, limit: Int, start: Int, where: JSON): [Report]
   reportsConnection(sort: String, limit: Int, start: Int, where: JSON): ReportConnection
@@ -369,6 +530,15 @@ input RoleInput {
 
 """A time string with format: HH:mm:ss.SSS"""
 scalar Time
+
+input updateBranchInput {
+  where: InputID
+  data: editBranchInput
+}
+
+type updateBranchPayload {
+  branch: Branches
+}
 
 input updateFileInput {
   where: InputID
