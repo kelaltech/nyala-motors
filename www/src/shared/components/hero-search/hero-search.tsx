@@ -56,7 +56,7 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
         </label>
         <div className="shared-hero-search-chips">
           {chips?.map((chip, i) => (
-            <div className="center">
+            <div className="center" key={i}>
               <span
                 className={`${
                   selectedChip === chip

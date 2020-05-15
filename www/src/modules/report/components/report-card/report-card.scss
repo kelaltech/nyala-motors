@@ -2,8 +2,8 @@
 
 $height: 24px;
 .nyala-style-radius {
-  border-radius: 0;
-  border-bottom-right-radius: $radius;
+  border-radius: 0 !important;
+  border-bottom-right-radius: $radius !important;
 }
 .report-date {
   letter-spacing: 1.5px;

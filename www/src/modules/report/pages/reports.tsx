@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Block, Yoga, Loading, Warning, Button } from 'gerami'
+import { Block, Yoga, Loading, Warning } from 'gerami'
 import { graphql, useStaticQuery } from 'gatsby'
 import ReportCard from '../components/report-card/report-card'
 import { useReportsQuery } from '../../../app/graphql'
@@ -9,6 +9,7 @@ import Layout from '../../../shared/components/layout/layout'
 import HeroSearch from '../../../shared/components/hero-search/hero-search'
 import { strapiApiBase } from '../../../../constants'
 import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
+import Button from '../../../shared/components/button/button'
 
 const COUNT = 2
 
@@ -130,6 +131,7 @@ const Reports = () => {
                     setLimit(limit + COUNT)
                   }}
                   disabled={loading}
+                  mode={'primary-outline'}
                 >
                   Load more{loading ? '...' : ''}
                 </Button>

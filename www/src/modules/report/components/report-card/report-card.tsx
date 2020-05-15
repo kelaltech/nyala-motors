@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './report-card.scss'
-import { Content, Block, Flex, FlexSpacer, Button } from 'gerami'
+import { Content, Block, Flex, FlexSpacer } from 'gerami'
 import { FiDownload } from 'react-icons/fi'
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 import * as moment from 'moment'
 import { strapiApiBase } from '../../../../../constants'
+import Button from '../../../../shared/components/button/button'
 
 type ReportCardProps = {
   title: string
@@ -53,7 +54,7 @@ const ReportCard = ({ date, excerpt, title, type, url }: ReportCardProps) => {
         </Block>
         <div className="right">
           <Button
-            primary
+            mode={'primary'}
             className="nyala-style-radius"
             to={`${strapiApiBase}${url}`}
           >
