@@ -1,0 +1,16 @@
+query BidDetail($id: ID!) {
+  bid(id: $id) {
+    id
+    created_at
+    Title
+    Deadline
+    Location
+    description
+    requirement
+    howToApply
+    attachment {
+      name
+      url
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Products"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "motto": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "component",
+      "repeatable": false,
+      "component": "item-prop.item-prop"
+    },
+    "design": {
+      "type": "component",
+      "repeatable": false,
+      "component": "item-prop.item-prop"
+    },
+    "performance": {
+      "type": "richtext"
+    },
+    "specification": {
+      "type": "richtext"
+    },
+    "attachment": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "colors": {
+      "type": "component",
+      "repeatable": false,
+      "component": "item-prop.item-prop"
+    },
+    "link": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "enumeration",
+      "enum": [
+        "NISSAN_MOTOR_VEHICLES",
+        "UD_TRUCKS",
+        "VE_COMMERCIAL_VEHICLES",
+        "UNICARRIERS_FORKLIFT",
+        "MACPOWER_BATTERY"
+      ]
+    }
+  }
+}

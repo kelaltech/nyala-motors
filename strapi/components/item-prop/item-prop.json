@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_item_prop_item_props",
+  "info": {
+    "name": "itemProp",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
