@@ -1,0 +1,23 @@
+@import '../../../../assets/styles/theme';
+
+$mobile-threshold: $mobile * 1.6;
+
+.product-products-content {
+  position: relative;
+
+  margin: 0 auto;
+  padding: 64px;
+
+  max-width: $crop;
+
+  .product-products-content-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, calc(50% - 1 / 2 * 64px));
+    gap: 64px;
+
+    > * {
+      margin: 0 0 auto;
+    }
+  }
+}

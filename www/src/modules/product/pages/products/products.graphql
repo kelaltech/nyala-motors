@@ -1,0 +1,9 @@
+query Products($where: JSON) {
+  products(where: $where) {
+    id
+    name
+    motto
+    specification
+    categories
+  }
+}

@@ -1,0 +1,33 @@
+query ProductDetail($id: ID!) {
+  product(id: $id) {
+    id
+    name
+    motto
+    overview {
+      images {
+        url
+      }
+      description
+    }
+    design {
+      images {
+        url
+      }
+      description
+    }
+    performance
+    specification
+    attachment {
+      url
+    }
+    active
+    colors {
+      images {
+        url
+      }
+      description
+    }
+    link
+    categories
+  }
+}
