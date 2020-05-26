@@ -1,5 +1,5 @@
 # source: http://localhost:1337/graphql
-# timestamp: Sun May 17 2020 13:54:53 GMT+0300 (East Africa Time)
+# timestamp: Fri May 22 2020 23:18:21 GMT+0300 (East Africa Time)
 
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
@@ -204,6 +204,19 @@ type ComponentEmailEmails {
   email: String
 }
 
+type ComponentFullServiceFullService {
+  id: ID!
+  title: String
+  description: String
+  serviceType: [ComponentServiceTypeServiceType]
+}
+
+input ComponentFullServiceFullServiceInput {
+  title: String
+  description: String
+  serviceType: [ComponentServiceTypeServiceTypeInput]
+}
+
 type ComponentItemPropItemProp {
   id: ID!
   description: String
@@ -222,6 +235,17 @@ type ComponentPhoneNumbersPhoneNumber {
 
 input ComponentPhoneNumbersPhoneNumberInput {
   phoneNumber: String
+}
+
+type ComponentServiceTypeServiceType {
+  id: ID!
+  title: String
+  description: String
+}
+
+input ComponentServiceTypeServiceTypeInput {
+  title: String
+  description: String
 }
 
 input createBidInput {
@@ -334,6 +358,10 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
+type deleteServicePayload {
+  service: Services
+}
+
 input deleteUserInput {
   where: InputID
 }
@@ -381,6 +409,13 @@ input editComponentEmailEmailInput {
   email: String
 }
 
+input editComponentFullServiceFullServiceInput {
+  id: ID
+  title: String
+  description: String
+  serviceType: [editComponentServiceTypeServiceTypeInput]
+}
+
 input editComponentItemPropItemPropInput {
   id: ID
   images: [ID]
@@ -390,6 +425,12 @@ input editComponentItemPropItemPropInput {
 input editComponentPhoneNumbersPhoneNumberInput {
   id: ID
   phoneNumber: String
+}
+
+input editComponentServiceTypeServiceTypeInput {
+  id: ID
+  title: String
+  description: String
 }
 
 input editFileInput {
@@ -430,6 +471,14 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editServiceInput {
+  title: String
+  heroBg: ID
+  motto: String
+  fullService: editComponentFullServiceFullServiceInput
+  serviceType: [editComponentServiceTypeServiceTypeInput]
 }
 
 input editUserInput {
@@ -522,7 +571,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | createBidPayload | updateBidPayload | deleteBidPayload | Branches | BranchesConnection | BranchesAggregator | BranchesGroupBy | BranchesConnectionId | BranchesConnectionCreated_at | BranchesConnectionUpdated_at | BranchesConnectionName | BranchesConnectionPhysicalAddress | BranchesConnectionWorkingHours | BranchesConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionOverview | ProductsConnectionDesign | ProductsConnectionPerformance | ProductsConnectionSpecification | ProductsConnectionAttachment | ProductsConnectionActive | ProductsConnectionColors | ProductsConnectionLink | ProductsConnectionCategories | createProductPayload | updateProductPayload | deleteProductPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentDealerTypesDealerTypes | ComponentEmailEmails | ComponentItemPropItemProp | ComponentPhoneNumbersPhoneNumber
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | createBidPayload | updateBidPayload | deleteBidPayload | Branches | BranchesConnection | BranchesAggregator | BranchesGroupBy | BranchesConnectionId | BranchesConnectionCreated_at | BranchesConnectionUpdated_at | BranchesConnectionName | BranchesConnectionPhysicalAddress | BranchesConnectionWorkingHours | BranchesConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionOverview | ProductsConnectionDesign | ProductsConnectionPerformance | ProductsConnectionSpecification | ProductsConnectionAttachment | ProductsConnectionActive | ProductsConnectionColors | ProductsConnectionLink | ProductsConnectionCategories | createProductPayload | updateProductPayload | deleteProductPayload | Services | updateServicePayload | deleteServicePayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentDealerTypesDealerTypes | ComponentEmailEmails | ComponentFullServiceFullService | ComponentItemPropItemProp | ComponentPhoneNumbersPhoneNumber | ComponentServiceTypeServiceType
 
 type Mutation {
   createBid(input: createBidInput): createBidPayload
@@ -534,6 +583,8 @@ type Mutation {
   createProduct(input: createProductInput): createProductPayload
   updateProduct(input: updateProductInput): updateProductPayload
   deleteProduct(input: deleteProductInput): deleteProductPayload
+  updateService(input: updateServiceInput): updateServicePayload
+  deleteService: deleteServicePayload
   createVacancy(input: createVacancyInput): createVacancyPayload
   updateVacancy(input: updateVacancyInput): updateVacancyPayload
   deleteVacancy(input: deleteVacancyInput): deleteVacancyPayload
@@ -703,6 +754,7 @@ type Query {
   product(id: ID!): Products
   products(sort: String, limit: Int, start: Int, where: JSON): [Products]
   productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  service: Services
   vacancy(id: ID!): Vacancy
   vacancies(sort: String, limit: Int, start: Int, where: JSON): [Vacancy]
   vacanciesConnection(sort: String, limit: Int, start: Int, where: JSON): VacancyConnection
@@ -727,6 +779,25 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input ServiceInput {
+  title: String
+  heroBg: ID
+  motto: String
+  fullService: ComponentFullServiceFullServiceInput
+  serviceType: [ComponentServiceTypeServiceTypeInput]
+}
+
+type Services {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  heroBg: UploadFile
+  motto: String
+  fullService: ComponentFullServiceFullService
+  serviceType: [ComponentServiceTypeServiceType]
 }
 
 """A time string with format: HH:mm:ss.SSS"""
@@ -775,6 +846,14 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateServiceInput {
+  data: editServiceInput
+}
+
+type updateServicePayload {
+  service: Services
 }
 
 input updateUserInput {

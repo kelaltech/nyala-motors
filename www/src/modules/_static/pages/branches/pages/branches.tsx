@@ -7,15 +7,11 @@ import { BranchesQuery } from '../../../../../../graphql-types'
 import SEO from '../../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../../shared/components/layout/layout'
 import './branches.scss'
-// import { Loading} from 'gerami'
 
 type Branches = {}
 
 const Branches: React.FC<Branches> = () => {
   const data = useStaticQuery<BranchesQuery>(query)
-  // console.log(data)
-
-  //  console.log(Loading)
   return (
     <>
       <SEO title="Contacts" />
@@ -48,17 +44,19 @@ const Branches: React.FC<Branches> = () => {
                     </Markdown>
                   </div>
                 </Yoga>
+                <Block>
+                  <iframe
+                    src={
+                      'https://www.google.com/maps/embed/v1/place?key=AIzaSyAjYTKIXdz_UsyZC5mDX6PH4HdrI_PnMl0&q=9.0102672,38.8038423'
+                    }
+                    frameBorder={0}
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                  ></iframe>
+                </Block>
               </div>
             ))}
-          </Block>
-          <Block>
-            <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAjYTKIXdz_UsyZC5mDX6PH4HdrI_PnMl0&q=9.0102672,38.8038423"
-              frameBorder={0}
-              width="100%"
-              height="200"
-              style={{ border: 0 }}
-            ></iframe>
           </Block>
         </Content>
       </LayoutDefault>
