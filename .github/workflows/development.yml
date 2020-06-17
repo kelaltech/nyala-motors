@@ -4,9 +4,7 @@ on:
   # push:
   #   branches-ignore:
   #     - 'master'
-  pull_request:
-    branches-ignore:
-      - 'master'
+  pull_request
 
 jobs:
   build_and_test:
@@ -40,7 +38,6 @@ jobs:
           path: |
             strapi/.cache
             strapi/build
-            strapi/exports
           key: strapi-${{ hashFiles('strapi/**/*') }}
 
       - name: Reuse www build caches
@@ -56,14 +53,20 @@ jobs:
         env:
           CI: true
 
+      - name: yarn build:strapi
+        run: yarn build:strapi
+        env:
+          NODE_ENV: production
+          CI: true
+
       - name: yarn codegen
         run: yarn codegen
         env:
           NODE_ENV: production
           CI: true
 
-      - name: yarn build
-        run: yarn build
+      - name: yarn build:www
+        run: yarn build:www
         env:
           NODE_ENV: production
           CI: true
@@ -77,15 +80,3 @@ jobs:
           CI: true
           GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
           GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
-      #
-      # - name: Save strapi artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: strapi-dist
-      #     path: strapi/build
-      #
-      # - name: Save www artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: www-dist
-      #     path: www/public
