@@ -21,16 +21,14 @@
         "CONTRACTUAL",
         "INTERNSHIP",
         "SEASONAL"
-      ],
-      "required": true
+      ]
     },
     "location": {
       "type": "string",
       "required": true
     },
     "deadline": {
-      "type": "date",
-      "required": true
+      "type": "datetime"
     },
     "description": {
       "type": "richtext",
@@ -44,8 +42,8 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
         "images",
+        "files",
         "videos"
       ],
       "plugin": "upload",
@@ -64,14 +62,11 @@
         "WEEKLY",
         "MONTHLY",
         "YEARLY"
-      ],
-      "required": false,
-      "default": "MONTHLY"
+      ]
     },
     "quantity": {
       "type": "integer",
-      "required": true,
-      "min": 1
+      "required": false
     },
     "salary": {
       "type": "string"

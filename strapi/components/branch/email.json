@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_branch_emails",
+  "info": {
+    "name": "Email",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    }
+  }
+}

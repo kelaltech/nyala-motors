@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_branch_dealer_types",
+  "info": {
+    "name": "DealerType",
+    "icon": "location-arrow"
+  },
+  "options": {},
+  "attributes": {
+    "dealerType": {
+      "type": "enumeration",
+      "enum": [
+        "VEHICLE_SALES",
+        "PART_SALES",
+        "SERVICE"
+      ]
+    }
+  }
+}
