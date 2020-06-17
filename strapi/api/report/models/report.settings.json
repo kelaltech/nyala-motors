@@ -10,34 +10,35 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "type": {
       "type": "enumeration",
       "enum": [
-        "ANNUALLY",
+        "ANNUAL",
         "QUARTERLY",
-        "SEMI_ANNUALLY",
-        "FINANCIAL"
-      ]
+        "OTHER"
+      ],
+      "required": true
     },
     "excerpt": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "attachments": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "featured": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     }
   }
 }

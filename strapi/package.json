@@ -1,40 +1,38 @@
 {
   "name": "nyala-motors-strapi",
+  "version": "1.0.0",
+  "license": "MIT",
   "private": true,
-  "version": "0.0.0",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "format": "echo \"Formatting has not been configured for strapi yet.\"",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "test": "echo \"Testing has not been configured for strapi yet.\""
   },
-  "devDependencies": {},
+  "sideEffects": false,
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "find-config": "^1.0.0",
+    "connection-string": "3.4.0",
+    "dotenv": "8.2.0",
+    "find-config": "1.0.0",
     "knex": "<0.20.0",
     "pg": "latest",
-    "strapi": "3.0.0-beta.20",
-    "strapi-admin": "3.0.0-beta.20",
-    "strapi-connector-bookshelf": "3.0.0-beta.20",
-    "strapi-plugin-content-manager": "3.0.0-beta.20",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.20",
-    "strapi-plugin-documentation": "^3.0.0-beta.20",
-    "strapi-plugin-email": "3.0.0-beta.20",
-    "strapi-plugin-graphql": "^3.0.0-beta.20",
-    "strapi-plugin-upload": "3.0.0-beta.20",
-    "strapi-plugin-users-permissions": "3.0.0-beta.20",
-    "strapi-utils": "3.0.0-beta.20"
+    "strapi": "3.0.2",
+    "strapi-admin": "3.0.2",
+    "strapi-connector-bookshelf": "3.0.2",
+    "strapi-plugin-content-manager": "3.0.2",
+    "strapi-plugin-content-type-builder": "3.0.2",
+    "strapi-plugin-email": "3.0.2",
+    "strapi-plugin-graphql": "^3.0.2",
+    "strapi-plugin-upload": "3.0.2",
+    "strapi-plugin-users-permissions": "3.0.2",
+    "strapi-provider-upload-cloudinary": "3.0.2",
+    "strapi-utils": "3.0.2"
   },
-  "author": "kelal tech plc <info@kelaltech.com> (https://www.kelaltech.com)",
+  "devDependencies": {},
   "strapi": {
-    "uuid": "ceff41cb-8a73-42e1-bb8d-23bdb131f6f8"
-  },
-  "engines": {
-    "node": ">=10.0.0",
-    "yarn": ">=1.0.0"
-  },
-  "license": "MIT"
+    "uuid": "e7f5feb0-7fca-4129-baea-0aff154b8c28"
+  }
 }
