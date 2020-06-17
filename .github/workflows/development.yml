@@ -5,7 +5,7 @@ on:
   #   branches-ignore:
   #     - 'master'
   pull_request:
-    branches-ignore:
+    branches:
       - 'master'
 
 jobs:
@@ -40,7 +40,6 @@ jobs:
           path: |
             strapi/.cache
             strapi/build
-            strapi/exports
           key: strapi-${{ hashFiles('strapi/**/*') }}
 
       - name: Reuse www build caches
@@ -77,15 +76,3 @@ jobs:
           CI: true
           GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
           GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
-      #
-      # - name: Save strapi artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: strapi-dist
-      #     path: strapi/build
-      #
-      # - name: Save www artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: www-dist
-      #     path: www/public

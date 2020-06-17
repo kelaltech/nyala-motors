@@ -108,7 +108,8 @@ coverage
 ############################
 
 .env
-exports
+exports/**/*.*
+!exports/**/*.graphql
 .cache
 build
 
