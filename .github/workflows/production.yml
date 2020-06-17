@@ -52,20 +52,14 @@ jobs:
         env:
           CI: true
 
-      - name: yarn build:strapi
-        run: yarn build:strapi
-        env:
-          NODE_ENV: production
-          CI: true
-
       - name: yarn codegen
         run: yarn codegen
         env:
           NODE_ENV: production
           CI: true
 
-      - name: yarn build:www
-        run: yarn build:www
+      - name: yarn build
+        run: yarn build
         env:
           NODE_ENV: production
           CI: true
