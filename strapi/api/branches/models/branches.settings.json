@@ -29,11 +29,6 @@
       "plugin": "upload",
       "required": false
     },
-    "dealerTypes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "dealer-types.dealer-types"
-    },
     "mapCoordinates": {
       "type": "string"
     },

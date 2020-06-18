@@ -595,28 +595,6 @@
               }
             }
           },
-          "dealerTypes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "dealerType": {
-                  "type": "string",
-                  "enum": [
-                    "VEHICLE_SALES",
-                    "PART_SALES",
-                    "SERVICE"
-                  ]
-                }
-              }
-            }
-          },
           "mapCoordinates": {
             "type": "string"
           },
@@ -666,28 +644,6 @@
           },
           "workingHours": {
             "type": "string"
-          },
-          "dealerTypes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "dealerType": {
-                  "type": "string",
-                  "enum": [
-                    "VEHICLE_SALES",
-                    "PART_SALES",
-                    "SERVICE"
-                  ]
-                }
-              }
-            }
           },
           "mapCoordinates": {
             "type": "string"
