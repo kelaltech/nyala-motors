@@ -17,7 +17,7 @@ const Branches: React.FC<Branches> = () => {
       <SEO title="Contacts" />
 
       <LayoutDefault>
-        <Content size={'4XL'}>
+        <Content size={'3XL'}>
           <Block first>
             {data.allStrapiBranches.edges.map((val: any, key: any) => (
               <div key={key}>
@@ -25,11 +25,11 @@ const Branches: React.FC<Branches> = () => {
                 <Yoga maxCol={3}>
                   <div>
                     <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Dealer Type</h4>
-                    <div>
+                    {/* <div>
                       {val.node.dealerTypes.map((val: any, key: any) => (
                         <div key={key}>{val.dealerType}</div>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                   <div>
                     <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Address</h4>
@@ -72,15 +72,9 @@ const query = graphql`
       edges {
         node {
           name
-          mapCoordinates
           physicalAddress
-          dealerTypes {
-            dealerType
-          }
-          heroBG {
-            url
-          }
           workingHours
+          mapCoordinates
           phoneNumbers {
             phoneNumber
           }

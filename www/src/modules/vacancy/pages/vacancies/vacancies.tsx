@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Warning, Loading } from 'gerami'
+import { Warning, Loading, Content } from 'gerami'
 import GatsbyImage from 'gatsby-image'
 
 import './vacancies.scss'
@@ -57,32 +57,34 @@ const Vacancies: React.FC<VacanciesProps> = () => {
           </div>
         ) : (
           <>
-            {!data?.vacancies?.length ? (
-              <div className="margin-vertical-very-big padding-very-big center fg-blackish">
-                No result found
-                {!term ? null : (
-                  <>
-                    {' '}
-                    for <q>{term}</q>
-                  </>
-                )}
-                .
-              </div>
-            ) : (
-              <div
-                className="vacancy-vacancies-content"
-                style={{ marginTop: -48, paddingTop: 0 }}
-              >
-                <div className="vacancy-vacancies-content-grid">
-                  {data?.vacancies
-                    ?.filter((vacancy) => !!vacancy)
-                    ?.slice(0, 4)
-                    .map((vacancy, i) => (
-                      <VacancyCard key={i} vacancy={vacancy!} />
-                    ))}
+            <Content size={'3XL'} transparent={true}>
+              {!data?.vacancies?.length ? (
+                <div className="margin-vertical-very-big padding-very-big center fg-blackish">
+                  No result found
+                  {!term ? null : (
+                    <>
+                      {' '}
+                      for <q>{term}</q>
+                    </>
+                  )}
+                  .
                 </div>
-              </div>
-            )}
+              ) : (
+                <div
+                  className="vacancy-vacancies-content"
+                  style={{ marginTop: -48, paddingTop: 0 }}
+                >
+                  <div className="vacancy-vacancies-content-grid">
+                    {data?.vacancies
+                      ?.filter((vacancy) => !!vacancy)
+                      ?.slice(0, 4)
+                      .map((vacancy, i) => (
+                        <VacancyCard key={i} vacancy={vacancy!} />
+                      ))}
+                  </div>
+                </div>
+              )}
+            </Content>
 
             <div className="vacancy-vacancies-content-mid">
               <GatsbyImage
@@ -120,32 +122,33 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                 </div>
               </div>
             </div>
+            <Content size={'3XL'} transparent={true}>
+              {!data?.vacancies || data.vacancies.length <= 4 ? null : (
+                <div className="vacancy-vacancies-content">
+                  <div className="vacancy-vacancies-content-grid">
+                    {data?.vacancies
+                      ?.filter((vacancy) => !!vacancy)
+                      ?.slice(4)
+                      .map((vacancy, i) => (
+                        <VacancyCard key={i} vacancy={vacancy!} />
+                      ))}
+                  </div>
 
-            {!data?.vacancies || data.vacancies.length <= 4 ? null : (
-              <div className="vacancy-vacancies-content">
-                <div className="vacancy-vacancies-content-grid">
-                  {data?.vacancies
-                    ?.filter((vacancy) => !!vacancy)
-                    ?.slice(4)
-                    .map((vacancy, i) => (
-                      <VacancyCard key={i} vacancy={vacancy!} />
-                    ))}
+                  {!data?.vacancies || data.vacancies.length >= total ? null : (
+                    <Button
+                      mode="primary-outline"
+                      className="vacancy-vacancies-load-more"
+                      onClick={() => {
+                        setLimit(limit + COUNT)
+                      }}
+                      disabled={loading}
+                    >
+                      Load more{loading ? '...' : ''}
+                    </Button>
+                  )}
                 </div>
-
-                {!data?.vacancies || data.vacancies.length >= total ? null : (
-                  <Button
-                    mode="primary-outline"
-                    className="vacancy-vacancies-load-more"
-                    onClick={() => {
-                      setLimit(limit + COUNT)
-                    }}
-                    disabled={loading}
-                  >
-                    Load more{loading ? '...' : ''}
-                  </Button>
-                )}
-              </div>
-            )}
+              )}
+            </Content>
           </>
         )}
       </Layout>

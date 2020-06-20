@@ -631,6 +631,23 @@
                 }
               }
             }
+          },
+          "dealerType": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -677,6 +694,23 @@
                   "type": "string"
                 },
                 "email": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "dealerType": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dealerType": {
                   "type": "string"
                 }
               }
