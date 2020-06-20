@@ -1,0 +1,22 @@
+query Publications($limit: Int, $where: JSON) {
+  publications(start: 0, limit: $limit, where: $where) {
+    id
+    title
+    created_at
+    excerpt
+    author
+    picture {
+      url
+    }
+  }
+  featured: publications(limit: 1, where: { featured: true }) {
+    id
+    created_at
+    title
+    excerpt
+    author
+    picture {
+      url
+    }
+  }
+}

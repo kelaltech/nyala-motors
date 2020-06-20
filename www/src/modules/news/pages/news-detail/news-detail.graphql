@@ -1,0 +1,15 @@
+query PublicationDetail($id: ID!) {
+  publication(id: $id) {
+    id
+    created_at
+    title
+    created_at
+    excerpt
+    author
+    featured
+    description
+    picture {
+      url
+    }
+  }
+}
