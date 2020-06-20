@@ -1,11 +1,3 @@
-# source: http://localhost:1337/graphql
-# timestamp: Sat Jun 20 2020 15:17:18 GMT+0300 (East Africa Time)
-
-type BranchConnectionHeroBG {
-  key: ID
-  connection: BranchConnection
-}
-
 type Bid {
   id: ID!
   created_at: DateTime!
@@ -103,197 +95,49 @@ input BidInput {
   attachment: ID
 }
 
-type Branches {
+type Branch {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  name: String
-  physicalAddress: String
-  workingHours: String
+  name: String!
+  physicalAddress: String!
+  workingHours: String!
+  heroBG: UploadFile
+  dealerTypes: [ComponentBranchDealerType]
   mapCoordinates: String
-  phoneNumbers: [ComponentPhoneNumbersPhoneNumber]
-  emails: [ComponentEmailEmails]
-  dealerType: [ComponentDealerTypeDealerType]
-  heroBG(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  phoneNumbers: [ComponentBranchPhoneNumbers]
+  emails: [ComponentBranchEmail]
 }
 
-type BranchesAggregator {
+type BranchAggregator {
   count: Int
   totalCount: Int
 }
 
-type BranchesConnection {
-  values: [Branches]
-  groupBy: BranchesGroupBy
-  aggregate: BranchesAggregator
+type BranchConnection {
+  values: [Branch]
+  groupBy: BranchGroupBy
+  aggregate: BranchAggregator
 }
 
-type BranchesConnectionCreated_at {
+type BranchConnectionCreated_at {
   key: DateTime
-  connection: BranchesConnection
+  connection: BranchConnection
 }
 
-type BranchesConnectionId {
+type BranchConnectionHeroBG {
   key: ID
-  connection: BranchesConnection
+  connection: BranchConnection
 }
 
-type BranchesConnectionMapCoordinates {
+type BranchConnectionId {
+  key: ID
+  connection: BranchConnection
+}
+
+type BranchConnectionMapCoordinates {
   key: String
-  connection: BranchesConnection
-}
-
-type BranchesConnectionName {
-  key: String
-  connection: BranchesConnection
-}
-
-type BranchesConnectionPhysicalAddress {
-  key: String
-  connection: BranchesConnection
-}
-
-type BranchesConnectionUpdated_at {
-  key: DateTime
-  connection: BranchesConnection
-}
-
-type BranchesConnectionWorkingHours {
-  key: String
-  connection: BranchesConnection
-}
-
-type BranchesGroupBy {
-  id: [BranchesConnectionId]
-  created_at: [BranchesConnectionCreated_at]
-  updated_at: [BranchesConnectionUpdated_at]
-  name: [BranchesConnectionName]
-  physicalAddress: [BranchesConnectionPhysicalAddress]
-  workingHours: [BranchesConnectionWorkingHours]
-  mapCoordinates: [BranchesConnectionMapCoordinates]
-}
-
-input BranchInput {
-  name: String
-  physicalAddress: String
-  workingHours: String
-  heroBG: [ID]
-  mapCoordinates: String
-  phoneNumbers: [ComponentPhoneNumbersPhoneNumberInput]
-  emails: [ComponentEmailEmailInput]
-  dealerType: [ComponentDealerTypeDealerTypeInput]
-}
-
-enum CacheControlScope {
-  PUBLIC
-  PRIVATE
-}
-
-type ComponentDealerTypeDealerType {
-  id: ID!
-  dealerType: String
-}
-
-input ComponentDealerTypeDealerTypeInput {
-  dealerType: String
-}
-
-input ComponentEmailEmailInput {
-  email: String
-}
-
-type ComponentEmailEmails {
-  id: ID!
-  email: String
-}
-
-type ComponentFullServiceFullService {
-  id: ID!
-  title: String
-  description: String
-  serviceType: [ComponentServiceTypeServiceType]
-}
-
-input ComponentFullServiceFullServiceInput {
-  title: String
-  description: String
-  serviceType: [ComponentServiceTypeServiceTypeInput]
-}
-
-type ComponentPhoneNumbersPhoneNumber {
-  id: ID!
-  phoneNumber: String
-}
-
-input ComponentPhoneNumbersPhoneNumberInput {
-  phoneNumber: String
-}
-
-type ComponentProductTypeProductType {
-  id: ID!
-  name: String
-  motto: String
-  description: String
-  specification: [ComponentSpecificationSpecification]
-  link: String
-  active: Boolean
-  brochure: UploadFile
-  headerImgs(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input ComponentProductTypeProductTypeInput {
-  name: String
-  motto: String
-  description: String
-  headerImgs: [ID]
-  specification: [ComponentSpecificationSpecificationInput]
-  link: String
-  active: Boolean
-  brochure: ID
-}
-
-type ComponentServiceTypeServiceType {
-  id: ID!
-  title: String
-  description: String
-}
-
-input ComponentServiceTypeServiceTypeInput {
-  title: String
-  description: String
-}
-
-type ComponentSpecificationSpecification {
-  id: ID!
-  title: String
-  description: String
-  specImages(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input ComponentSpecificationSpecificationInput {
-  title: String
-  description: String
-  specImages: [ID]
-}
-
-input createBidInput {
-  data: BidInput
-}
-
-type createBidPayload {
-  bid: Bid
-}
-
-input createBranchInput {
-  data: BranchInput
-}
-
-type createBranchPayload {
-  branch: Branches
-}
-
-input createFileInput {
-  data: FileInput
+  connection: BranchConnection
 }
 
 type BranchConnectionName {
@@ -365,12 +209,97 @@ type ComponentBranchPhoneNumbers {
   phoneNumber: String
 }
 
+type ComponentDealerTypeDealerType {
+  id: ID!
+  dealerType: String
+}
+
+input ComponentDealerTypeDealerTypeInput {
+  dealerType: String
+}
+
+type ComponentFullServiceFullService {
+  id: ID!
+  title: String
+  description: String
+  serviceType: [ComponentServiceTypeServiceType]
+}
+
+input ComponentFullServiceFullServiceInput {
+  title: String
+  description: String
+  serviceType: [ComponentServiceTypeServiceTypeInput]
+}
+
+type ComponentProductTypeProductType {
+  id: ID!
+  name: String
+  motto: String
+  description: String
+  specification: [ComponentSpecificationSpecification]
+  link: String
+  active: Boolean
+  brochure: UploadFile
+  headerImgs(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentProductTypeProductTypeInput {
+  name: String
+  motto: String
+  description: String
+  headerImgs: [ID]
+  specification: [ComponentSpecificationSpecificationInput]
+  link: String
+  active: Boolean
+  brochure: ID
+}
+
+type ComponentServiceTypeServiceType {
+  id: ID!
+  title: String
+  description: String
+}
+
+input ComponentServiceTypeServiceTypeInput {
+  title: String
+  description: String
+}
+
+type ComponentSpecificationSpecification {
+  id: ID!
+  title: String
+  description: String
+  specImages(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentSpecificationSpecificationInput {
+  title: String
+  description: String
+  specImages: [ID]
+}
+
+input createBidInput {
+  data: BidInput
+}
+
+type createBidPayload {
+  bid: Bid
+}
+
 input createBranchInput {
   data: BranchInput
 }
 
 type createBranchPayload {
   branch: Branch
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Products
 }
 
 input createPublicationInput {
@@ -387,14 +316,6 @@ input createReportInput {
 
 type createReportPayload {
   report: Report
-}
-
-input createProductInput {
-  data: ProductInput
-}
-
-type createProductPayload {
-  product: Products
 }
 
 input createRoleInput {
@@ -448,15 +369,15 @@ input deleteBranchInput {
 }
 
 type deleteBranchPayload {
-  branch: Branches
+  branch: Branch
 }
 
-input deleteFileInput {
+input deleteProductInput {
   where: InputID
 }
 
-type deleteBranchPayload {
-  branch: Branch
+type deleteProductPayload {
+  product: Products
 }
 
 input deletePublicationInput {
@@ -473,14 +394,6 @@ input deleteReportInput {
 
 type deleteReportPayload {
   report: Report
-}
-
-input deleteProductInput {
-  where: InputID
-}
-
-type deleteProductPayload {
-  product: Products
 }
 
 input deleteRoleInput {
@@ -525,11 +438,26 @@ input editBranchInput {
   name: String
   physicalAddress: String
   workingHours: String
-  heroBG: [ID]
+  heroBG: ID
+  dealerTypes: [editComponentBranchDealerTypeInput]
   mapCoordinates: String
-  phoneNumbers: [editComponentPhoneNumbersPhoneNumberInput]
-  emails: [editComponentEmailEmailInput]
-  dealerType: [editComponentDealerTypeDealerTypeInput]
+  phoneNumbers: [editComponentBranchPhoneNumberInput]
+  emails: [editComponentBranchEmailInput]
+}
+
+input editComponentBranchDealerTypeInput {
+  id: ID
+  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
+}
+
+input editComponentBranchEmailInput {
+  id: ID
+  email: String
+}
+
+input editComponentBranchPhoneNumberInput {
+  id: ID
+  phoneNumber: String
 }
 
 input editComponentDealerTypeDealerTypeInput {
@@ -537,21 +465,11 @@ input editComponentDealerTypeDealerTypeInput {
   dealerType: String
 }
 
-input editComponentEmailEmailInput {
-  id: ID
-  email: String
-}
-
 input editComponentFullServiceFullServiceInput {
   id: ID
   title: String
   description: String
   serviceType: [editComponentServiceTypeServiceTypeInput]
-}
-
-input editComponentPhoneNumbersPhoneNumberInput {
-  id: ID
-  phoneNumber: String
 }
 
 input editComponentProductTypeProductTypeInput {
@@ -602,6 +520,23 @@ input editProductInput {
   productTypes: [editComponentProductTypeProductTypeInput]
 }
 
+input editPublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
+}
+
+input editReportInput {
+  title: String
+  type: ENUM_REPORT_TYPE
+  excerpt: String
+  attachments: [ID]
+  featured: Boolean
+}
+
 input editRoleInput {
   name: String
   description: String
@@ -643,12 +578,24 @@ input editVacancyInput {
   salary: String
 }
 
+enum ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE {
+  VEHICLE_SALES
+  PART_SALES
+  SERVICE
+}
+
 enum ENUM_PRODUCTS_CATAGORY {
   NISSAN
   UD_TRUCKS
   UNICARRIER
   EICHER
   MAC_POWER
+}
+
+enum ENUM_REPORT_TYPE {
+  ANNUAL
+  QUARTERLY
+  OTHER
 }
 
 enum ENUM_VACANCY_SALARYPERIOD {
@@ -698,7 +645,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | createBidPayload | updateBidPayload | deleteBidPayload | Branches | BranchesConnection | BranchesAggregator | BranchesGroupBy | BranchesConnectionId | BranchesConnectionCreated_at | BranchesConnectionUpdated_at | BranchesConnectionName | BranchesConnectionPhysicalAddress | BranchesConnectionWorkingHours | BranchesConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCatagory | createProductPayload | updateProductPayload | deleteProductPayload | Services | updateServicePayload | deleteServicePayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentDealerTypeDealerType | ComponentEmailEmails | ComponentFullServiceFullService | ComponentPhoneNumbersPhoneNumber | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | createBidPayload | updateBidPayload | deleteBidPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionHeroBG | BranchConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCatagory | createProductPayload | updateProductPayload | deleteProductPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Services | updateServicePayload | deleteServicePayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers | ComponentDealerTypeDealerType | ComponentFullServiceFullService | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
 
 type Mutation {
   createBid(input: createBidInput): createBidPayload
@@ -710,6 +657,12 @@ type Mutation {
   createProduct(input: createProductInput): createProductPayload
   updateProduct(input: updateProductInput): updateProductPayload
   deleteProduct(input: deleteProductInput): deleteProductPayload
+  createPublication(input: createPublicationInput): createPublicationPayload
+  updatePublication(input: updatePublicationInput): updatePublicationPayload
+  deletePublication(input: deletePublicationInput): deletePublicationPayload
+  createReport(input: createReportInput): createReportPayload
+  updateReport(input: updateReportInput): updateReportPayload
+  deleteReport(input: deleteReportInput): deleteReportPayload
   updateService(input: updateServiceInput): updateServicePayload
   deleteService: deleteServicePayload
   createVacancy(input: createVacancyInput): createVacancyPayload
@@ -793,16 +746,111 @@ type ProductsGroupBy {
   catagory: [ProductsConnectionCatagory]
 }
 
+input PublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
+}
+
+type Publications {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  excerpt: String
+  description: String
+  picture: UploadFile
+  author: String
+  featured: Boolean
+}
+
+type PublicationsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PublicationsConnection {
+  values: [Publications]
+  groupBy: PublicationsGroupBy
+  aggregate: PublicationsAggregator
+}
+
+type PublicationsConnectionAuthor {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionCreated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionDescription {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionExcerpt {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionFeatured {
+  key: Boolean
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionId {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionPicture {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionTitle {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionUpdated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsGroupBy {
+  id: [PublicationsConnectionId]
+  created_at: [PublicationsConnectionCreated_at]
+  updated_at: [PublicationsConnectionUpdated_at]
+  title: [PublicationsConnectionTitle]
+  excerpt: [PublicationsConnectionExcerpt]
+  description: [PublicationsConnectionDescription]
+  picture: [PublicationsConnectionPicture]
+  author: [PublicationsConnectionAuthor]
+  featured: [PublicationsConnectionFeatured]
+}
+
 type Query {
   bid(id: ID!): Bid
   bids(sort: String, limit: Int, start: Int, where: JSON): [Bid]
   bidsConnection(sort: String, limit: Int, start: Int, where: JSON): BidConnection
-  branch(id: ID!): Branches
-  branches(sort: String, limit: Int, start: Int, where: JSON): [Branches]
-  branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchesConnection
+  branch(id: ID!): Branch
+  branches(sort: String, limit: Int, start: Int, where: JSON): [Branch]
+  branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchConnection
   product(id: ID!): Products
   products(sort: String, limit: Int, start: Int, where: JSON): [Products]
   productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  publication(id: ID!): Publications
+  publications(sort: String, limit: Int, start: Int, where: JSON): [Publications]
+  publicationsConnection(sort: String, limit: Int, start: Int, where: JSON): PublicationsConnection
+  report(id: ID!): Report
+  reports(sort: String, limit: Int, start: Int, where: JSON): [Report]
+  reportsConnection(sort: String, limit: Int, start: Int, where: JSON): ReportConnection
   service: Services
   vacancy(id: ID!): Vacancy
   vacancies(sort: String, limit: Int, start: Int, where: JSON): [Vacancy]
@@ -942,10 +990,19 @@ input updateBranchInput {
 }
 
 type updateBranchPayload {
-  branch: Branches
+  branch: Branch
 }
 
-input updateFileInput {
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Products
+}
+
+input updatePublicationInput {
   where: InputID
   data: editPublicationInput
 }
@@ -961,15 +1018,6 @@ input updateReportInput {
 
 type updateReportPayload {
   report: Report
-}
-
-input updateProductInput {
-  where: InputID
-  data: editProductInput
-}
-
-type updateProductPayload {
-  product: Products
 }
 
 input updateRoleInput {
