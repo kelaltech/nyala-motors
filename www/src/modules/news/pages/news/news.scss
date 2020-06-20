@@ -6,3 +6,11 @@
   line-height: 28px;
   color: #bd0504;
 }
+
+.padding-optimizer {
+  padding: 64px;
+
+  @media screen and (max-width: 650px) {
+    padding: 0 !important;
+  }
+}

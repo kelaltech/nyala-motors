@@ -45,10 +45,7 @@ const News: React.FC<NewsProps> = () => {
             {data?.featured?.length === 0 ? null : (
               <div>
                 <Block>
-                  <Block first last>
-                    <h3 className="title-component">Latest News</h3>
-                    <hr className="full-width" />
-                  </Block>
+                  <Block />
                   <Block>
                     {data?.featured?.map((news, i) => (
                       <FeaturedNews
@@ -66,20 +63,22 @@ const News: React.FC<NewsProps> = () => {
               </div>
             )}
             <Block>
-              <Block first last>
-                <h3 className="title-component">Video News</h3>
-                <hr className="full-width" />
-              </Block>
-              <Block>
-                <VideoNews />
+              <Block className="padding-optimizer padding-bottom-none">
+                <Block first last>
+                  <h3 className="title-component">Video News</h3>
+                  <hr className="full-width" />
+                </Block>
+                <Block>
+                  <VideoNews />
+                </Block>
               </Block>
             </Block>
+
             {data?.publications?.length === 0 ? null : (
-              <div>
-                <Block>
+              <Block>
+                <Block className="padding-optimizer">
                   <Block first last>
-                    <h3 className="title-component">All News</h3>
-                    <hr className="full-width" />
+                    <h3 className="title-component">Latest News Articles</h3>
                   </Block>
                   <Block>
                     <Yoga maxCol={3}>
@@ -111,7 +110,7 @@ const News: React.FC<NewsProps> = () => {
                     </Block>
                   </Block>
                 </Block>
-              </div>
+              </Block>
             )}
           </div>
         ) : (
