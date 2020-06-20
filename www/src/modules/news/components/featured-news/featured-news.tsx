@@ -30,12 +30,18 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
             backgroundImage: `url(${strapiApiBase}${picture_url})`,
           }}
           className="featured-news-pic"
-        />
+        >
+          <div className="featured-news-pic-overlay">
+            <h3>{title}</h3>
+          </div>
+        </div>
         <Block className="featured-news-content">
+          <div className="featured-tag">
+            <label> FEATURED ARTICLE</label>
+          </div>
           <span className="font-S fg-blackish featured-news-date">
             {moment.default(date).format('ddd, MMMM Do YYYY')}
           </span>
-          <h3 className="featured-news-title">{title}</h3>
           <span className="featured-news-author">{author}</span>
           <p className="featured-news-excerpt">{excerpt}</p>
           <div className="right">
