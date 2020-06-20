@@ -107,7 +107,9 @@ coverage
 # Strapi
 ############################
 
-exports
+.env
+exports/**/*.*
+!exports/**/*.graphql
 .cache
 build
 

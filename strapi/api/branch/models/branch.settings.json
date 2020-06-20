@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "branches",
+  "info": {
+    "name": "Branch"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "physicalAddress": {
+      "type": "text",
+      "required": true
+    },
+    "workingHours": {
+      "type": "richtext",
+      "required": true
+    },
+    "heroBG": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "dealerTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "branch.dealer-type"
+    },
+    "mapCoordinates": {
+      "type": "string"
+    },
+    "phoneNumbers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "branch.phone-numbers"
+    },
+    "emails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "branch.email"
+    }
+  }
+}

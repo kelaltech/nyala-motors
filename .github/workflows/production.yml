@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.2
         with:
-          node-version: ^12.16.2
+          node-version: ^12.8.0
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -30,6 +30,14 @@ jobs:
             strapi/node_modules
             www/node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Reuse strapi build caches
+        uses: actions/cache@master
+        with:
+          path: |
+            strapi/.cache
+            strapi/build
+          key: strapi-${{ hashFiles('strapi/**/*') }}
 
       - name: Reuse www build caches
         uses: actions/cache@master
@@ -50,6 +58,22 @@ jobs:
           NODE_ENV: production
           CI: true
 
+      - name: yarn build
+        run: yarn build
+        env:
+          NODE_ENV: production
+          CI: true
+          GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
+          GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
+
+      - name: yarn test
+        run: yarn test
+        env:
+          NODE_ENV: production
+          CI: true
+          GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
+          GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
+
       - name: Deploy strapi on Heroku
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
@@ -62,22 +86,6 @@ jobs:
           CI: true
           CD: true
 
-      - name: yarn build:www
-        run: yarn build:www
-        env:
-          NODE_ENV: production
-          CI: true
-          GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
-          GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
-
-      - name: yarn test:www
-        run: yarn test:www
-        env:
-          NODE_ENV: production
-          CI: true
-          GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
-          GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
-
       - name: Deploy www on Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.3
         with:
@@ -89,9 +97,3 @@ jobs:
           NODE_ENV: production
           CI: true
           CD: true
-      #
-      # - name: Save www artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: www-dist
-      #     path: www/public

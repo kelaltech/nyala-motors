@@ -14,8 +14,8 @@ yarn install
 
 1. Install [PostgreSQL v10.0+](https://www.postgresql.org/download/)
 2. Create a new database in Postgres
-3. Configure your environment with values for the [database variables](strapi/config/environments/development/database.json). _(`.env` works!)_
-
+3. Configure your environment (using a `.env` file at the root) with values for the [database connection](strapi/config/database.js) (where using a single `DATABASE_URL` value is sufficient), and [Cloudinary file storage setup variables](strapi/extensions/upload/config/settings.json).
+ 
 ## Development
 
 To start both strapi and www in parallel:
@@ -40,4 +40,4 @@ Enjoy!
 
 ---
 
-© 2020 [kelal tech plc](https://www.kelaltech.com/). All rights reserved.
+© 2020 [Kelal Tech PLC](https://www.kelaltech.com/). All rights reserved.
