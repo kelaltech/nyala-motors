@@ -120,6 +120,14 @@ type createBranchPayload {
   branch: Branch
 }
 
+input createPublicationInput {
+  data: PublicationInput
+}
+
+type createPublicationPayload {
+  publication: Publications
+}
+
 input createReportInput {
   data: ReportInput
 }
@@ -172,6 +180,14 @@ input deleteBranchInput {
 
 type deleteBranchPayload {
   branch: Branch
+}
+
+input deletePublicationInput {
+  where: InputID
+}
+
+type deletePublicationPayload {
+  publication: Publications
 }
 
 input deleteReportInput {
@@ -248,6 +264,15 @@ input editFileInput {
   provider: String
   provider_metadata: JSON
   related: [ID]
+}
+
+input editPublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
 }
 
 input editReportInput {
@@ -350,12 +375,15 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionHeroBG | BranchConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionHeroBG | BranchConnectionMapCoordinates | createBranchPayload | updateBranchPayload | deleteBranchPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionFeatured | createReportPayload | updateReportPayload | deleteReportPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers
 
 type Mutation {
   createBranch(input: createBranchInput): createBranchPayload
   updateBranch(input: updateBranchInput): updateBranchPayload
   deleteBranch(input: deleteBranchInput): deleteBranchPayload
+  createPublication(input: createPublicationInput): createPublicationPayload
+  updatePublication(input: updatePublicationInput): updatePublicationPayload
+  deletePublication(input: deletePublicationInput): deletePublicationPayload
   createReport(input: createReportInput): createReportPayload
   updateReport(input: updateReportInput): updateReportPayload
   deleteReport(input: deleteReportInput): deleteReportPayload
@@ -389,10 +417,102 @@ type Mutation {
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
+input PublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
+}
+
+type Publications {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  excerpt: String
+  description: String
+  picture: UploadFile
+  author: String
+  featured: Boolean
+}
+
+type PublicationsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PublicationsConnection {
+  values: [Publications]
+  groupBy: PublicationsGroupBy
+  aggregate: PublicationsAggregator
+}
+
+type PublicationsConnectionAuthor {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionCreated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionDescription {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionExcerpt {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionFeatured {
+  key: Boolean
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionId {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionPicture {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionTitle {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionUpdated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsGroupBy {
+  id: [PublicationsConnectionId]
+  created_at: [PublicationsConnectionCreated_at]
+  updated_at: [PublicationsConnectionUpdated_at]
+  title: [PublicationsConnectionTitle]
+  excerpt: [PublicationsConnectionExcerpt]
+  description: [PublicationsConnectionDescription]
+  picture: [PublicationsConnectionPicture]
+  author: [PublicationsConnectionAuthor]
+  featured: [PublicationsConnectionFeatured]
+}
+
 type Query {
   branch(id: ID!): Branch
   branches(sort: String, limit: Int, start: Int, where: JSON): [Branch]
   branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchConnection
+  publication(id: ID!): Publications
+  publications(sort: String, limit: Int, start: Int, where: JSON): [Publications]
+  publicationsConnection(sort: String, limit: Int, start: Int, where: JSON): PublicationsConnection
   report(id: ID!): Report
   reports(sort: String, limit: Int, start: Int, where: JSON): [Report]
   reportsConnection(sort: String, limit: Int, start: Int, where: JSON): ReportConnection
@@ -507,6 +627,15 @@ input updateBranchInput {
 
 type updateBranchPayload {
   branch: Branch
+}
+
+input updatePublicationInput {
+  where: InputID
+  data: editPublicationInput
+}
+
+type updatePublicationPayload {
+  publication: Publications
 }
 
 input updateReportInput {

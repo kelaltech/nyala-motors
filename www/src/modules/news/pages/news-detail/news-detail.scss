@@ -1,0 +1,23 @@
+@import '../../../../assets/styles/theme';
+
+.news-detail-img {
+  height: 420px;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-detail-title {
+  width: 100%;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  color: rgba(0, 0, 0, 0.76);
+}
+
+.news-detail-description {
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 32px;
+}
