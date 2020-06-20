@@ -1,0 +1,20 @@
+query Branches {
+  branches {
+    name
+    mapCoordinates
+    physicalAddress
+    dealerTypes {
+      dealerType
+    }
+    heroBG {
+      url
+    }
+    workingHours
+    phoneNumbers {
+      phoneNumber
+    }
+    emails {
+      email
+    }
+  }
+}

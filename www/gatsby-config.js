@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 // environment
 const activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || `development`
 console.log(`Using environment config: '${activeEnv}'`)
 
 // config
-const dotenv = require('dotenv')
-const findConfig = require('find-config')
+const dotenv = require(`dotenv`)
+const findConfig = require(`find-config`)
 const config = {
   ...process.env,
   ...dotenv.config().parsed,
@@ -14,15 +16,15 @@ const config = {
 }
 
 // imports
-const path = require('path')
-const { strapiApiBase } = require('./constants')
+const path = require(`path`)
+const { strapiApiBase } = require(`./constants`)
 
 // config
 module.exports = {
   siteMetadata: {
     title: `Nyala Motors S.C.`,
     description: `Official website of Nyala Motors S.C.`,
-    author: `kelal tech.`,
+    author: `Kelal Tech PLC (https://www.kelaltech.com)`,
     twitter: `@NMSC2016`,
     copyright: `© ${new Date().getFullYear()} Nyala Motors S.C. All Rights reserved.`,
 
@@ -57,14 +59,6 @@ module.exports = {
     //     ]
     //   }
     // },
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-plugin-typescript-checker`,
-      options: {},
-    },
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
@@ -132,14 +126,7 @@ module.exports = {
     //
     // DATA:
     //
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: strapiApiBase,
-        queryLimit: 10000,
-        contentTypes: ['branches'],
-      },
-    },
+    // TODO: use gatsby-source-graphql for data-filled SSG
 
     //
     // ANALYSIS:

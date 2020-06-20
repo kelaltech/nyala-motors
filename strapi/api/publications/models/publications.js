@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * Lifecycle callbacks for the `publications` model.
@@ -52,4 +52,4 @@ module.exports = {
   // After destroying a value.
   // Fired after a `delete` query.
   // afterDestroy: async (model, attrs, options) => {}
-};
+}

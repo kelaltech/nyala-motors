@@ -11,7 +11,7 @@ type FeaturedNewsProps = {
   picture_url: string
   excerpt: string
   date: string
-  id:string
+  id: string
 }
 
 const FeaturedNews: React.FC<FeaturedNewsProps> = ({
@@ -20,7 +20,7 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
   excerpt,
   picture_url,
   title,
-  id
+  id,
 }) => {
   return (
     <>
@@ -39,10 +39,9 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
           <span className="featured-news-author">{author}</span>
           <p className="featured-news-excerpt">{excerpt}</p>
           <div className="right">
-            <Button
-            to={`/news/detail/?id=${id}`}
-            mode={'primary-outline'}
-            >Read More</Button>
+            <Button to={`/news/detail/?id=${id}`} mode={'primary-outline'}>
+              Read More
+            </Button>
           </div>
         </Block>
       </Content>

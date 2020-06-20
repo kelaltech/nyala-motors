@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_branch_phone_numbers",
+  "info": {
+    "name": "PhoneNumber",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "phoneNumber": {
+      "type": "string"
+    }
+  }
+}

@@ -116,7 +116,6 @@ const NewsDetail: React.FC<{}> = () => {
                     className="margin-horizontal-normal font-L middle"
                   />
                 </span>
-             
               </Flex>
 
               <Block first last />
