@@ -1,0 +1,52 @@
+{
+  "collectionName": "components_product_type_product_types",
+  "info": {
+    "name": "productType",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "motto": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "headerImgs": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "specification": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specification.specification"
+    },
+    "link": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "brochure": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

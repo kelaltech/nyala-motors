@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_full_service_full_services",
+  "info": {
+    "name": "fullService",
+    "icon": "ambulance"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "serviceType": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-type.service-type"
+    }
+  }
+}

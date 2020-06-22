@@ -1,0 +1,8 @@
+query ProductDetail($id: ID!) {
+  product(id: $id) {
+    catagory
+    productTypes {
+      name
+    }
+  }
+}

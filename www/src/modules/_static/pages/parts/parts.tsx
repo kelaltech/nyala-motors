@@ -4,9 +4,9 @@ import LayoutDefault from '../../../../shared/components/layout/layout'
 import { Content } from 'gerami'
 // import { Loading} from 'gerami'
 
-type FeedbackProps = {}
+type PartsProps = {}
 
-const Feedback: React.FC<FeedbackProps> = () => {
+const Parts: React.FC<PartsProps> = () => {
   return (
     <>
       <SEO title="Feedback" />
@@ -14,11 +14,10 @@ const Feedback: React.FC<FeedbackProps> = () => {
       <LayoutDefault>
         <Content>
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScGr8rLqD-tntjntVT5TupqORR4wcCZ9DEmAXNqr_ptZD9yaw/viewform?embedded=true"
-            frameBorder={0}
-            scrolling={'no'}
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeR38xESMpy6VXZMJ9NaHHWt4SAsApCD23SD7PRV_N3JL6TWA/viewform?embedded=true"
             width={800}
             height={750}
+            frameBorder={0}
             marginHeight={0}
             marginWidth={0}
           >
@@ -30,4 +29,4 @@ const Feedback: React.FC<FeedbackProps> = () => {
   )
 }
 
-export default Feedback
+export default Parts

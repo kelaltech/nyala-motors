@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Products"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "catagory": {
+      "type": "enumeration",
+      "enum": [
+        "NISSAN",
+        "UD_TRUCKS",
+        "UNICARRIER",
+        "EICHER",
+        "MAC_POWER"
+      ],
+      "unique": true
+    },
+    "productTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-type.product-type"
+    }
+  }
+}

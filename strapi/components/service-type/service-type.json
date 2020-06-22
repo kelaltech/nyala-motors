@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_service_type_service_types",
+  "info": {
+    "name": "serviceType",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

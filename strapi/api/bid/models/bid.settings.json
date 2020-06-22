@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bids",
+  "info": {
+    "name": "Bid"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Deadline": {
+      "type": "date"
+    },
+    "Location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "requirement": {
+      "type": "richtext"
+    },
+    "howToApply": {
+      "type": "richtext"
+    },
+    "attachment": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

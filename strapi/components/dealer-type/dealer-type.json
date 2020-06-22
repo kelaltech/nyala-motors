@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_dealer_type_dealer_types",
+  "info": {
+    "name": "dealerType",
+    "icon": "at"
+  },
+  "options": {},
+  "attributes": {
+    "dealerType": {
+      "type": "string"
+    }
+  }
+}
