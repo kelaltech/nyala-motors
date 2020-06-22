@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="vacancy-card-content">
         <h4>
           <Anchor to={`/products/detail/?id=${product.id}`}>
-            {product.name}
+            {/* {product.name} */}
           </Anchor>
         </h4>
         <hr />
