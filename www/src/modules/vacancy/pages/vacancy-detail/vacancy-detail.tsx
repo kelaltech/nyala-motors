@@ -34,7 +34,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
       <SEO title={`${data?.vacancy?.title || ''} (Vacancy)`} />
 
       <Layout headerProps={{ mode: 'primary' }}>
-        {loading ? (
+        {!data && loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
           </div>

@@ -1,0 +1,8 @@
+query Products($where: JSON) {
+  products(where: $where) {
+    catagory
+    productTypes {
+      name
+    }
+  }
+}

@@ -1,0 +1,21 @@
+query Services {
+  service {
+    title
+    heroBg {
+      url
+    }
+    motto
+    fullService {
+      title
+      description
+      serviceType {
+        title
+        description
+      }
+    }
+    serviceType {
+      title
+      description
+    }
+  }
+}
