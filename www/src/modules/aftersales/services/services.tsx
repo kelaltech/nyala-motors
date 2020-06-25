@@ -3,12 +3,16 @@ import './services.scss'
 import SEO from '../../../shared/components/seo/seo'
 import LayoutDefault from '../../../shared/components/layout/layout'
 import Button from '../../../shared/components/button/button'
-import { Content, Block, Yoga } from 'gerami'
+import { Content, Block, Yoga, Loading, Warning } from 'gerami'
 import { FaOilCan, FaCarBattery, FaWater } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 import ServiceCard from './components/service-card/service-card'
+import { useServiceQuery } from '../../../app/graphql'
 type Services = {}
+
 const Services: React.FC<Services> = () => {
+  const { data, loading, error } = useServiceQuery()
+
   return (
     <>
       <SEO title={'Services'} />
@@ -25,7 +29,9 @@ const Services: React.FC<Services> = () => {
               Nyala Motors S.C. provides aftersales services to ensure the
               maximum satisfaction of its esteemed customers.
             </p>
-            <Button mode={'primary'}>See Services</Button>
+            <Button mode={'primary'} to={'#services'}>
+              See Services
+            </Button>
           </div>
         </div>
 
@@ -84,29 +90,49 @@ const Services: React.FC<Services> = () => {
           </Yoga>
         </Content>
 
-        <Content size={'4XL'} className={'service-list-container'}>
+        {loading ? (
+          <div className="padding-very-big">
+            <Loading className="margin-vertical-very-big" delay={700} />
+          </div>
+        ) : error ? (
+          <div className="padding-very-big">
+            <Warning problem={error as any} />
+          </div>
+        ) : data?.service?.serviceType?.length === 0 ? (
           <Block>
-            <Block className="center padding-top-very-big">
-              <h1>Service Operations</h1>
+            <Block first last>
+              <h1>Report List</h1>
             </Block>
             <Block>
-              <Yoga maxCol={2}>
-                <ServiceCard
-                  title={'PDI Service (Pre Delivery Inspection)'}
-                  description={
-                    'Nyala Motors provides PDI for all new vehicles before delivery to the customers. The PDI service is guided by the manufacturer’s procedure manual developed by our respective principal suppliers. All vehicles purchased from Nyala Motors are entitled for free inspection check-ups at 1,000Km and 5,000Km except for replacement of lubricants and filters.'
-                  }
-                />
-                <ServiceCard
-                  title={'Free Service Check-up'}
-                  description={
-                    'All vehicles purchased from Nyala Motors are entitled for free inspection check-ups at 1,000Km and 5,000Km except for replacement of lubricants and filters.'
-                  }
-                />
-              </Yoga>
+              <p>cant find services ... please try later</p>
             </Block>
           </Block>
-        </Content>
+        ) : (
+          <Content
+            id={'services'}
+            size={'4XL'}
+            className={'service-list-container'}
+          >
+            <Block>
+              <Block className="center padding-top-very-big">
+                <h1>Service Operations</h1>
+              </Block>
+              <Block>
+                <Yoga maxCol={2}>
+                  {data?.service?.serviceType?.map((service, index) => (
+                    <ServiceCard
+                      key={index}
+                      title={service?.title ? service.title : ''}
+                      description={
+                        service?.description ? service.description : ''
+                      }
+                    />
+                  ))}
+                </Yoga>
+              </Block>
+            </Block>
+          </Content>
+        )}
       </LayoutDefault>
     </>
   )

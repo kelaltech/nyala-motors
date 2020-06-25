@@ -1,0 +1,9 @@
+query Service {
+  service {
+    serviceType {
+      title
+      id
+      description
+    }
+  }
+}
