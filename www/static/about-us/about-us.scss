@@ -1,0 +1,151 @@
+@import "../../src/assets/styles/theme";
+
+.about-hero-container {
+  width: 100%;
+  height: 420px;
+  background-image: url("../../src/assets/images/about/nyala.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 420px;
+    background: linear-gradient(3.27deg, rgba(0, 0, 0, 0.7) 8.18%, rgba(0, 0, 0, 0.42) 91.07%);
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .about-hero-tag {
+    z-index: 99 !important;
+
+    h1 {
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 56px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+  }
+}
+
+.about-outline-box {
+  position: absolute;
+  width: 300px;
+  left: 128px;
+  top: 440px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.07);
+  border-left: 8px solid $primary;
+  border-radius: 5px;
+
+  .about-outline-item {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 64px;
+
+    span {
+      color: $primary;
+      margin-right: 5px;
+    }
+
+    a {
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.about-content {
+  padding-top: 190px;
+
+  .about-content-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .title-box {
+      margin-left: 55px;
+      text-align: left;
+    }
+    h1 {
+      font-style: normal;
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    p {
+      margin-top: 0 !important;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 25px;
+      color: rgba(66, 66, 66, 0.7);
+    }
+  }
+}
+
+.about-main-container {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+.overview-desc {
+  h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: $primary;
+  }
+  p {
+    padding-top: 34px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    color: rgba(66, 66, 66, 0.84);
+  }
+
+  ul {
+    list-style: none;
+    li {
+      &::before {
+        content: "\2022";
+        color: $primary;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+      margin: 16px auto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 32px;
+      color: rgba(66, 66, 66, 0.84);
+    }
+  }
+}
+
+.about-main-img {
+  margin-top: 54px;
+  margin-bottom: 64px;
+  height: 348.76px;
+  width: 100%;
+  background-image: url("../../src/assets/images/about/nyala.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
