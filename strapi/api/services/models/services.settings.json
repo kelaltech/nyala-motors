@@ -9,28 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "heroBg": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
-    "motto": {
-      "type": "string"
-    },
-    "fullService": {
-      "type": "component",
-      "repeatable": false,
-      "component": "full-service.full-service"
-    },
     "serviceType": {
       "type": "component",
       "repeatable": true,

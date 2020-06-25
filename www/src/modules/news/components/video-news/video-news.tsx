@@ -19,9 +19,10 @@ const VideoNews: React.FC<VIDEONEWSPROPS> = () => {
   }, [])
   return (
     <>
+      //TODO handle error message if there are no videos
       <Yoga maxCol={2}>
         {videoNews.map((video: any, i) => (
-          <Content transparent>
+          <Content transparent className="margin-bottom-big">
             <iframe
               key={i}
               className="full-width"

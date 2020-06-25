@@ -546,10 +546,6 @@ input editRoleInput {
 }
 
 input editServiceInput {
-  title: String
-  heroBg: ID
-  motto: String
-  fullService: editComponentFullServiceFullServiceInput
   serviceType: [editComponentServiceTypeServiceTypeInput]
 }
 
@@ -954,10 +950,6 @@ input RoleInput {
 }
 
 input ServiceInput {
-  title: String
-  heroBg: ID
-  motto: String
-  fullService: ComponentFullServiceFullServiceInput
   serviceType: [ComponentServiceTypeServiceTypeInput]
 }
 
@@ -965,10 +957,6 @@ type Services {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  title: String
-  heroBg: UploadFile
-  motto: String
-  fullService: ComponentFullServiceFullService
   serviceType: [ComponentServiceTypeServiceType]
 }
 
