@@ -113,7 +113,7 @@ const AboutUs: React.FC<AboutUs> = () => {
             </p>
           </Block>
 
-          <Block id={'achievement'} first last className={'overview-desc'}>
+          <Block id={'achivements'} first last className={'overview-desc'}>
             <h2>Our Achivements</h2>
 
             <Block>
