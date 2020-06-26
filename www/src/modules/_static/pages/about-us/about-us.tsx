@@ -1,8 +1,8 @@
 import React from 'react'
 import './about-us.scss'
 import { Content, Block } from 'gerami'
-import SEO from '../../src/shared/components/seo/seo'
-import LayoutDefault from '../../src/shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import LayoutDefault from '../../../../shared/components/layout/layout'
 import { IoMdArrowDropright } from 'react-icons/io'
 type AboutUs = {}
 const AboutUs: React.FC<AboutUs> = () => {
