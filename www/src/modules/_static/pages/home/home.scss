@@ -12,6 +12,10 @@
   margin-top: -96px;
   position: relative;
 
+  @media screen and (max-width: $mobile) {
+    height: 100vh !important;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -30,6 +34,33 @@
     width: 54%;
     padding-top: 0 !important;
     margin-top: -27px;
+
+    @media screen and (max-width: 850px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding-left: 10px !important;
+      h1 {
+        font-size: 40px !important;
+        line-height: 40px !important;
+      }
+    }
+
+    @media screen and (max-width: $mobile) {
+      width: 100% !important;
+
+      h1 {
+        font-size: 30px !important;
+        line-height: 30px !important;
+      }
+
+      p {
+        font-size: 18px !important;
+        line-height: 20px !important;
+      }
+    }
+
     h1 {
       font-weight: 500;
       font-size: 44px;
@@ -56,6 +87,10 @@
     justify-content: space-evenly;
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+
+    @media screen and (max-width: $mobile) {
+      flex-wrap: wrap;
+    }
   }
 
   .produc-list {
@@ -116,15 +151,34 @@
     display: flex;
     justify-content: space-between;
 
+    @media screen and (max-width: 778px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-size: 28px !important;
+        line-height: 48px !important;
+        align-self: center;
+      }
+      .icon-box {
+        font-size: 76px !important;
+      }
+    }
+
     .landing-link-img-box {
       margin: 25px;
       width: 100%;
       border-radius: 7px;
       position: relative;
+      overflow: hidden;
+
+      &:hover {
+        box-shadow: none;
+      }
 
       &::before {
         border-radius: 7px;
-
         z-index: 1;
         content: '';
         position: absolute;
@@ -133,6 +187,137 @@
         bottom: 0;
         right: 0;
         background: rgba(0, 0, 0, 0.56);
+      }
+
+      .landing-img-content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60%;
+        z-index: 99;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 40px;
+        color: $bg;
+
+        @media screen and (max-width: 880px) {
+          bottom: 30px;
+        }
+
+        span {
+          font-size: 28px;
+          line-height: 48px;
+
+          @media screen and (max-width: 1080px) {
+            font-size: initial;
+          }
+          @media screen and (max-width: $mobile) {
+            font-size: initial !important;
+          }
+        }
+        .icon-box {
+          font-size: 76px;
+          @media screen and (max-width: $mobile) {
+            font-size: 76px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.landing-qoute-container {
+  padding-top: 96px !important;
+  display: flex;
+  justify-content: center;
+  blockquote {
+    width: 60%;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 48px;
+    text-align: center;
+    color: rgba(66, 66, 66, 0.7);
+  }
+
+  @media screen and (max-width: 800px) {
+    blockquote {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: $mobile) {
+    blockquote {
+      width: 100%;
+    }
+  }
+}
+
+.landing-video-container {
+  padding-top: 96px !important;
+}
+
+.landing-bottom-box {
+  min-height: 340.52px;
+  width: 100%;
+  margin-top: 319px;
+  position: relative;
+
+  @media screen and (max-width: 650px) {
+    margin-top: 100px;
+  }
+  .landing-bottom-slant {
+    min-height: 340.52px;
+    background-color: $primary;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 52%);
+  }
+
+  .landing-bottom-items {
+    position: absolute;
+    top: -40px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: 650px) {
+      .landing-bottom-item {
+        height: 170.17px !important;
+        padding: $space;
+      }
+    }
+
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      .landing-bottom-item {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+    }
+
+    .landing-bottom-item {
+      margin: 25px;
+      background-color: #fff;
+      width: 624px;
+      height: 277.17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        align-self: center;
+      }
+      .bottom-icons {
+        font-size: 50px;
+        color: $primary !important;
+      }
+      .bottom-title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 32px;
+        color: rgba(66, 66, 66, 0.7);
       }
     }
   }

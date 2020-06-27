@@ -8,6 +8,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { HomeStaticQuery } from '../../../../../graphql-types'
 import GatsbyImage from 'gatsby-image'
 import Anchor from '../../../../shared/components/anchor/anchor'
+import { FaCar, FaRegNewspaper } from 'react-icons/fa'
+import { GrMapLocation } from 'react-icons/gr'
+
 type HomeProps = {}
 
 const Home: React.FC<HomeProps> = () => {
@@ -100,22 +103,84 @@ const Home: React.FC<HomeProps> = () => {
                 <h1>What are you looking for? </h1>
               </Block>
               <Block className={'landing-link-yoga'}>
-                <div className="landing-link-img-box">
+                <Anchor to={'/products'} className="landing-link-img-box">
+                  <div className={'landing-img-content'}>
+                    <span className={'icon-box'}>
+                      <FaCar />
+                    </span>
+                    <span>
+                      <span className={'bold'}>{`PRODUCTS `} </span>
+                      <span className={'light'}>TO BUY</span>
+                    </span>
+                  </div>
                   <GatsbyImage
                     fluid={productLink?.childImageSharp?.fluid as any}
                     className="landing-link-img"
                   />
-                </div>
+                </Anchor>
 
-                <div className="landing-link-img-box">
+                <Anchor
+                  to={'/aftersales/services'}
+                  className="landing-link-img-box"
+                >
+                  <div className={'landing-img-content'}>
+                    <span className={'icon-box'}>
+                      <FaCar />
+                    </span>
+                    <span>
+                      <span className={'bold'}>{`AFTERSALES `} </span>
+                      <span className={'light'}>SERVICE OR PARTS</span>
+                    </span>
+                  </div>
                   <GatsbyImage
                     fluid={serviceLink?.childImageSharp?.fluid as any}
                     className="landing-link-img"
                   />
-                </div>
+                </Anchor>
               </Block>
             </Content>
           </Block>
+
+          <Block className={'landing-qoute-container'}>
+            <blockquote>
+              Step up performace, convenience, and style the easy way with
+              Genuine Nissan accessories.
+              <span className={'fg-primary'}>#NyalaMotors</span>
+            </blockquote>
+          </Block>
+
+          <Block className={'landing-video-container'}>
+            <Content size={'XXL'}>
+              <iframe
+                className={'full-width'}
+                height={'500'}
+                src={`https://www.youtube.com/embed/A6ZgYvIxTL4`}
+                frameBorder="0"
+              />
+            </Content>
+          </Block>
+
+          <div className={'landing-bottom-box'}>
+            <div className={'landing-bottom-slant'} />
+            <div className={'landing-bottom-items'}>
+              <div className={'landing-bottom-item'}>
+                <span className={'bottom-icons'}>
+                  <FaRegNewspaper />
+                </span>
+                <Anchor to={'/news'} className={'bottom-title'}>
+                  READ THE LATEST NEWS
+                </Anchor>
+              </div>
+              <div className={'landing-bottom-item'}>
+                <span className={'bottom-icons'}>
+                  <GrMapLocation color={'#c51632'} />
+                </span>
+                <Anchor to={'/contact'} className={'bottom-title'}>
+                  FIND OR CONTACT US
+                </Anchor>
+              </div>
+            </div>
+          </div>
         </div>
       </Layout>
     </>
