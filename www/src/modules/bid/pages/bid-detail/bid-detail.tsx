@@ -5,8 +5,13 @@ import { usePage } from '../../../../app/contexts/page-context/page-context'
 import { useBidDetailQuery } from '../../../../app/graphql'
 import SEO from '../../../../shared/components/seo/seo'
 import './bid-detail.scss'
+import Button from '../../../../shared/components/button/button'
 import { Loading, Warning, Yoga } from 'gerami'
 import moment from 'moment'
+import { AiOutlineDownload } from 'react-icons/all'
+import { GoLocation } from 'react-icons/go'
+import { strapiApiBase } from '../../../../../constants'
+import Markdown from 'markdown-to-jsx'
 type BidDetailProps = {}
 
 const BidDetail: React.FC<BidDetailProps> = () => {
@@ -20,7 +25,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
   const deadline = useMemo(() => new Date(data?.bid?.Deadline), [
     data?.bid?.Deadline,
   ])
-  const isExpired = useMemo(() => Date.now() - deadline.getTime() < 0, [
+  const isExpired = useMemo(() => Date.now() - deadline.getTime() > 0, [
     deadline,
   ])
   return (
@@ -39,7 +44,6 @@ const BidDetail: React.FC<BidDetailProps> = () => {
           </div>
         ) : (
           <div className="vacancy-vacancy-detail-content">
-            `{' '}
             <div className="vacancy-vacancy-detail-hero">
               <div>
                 <h6>Bid</h6>
@@ -49,18 +53,71 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                     <p>
                       {isExpired ? (
                         <>
-                          <span>Closed</span> on
+                          {' '}
+                          <span>
+                            {' '}
+                            <b>Closed</b>
+                          </span>{' '}
+                          on
                         </>
                       ) : (
-                        <> Apply by </>
+                        <b> Apply by </b>
                       )}{' '}
                       {moment(deadline).format('MMMM d, YYYY')}
                     </p>
                   </div>
                   <div>
-                    <p>Posted on {data.bid.created_at} </p>
+                    <p>
+                      Posted on{' '}
+                      {moment(data.bid.created_at).format('MMMM d, YYYY')}{' '}
+                    </p>
+                  </div>
+                  <div>
+                    <GoLocation style={{ width: 16, height: 16 }} />{' '}
+                    {data.bid.Location}
                   </div>
                 </Yoga>
+                {isExpired || !data.bid.attachment?.url ? null : (
+                  <Button
+                    to={`${strapiApiBase}${data.bid.attachment.url}`}
+                    download
+                    target="_blank"
+                    rel="noopener nofollow"
+                    mode="default"
+                  >
+                    <AiOutlineDownload />
+                    <span> Download </span>
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            <div className="vacancy-vacancy-detail-card">
+              <div>
+                <div>
+                  <h3>About the Job</h3>
+                </div>
+                <div>
+                  <Markdown>{data.bid.description}</Markdown>
+                </div>
+                <br />
+                <div>
+                  <h3>Application Requirment</h3>
+                </div>
+                <div>
+                  <Markdown>{data.bid.requirement}</Markdown>
+                </div>
+              </div>
+            </div>
+
+            <div className="vacancy-vacancy-detail-card">
+              <div>
+                <div>
+                  <h3>How to Apply</h3>
+                </div>
+                <div>
+                  <Markdown>{data.bid.howToApply}</Markdown>
+                </div>
               </div>
             </div>
           </div>

@@ -1,0 +1,37 @@
+.product-category-container {
+  h3 {
+    color: #c51632;
+    font-size: 32px;
+    font-weight: 500;
+  }
+  .product-category-yoga {
+    padding: 32px;
+    .product-category-card {
+      a {
+        color: inherit;
+        text-decoration: inherit;
+        h3 {
+          font-size: 21px;
+          color: black;
+        }
+        div {
+          height: inherit;
+          max-height: 300px;
+          overflow: hidden;
+        }
+        .product-category-markdown {
+          margin: 0;
+          padding: 8px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 32px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3; /* number of lines to show */
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
+}
