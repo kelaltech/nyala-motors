@@ -1,5 +1,11 @@
 @import '../../../../assets/styles/theme';
 
+.news-list-parent {
+  background-color: #fafafa;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .title-component {
   font-weight: 500;
   font-size: 24px;

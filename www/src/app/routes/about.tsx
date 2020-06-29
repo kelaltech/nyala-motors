@@ -1,11 +1,12 @@
 import React from 'react'
+
 import { PageRendererProps } from 'gatsby'
 
 import App from '../app'
-import About from '../../modules/_static/pages/about/about'
+import AboutUs from '../../modules/_static/pages/about-us/about-us'
 
 export default (props: PageRendererProps) => (
   <App pageRendererProps={props}>
-    <About />
+    <AboutUs />
   </App>
 )

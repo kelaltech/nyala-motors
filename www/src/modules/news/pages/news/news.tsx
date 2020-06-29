@@ -31,7 +31,8 @@ const News: React.FC<NewsProps> = () => {
   return (
     <>
       <SEO title="News" />
-      <Layout headerProps={{ mode: 'white' }}>
+      <Layout headerProps={{ mode: 'default' }}>
+        <div className={'news-list-parent'} />
         {loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
