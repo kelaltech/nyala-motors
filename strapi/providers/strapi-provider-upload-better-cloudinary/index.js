@@ -17,6 +17,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
           const upload_stream = cloudinary.uploader.upload_stream(
             {
+              use_filename:true,
               resource_type: file.mime.match(/^(image|video)/i)
                 ? 'auto'
                 : 'raw',
@@ -41,7 +42,7 @@ module.exports = {
                 })
               }
 
-              file.url = image.secure_url + file.ext
+              file.url = image.secure_url
               file.provider_metadata = {
                 public_id: image.public_id,
                 resource_type: image.resource_type,
