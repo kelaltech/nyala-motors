@@ -10,6 +10,7 @@ type ProductCardProps = {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  console.log(product)
   return (
     <div className="product-card-container">
       <div className="product-card-content">

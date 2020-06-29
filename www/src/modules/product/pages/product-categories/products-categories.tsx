@@ -1,5 +1,5 @@
 import React from 'react'
-import './Product-categories.scss'
+import './product-categories.scss'
 import { useProductCategoriesQuery } from '../../../../app/graphql'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
