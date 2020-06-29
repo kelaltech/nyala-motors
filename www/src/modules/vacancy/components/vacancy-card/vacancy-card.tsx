@@ -19,7 +19,7 @@ type VacancyCardProps = {
 
 const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
   const deadline = useMemo(() => new Date(vacancy.deadline), [vacancy.deadline])
-  const isExpired = useMemo(() => Date.now() - deadline.getTime() < 0, [
+  const isExpired = useMemo(() => Date.now() - deadline.getTime() > 0, [
     deadline,
   ])
 

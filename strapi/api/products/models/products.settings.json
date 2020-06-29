@@ -9,7 +9,7 @@
     "timestamps": true
   },
   "attributes": {
-    "catagory": {
+    "category": {
       "type": "enumeration",
       "enum": [
         "NISSAN",
@@ -18,12 +18,50 @@
         "EICHER",
         "MAC_POWER"
       ],
-      "unique": true
+      "unique": false
     },
-    "productTypes": {
+    "name": {
+      "type": "string"
+    },
+    "motto": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "headerImg": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "specification": {
       "type": "component",
       "repeatable": true,
-      "component": "product-type.product-type"
+      "component": "specification.specification"
+    },
+    "link": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "brochure": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

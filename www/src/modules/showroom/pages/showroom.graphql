@@ -1,0 +1,8 @@
+query Showroom {
+  showrooms {
+    image {
+      url
+    }
+    description
+  }
+}

@@ -18,6 +18,15 @@ const Nav: React.FC<NavProps> = () => {
     <div style={{ height: `inherit` }}>
       <nav className="shared-header-nav">
         <Anchor
+          to="/about"
+          className={`${
+            '/about' !== activePathname ? '' : 'shared-nav-link-active'
+          }`}
+        >
+          <span>About</span>
+        </Anchor>
+
+        <Anchor
           to="/products"
           className={`${
             '/products' !== activePathname ? '' : 'shared-nav-link-active'
@@ -25,6 +34,7 @@ const Nav: React.FC<NavProps> = () => {
         >
           <span>Products</span>
         </Anchor>
+
         <Anchor
           to="/aftersales"
           className={`${
@@ -34,6 +44,15 @@ const Nav: React.FC<NavProps> = () => {
           <span>Aftersales</span>
         </Anchor>
         <Anchor
+          to="/showroom"
+          className={`${
+            '/showroom' !== activePathname ? '' : 'shared-nav-link-active'
+          }`}
+        >
+          <span>Showroom</span>
+        </Anchor>
+
+        <Anchor
           to="/news"
           className={`${
             '/news' !== activePathname ? '' : 'shared-nav-link-active'
@@ -41,14 +60,7 @@ const Nav: React.FC<NavProps> = () => {
         >
           <span>News</span>
         </Anchor>
-        <Anchor
-          to="/about"
-          className={`${
-            '/about' !== activePathname ? '' : 'shared-nav-link-active'
-          }`}
-        >
-          <span>About</span>
-        </Anchor>
+
         <Anchor
           to="/contact"
           className={`shared-header-nav-important-link ${

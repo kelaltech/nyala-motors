@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/showrooms",
+      "handler": "showroom.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/showrooms/count",
+      "handler": "showroom.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/showrooms/:id",
+      "handler": "showroom.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/showrooms",
+      "handler": "showroom.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/showrooms/:id",
+      "handler": "showroom.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/showrooms/:id",
+      "handler": "showroom.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

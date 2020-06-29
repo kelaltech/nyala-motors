@@ -1,0 +1,11 @@
+query ProductCategories($where: JSON) {
+  products(where: $where) {
+    id
+    category
+    name
+    headerImg {
+      url
+    }
+    description
+  }
+}
