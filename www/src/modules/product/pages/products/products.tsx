@@ -58,6 +58,7 @@ const Products: React.FC<ProductsProps> = () => {
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {data?.products
                       .filter((p) => p?.category == 'NISSAN')
+                      .slice(0, 3)
                       .map((product, key) => (
                         <>
                           <ProductCard product={product!} key={key} />

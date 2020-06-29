@@ -1,6 +1,6 @@
 import React from 'react'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
+import SEO from '../../../shared/components/seo/seo'
+import LayoutDefault from '../../../shared/components/layout/layout'
 import { Content } from 'gerami'
 // import { Loading} from 'gerami'
 
