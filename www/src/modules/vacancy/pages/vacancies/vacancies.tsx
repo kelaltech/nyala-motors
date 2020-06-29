@@ -57,7 +57,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
           </div>
         ) : (
           <>
-            <Content size={'3XL'} transparent={true}>
+            <Content size={'4XL'} transparent={true}>
               {!data?.vacancies?.length ? (
                 <div className="margin-vertical-very-big padding-very-big center fg-blackish">
                   No result found
@@ -79,7 +79,9 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                       ?.filter((vacancy) => !!vacancy)
                       ?.slice(0, 4)
                       .map((vacancy, i) => (
-                        <VacancyCard key={i} vacancy={vacancy!} />
+                        <>
+                          <VacancyCard key={i} vacancy={vacancy!} />
+                        </>
                       ))}
                   </div>
                 </div>
@@ -122,7 +124,8 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                 </div>
               </div>
             </div>
-            <Content size={'3XL'} transparent={true}>
+
+            <Content size={'4XL'} transparent={true}>
               {!data?.vacancies || data.vacancies.length <= 4 ? null : (
                 <div className="vacancy-vacancies-content">
                   <div className="vacancy-vacancies-content-grid">

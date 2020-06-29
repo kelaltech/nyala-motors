@@ -1,8 +1,22 @@
 query ProductDetail($id: ID!) {
   product(id: $id) {
-    catagory
-    productTypes {
-      name
+    name
+    category
+    motto
+    description
+    headerImg {
+      url
+    }
+    specification {
+      title
+      description
+      specImages {
+        url
+      }
+    }
+    link
+    brochure {
+      url
     }
   }
 }

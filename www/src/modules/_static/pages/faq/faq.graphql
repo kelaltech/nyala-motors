@@ -1,0 +1,6 @@
+query FAQ {
+  faqs {
+    answer
+    question
+  }
+}

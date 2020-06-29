@@ -6,9 +6,6 @@ query Branches {
     dealerTypes {
       dealerType
     }
-    heroBG {
-      url
-    }
     workingHours
     phoneNumbers {
       phoneNumber

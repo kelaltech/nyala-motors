@@ -3,12 +3,18 @@ import { Yoga, Loading, Warning } from 'gerami'
 import Markdown from 'markdown-to-jsx'
 import qs from 'qs'
 import moment from 'moment'
+import { AiOutlineDownload } from 'react-icons/all'
 
 import './vacancy-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import { useVacancyDetailQuery } from '../../../../app/graphql'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
+import { nameJobType } from '../../../../shared/components/nameJobType'
+import { nameSalaryType } from '../../../../shared/components/nameSalaryType'
+import { GoLocation } from 'react-icons/go'
+import { strapiApiBase } from '../../../../../constants'
+import Button from '../../../../shared/components/button/button'
 
 type VacancyDetailProps = {}
 
@@ -25,7 +31,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
   const deadline = useMemo(() => new Date(data?.vacancy?.deadline), [
     data?.vacancy?.deadline,
   ])
-  const isExpired = useMemo(() => Date.now() - deadline.getTime() < 0, [
+  const isExpired = useMemo(() => Date.now() - deadline.getTime() > 0, [
     deadline,
   ])
 
@@ -50,16 +56,32 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
               <div>
                 <h6>Vacancy</h6>
                 <h1>{data.vacancy.title}</h1>
+                {isExpired || !data.vacancy.attachment?.url ? null : (
+                  <Button
+                    to={`${strapiApiBase}${data.vacancy.attachment.url}`}
+                    download
+                    target="_blank"
+                    rel="noopener nofollow"
+                    mode="default"
+                  >
+                    <AiOutlineDownload />
+                    <span>Download File</span>
+                  </Button>
+                )}
 
                 <Yoga maxCol={3}>
                   <div>
                     <p>
                       {isExpired ? (
                         <>
-                          <span className="fg-primary">Closed</span> on
+                          <span>
+                            {' '}
+                            <b>Closed </b>
+                          </span>{' '}
+                          on
                         </>
                       ) : (
-                        <>Apply by</>
+                        <b>Apply by</b>
                       )}{' '}
                       {moment(deadline).format('MMMM d, YYYY')}
                     </p>
@@ -70,8 +92,14 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                   </div>
 
                   <div>
-                    <p>{data.vacancy.location}</p>
-                    <p>Job Type: {data.vacancy.type}</p>
+                    <p>
+                      <GoLocation style={{ width: 16, height: 16 }} />{' '}
+                      {data.vacancy.location}
+                    </p>
+                    <p>
+                      {' '}
+                      <b>Job Type: </b> {nameJobType(data.vacancy.type)}
+                    </p>
                   </div>
 
                   <div>
@@ -81,7 +109,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                       for the job
                     </p>
                     <p>
-                      {data.vacancy.salaryPeriod} salary:{' '}
+                      {nameSalaryType(data.vacancy.salaryPeriod)} salary:{' '}
                       {data.vacancy.salary || <i>Not specified</i>}
                     </p>
                   </div>

@@ -1,0 +1,195 @@
+@import '../../../../assets//styles/theme';
+
+.product-detail-container {
+  @media screen and(max-width: 850px) {
+    .product-detail-hero {
+      max-height: 333px;
+      .product-detail-hero-overlay {
+        h3 {
+          font-size: 5vw !important;
+          line-height: 5.5vw !important;
+          height: 16.5vw !important;
+        }
+      }
+    }
+    .product-detail-page {
+      .product-detail-page-top {
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+.product-detail-hero {
+  flex: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 444px;
+  max-height: inherit;
+  position: relative;
+
+  .product-detail-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+      7.62deg,
+      rgba(0, 0, 0, 0.7) 8.18%,
+      rgba(0, 0, 0, 0.42) 91.07%
+    );
+    padding: 32px;
+    display: flex;
+    h3 {
+      margin: 0 auto;
+      align-self: flex-end;
+      text-align: center;
+      font-weight: 500;
+      font-size: 2.8vw;
+      line-height: 3.3vw;
+      height: 10vw;
+      overflow: hidden;
+      color: $bg;
+    }
+  }
+}
+
+.product-detail-navigator {
+  position: absolute;
+  width: 300px;
+  left: 128px;
+  top: 440px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.07);
+  border-left: 8px solid $primary;
+  border-radius: 5px;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    width: auto;
+    .about-outline-item {
+      margin-right: 5px;
+    }
+  }
+  @media screen and (max-width: 670px) {
+    left: 24px !important;
+    margin-right: 25px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column !important;
+  }
+
+  .product-detail-navigator-item {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 64px;
+
+    span {
+      color: $primary;
+      margin-right: 5px;
+    }
+
+    a {
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.product-detail-title {
+  padding-top: 190px;
+
+  @media screen and (max-width: $mobile) {
+    padding-top: 270px;
+  }
+
+  .product-detail-title-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: $mobile) {
+      .product-detail-title-box {
+        margin-left: 0 !important;
+      }
+
+      h1 {
+        font-weight: 800;
+      }
+    }
+    .product-detail-title-box {
+      margin-left: 55px;
+      text-align: left;
+    }
+    h1 {
+      font-style: normal;
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    p {
+      margin-top: 0 !important;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 25px;
+      color: rgba(66, 66, 66, 0.7);
+    }
+  }
+}
+
+// .product-detail-page {
+//   .product-detail-page-top {
+//     min-height: 333px;
+//     padding: 0 0 0 128px;
+//     max-height: inherit;
+//     background-color: rgb(243, 243, 243);
+//     .product-detail-page-top-navigator {
+//       background-color: white;
+//       border-left: 8px solid #c51632;
+//       width: 300px;
+//       display: flex;
+//       flex-direction: column;
+//       box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.07);
+//       span {
+//         // display: block;
+//         padding-top: 16px;
+//         margin: 16px;
+//       }
+//     }
+//     .product-detail-page-top-title {
+//       padding: 0;
+//     }
+//   }
+// }
+
+.product-detail-page-details {
+  .product-detail-page-details {
+    padding: 64px;
+    h4 {
+      color: #c51632;
+      font-size: 28px;
+      font-weight: 500;
+    }
+    .product-detail-page-details-description {
+      padding-top: 24px;
+      font-weight: 300;
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+  .product-detail -page-details:nth-child(even) {
+    background-color: rgb(243, 243, 243);
+  }
+}
