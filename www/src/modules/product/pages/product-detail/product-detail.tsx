@@ -3,11 +3,11 @@ import './Product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
 import { useProductDetailQuery } from '../../../../app/graphql'
-import { Loading, Warning, Content, Yoga } from 'gerami'
+import { Loading, Warning, Content, Block } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
 import { strapiApiBase } from '../../../../../constants'
-import { IoIosPlay } from 'react-icons/io'
+import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
 
 type ProductDetailProps = {}
@@ -51,31 +51,31 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   <h3> {data?.product?.name} </h3>
                 </div>
               </div>
-              <Content transparent={true} className="product-detail-page">
-                <Yoga maxCol={2} className="product-detail-page-top">
-                  <div className="product-detail-page-top-navigator">
-                    <span>
-                      {' '}
-                      <IoIosPlay color="C51632" /> {'    '} Overview{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <IoIosPlay color="C51632" /> {'    '} Values{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <IoIosPlay color="C51632" /> {'    '} Mission{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <IoIosPlay color="C51632" /> {'    '} Achievements{' '}
-                    </span>
-                  </div>
-                  <div className="product-detail-page-top-title">
+
+              <div className="product-detail-navigator">
+                <div className="product-detail-navigator-item">
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#overview'}>OVERVIEW</a>
+                </div>
+                <div className="product-detail-navigator-item">
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#specification'}>SPECIFICATION</a>
+                </div>
+              </div>
+              <Content className="product-detail-title">
+                <Block className="center product-detail-title-block">
+                  <div className="product-detail-title-box">
                     <h1> {data?.product?.name} </h1>
-                    <span> {data?.product?.motto} </span>
+                    <p> {data?.product?.motto} </p>
                   </div>
-                </Yoga>
+                </Block>
+              </Content>
+
+              <Content transparent={true} className="product-detail-page">
                 <Content size="4XL">
                   <div className="product-detail-page-details">
                     <h4>Overview</h4>
