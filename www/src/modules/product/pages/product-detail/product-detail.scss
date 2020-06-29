@@ -80,3 +80,23 @@
     }
   }
 }
+
+.product-detail-page-details {
+  .product-detail-page-details {
+    padding: 64px;
+    h4 {
+      color: #c51632;
+      font-size: 28px;
+      font-weight: 500;
+    }
+    .product-detail-page-details-description {
+      padding-top: 24px;
+      font-weight: 300;
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+  .product-detail -page-details:nth-child(even) {
+    background-color: rgb(243, 243, 243);
+  }
+}

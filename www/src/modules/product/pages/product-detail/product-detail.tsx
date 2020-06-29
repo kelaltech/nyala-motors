@@ -8,6 +8,7 @@ import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
 import { strapiApiBase } from '../../../../../constants'
 import { IoIosPlay } from 'react-icons/io'
+import Markdown from 'markdown-to-jsx'
 
 type ProductDetailProps = {}
 
@@ -75,6 +76,15 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                     <span> {data?.product?.motto} </span>
                   </div>
                 </Yoga>
+                <Content size="4XL">
+                  <div className="product-detail-page-details">
+                    <h4>Overview</h4>
+
+                    <Markdown className="product-detail-page-details-description">
+                      {data?.product?.description}
+                    </Markdown>
+                  </div>
+                </Content>
               </Content>
             </div>
           )}
