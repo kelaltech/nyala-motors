@@ -1,5 +1,5 @@
 import React from 'react'
-import './Product-detail.scss'
+import './product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
 import { useProductDetailQuery } from '../../../../app/graphql'
