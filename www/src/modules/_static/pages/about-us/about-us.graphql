@@ -1,0 +1,14 @@
+query About {
+  about {
+    overviewHistory
+    values
+    mission
+    achievements
+    awardImg {
+      url
+    }
+    heroImg {
+      url
+    }
+  }
+}

@@ -194,3 +194,16 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.mark-down-p {
+  margin-top: 0 !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
+  color: rgba(66, 66, 66, 0.9);
+
+  img {
+    min-height: 420px;
+    width: 100%;
+  }
+}
