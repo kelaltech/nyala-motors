@@ -2,7 +2,8 @@ import React from 'react'
 import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { useFaqQuery } from '../../../../app/graphql'
-import { Loading, Warning, Content } from 'gerami'
+import { Loading, Warning, Content, Block, Card } from 'gerami'
+import './faq.scss'
 
 type FaqProps = {}
 
@@ -13,10 +14,11 @@ const FAQ: React.FC<FaqProps> = () => {
       <SEO title="FAQ" />
 
       <LayoutDefault>
-        <div className="faq-header">
-          <h1>FAQs</h1>
+        <div className={'faq-hero-container'}>
+          <Block className="center faq-hero-tag">
+            <h1>Frequently asked Questions </h1>
+          </Block>
         </div>
-
         {!data && loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
@@ -26,13 +28,15 @@ const FAQ: React.FC<FaqProps> = () => {
             <Warning problem={error as any} />
           </div>
         ) : (
-          <Content>
-            {data.faqs.map((faq, key) => (
-              <div key={key}>
-                {faq?.answer}
-                {faq?.question}
-              </div>
-            ))}
+          <Content transparent size="3XL">
+            <Block first last>
+              {data.faqs.map((faq, key) => (
+                <Card key={key} className="margin-vertical-very-big">
+                  <h3>{faq?.answer}</h3>
+                  <p>{faq?.question}</p>
+                </Card>
+              ))}
+            </Block>
           </Content>
         )}
       </LayoutDefault>

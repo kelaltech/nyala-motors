@@ -1,14 +1,15 @@
 import React from 'react'
-import './Product-detail.scss'
+import './product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
 import { useProductDetailQuery } from '../../../../app/graphql'
-import { Loading, Warning, Content, Block } from 'gerami'
+import { Loading, Warning, Content, Block, Yoga } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
 import { strapiApiBase } from '../../../../../constants'
 import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
+import Button from '../../../../shared/components/button/button'
 
 type ProductDetailProps = {}
 
@@ -47,9 +48,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 }}
                 className="product-detail-hero"
               >
-                <div className="product-detail-hero-overlay">
-                  <h3> {data?.product?.name} </h3>
-                </div>
+                <div className="product-detail-hero-overlay" />
               </div>
 
               <div className="product-detail-navigator">
@@ -66,7 +65,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   <a href={'#specification'}>SPECIFICATION</a>
                 </div>
               </div>
-              <Content className="product-detail-title">
+              <Content transparent size="4XL" className="product-detail-title">
                 <Block className="center product-detail-title-block">
                   <div className="product-detail-title-box">
                     <h1> {data?.product?.name} </h1>
@@ -74,17 +73,54 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   </div>
                 </Block>
               </Content>
+              <Block first last />
+              <Block />
 
-              <Content transparent={true} className="product-detail-page">
-                <Content size="4XL">
-                  <div className="product-detail-page-details">
-                    <h4>Overview</h4>
+              <Content size="4XL" className="product-detail-description">
+                <Block first last />
+                <Block first last />
+                <Block id={'overview'} className="product-detail-overview">
+                  <h2>Overview</h2>
+                  <Markdown className="product-detail-overview-description">
+                    {data?.product?.description}
+                  </Markdown>
+                </Block>
 
-                    <Markdown className="product-detail-page-details-description">
-                      {data?.product?.description}
-                    </Markdown>
-                  </div>
-                </Content>
+                <Block
+                  id={'specification'}
+                  first
+                  last
+                  className="product-detail-overview"
+                >
+                  {data?.product?.specification?.map((spec, key) => (
+                    <div key={key}>
+                      <h2>{spec?.title}</h2>
+                      <div className="product-detail-overview-description">
+                        {spec?.description}
+                      </div>
+                      <div className="product-detail-overview-img">
+                        <Yoga maxCol={3}>
+                          {spec?.specImages?.map((img, key) => (
+                            <img
+                              src={`${strapiApiBase}${img?.url}`}
+                              key={key}
+                            />
+                          ))}
+                        </Yoga>
+                      </div>
+                    </div>
+                  ))}
+                </Block>
+
+                <Block first last className="center">
+                  <Button
+                    to={`${strapiApiBase}${data?.product?.brochure?.url}`}
+                    download
+                    mode="primary-outline"
+                  >
+                    Download Brochure
+                  </Button>
+                </Block>
               </Content>
             </div>
           )}

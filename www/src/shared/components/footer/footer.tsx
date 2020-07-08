@@ -19,6 +19,7 @@ const Footer: React.FC<FooterProps> = () => {
           <Anchor to="/reports">Reports</Anchor>
           <Anchor to="/registration">Customer Registration</Anchor>
           <Anchor to="/faq">FAQ</Anchor>
+          <Anchor to="/feedback">Feedback</Anchor>
         </div>
 
         <div className="shared-footer-social">
