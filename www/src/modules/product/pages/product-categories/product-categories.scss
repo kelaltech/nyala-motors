@@ -1,3 +1,7 @@
+@import '../../../../assets/styles/theme';
+
+$mobile-threshold: $mobile * 1.6;
+
 .product-category-container {
   h3 {
     color: #c51632;
@@ -6,31 +10,34 @@
   }
   .product-category-yoga {
     padding: 32px;
+    @media screen and(max-width: $mobile-threshold) {
+      padding: 8px;
+    }
     .product-category-card {
-      a {
-        color: inherit;
-        text-decoration: inherit;
-        h3 {
-          font-size: 21px;
-          color: black;
-        }
-        div {
+      h3 {
+        font-size: 21px;
+        color: black;
+        padding-left: 15px;
+      }
+      div {
+        a {
           height: inherit;
-          max-height: 300px;
+          // max-height: 330px;
           overflow: hidden;
+          border-radius: 7px;
         }
-        .product-category-markdown {
-          margin: 0;
-          padding: 8px;
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 32px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 3; /* number of lines to show */
-          -webkit-box-orient: vertical;
-        }
+      }
+      .product-category-markdown {
+        margin: 0;
+        padding: 8px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
       }
     }
   }

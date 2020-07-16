@@ -15,6 +15,7 @@ type HeroSearchProps = {
   chips?: { name: string; url?: string }[]
   selectedChip?: { name: string; url?: string } | null
   onSelectedChip?: (chips: { name: string; url?: string } | null) => void
+  color?: boolean
 }
 
 const HeroSearch: React.FC<HeroSearchProps> = ({
@@ -26,6 +27,7 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
   chips,
   selectedChip,
   onSelectedChip,
+  color,
 }) => {
   return (
     <div className="shared-hero-search">
@@ -39,6 +41,7 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
           onSubmit && onSubmit((e.target as any)?.search?.value)
         }}
         className="shared-hero-search-overlay"
+        style={color ? { backgroundColor: 'rgba(0,0,0,0.5)' } : {}}
       >
         {!title ? null : <h1 className="shared-hero-search-title">{title}</h1>}
 

@@ -24,7 +24,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             />
           </div>
         </Anchor>
-        <span className="align-center">{product.motto}</span>
+        <div className="center">
+          <span className="align-center">{product.motto}</span>
+        </div>
       </div>
     </div>
   )

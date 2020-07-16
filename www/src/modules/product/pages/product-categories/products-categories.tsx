@@ -9,6 +9,7 @@ import Layout from '../../../../shared/components/layout/layout'
 import Markdown from 'markdown-to-jsx'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import { strapiApiBase } from '../../../../../constants'
+import Button from '../../../../shared/components/button/button'
 
 type ProductCategoriesProps = {}
 
@@ -51,18 +52,26 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
                 <Yoga maxCol={2} className="product-category-yoga">
                   {data?.products?.map((product, key) => (
                     <Card key={key} className="product-category-card">
-                      <a href={`/products/detail/?id=${product!.id}`}>
-                        <h3>{product?.name} </h3>
-                        <div>
+                      <h3>{product?.name} </h3>
+                      <div>
+                        <a href={`/products/detail/?id=${product!.id}`}>
                           <img
-                            src={`${strapiApiBase}${product?.headerImg.url}`}
+                            src={`${strapiApiBase}${product?.headerImg?.url}`}
                             width={'100%'}
                           />
-                        </div>
-                        <Markdown className="product-category-markdown">
-                          {product?.description}
-                        </Markdown>
-                      </a>
+                        </a>
+                      </div>
+                      <Markdown className="product-category-markdown">
+                        {product?.description}
+                      </Markdown>
+                      <div className="center">
+                        <Button
+                          to={`/products/detail/?id=${product!.id}`}
+                          mode="lite"
+                        >
+                          More detail
+                        </Button>
+                      </div>
                     </Card>
                   ))}
                 </Yoga>
