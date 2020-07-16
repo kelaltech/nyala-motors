@@ -5778,7 +5778,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cloudinary@^1.14.0:
+cloudinary@^1.14.0, cloudinary@^1.22.0:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.22.0.tgz#48a36aab98838f910d350300419e2b10e4eb7e6b"
   integrity sha512-qQhSVqGyOWtGbPc3JrwyUXJEZpdqsEzBFSf5+gTo7gbKbXdzEysLagigoSlp6JYI7YW2oEbz4aeZlgN2ucOkzQ==
@@ -11218,7 +11218,7 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-into-stream@^5.1.0:
+into-stream@^5.1.0, into-stream@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-5.1.1.tgz#f9a20a348a11f3c13face22763f2d02e127f4db8"
   integrity sha512-krrAJ7McQxGGmvaYbB7Q1mcA+cRwg9Ij2RfWIeVesNBgVDZmzY/Fa4IpZUT3bmdRzMzdf/mzltCG2Dq99IZGBA==
@@ -19317,6 +19317,12 @@ strapi-provider-email-sendmail@3.0.2:
   dependencies:
     sendmail "^1.6.1"
     strapi-utils "3.0.2"
+
+"strapi-provider-upload-better-cloudinary@file:strapi/providers/strapi-provider-upload-better-cloudinary":
+  version "1.0.0"
+  dependencies:
+    cloudinary "^1.22.0"
+    into-stream "^5.1.1"
 
 strapi-provider-upload-cloudinary@3.0.2:
   version "3.0.2"

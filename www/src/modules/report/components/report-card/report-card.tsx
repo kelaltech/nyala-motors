@@ -4,7 +4,6 @@ import { Content, Block, Flex, FlexSpacer } from 'gerami'
 import { FiDownload } from 'react-icons/fi'
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 import * as moment from 'moment'
-import { strapiApiBase } from '../../../../../constants'
 import Button from '../../../../shared/components/button/button'
 
 type ReportCardProps = {
@@ -53,11 +52,7 @@ const ReportCard = ({ date, excerpt, title, type, url }: ReportCardProps) => {
           </span>
         </Block>
         <div className="right">
-          <Button
-            mode={'primary'}
-            className="nyala-style-radius"
-            to={`${strapiApiBase}${url}`}
-          >
+          <Button mode={'primary'} className="nyala-style-radius" to={`${url}`}>
             <FiDownload className="margin-right-normal" />
             Download
           </Button>

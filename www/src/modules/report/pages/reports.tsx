@@ -43,11 +43,11 @@ const Reports = () => {
   const chips = useMemo(
     () => [
       {
-        name: 'ANNUALLY',
+        name: 'ANNUAL',
         url: '',
       },
       {
-        name: 'QUARTERLY',
+        name: 'QUARTER',
         url: '',
       },
       {
@@ -55,22 +55,12 @@ const Reports = () => {
         url: '',
       },
       {
-        name: 'SEMI-ANNUALLY',
+        name: 'SEMIANNUAL',
         url: '',
       },
     ],
     []
   )
-
-  const handleSearch = (terms: string) => {
-    console.log('Selected: ', selected)
-    console.log('term from search: ', terms)
-    console.log('TErm: ', term)
-    //if search term is available  but not filter
-    // use search term
-    //if bothe search and selected available
-    //if selected available but not search term
-  }
 
   return (
     <>
@@ -85,7 +75,6 @@ const Reports = () => {
           chips={chips}
           selectedChip={selected}
           onSelectedChip={setOnSelected}
-          onSubmit={handleSearch}
         />
 
         {loading ? (
@@ -120,7 +109,7 @@ const Reports = () => {
                   excerpt={node?.excerpt || ''}
                   title={node?.title!}
                   type={node?.type!}
-                  url={node?.attachments?.url}
+                  url={node?.attachments?.url!}
                 />
               ))}
             </Yoga>

@@ -28,6 +28,7 @@
     "strapi-plugin-graphql": "^3.0.2",
     "strapi-plugin-upload": "3.0.2",
     "strapi-plugin-users-permissions": "3.0.2",
+    "strapi-provider-upload-better-cloudinary": "file:providers/strapi-provider-upload-better-cloudinary",
     "strapi-provider-upload-cloudinary": "3.0.2",
     "strapi-utils": "3.0.2"
   },

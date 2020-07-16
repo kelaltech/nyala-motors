@@ -17,8 +17,9 @@
       "type": "enumeration",
       "enum": [
         "ANNUAL",
-        "QUARTERLY",
-        "OTHER"
+        "QUARTER",
+        "SEMIANNUAL",
+        "FINANCIAL"
       ],
       "required": true
     },
@@ -27,12 +28,10 @@
       "required": true
     },
     "attachments": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
-        "images",
-        "videos"
+        "files"
       ],
       "plugin": "upload",
       "required": true
