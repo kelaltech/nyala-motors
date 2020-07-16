@@ -1,30 +1,31 @@
 import React from 'react'
+
 import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
+import Layout from '../../../../shared/components/layout/layout'
 import { Block } from 'gerami'
-import './feedback.scss'
+import './registration.scss'
 
-type FeedbackProps = {}
+type RegistrationProps = {}
 
-const Feedback: React.FC<FeedbackProps> = () => {
+const Registration: React.FC<RegistrationProps> = () => {
   return (
     <>
-      <SEO title="Feedback" />
+      <SEO title="Home" />
 
-      <LayoutDefault headerProps={{ mode: 'primary' }}>
-        <Block className="center registration-container">
+      <Layout headerProps={{ mode: 'primary' }}>
+        <Block className="center feedback-container">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLScGr8rLqD-tntjntVT5TupqORR4wcCZ9DEmAXNqr_ptZD9yaw/viewform?embedded=true"
             frameBorder={0}
             scrolling={'no'}
-            className="registration-form"
+            className="feedback-form"
           >
             Loading…
           </iframe>
         </Block>
-      </LayoutDefault>
+      </Layout>
     </>
   )
 }
 
-export default Feedback
+export default Registration

@@ -1,21 +1,28 @@
 import React from 'react'
 import { Showroom } from '../../../../app/graphql'
-// import
+import { Content, Block } from 'gerami'
+import { strapiApiBase } from '../../../../../constants'
 
 type ShowroomCardProps = {
   showroom: Pick<Showroom, 'image' | 'description'>
 }
 const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
   return (
-    <div>
-      {showroom.image?.map((img, key) => (
-        <div key={key}>
-          <img src={`${img?.url}`} />
-        </div>
-      ))}
-      <img src={``} />
-      {showroom.description}
-    </div>
+    <>
+      <Content className="showroom-card-container">
+        <Block>
+          <div
+            style={{
+              backgroundImage: `url(${strapiApiBase}${showroom.image?.url})`,
+            }}
+            className="showroom-card-pic"
+          />
+          <div className="showroom-card-content">
+            <p>{showroom.description}</p>
+          </div>
+        </Block>
+      </Content>
+    </>
   )
 }
 

@@ -239,19 +239,6 @@ input ComponentDealerTypeDealerTypeInput {
   dealerType: String
 }
 
-type ComponentFullServiceFullService {
-  id: ID!
-  title: String
-  description: String
-  serviceType: [ComponentServiceTypeServiceType]
-}
-
-input ComponentFullServiceFullServiceInput {
-  title: String
-  description: String
-  serviceType: [ComponentServiceTypeServiceTypeInput]
-}
-
 type ComponentProductTypeProductType {
   id: ID!
   name: String
@@ -531,13 +518,6 @@ input editComponentDealerTypeDealerTypeInput {
   dealerType: String
 }
 
-input editComponentFullServiceFullServiceInput {
-  id: ID
-  title: String
-  description: String
-  serviceType: [editComponentServiceTypeServiceTypeInput]
-}
-
 input editComponentProductTypeProductTypeInput {
   id: ID
   name: String
@@ -595,7 +575,7 @@ input editProductInput {
   specification: [editComponentSpecificationSpecificationInput]
   link: String
   active: Boolean
-  brochure: [ID]
+  brochure: ID
 }
 
 input editPublicationInput {
@@ -628,7 +608,7 @@ input editServiceInput {
 }
 
 input editShowroomInput {
-  image: [ID]
+  image: ID
   description: String
 }
 
@@ -849,7 +829,7 @@ input ProductInput {
   specification: [ComponentSpecificationSpecificationInput]
   link: String
   active: Boolean
-  brochure: [ID]
+  brochure: ID
 }
 
 type Products {
@@ -864,7 +844,7 @@ type Products {
   specification: [ComponentSpecificationSpecification]
   link: String
   active: Boolean
-  brochure(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  brochure: UploadFile
 }
 
 type ProductsAggregator {
@@ -880,6 +860,11 @@ type ProductsConnection {
 
 type ProductsConnectionActive {
   key: Boolean
+  connection: ProductsConnection
+}
+
+type ProductsConnectionBrochure {
+  key: ID
   connection: ProductsConnection
 }
 
@@ -939,6 +924,7 @@ type ProductsGroupBy {
   headerImg: [ProductsConnectionHeaderImg]
   link: [ProductsConnectionLink]
   active: [ProductsConnectionActive]
+  brochure: [ProductsConnectionBrochure]
 }
 
 input PublicationInput {
@@ -1176,8 +1162,8 @@ type Showroom {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
+  image: UploadFile
   description: String
-  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 type ShowroomAggregator {
@@ -1206,6 +1192,11 @@ type ShowroomConnectionId {
   connection: ShowroomConnection
 }
 
+type ShowroomConnectionImage {
+  key: ID
+  connection: ShowroomConnection
+}
+
 type ShowroomConnectionUpdated_at {
   key: DateTime
   connection: ShowroomConnection
@@ -1215,11 +1206,12 @@ type ShowroomGroupBy {
   id: [ShowroomConnectionId]
   created_at: [ShowroomConnectionCreated_at]
   updated_at: [ShowroomConnectionUpdated_at]
+  image: [ShowroomConnectionImage]
   description: [ShowroomConnectionDescription]
 }
 
 input ShowroomInput {
-  image: [ID]
+  image: ID
   description: String
 }
 

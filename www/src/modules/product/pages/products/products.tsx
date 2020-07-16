@@ -29,6 +29,7 @@ const Products: React.FC<ProductsProps> = () => {
           term={term}
           onTerm={setTerm}
           bg={heroBg?.childImageSharp?.fluid as any}
+          color={true}
         />
         {!data && loading ? (
           <div className="padding-very-big">
@@ -53,7 +54,7 @@ const Products: React.FC<ProductsProps> = () => {
               </div>
             ) : (
               <div className="product-products-content">
-                <Card className="product-category-card padding-very-big">
+                <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {data?.products
@@ -65,7 +66,28 @@ const Products: React.FC<ProductsProps> = () => {
                         </>
                       ))}
                   </Yoga>
-                  <div>
+                  <div className="center">
+                    <Button
+                      to={`/products/categories/?id=NISSAN`}
+                      mode="primary-outline"
+                    >
+                      Browse all Nissan vehicles
+                    </Button>
+                  </div>
+                </Card>
+                <Card className="product-category-card">
+                  <h3>Nissan Vehicles</h3>
+                  <Yoga className="product-category-yoga" maxCol={3}>
+                    {data?.products
+                      .filter((p) => p?.category == 'NISSAN')
+                      .slice(0, 3)
+                      .map((product, key) => (
+                        <>
+                          <ProductCard product={product!} key={key} />
+                        </>
+                      ))}
+                  </Yoga>
+                  <div className="center">
                     <Button
                       to={`/products/categories/?id=NISSAN`}
                       mode="primary-outline"
