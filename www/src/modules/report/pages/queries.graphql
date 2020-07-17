@@ -1,13 +1,3 @@
-# query Reports {
-#   reports {
-#     Title
-#     excerpt
-#     featured
-#     type
-#     created_at
-#   }
-# }
-
 query Reports($start: Int, $limit: Int, $where: JSON) {
   reports(start: $start, limit: $limit, where: $where) {
     title
@@ -20,16 +10,3 @@ query Reports($start: Int, $limit: Int, $where: JSON) {
     }
   }
 }
-
-# query FilteredReports($type: String!) {
-#   reports(where:{Title_contains: $type}){
-#     Title
-#     featured
-#     created_at
-#     excerpt
-#     type
-#     attachments{
-#       url
-#     }
-#   }
-# }
