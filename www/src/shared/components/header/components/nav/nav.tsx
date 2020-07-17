@@ -37,11 +37,30 @@ const Nav: React.FC<NavProps> = () => {
 
         <Anchor
           to="/aftersales"
-          className={`${
+          className={`aftersales-box${
             '/aftersales' !== activePathname ? '' : 'shared-nav-link-active'
           }`}
         >
           <span>Aftersales</span>
+
+          <div className={'aftersales-nav-items'}>
+            <Anchor
+              to="/aftersales/services"
+              className={`${
+                '/services' !== activePathname ? '' : 'shared-nav-link-active'
+              }`}
+            >
+              <span>Services</span>
+            </Anchor>
+            <Anchor
+              to="/parts"
+              className={`${
+                '/parts' !== activePathname ? '' : 'shared-nav-link-active'
+              }`}
+            >
+              <span>Geniuen Part</span>
+            </Anchor>
+          </div>
         </Anchor>
         <Anchor
           to="/showroom"

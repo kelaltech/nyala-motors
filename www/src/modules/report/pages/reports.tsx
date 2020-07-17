@@ -11,7 +11,7 @@ import { strapiApiBase } from '../../../../constants'
 import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
 import Button from '../../../shared/components/button/button'
 
-const COUNT = 2
+const COUNT = 12
 
 const Reports = () => {
   const { heroBg } = useStaticQuery<ReportsStaticQuery>(query)

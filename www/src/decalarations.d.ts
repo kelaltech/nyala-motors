@@ -4,3 +4,4 @@
 // declare module 'gatsby-plugin-mailchimp'
 
 declare module '*.svg'
+declare module 'react-elastic-carousel'
