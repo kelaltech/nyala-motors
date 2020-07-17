@@ -63,17 +63,8 @@ const News: React.FC<NewsProps> = () => {
                 </Block>
               </div>
             )}
-            <Block>
-              <Block className="padding-optimizer padding-bottom-none">
-                <Block first last>
-                  <h3 className="title-component">Video News</h3>
-                  <hr className="full-width" />
-                </Block>
-                <Block>
-                  <VideoNews />
-                </Block>
-              </Block>
-            </Block>
+            {/* videos from youtube playlist API */}
+            <VideoNews />
 
             {data?.publications?.length === 0 ? null : (
               <Block>
