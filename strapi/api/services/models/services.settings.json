@@ -2,7 +2,7 @@
   "kind": "singleType",
   "collectionName": "services",
   "info": {
-    "name": "services"
+    "name": "Services"
   },
   "options": {
     "increments": true,

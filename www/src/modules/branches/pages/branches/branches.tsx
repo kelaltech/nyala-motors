@@ -6,7 +6,6 @@ import './branches.scss'
 import { useBranchesQuery } from '../../../../app/graphql'
 import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
-import HeroSearch from '../../../../shared/components/hero-search/hero-search'
 import { nameDealerType } from '../../../../shared/components/nameDealerType'
 
 type Branches = {}
@@ -19,8 +18,10 @@ const Branches: React.FC<Branches> = () => {
       <SEO title="Contacts" />
 
       <LayoutDefault>
-        <div className="branches-hero">
-          <h2>Our Branches</h2>
+        <div className={'branches-hero-container'}>
+          <Block className="center branches-hero-tag">
+            <h1>Contact Us </h1>
+          </Block>
         </div>
         <Content size={'4XL'} transparent={true}>
           {!data && loading ? (

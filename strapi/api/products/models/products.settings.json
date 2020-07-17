@@ -53,7 +53,7 @@
       "default": true
     },
     "brochure": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",

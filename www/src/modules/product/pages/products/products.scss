@@ -15,6 +15,12 @@ $mobile-threshold: $mobile * 1.6;
     padding: 8px;
   }
   .product-category-card {
+    margin-bottom: 128px;
+    padding: 32px;
+    @media screen and(max-width: $mobile-threshold) {
+      padding: 16px;
+      margin-bottom: 64px;
+    }
     h3 {
       color: #c51632;
       font-size: 28px;

@@ -6,24 +6,26 @@
   }
   .product-card-content {
     span {
-      font-weight: 550;
-      font-size: 18px;
+      font-weight: 600;
+      font-size: 16px;
       line-height: 32px;
       color: rgba(0, 0, 0, 0.7);
     }
     a {
       h4 {
         font-style: normal;
-        font-weight: 400;
+        font-weight: 420;
         font-size: 21px;
         line-height: 25px;
         letter-spacing: -0.05em;
         color: black;
+        padding-left: 15px;
       }
       div {
         height: inherit;
         max-height: 200px;
         overflow: hidden;
+        border-radius: 7px;
       }
     }
   }
