@@ -206,4 +206,38 @@
     min-height: 420px;
     width: 100%;
   }
+
+  @media screen and (max-width: 650px) {
+    img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
+
+.achivements-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+
+    .carpusel-box {
+      width: 100% !important;
+    }
+  }
+  .carpusel-box {
+    width: 50%;
+  }
+
+  .award-imgs {
+    border-radius: 7px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    background-color: #111;
+  }
 }

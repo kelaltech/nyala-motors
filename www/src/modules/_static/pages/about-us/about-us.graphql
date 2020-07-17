@@ -7,8 +7,5 @@ query About {
     awardImg {
       url
     }
-    heroImg {
-      url
-    }
   }
 }

@@ -6,10 +6,23 @@ import LayoutDefault from '../../../../shared/components/layout/layout'
 import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
 import { useAboutQuery } from '../../../../app/graphql'
-
+import Carousel, { consts } from 'react-elastic-carousel'
+import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
+import { strapiApiBase } from '../../../../../constants'
 type AboutUs = {}
+
 const AboutUs: React.FC<AboutUs> = () => {
   const { loading, error, data } = useAboutQuery()
+
+  const myArrow = ({ type, onClick }: any) => {
+    const pointer =
+      type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
+    return (
+      <div style={{ alignSelf: 'center' }} onClick={onClick}>
+        {pointer}
+      </div>
+    )
+  }
   return (
     <>
       <SEO title="About us" />
@@ -30,33 +43,40 @@ const AboutUs: React.FC<AboutUs> = () => {
               </Block>
             </div>
             <div className={'about-outline-box'}>
-              <div className={'about-outline-item'}>
-                <span>
-                  <IoMdArrowDropright />
-                </span>
-                <a href={'#overview'}>OVERVIEW</a>
-              </div>
+              {data.about.overviewHistory && (
+                <div className={'about-outline-item'}>
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#overview'}>OVERVIEW</a>
+                </div>
+              )}
 
-              <div className={'about-outline-item'}>
-                <span>
-                  <IoMdArrowDropright />
-                </span>
-                <a href={'#values'}>VALUES</a>
-              </div>
+              {data.about.values && (
+                <div className={'about-outline-item'}>
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#values'}>VALUES</a>
+                </div>
+              )}
+              {data.about.mission && (
+                <div className={'about-outline-item'}>
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#mission'}>MISSION</a>
+                </div>
+              )}
 
-              <div className={'about-outline-item'}>
-                <span>
-                  <IoMdArrowDropright />
-                </span>
-                <a href={'#mission'}>MISSION</a>
-              </div>
-
-              <div className={'about-outline-item'}>
-                <span>
-                  <IoMdArrowDropright />
-                </span>
-                <a href={'#achivements'}>OUR ACHIVEMENTS</a>
-              </div>
+              {data.about.achievements && (
+                <div className={'about-outline-item'}>
+                  <span>
+                    <IoMdArrowDropright />
+                  </span>
+                  <a href={'#achivements'}>OUR ACHIVEMENTS</a>
+                </div>
+              )}
             </div>
             <Content transparent className={'about-content'} size="4XL">
               <Block className={'center about-content-title'}>
@@ -78,8 +98,6 @@ const AboutUs: React.FC<AboutUs> = () => {
                 </Markdown>
               </Block>
 
-              {/* <div className={'about-main-img'} /> */}
-
               <Block id={'values'} first last className={'overview-desc'}>
                 <h2>Values</h2>
                 <Markdown className={'mark-down-p'}>
@@ -100,27 +118,31 @@ const AboutUs: React.FC<AboutUs> = () => {
               <Block id={'achivements'} first last className={'overview-desc'}>
                 <h2>Our Achivements</h2>
 
-                <Block>
-                  <Markdown className="about-page-details-description">
-                    {data.about.achievements}
-                  </Markdown>
-                  {/*                     
-                  <ul>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </li>
-                  </ul>
-                */}
-                </Block>
+                <div className={`achivements-container`}>
+                  <div className="about-page-details-description">
+                    <Markdown>{data.about.achievements}</Markdown>
+                  </div>
+                  {data?.about?.awardImg?.length === 0 ? null : (
+                    <div className={'carpusel-box'}>
+                      <Carousel
+                        enableAutoPlay={true}
+                        pagination={false}
+                        renderArrow={myArrow}
+                        itemsToShow={1}
+                      >
+                        {data?.about?.awardImg?.map((img, i) => (
+                          <div
+                            key={i}
+                            className={'award-imgs'}
+                            style={{
+                              backgroundImage: `url(${strapiApiBase}${img?.url})`,
+                            }}
+                          />
+                        ))}
+                      </Carousel>
+                    </div>
+                  )}
+                </div>
               </Block>
 
               <Block first last />
