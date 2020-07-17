@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/theme';
 .landing-body-container {
-  background-color: #fff;
+  background-color: #fafafa;
 }
 .lading-hero-section {
   height: 840px;
@@ -277,7 +277,7 @@
     position: absolute;
     top: -40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 
     @media screen and (max-width: 650px) {
