@@ -2,7 +2,6 @@ import React from 'react'
 import './news-card.scss'
 import { Content, Block } from 'gerami'
 import Button from '../../../../shared/components/button/button'
-import { strapiApiBase } from '../../../../../constants'
 import * as moment from 'moment'
 
 type NewsCardProps = {
@@ -27,7 +26,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
         <Block>
           <div
             style={{
-              backgroundImage: `url(${strapiApiBase}${picture_url})`,
+              backgroundImage: `url(${picture_url})`,
             }}
             className="news-card-pic"
           />

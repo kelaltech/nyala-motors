@@ -7,7 +7,6 @@ import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
 import { Vacancy } from '../../../../app/graphql'
 import Button from '../../../../shared/components/button/button'
 import MarkdownToText from '../../../../shared/components/markdown-to-text/markdown-to-text'
-import { strapiApiBase } from '../../../../../constants'
 import Anchor from '../../../../shared/components/anchor/anchor'
 
 type VacancyCardProps = {
@@ -64,7 +63,7 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
         </Button>
         {isExpired || !vacancy.attachment?.url ? null : (
           <Button
-            to={`${strapiApiBase}${vacancy.attachment.url}`}
+            to={`${vacancy.attachment.url}`}
             download
             target="_blank"
             rel="noopener nofollow"

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Showroom } from '../../../../app/graphql'
 import { Content, Block } from 'gerami'
-import { strapiApiBase } from '../../../../../constants'
 
 type ShowroomCardProps = {
   showroom: Pick<Showroom, 'image' | 'description'>
@@ -13,7 +12,7 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
         <Block>
           <div
             style={{
-              backgroundImage: `url(${strapiApiBase}${showroom.image?.url})`,
+              backgroundImage: `url(${showroom.image?.url})`,
             }}
             className="showroom-card-pic"
           />

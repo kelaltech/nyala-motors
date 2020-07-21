@@ -9,7 +9,6 @@ import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/ai'
 import Button from '../../../../shared/components/button/button'
 import moment from 'moment'
 import MarkdownToText from '../../../../shared/components/markdown-to-text/markdown-to-text'
-import { strapiApiBase } from '../../../../../constants'
 
 type BidCardProps = {
   bid: Pick<
@@ -61,7 +60,7 @@ const BidCard: React.FC<BidCardProps> = ({ bid }) => {
         </Button>
         {isExpired || !bid.attachment?.url ? null : (
           <Button
-            to={`${strapiApiBase}${bid.attachment.url}`}
+            to={`${bid.attachment.url}`}
             download
             target="_blank"
             rel="noopener nofollow"

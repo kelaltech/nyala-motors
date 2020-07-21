@@ -6,7 +6,6 @@ import { useProductDetailQuery } from '../../../../app/graphql'
 import { Loading, Warning, Content, Block, Yoga } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
-import { strapiApiBase } from '../../../../../constants'
 import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
 import Button from '../../../../shared/components/button/button'
@@ -44,7 +43,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
             <div className="product-detail-container">
               <div
                 style={{
-                  backgroundImage: `url(${strapiApiBase}${data?.product?.headerImg?.url})`,
+                  backgroundImage: `url(${data?.product?.headerImg?.url})`,
                 }}
                 className="product-detail-hero"
               >
@@ -101,10 +100,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                       <div className="product-detail-overview-img">
                         <Yoga maxCol={3}>
                           {spec?.specImages?.map((img, key) => (
-                            <img
-                              src={`${strapiApiBase}${img?.url}`}
-                              key={key}
-                            />
+                            <img src={`${img?.url}`} key={key} />
                           ))}
                         </Yoga>
                       </div>
@@ -114,7 +110,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
                 <Block first last className="center">
                   <Button
-                    to={`${strapiApiBase}${data?.product?.brochure?.url}`}
+                    to={`${data?.product?.brochure?.url}`}
                     download
                     mode="primary-outline"
                   >
