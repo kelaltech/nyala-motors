@@ -1,6 +1,6 @@
 import React from 'react'
 import './about-us.scss'
-import { Content, Block, Loading, Warning } from 'gerami'
+import { Content, Block, Loading, Warning, Yoga } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { IoMdArrowDropright } from 'react-icons/io'
@@ -18,7 +18,7 @@ const AboutUs: React.FC<AboutUs> = () => {
     const pointer =
       type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
     return (
-      <div style={{ alignSelf: 'center' }} onClick={onClick}>
+      <div style={{ alignSelf: 'center', color: '#c51632' }} onClick={onClick}>
         {pointer}
       </div>
     )
@@ -38,9 +38,9 @@ const AboutUs: React.FC<AboutUs> = () => {
         ) : (
           <>
             <div className={'about-hero-container'}>
-              <Block className="center about-hero-tag">
+              {/* <Block className="center about-hero-tag">
                 <h1>About Nyala Motors S.C.</h1>
-              </Block>
+              </Block> */}
             </div>
             <div className={'about-outline-box'}>
               {data.about.overviewHistory && (
@@ -98,22 +98,53 @@ const AboutUs: React.FC<AboutUs> = () => {
                 </Markdown>
               </Block>
 
-              <Block id={'values'} first last className={'overview-desc'}>
-                <h2>Values</h2>
-                <Markdown className={'mark-down-p'}>
-                  {data.about.values}
-                </Markdown>
+              <Block first last>
+                {data?.about?.slideImg?.length === 0 ? null : (
+                  <div className={'about-slider-box'}>
+                    <Carousel
+                      enableAutoPlay={true}
+                      pagination={false}
+                      renderArrow={myArrow}
+                      itemsToShow={1}
+                    >
+                      {data?.about?.slideImg?.map((img, i) => (
+                        <div
+                          key={i}
+                          className={'slider-imgs'}
+                          style={{
+                            backgroundImage: `url(${strapiApiBase}${img?.url})`,
+                          }}
+                        />
+                      ))}
+                    </Carousel>
+                  </div>
+                )}
               </Block>
 
-              <Block id={'mission'} first last className={'overview-desc'}>
-                <div className={'right full-width'}>
-                  <h2 className={'right'}>Mission Statement</h2>
-                </div>
+              <Block first last />
+              <Yoga maxCol={2}>
+                <Content className={'values-card'}>
+                  {' '}
+                  <Block id={'values'} first last className={'overview-desc'}>
+                    <h2>Values</h2>
+                    <Markdown className={'mark-down-values fg-whitish'}>
+                      {data.about.values}
+                    </Markdown>
+                  </Block>
+                </Content>
 
-                <Markdown className={'mark-down-p'}>
-                  {data.about.mission}
-                </Markdown>
-              </Block>
+                <Content className={'mission-card'}>
+                  <Block id={'mission'} first last className={'overview-desc'}>
+                    <div className={'right full-width'}>
+                      <h2 className={'right'}>Mission Statement</h2>
+                    </div>
+
+                    <Markdown className={'mark-down-mission'}>
+                      {data.about.mission}
+                    </Markdown>
+                  </Block>
+                </Content>
+              </Yoga>
 
               <Block id={'achivements'} first last className={'overview-desc'}>
                 <h2>Our Achivements</h2>
@@ -123,7 +154,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                     <Markdown>{data.about.achievements}</Markdown>
                   </div>
                   {data?.about?.awardImg?.length === 0 ? null : (
-                    <div className={'carpusel-box'}>
+                    <div className={'carousel-box'}>
                       <Carousel
                         enableAutoPlay={true}
                         pagination={false}

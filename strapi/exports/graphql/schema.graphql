@@ -7,6 +7,7 @@ type About {
   mission: String
   achievements: String
   awardImg(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  slideImg(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 input AboutInput {
@@ -15,6 +16,7 @@ input AboutInput {
   mission: String
   achievements: String
   awardImg: [ID]
+  slideImg: [ID]
 }
 
 type Bid {
@@ -472,6 +474,7 @@ input editAboutInput {
   mission: String
   achievements: String
   awardImg: [ID]
+  slideImg: [ID]
 }
 
 input editBidInput {

@@ -31,6 +31,16 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "slideImg": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
