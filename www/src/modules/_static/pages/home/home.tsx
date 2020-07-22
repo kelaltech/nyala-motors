@@ -40,34 +40,6 @@ const Home: React.FC<HomeProps> = () => {
               <Button>{lang`home.hero.btn`}</Button>
             </Block>
           </div>
-
-          <Block className={'landing-products-list'}>
-            <Content>
-              <Block className={'landing-products-list-box'}>
-                <GatsbyImage
-                  fluid={nissanLogo?.childImageSharp?.fluid as any}
-                  className="produc-list produc-list-img-1"
-                />
-                <GatsbyImage
-                  fluid={udtrucks?.childImageSharp?.fluid as any}
-                  className="produc-list produc-list-img-2"
-                />
-                <GatsbyImage
-                  fluid={elicher?.childImageSharp?.fluid as any}
-                  className="produc-list produc-list-img-3"
-                />
-                <GatsbyImage
-                  fluid={Unicarriers?.childImageSharp?.fluid as any}
-                  className="produc-list produc-list-img-4"
-                />
-                <GatsbyImage
-                  fluid={macpower?.childImageSharp?.fluid as any}
-                  className="produc-list produc-list-img-5"
-                />
-              </Block>
-            </Content>
-          </Block>
-
           <Block className={'landing-about-container'}>
             <Content transparent size={'L'} className={'center'}>
               <Block first />
@@ -90,6 +62,34 @@ const Home: React.FC<HomeProps> = () => {
               <Block first last className={'center'}>
                 <h1>{lang`home.link.title`} </h1>
               </Block>
+
+              <Block className={'landing-products-list'}>
+                <Content>
+                  <Block className={'landing-products-list-box'}>
+                    <GatsbyImage
+                      fluid={nissanLogo?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-1"
+                    />
+                    <GatsbyImage
+                      fluid={udtrucks?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-2"
+                    />
+                    <GatsbyImage
+                      fluid={elicher?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-3"
+                    />
+                    <GatsbyImage
+                      fluid={Unicarriers?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-4"
+                    />
+                    <GatsbyImage
+                      fluid={macpower?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-5"
+                    />
+                  </Block>
+                </Content>
+              </Block>
+
               <Block className={'landing-link-yoga'}>
                 <Anchor to={'/products'} className="landing-link-img-box">
                   <div className={'landing-img-content'}>
