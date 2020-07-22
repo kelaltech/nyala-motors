@@ -5,3 +5,4 @@
 
 declare module '*.svg'
 declare module 'react-elastic-carousel'
+declare module '@loadable/component'

@@ -122,6 +122,20 @@ module.exports = {
       resolve: `gatsby-plugin-nprogress`,
       options: { color: `#c71444`, showSpinner: false },
     },
+    //Language Localization
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/shared/intl`,
+        // supported language
+        languages: [`en`, `am`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/ko` when connecting `/`
+        redirect: true,
+      },
+    },
 
     //
     // DATA:
