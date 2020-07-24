@@ -283,3 +283,31 @@
     background-color: $primary;
   }
 }
+
+.board-message-container {
+  padding: 16px;
+
+  .board-message {
+    font-size: 16px;
+  }
+
+  .board-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    // background-color: $primary;
+
+    border-top: 2px solid $primary;
+    padding-top: 16px;
+
+    .board-img {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+}

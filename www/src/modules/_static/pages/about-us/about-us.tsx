@@ -146,6 +146,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                 </Content>
               </Yoga>
 
+              <Block first last />
               <Block id={'achivements'} first last className={'overview-desc'}>
                 <h2>Our Achivements</h2>
 
@@ -174,6 +175,32 @@ const AboutUs: React.FC<AboutUs> = () => {
                     </div>
                   )}
                 </div>
+              </Block>
+
+              <Block first last />
+
+              <Block>
+                <Yoga maxCol={2}>
+                  {data?.about?.boardMessage?.map((board, i) => (
+                    <Content key={i} className={'board-message-container'}>
+                      <div className={'board-message'}>
+                        <p>{board?.message}</p>
+                      </div>
+                      <div className={'board-info'}>
+                        <div>
+                          <h3>{board?.name}</h3>
+                          <h3>{board?.position}</h3>
+                        </div>
+                        <div
+                          className={'board-img'}
+                          style={{
+                            backgroundImage: `url(${board?.img?.url})`,
+                          }}
+                        />
+                      </div>
+                    </Content>
+                  ))}
+                </Yoga>
               </Block>
 
               <Block first last />

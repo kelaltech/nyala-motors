@@ -41,6 +41,11 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "boardMessage": {
+      "type": "component",
+      "repeatable": true,
+      "component": "board-message.board-message"
     }
   }
 }

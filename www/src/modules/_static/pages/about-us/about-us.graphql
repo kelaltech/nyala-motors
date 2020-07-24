@@ -10,5 +10,13 @@ query About {
     slideImg {
       url
     }
+    boardMessage {
+      name
+      position
+      img {
+        url
+      }
+      message
+    }
   }
 }
