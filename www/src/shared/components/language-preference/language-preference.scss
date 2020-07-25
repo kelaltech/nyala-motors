@@ -1,0 +1,79 @@
+@import '../../../assets/styles/theme';
+
+.language_switcher {
+  width: 100%;
+  position: relative;
+  //border: 1px solid $primary;
+  border-radius: $radius;
+  &:hover {
+    .lang-preference-box {
+      display: block;
+    }
+  }
+}
+
+.default-lang {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  .lang-flag {
+    align-self: center;
+    width: 20px;
+  }
+
+  .lang-code {
+    margin: 0 5px;
+  }
+
+  .option-arrow {
+    margin-top: -2px;
+    color: $bg !important;
+    align-self: normal;
+  }
+}
+.lang-preference-box {
+  display: none;
+  position: absolute;
+  top: -70px;
+  left: 0;
+  width: 100%;
+  box-shadow: $shade-M, $shade-L, $shade-S;
+  background-color: $bg;
+  border-radius: $radius;
+  transition: 0.3s all;
+  padding: $space/2;
+
+  .options {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    transition: 0.3s all;
+    position: relative;
+    &::before {
+      transition: 0.3s all;
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: $primary;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+    .lang-flag {
+      align-self: center;
+    }
+    .lang-code {
+      margin-left: 2px;
+    }
+  }
+}
+
+.lang-flag {
+  width: 20px;
+}

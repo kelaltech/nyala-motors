@@ -11,6 +11,8 @@ import Anchor from '../../../../shared/components/anchor/anchor'
 import { FaCar, FaRegNewspaper } from 'react-icons/fa'
 import { GrMapLocation } from 'react-icons/gr'
 
+import useLang from '../../../../shared/hooks/lang/use-lang'
+
 type HomeProps = {}
 
 const Home: React.FC<HomeProps> = () => {
@@ -23,6 +25,8 @@ const Home: React.FC<HomeProps> = () => {
     productLink,
     serviceLink,
   } = useStaticQuery<HomeStaticQuery>(query)
+
+  const lang = useLang()
   return (
     <>
       <SEO title="Home" />
@@ -31,16 +35,9 @@ const Home: React.FC<HomeProps> = () => {
         <div className={'landing-body-container'}>
           <div className={'lading-hero-section'}>
             <Block className={'landing-hero-content'}>
-              <h1>
-                Exclusive Importer and Distributor of Top Automotive Brands
-              </h1>
-              <p>
-                Nyala Motors S.C is the exclusive importer and distributor of
-                Nissan vehicles, UD Trucks, Eicher trucks and buses, Unicarrier
-                forklifts and Macpower batteries in Ethiopia. We also provide
-                aftersales servicing and genuine part sales.
-              </p>
-              <Button>Get Started</Button>
+              <h1>{lang`home.hero.title`}</h1>
+              <p>{lang`home.hero.desciption`}</p>
+              <Button>{lang`home.hero.btn`}</Button>
             </Block>
           </div>
 
@@ -75,22 +72,13 @@ const Home: React.FC<HomeProps> = () => {
             <Content transparent size={'L'} className={'center'}>
               <Block first />
               <div>
-                <h1>Nyala Motors</h1>
+                <h1>{lang`home.about.title`}</h1>
                 <Block>
                   <hr />
                 </Block>
-                <p>
-                  Nyala Motors Share Company was established in April 1973 in
-                  line with the Commercial Code of Ethiopia by five founding
-                  members with a registered capital of birr 50,000. When the
-                  company was setup it began its operation with the sales of
-                  Datsun automobiles and today it has become exclusive
-                  distributor for Nissan motors vehicles, UD trucks, VE
-                  commercial vehicles, Unicarrier forklifts and Macpower
-                  battery.
-                </p>
+                <p>{lang`home.about.description`}</p>
                 <Block first last>
-                  <Anchor to={'/about'}>Learn More About the Company</Anchor>
+                  <Anchor to={'/about'}>{lang`home.about.link`}</Anchor>
                 </Block>
               </div>
               <Block first />
@@ -100,7 +88,7 @@ const Home: React.FC<HomeProps> = () => {
           <Block className={'landing-to-link-container'}>
             <Content transparent size={'4XL'}>
               <Block first last className={'center'}>
-                <h1>What are you looking for? </h1>
+                <h1>{lang`home.link.title`} </h1>
               </Block>
               <Block className={'landing-link-yoga'}>
                 <Anchor to={'/products'} className="landing-link-img-box">
@@ -109,8 +97,12 @@ const Home: React.FC<HomeProps> = () => {
                       <FaCar />
                     </span>
                     <span>
-                      <span className={'bold'}>{`PRODUCTS `} </span>
-                      <span className={'light'}>TO BUY</span>
+                      <span className={'bold'}>
+                        {lang`home.link.product1`}{' '}
+                      </span>
+                      <span
+                        className={'light'}
+                      >{lang`home.link.product2`}</span>
                     </span>
                   </div>
                   <GatsbyImage
@@ -128,8 +120,12 @@ const Home: React.FC<HomeProps> = () => {
                       <FaCar />
                     </span>
                     <span>
-                      <span className={'bold'}>{`AFTERSALES `} </span>
-                      <span className={'light'}>SERVICE OR PARTS</span>
+                      <span className={'bold'}>
+                        {lang`home.link.aftersale1`}{' '}
+                      </span>
+                      <span
+                        className={'light'}
+                      >{lang`home.link.aftersale2`}</span>
                     </span>
                   </div>
                   <GatsbyImage
@@ -143,8 +139,7 @@ const Home: React.FC<HomeProps> = () => {
 
           <Block className={'landing-qoute-container'}>
             <blockquote>
-              Step up performace, convenience, and style the easy way with
-              Genuine Nissan accessories.
+              {lang`home.quote`}
               <span className={'fg-primary'}>#NyalaMotors</span>
             </blockquote>
           </Block>
@@ -168,7 +163,7 @@ const Home: React.FC<HomeProps> = () => {
                   <FaRegNewspaper />
                 </span>
                 <Anchor to={'/news'} className={'bottom-title'}>
-                  READ THE LATEST NEWS
+                  {lang`home.bottom.link1`}
                 </Anchor>
               </div>
               <div className={'landing-bottom-item'}>
@@ -176,7 +171,7 @@ const Home: React.FC<HomeProps> = () => {
                   <GrMapLocation color={'#c51632'} />
                 </span>
                 <Anchor to={'/contact'} className={'bottom-title'}>
-                  FIND OR CONTACT US
+                  {lang`home.bottom.link2`}
                 </Anchor>
               </div>
             </div>
