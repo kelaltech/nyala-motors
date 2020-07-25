@@ -5,7 +5,7 @@ import { Products } from '../../../../app/graphql'
 import Anchor from '../../../../shared/components/anchor/anchor'
 
 type ProductCardProps = {
-  product: Pick<Products, 'id' | 'name' | 'motto' | 'headerImg'>
+  product: Pick<Products, 'id' | 'eachCategory' | 'headerImg' | 'motto'>
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
@@ -14,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div className="product-card-container">
       <div className="product-card-content">
         <Anchor to={`/products/detail/?id=${product.id}`}>
-          <h4>{product.name}</h4>
+          <h4>{product.eachCategory}</h4>
           <hr />
           <div>
             <img src={`${product?.headerImg?.url}`} width={'100%'} />
