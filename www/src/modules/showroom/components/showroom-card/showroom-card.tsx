@@ -1,7 +1,6 @@
 import React from 'react'
 import { Showroom } from '../../../../app/graphql'
 import { Content, Block } from 'gerami'
-// import { strapiApiBase } from '../../../../../constants'
 
 type ShowroomCardProps = {
   showroom: Pick<Showroom, 'image' | 'description'>

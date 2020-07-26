@@ -58,42 +58,36 @@ const Products: React.FC<ProductsProps> = () => {
               <div className="product-products-content">
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
-                  <Yoga className="product-category-yoga" maxCol={3}>
-                    {data?.products
-                      .filter((p) => p?.category == 'NISSAN')
-                      .slice(0, 3)
-                      .map((product, key) => (
-                        <>
-                          <ProductCard product={product!} key={key} />
-                        </>
-                      ))}
+                  <Yoga maxCol={3}>
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'PASSENGER'
+                      )}
+                    />
                   </Yoga>
+
                   <div className="center">
                     <Button
-                      to={`/products/categories/?id=NISSAN`}
+                      to={`https://nissanethiopia.com`}
                       mode="primary-outline"
                     >
                       Browse all Nissan vehicles
                     </Button>
                   </div>
                 </Card>
+
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
-                  <Yoga className="product-category-yoga" maxCol={3}>
-                    {data?.products
-                      .filter((p) => p?.category == 'NISSAN')
-                      .slice(0, 3)
-                      .map((product, key) => (
-                        <>
-                          <ProductCard product={product!} key={key} />
-                        </>
-                      ))}
+                  <Yoga maxCol={3}>
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'PASSENGER'
+                      )}
+                    />
                   </Yoga>
+
                   <div className="center">
-                    <Button
-                      to={`/products/categories/?id=NISSAN`}
-                      mode="primary-outline"
-                    >
+                    <Button to={`/products/detail/`} mode="primary-outline">
                       Browse all Nissan vehicles
                     </Button>
                   </div>

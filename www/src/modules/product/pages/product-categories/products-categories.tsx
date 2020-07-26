@@ -8,7 +8,6 @@ import { Loading, Warning, Yoga, Content, Block, Card } from 'gerami'
 import Layout from '../../../../shared/components/layout/layout'
 import Markdown from 'markdown-to-jsx'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
-import { strapiApiBase } from '../../../../../constants'
 import Button from '../../../../shared/components/button/button'
 
 type ProductCategoriesProps = {}
@@ -56,7 +55,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
                       <div>
                         <a href={`/products/detail/?id=${product!.id}`}>
                           <img
-                            src={`${strapiApiBase}${product?.headerImg?.url}`}
+                            src={`${product?.headerImg?.url}`}
                             width={'100%'}
                           />
                         </a>

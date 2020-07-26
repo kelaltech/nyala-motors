@@ -8,7 +8,7 @@ module.exports = ({ env }) => {
       'DATABASE_URL',
       `postgres://${env('DATABASE_USERNAME', 'postgres')}:${env(
         'DATABASE_PASSWORD',
-        'Pass1234'
+        'pass1234'
       )}@${env('DATABASE_HOST', '127.0.0.1')}:${env.int(
         'DATABASE_PORT',
         5432

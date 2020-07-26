@@ -8,7 +8,6 @@ import Layout from '../../../../shared/components/layout/layout'
 import { Loading, Warning, Block, Content, Flex, FlexSpacer } from 'gerami'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
-import { strapiApiBase } from '../../../../../constants'
 import * as moment from 'moment'
 import Markdown from 'markdown-to-jsx'
 import CopyToClipboard from '../../../../shared/components/copy-to-clipboard/copy-to-clipboard'
@@ -57,7 +56,7 @@ const NewsDetail: React.FC<{}> = () => {
           <>
             <div
               style={{
-                backgroundImage: `url(${strapiApiBase}${picture?.url})`,
+                backgroundImage: `url(${picture?.url})`,
               }}
               className="news-detail-img"
             />

@@ -26,6 +26,7 @@ const Footer: React.FC<FooterProps> = () => {
           <Anchor to="/registration">{lang`footer.item.customer-reg`}</Anchor>
           <Anchor to="/faq">{lang`footer.item.faq`}</Anchor>
           <Anchor to="/feedback">{lang`footer.item.feedback`}</Anchor>
+
         </div>
 
         <div className="shared-footer-social">
