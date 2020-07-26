@@ -10,7 +10,6 @@ import { Loading, Warning, Yoga } from 'gerami'
 import moment from 'moment'
 import { AiOutlineDownload } from 'react-icons/all'
 import { GoLocation } from 'react-icons/go'
-import { strapiApiBase } from '../../../../../constants'
 import Markdown from 'markdown-to-jsx'
 type BidDetailProps = {}
 
@@ -79,7 +78,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                 </Yoga>
                 {isExpired || !data.bid.attachment?.url ? null : (
                   <Button
-                    to={`${strapiApiBase}${data.bid.attachment.url}`}
+                    to={`${data.bid.attachment.url}`}
                     download
                     target="_blank"
                     rel="noopener nofollow"

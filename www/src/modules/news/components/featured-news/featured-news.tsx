@@ -2,7 +2,6 @@ import React from 'react'
 import './featured-news.scss'
 import { Content, Block } from 'gerami'
 import Button from '../../../../shared/components/button/button'
-import { strapiApiBase } from '../../../../../constants'
 import * as moment from 'moment'
 
 type FeaturedNewsProps = {
@@ -27,7 +26,7 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
       <Content className="featured-news-container">
         <div
           style={{
-            backgroundImage: `url(${strapiApiBase}${picture_url})`,
+            backgroundImage: `url(${picture_url})`,
           }}
           className="featured-news-pic"
         >

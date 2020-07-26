@@ -13,7 +13,6 @@ import Layout from '../../../../shared/components/layout/layout'
 import { nameJobType } from '../../../../shared/components/nameJobType'
 import { nameSalaryType } from '../../../../shared/components/nameSalaryType'
 import { GoLocation } from 'react-icons/go'
-import { strapiApiBase } from '../../../../../constants'
 import Button from '../../../../shared/components/button/button'
 
 type VacancyDetailProps = {}
@@ -58,7 +57,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                 <h1>{data.vacancy.title}</h1>
                 {isExpired || !data.vacancy.attachment?.url ? null : (
                   <Button
-                    to={`${strapiApiBase}${data.vacancy.attachment.url}`}
+                    to={`${data.vacancy.attachment.url}`}
                     download
                     target="_blank"
                     rel="noopener nofollow"
