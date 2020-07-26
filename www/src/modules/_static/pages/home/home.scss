@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/theme';
 .landing-body-container {
-  background-color: #fafafa;
+  background-color: #fefefe !important;
 }
 .lading-hero-section {
   height: 840px;
@@ -74,6 +74,15 @@
       line-height: 25px;
       letter-spacing: -0.05em;
       color: rgba(255, 255, 255, 0.74);
+    }
+
+    .get-started-btn {
+      font-size: 18px;
+      padding: 15px 25px !important;
+      border-radius: $radius;
+      color: #fafafa !important;
+      background-color: $primary;
+      opacity: 0.84;
     }
   }
 }

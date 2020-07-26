@@ -10,7 +10,6 @@ import GatsbyImage from 'gatsby-image'
 import Anchor from '../../../../shared/components/anchor/anchor'
 import { FaCar, FaRegNewspaper } from 'react-icons/fa'
 import { GrMapLocation } from 'react-icons/gr'
-
 import useLang from '../../../../shared/hooks/lang/use-lang'
 
 type HomeProps = {}
@@ -27,6 +26,7 @@ const Home: React.FC<HomeProps> = () => {
   } = useStaticQuery<HomeStaticQuery>(query)
 
   const lang = useLang()
+
   return (
     <>
       <SEO title="Home" />
@@ -37,7 +37,10 @@ const Home: React.FC<HomeProps> = () => {
             <Block className={'landing-hero-content'}>
               <h1>{lang`home.hero.title`}</h1>
               <p>{lang`home.hero.desciption`}</p>
-              <Button>{lang`home.hero.btn`}</Button>
+              <Button
+                to={'/about'}
+                className={'get-started-btn'}
+              >{lang`home.hero.btn`}</Button>
             </Block>
           </div>
           <Block className={'landing-about-container'}>
