@@ -39,7 +39,12 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
 
   return (
     <>
-      <Layout headerProps={{ mode: 'primary' }}>
+      <Layout headerProps={{ mode: 'white' }}>
+        <div className={'productCat-hero-container'}>
+          <Block className="center productCat-hero-tag">
+            <h1>{nameProductsType(id)}</h1>
+          </Block>
+        </div>
         <div>
           {!data && loading ? (
             <div>
@@ -60,11 +65,10 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
               className="product-category-container"
             >
               <Block first last>
-                <h3>{nameProductsType(id)}</h3>
-
                 <Yoga maxCol={2} className="product-category-yoga">
                   {data?.products?.sort(compare).map((product, key) => (
                     <Card key={key} className="product-category-card">
+                      <h4> {product?.eachCategory} </h4>
                       <h3>{product?.name} </h3>
                       <div>
                         <a href={`/products/detail/?id=${product!.id}`}>
