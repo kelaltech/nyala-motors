@@ -18,6 +18,8 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
           />
           <div className="showroom-card-content">
             <p>{showroom.description}</p>
+            <img src={`${showroom.image?.url}`} width={'100%'} />
+            {showroom.image?.url}
           </div>
         </Block>
       </Content>

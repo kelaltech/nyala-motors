@@ -96,4 +96,24 @@
       }
     }
   }
+
+  .shared-language-preference {
+    width: 100% !important;
+    padding: 0 64px;
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 64px;
+
+    max-width: $crop;
+    @media (max-width: $mobile * 1.4) {
+      padding: 0 32px;
+    }
+    .lang-box {
+      align-self: start;
+    }
+    // padding: 0 64px;
+  }
 }

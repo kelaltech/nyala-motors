@@ -9,6 +9,7 @@ import ProductCard from '../../components/product-card/product-card'
 import HeroSearch from '../../../../shared/components/hero-search/hero-search'
 import { graphql, useStaticQuery } from 'gatsby'
 import { ProductStaticQuery } from '../../../../../graphql-types'
+import useLang from '../../../../shared/hooks/lang/use-lang'
 
 type ProductsProps = {}
 
@@ -19,13 +20,14 @@ const Products: React.FC<ProductsProps> = () => {
   const { loading, error, data } = useProductsQuery({
     variables: { where: term ? { _q: term } : {} },
   })
+  const lang = useLang()
   return (
     <>
       <SEO title={'Products'} />
 
       <Layout headerProps={{ mode: 'white' }}>
         <HeroSearch
-          title={`Products`}
+          title={lang`products.title`}
           term={term}
           onTerm={setTerm}
           bg={heroBg?.childImageSharp?.fluid as any}

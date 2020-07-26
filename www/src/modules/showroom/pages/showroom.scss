@@ -1,7 +1,11 @@
+@import '../../../assets/styles/theme';
+
+$mobile-threshold: $mobile * 1.6;
+
 .showroom-360 {
   position: relative;
-  top: 0;
-  left: 0;
+  height: 80vh;
+  overflow: hidden;
 }
 
 .showroom-container {
@@ -12,6 +16,11 @@
       line-height: 28px;
       color: #bd0504;
       padding: 64px;
+    }
+    @media screen and(max-width: $mobile-threshold) {
+      h3 {
+        padding: 32px;
+      }
     }
   }
 }

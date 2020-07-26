@@ -15,12 +15,13 @@ const Showroom: React.FC<ShowroomProps> = () => {
       <SEO title="Feedback" />
 
       <LayoutDefault headerProps={{ mode: 'transparent' }}>
-        <iframe
-          src={'../../../../static/360/showroom.html'}
-          className="showroom-360"
-          width={'100%'}
-        />
-
+        <div>
+          <iframe
+            src={'../../../../static/360/showroom.html'}
+            className="showroom-360"
+            width={'100%'}
+          />
+        </div>
         <div className="showroom-container">
           {!data && loading ? (
             <div className="padding-very-big">
