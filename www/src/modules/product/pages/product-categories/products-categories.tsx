@@ -18,12 +18,25 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
     qs.parse(page?.location.search || '?', {
       ignoreQueryPrefix: true,
     }) || {}
-
   const id = query.id
   console.log(id)
   const { loading, error, data } = useProductCategoriesQuery({
     variables: { where: { _q: id } },
   })
+
+  const compare = (a: any, b: any) => {
+    const bandA = a.eachCategory.toUpperCase()
+    const bandB = b.eachCategory.toUpperCase()
+
+    let comparison = 0
+    if (bandA > bandB) {
+      comparison = 1
+    } else if (bandA < bandB) {
+      comparison = -1
+    }
+    return comparison
+  }
+
   return (
     <>
       <Layout headerProps={{ mode: 'primary' }}>
@@ -48,8 +61,9 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
             >
               <Block first last>
                 <h3>{nameProductsType(id)}</h3>
+
                 <Yoga maxCol={2} className="product-category-yoga">
-                  {data?.products?.map((product, key) => (
+                  {data?.products?.sort(compare).map((product, key) => (
                     <Card key={key} className="product-category-card">
                       <h3>{product?.name} </h3>
                       <div>

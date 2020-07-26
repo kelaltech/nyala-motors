@@ -62,6 +62,14 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "eachCategory": {
+      "type": "enumeration",
+      "enum": [
+        "CROSSOVER",
+        "PASSENGER",
+        "QUSETER"
+      ]
     }
   }
 }

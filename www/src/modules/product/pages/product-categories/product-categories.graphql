@@ -2,6 +2,7 @@ query ProductCategories($where: JSON) {
   products(where: $where) {
     id
     category
+    eachCategory
     name
     headerImg {
       url

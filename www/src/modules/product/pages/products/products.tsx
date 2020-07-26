@@ -59,17 +59,26 @@ const Products: React.FC<ProductsProps> = () => {
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    {data?.products
-                      .filter((p) => p?.category == 'NISSAN')
-                      .slice(0, 3)
-                      .map((product, key) => (
-                        <>
-                          <ProductCard product={product!} key={key} />
-                        </>
-                      ))}
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'PASSENGER'
+                      )}
+                    />
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'CROSSOVER'
+                      )}
+                    />
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'CROSSOVER'
+                      )}
+                    />
                   </Yoga>
                   <div className="center">
                     <Button
+                      // to={'https://nissanethiopia.com'}
+                      // target="_blank"
                       to={`/products/categories/?id=NISSAN`}
                       mode="primary-outline"
                     >
@@ -77,21 +86,24 @@ const Products: React.FC<ProductsProps> = () => {
                     </Button>
                   </div>
                 </Card>
+
                 <Card className="product-category-card">
-                  <h3>Nissan Vehicles</h3>
-                  <Yoga className="product-category-yoga" maxCol={3}>
-                    {data?.products
-                      .filter((p) => p?.category == 'NISSAN')
-                      .slice(0, 3)
-                      .map((product, key) => (
-                        <>
-                          <ProductCard product={product!} key={key} />
-                        </>
-                      ))}
+                  <h3>UD Trucks</h3>
+                  <Yoga className="product-category-yoga" maxCol={2}>
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'QUSETER'
+                      )}
+                    />
+                    <ProductCard
+                      product={data?.products.find(
+                        (p) => p?.eachCategory == 'QUSETER'
+                      )}
+                    />
                   </Yoga>
                   <div className="center">
                     <Button
-                      to={`/products/categories/?id=NISSAN`}
+                      to={`/products/categories/?id=UD_TRUCKS`}
                       mode="primary-outline"
                     >
                       Browse all Nissan vehicles
