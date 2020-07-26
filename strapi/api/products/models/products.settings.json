@@ -66,9 +66,12 @@
     "eachCategory": {
       "type": "enumeration",
       "enum": [
-        "CROSSOVER",
         "PASSENGER",
-        "QUSETER"
+        "CROSSOVER",
+        "SPORT_UTILITY",
+        "COMMERCIAL",
+        "CRONER",
+        "QUESTER"
       ]
     }
   }

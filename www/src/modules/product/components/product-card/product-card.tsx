@@ -5,10 +5,7 @@ import { Products } from '../../../../app/graphql'
 import Anchor from '../../../../shared/components/anchor/anchor'
 
 type ProductCardProps = {
-  product: Pick<
-    Products,
-    'id' | 'name' | 'motto' | 'headerImg' | 'eachCategory'
-  >
+  product: Pick<Products, 'id' | 'eachCategory' | 'headerImg' | 'motto'>
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
