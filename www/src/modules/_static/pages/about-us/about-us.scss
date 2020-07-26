@@ -220,6 +220,12 @@
   justify-content: space-between;
   padding-top: 16px;
 
+  ul {
+    li {
+      margin: 8px 0 !important;
+    }
+  }
+
   @media screen and (max-width: 920px) {
     flex-direction: column;
 
@@ -238,7 +244,7 @@
     background-size: cover;
     width: 100%;
     height: 300px;
-    background-color: #111;
+    background-color: $primary;
   }
 }
 
@@ -255,7 +261,7 @@
     font-style: normal;
     font-weight: normal;
     line-height: 25px;
-    color: $bg;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 16px;
   }
 }
@@ -289,17 +295,34 @@
 
   .board-message {
     font-size: 16px;
+    color: rgba(1, 1, 1, 0.6);
   }
 
+  hr {
+    width: 100%;
+    border: 0;
+    background-image: linear-gradient(
+      to right,
+      rgba(197, 22, 50, 0),
+      rgba(197, 22, 50, 0.75),
+      rgba(197, 22, 50, 0)
+    );
+  }
   .board-info {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 
-    // background-color: $primary;
-
-    border-top: 2px solid $primary;
-    padding-top: 16px;
+    .name-pos {
+      h3 {
+        font-size: 16px;
+        margin: 0;
+        &:nth-child(2) {
+          font-weight: lighter;
+          // color: rgba(1, 1, 1, 0.6);
+        }
+      }
+    }
 
     .board-img {
       background-position: center;
@@ -308,6 +331,7 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
+      background-color: $primary;
     }
   }
 }

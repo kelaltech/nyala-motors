@@ -112,7 +112,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                           key={i}
                           className={'slider-imgs'}
                           style={{
-                            backgroundImage: `url(${strapiApiBase}${img?.url})`,
+                            backgroundImage: `url(${img?.url})`,
                           }}
                         />
                       ))}
@@ -123,18 +123,18 @@ const AboutUs: React.FC<AboutUs> = () => {
 
               <Block first last />
               <Yoga maxCol={2}>
-                <Content className={'values-card'}>
+                <Content id={'values'} className={'values-card'}>
                   {' '}
-                  <Block id={'values'} first last className={'overview-desc'}>
+                  <Block first last className={'overview-desc'}>
                     <h2>Values</h2>
-                    <Markdown className={'mark-down-values fg-whitish'}>
+                    <Markdown className={'mark-down-values'}>
                       {data.about.values}
                     </Markdown>
                   </Block>
                 </Content>
 
-                <Content className={'mission-card'}>
-                  <Block id={'mission'} first last className={'overview-desc'}>
+                <Content id={'mission'} className={'mission-card'}>
+                  <Block first last className={'overview-desc'}>
                     <div className={'right full-width'}>
                       <h2 className={'right'}>Mission Statement</h2>
                     </div>
@@ -167,7 +167,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                             key={i}
                             className={'award-imgs'}
                             style={{
-                              backgroundImage: `url(${strapiApiBase}${img?.url})`,
+                              backgroundImage: `url(${img?.url})`,
                             }}
                           />
                         ))}
@@ -186,8 +186,9 @@ const AboutUs: React.FC<AboutUs> = () => {
                       <div className={'board-message'}>
                         <p>{board?.message}</p>
                       </div>
+                      <hr />
                       <div className={'board-info'}>
-                        <div>
+                        <div className={'name-pos'}>
                           <h3>{board?.name}</h3>
                           <h3>{board?.position}</h3>
                         </div>
