@@ -8,8 +8,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { HomeStaticQuery } from '../../../../../graphql-types'
 import GatsbyImage from 'gatsby-image'
 import Anchor from '../../../../shared/components/anchor/anchor'
-import { FaCar, FaRegNewspaper } from 'react-icons/fa'
-import { GrMapLocation } from 'react-icons/gr'
+import { FaCar, FaRegNewspaper, FaRegMap, FaCogs } from 'react-icons/fa'
 import useLang from '../../../../shared/hooks/lang/use-lang'
 
 type HomeProps = {}
@@ -37,13 +36,22 @@ const Home: React.FC<HomeProps> = () => {
             <Block className={'landing-hero-content'}>
               <h1>{lang`home.hero.title`}</h1>
               <p>{lang`home.hero.desciption`}</p>
-              <Button
-                to={'/about'}
-                className={'get-started-btn'}
-              >{lang`home.hero.btn`}</Button>
+              <div>
+                <Button
+                  to={'#get-started'}
+                  className={'get-started-btn'}
+                  mode={'primary'}
+                >{lang`home.hero.btn.get-started`}</Button>
+
+                <Button
+                  to={'/about'}
+                  className={'learn-more-btn margin-left-big'}
+                  mode={'primary-outline'}
+                >{lang`home.hero.btn.about`}</Button>
+              </div>
             </Block>
           </div>
-          <Block className={'landing-about-container'}>
+          {/* <Block className={'landing-about-container'}>
             <Content transparent size={'L'} className={'center'}>
               <Block first />
               <div>
@@ -58,39 +66,12 @@ const Home: React.FC<HomeProps> = () => {
               </div>
               <Block first />
             </Content>
-          </Block>
+          </Block> */}
 
           <Block className={'landing-to-link-container'}>
-            <Content transparent size={'4XL'}>
+            <Content id={'get-started'} transparent size={'4XL'}>
               <Block first last className={'center'}>
                 <h1>{lang`home.link.title`} </h1>
-              </Block>
-
-              <Block className={'landing-products-list'}>
-                <Content>
-                  <Block className={'landing-products-list-box'}>
-                    <GatsbyImage
-                      fluid={nissanLogo?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-1"
-                    />
-                    <GatsbyImage
-                      fluid={udtrucks?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-2"
-                    />
-                    <GatsbyImage
-                      fluid={elicher?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-3"
-                    />
-                    <GatsbyImage
-                      fluid={Unicarriers?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-4"
-                    />
-                    <GatsbyImage
-                      fluid={macpower?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-5"
-                    />
-                  </Block>
-                </Content>
               </Block>
 
               <Block className={'landing-link-yoga'}>
@@ -120,15 +101,23 @@ const Home: React.FC<HomeProps> = () => {
                 >
                   <div className={'landing-img-content'}>
                     <span className={'icon-box'}>
-                      <FaCar />
+                      <FaCogs />
                     </span>
                     <span>
                       <span className={'bold'}>
                         {lang`home.link.aftersale1`}{' '}
                       </span>
-                      <span
-                        className={'light'}
-                      >{lang`home.link.aftersale2`}</span>
+                      <Anchor to={'/aftersales/services'}>
+                        <span
+                          className={'light fg-whitish'}
+                        >{lang`home.link.aftersale.service`}</span>
+                      </Anchor>
+                      <span className={'light'}>{` & `}</span>
+                      <Anchor to={'/aftersales/parts'}>
+                        <span
+                          className={'light fg-whitish'}
+                        >{lang`home.link.aftersale.parts`}</span>
+                      </Anchor>
                     </span>
                   </div>
                   <GatsbyImage
@@ -136,6 +125,33 @@ const Home: React.FC<HomeProps> = () => {
                     className="landing-link-img"
                   />
                 </Anchor>
+              </Block>
+
+              <Block className={'landing-products-list'}>
+                <Content>
+                  <Block className={'landing-products-list-box'}>
+                    <GatsbyImage
+                      fluid={nissanLogo?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-1"
+                    />
+                    <GatsbyImage
+                      fluid={udtrucks?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-2"
+                    />
+                    <GatsbyImage
+                      fluid={elicher?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-3"
+                    />
+                    <GatsbyImage
+                      fluid={Unicarriers?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-4"
+                    />
+                    <GatsbyImage
+                      fluid={macpower?.childImageSharp?.fluid as any}
+                      className="produc-list produc-list-img-5"
+                    />
+                  </Block>
+                </Content>
               </Block>
             </Content>
           </Block>
@@ -171,7 +187,7 @@ const Home: React.FC<HomeProps> = () => {
               </div>
               <div className={'landing-bottom-item'}>
                 <span className={'bottom-icons'}>
-                  <GrMapLocation color={'#c51632'} />
+                  <FaRegMap />
                 </span>
                 <Anchor to={'/contact'} className={'bottom-title'}>
                   {lang`home.bottom.link2`}
@@ -189,7 +205,7 @@ export default Home
 
 const query = graphql`
   query HomeStatic {
-    nissanLogo: file(relativePath: { eq: "home/nissan-logo.png" }) {
+    nissanLogo: file(relativePath: { eq: "home/nissan-logo.webp" }) {
       childImageSharp {
         fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp

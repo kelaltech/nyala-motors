@@ -47,6 +47,30 @@ const Nav: React.FC<NavProps> = () => {
           onClick={aftersaleOpenMenu}
         >
           <span>{lang`nav.item.aftersale`}</span>
+          {!isAftersaleMenuOpen ? null : (
+            <div className="aftersale-dropdown" ref={aftersaleRef}>
+              <Anchor
+                to="/aftersales/services"
+                className={`${
+                  '/aftersales/services' !== activePathname
+                    ? ''
+                    : 'shared-nav-link-active'
+                }`}
+              >
+                <span>{lang`nav.item.services`}</span>
+              </Anchor>
+              <Anchor
+                to="/aftersales/parts"
+                className={`${
+                  '/aftersales/parts' !== activePathname
+                    ? ''
+                    : 'shared-nav-link-active'
+                }`}
+              >
+                <span>{lang`nav.item.parts`}</span>
+              </Anchor>
+            </div>
+          )}
         </Anchor>
 
         <Anchor
@@ -88,31 +112,6 @@ const Nav: React.FC<NavProps> = () => {
         </Anchor>
       </nav>
 
-      {isAftersaleMenuOpen ? null : (
-        <div className="aftersale-dropdown" ref={aftersaleRef}>
-          <Anchor
-            to="/aftersales/services"
-            className={`${
-              '/aftersales/services' !== activePathname
-                ? ''
-                : 'shared-nav-link-active'
-            }`}
-          >
-            <span>{lang`nav.item.services`}</span>
-          </Anchor>
-          <Anchor
-            to="/aftersales/parts"
-            className={`${
-              '/aftersales/parts' !== activePathname
-                ? ''
-                : 'shared-nav-link-active'
-            }`}
-          >
-            <span>{lang`nav.item.parts`}</span>
-          </Anchor>
-        </div>
-      )}
-
       {!isMenuOpen ? null : (
         <div className="shared-header-nav-menu" ref={menuRef}>
           <Anchor
@@ -124,13 +123,27 @@ const Nav: React.FC<NavProps> = () => {
             <span>{lang`nav.item.products`}</span>
           </Anchor>
           <Anchor
-            to="/aftersales"
+            to="/aftersales/services"
             className={`shared-header-nav-on-mobile ${
-              '/aftersales' !== activePathname ? '' : 'shared-nav-link-active'
+              '/aftersales/services' !== activePathname
+                ? ''
+                : 'shared-nav-link-active'
             }`}
           >
-            <span>{lang`nav.item.aftersale`}</span>
+            <span>{lang`nav.item.services`}</span>
           </Anchor>
+
+          <Anchor
+            to="/aftersales/parts"
+            className={`shared-header-nav-on-mobile ${
+              '/aftersales/parts' !== activePathname
+                ? ''
+                : 'shared-nav-link-active'
+            }`}
+          >
+            <span>{lang`nav.item.parts`}</span>
+          </Anchor>
+
           <Anchor
             to="/news"
             className={`shared-header-nav-on-mobile ${

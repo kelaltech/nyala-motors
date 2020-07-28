@@ -6,7 +6,7 @@
   "nav.item.products": "ምርቶች ",
   "nav.item.aftersale": "ከሽያጭ በሁላ",
   "nav.item.services": "አገልግሎቶች",
-  "nav.item.parts": "Geniuen Part",
+  "nav.item.parts": "Genuine Part",
   "nav.item.showroom": "ማሳያ ክፍል ",
   "nav.item.news": "ዜናዎች ",
   "nav.item.contact": "አግኙን",
@@ -20,7 +20,8 @@
 
   "home.hero.title": "የከፍተኛ ብራንድ አውቶሞቲቭ ምርቶች አስመጪ እና አከፋፋይ",
   "home.hero.desciption": "Nyala Motors S.C is the exclusive importer and distributor of Nissan vehicles, UD Trucks, Eicher trucks and buses, Unicarrier forklifts and Macpower batteries in Ethiopia. We also provide aftersales servicing and genuine part sales.",
-  "home.hero.btn": "ይጀምሩ",
+  "home.hero.btn.get-started": "ይጀምሩ",
+  "home.hero.btn.about": "የበለጠ ለመረዳት",
 
   "home.about.title": "ኒያላ ሞተርስ",
   "home.about.description": "የኒያላ ሞተርስ አክሲዮን ማህበር በገንዘብ 50,000 የተመዘገበ ካፒታል ባላቸው አምስት መስራች አባላት መሠረት በኢትዮጵያ ንግድ ሕግ መሠረት በሚያዝያ ወር 1973 ተቋቋመ ፡፡ ኩባንያው ሲዋቀር Datsun አውቶሞቢሎች ሽያጭ ላይ ሥራውን የጀመረ ሲሆን ዛሬ የኒሳን ሞተርስ  ተሽከርካሪዎች ፣ ለ UD የጭነት መኪናዎች ፣ ለ VE የንግድ ተሽከርካሪዎች ፣ ለUnicarrier forklifts እና Macpower ባትሪ ብቸኛ አከፋፋይ ሆኗል ፡፡",
@@ -30,7 +31,8 @@
   "home.link.product1": "ምርቶችን",
   "home.link.product2": "ለመግዛት",
   "home.link.aftersale1": "ከሽያጭ በኋላ",
-  "home.link.aftersale2": "አገልግሎቶች ወይም ክፍሎች",
+  "home.link.aftersale.service": "አገልግሎቶች",
+  "home.link.aftersale.parts": "ክፍሎች",
 
   "home.quote": "Step up performace, convenience, and style the easy way with Genuine Nissan accessories.",
 

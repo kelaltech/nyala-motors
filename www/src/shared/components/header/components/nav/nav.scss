@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/theme';
 
-$mobile-threshold: $mobile * 1.8;
+$mobile-threshold: $mobile * 2.2;
 
 .shared-header-nav {
   display: flex;
@@ -98,21 +98,22 @@ $mobile-threshold: $mobile * 1.8;
 }
 
 .aftersale-dropdown {
+  position: absolute;
   z-index: 99;
-  display: flex;
-  flex-direction: column;
-  margin-left: 200px;
-  padding: 32px 32px 24px;
-  width: calc(100% - 2 * 62px);
-  max-width: 240px;
+  top: 80px;
+  width: 200px;
   height: initial;
+  transition-duration: 0 !important;
   border-radius: $radius;
   background-color: white;
   box-shadow: $shade-M;
+  padding: 12px 0 !important;
 
   a {
-    margin: 0 0 8px;
-    width: 100% !important;
-    height: 40px !important;
+    text-align: left !important;
+    padding: 12px 32px;
+    margin: 0 !important;
+    display: block;
+    color: $primary !important;
   }
 }

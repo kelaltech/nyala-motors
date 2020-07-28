@@ -76,13 +76,10 @@
       color: rgba(255, 255, 255, 0.74);
     }
 
-    .get-started-btn {
-      font-size: 18px;
-      padding: 15px 25px !important;
-      border-radius: $radius;
+    .learn-more-btn {
       color: #fafafa !important;
-      background-color: $primary;
-      opacity: 0.84;
+      background-color: transparent;
+      border-color: #fafafa !important;
     }
   }
 }
@@ -101,9 +98,11 @@
 
   .produc-list {
     align-self: center;
+    margin-bottom: 8px;
   }
   .produc-list-img-1 {
-    width: 77.35px;
+    // width: 77.35px;
+    width: 120px;
     height: auto;
   }
   .produc-list-img-2 {
@@ -267,7 +266,7 @@
 .landing-bottom-box {
   min-height: 340.52px;
   width: 100%;
-  margin-top: 319px;
+  margin-top: 320px;
   position: relative;
 
   @media screen and (max-width: 650px) {
