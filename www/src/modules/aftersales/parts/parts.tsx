@@ -1,7 +1,7 @@
 import React from 'react'
 import SEO from '../../../shared/components/seo/seo'
 import LayoutDefault from '../../../shared/components/layout/layout'
-import { Content } from 'gerami'
+import { Content, Block } from 'gerami'
 // import { Loading} from 'gerami'
 
 type PartsProps = {}
@@ -11,8 +11,13 @@ const Parts: React.FC<PartsProps> = () => {
     <>
       <SEO title="Feedback" />
 
-      <LayoutDefault>
-        <Content>
+      <LayoutDefault
+        headerProps={{
+          mode: 'primary',
+        }}
+      >
+        <Block />
+        <Content transparent size={'XL'}>
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSeR38xESMpy6VXZMJ9NaHHWt4SAsApCD23SD7PRV_N3JL6TWA/viewform?embedded=true"
             width={800}

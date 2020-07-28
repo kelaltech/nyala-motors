@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/theme';
 
-$mobile-threshold: $mobile * 1.8;
+$mobile-threshold: $mobile * 2.2;
 
 .shared-header-nav {
   display: flex;
@@ -97,21 +97,23 @@ $mobile-threshold: $mobile * 1.8;
   }
 }
 
-.aftersales-box {
-  position: relative;
+.aftersale-dropdown {
+  position: absolute;
+  z-index: 99;
+  top: 80px;
+  width: 200px;
+  height: initial;
+  transition-duration: 0 !important;
+  border-radius: $radius;
+  background-color: white;
+  box-shadow: $shade-M;
+  padding: 12px 0 !important;
 
-  &:hover {
-    .aftersales-nav-items {
-      display: flex;
-    }
-  }
-  .aftersales-nav-items {
-    position: absolute;
-    left: 0;
-    bottom: -100px;
-    display: none;
-    background-color: white;
-    width: 150px;
-    height: 300px;
+  a {
+    text-align: left !important;
+    padding: 12px 32px;
+    margin: 0 !important;
+    display: block;
+    color: $primary !important;
   }
 }
