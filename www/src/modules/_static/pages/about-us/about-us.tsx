@@ -179,31 +179,32 @@ const AboutUs: React.FC<AboutUs> = () => {
 
               <Block first last />
 
-              <Block>
-                <Yoga maxCol={2}>
-                  {data?.about?.boardMessage?.map((board, i) => (
-                    <Content key={i} className={'board-message-container'}>
-                      <div className={'board-message'}>
-                        <p>{board?.message}</p>
-                      </div>
-                      <hr />
-                      <div className={'board-info'}>
-                        <div className={'name-pos'}>
-                          <h3>{board?.name}</h3>
-                          <h3>{board?.position}</h3>
+              {data?.about?.boardMessage?.length === 0 ? null : (
+                <Block>
+                  <Yoga maxCol={2}>
+                    {data?.about?.boardMessage?.map((board, i) => (
+                      <Content key={i} className={'board-message-container'}>
+                        <div className={'board-message'}>
+                          <p>{board?.message}</p>
                         </div>
-                        <div
-                          className={'board-img'}
-                          style={{
-                            backgroundImage: `url(${board?.img?.url})`,
-                          }}
-                        />
-                      </div>
-                    </Content>
-                  ))}
-                </Yoga>
-              </Block>
-
+                        <hr />
+                        <div className={'board-info'}>
+                          <div className={'name-pos'}>
+                            <h3>{board?.name}</h3>
+                            <h3>{board?.position}</h3>
+                          </div>
+                          <div
+                            className={'board-img'}
+                            style={{
+                              backgroundImage: `url(${board?.img?.url})`,
+                            }}
+                          />
+                        </div>
+                      </Content>
+                    ))}
+                  </Yoga>
+                </Block>
+              )}
               <Block first last />
               <Block first last />
             </Content>
