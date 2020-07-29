@@ -72,13 +72,15 @@ const Showroom: React.FC<ShowroomProps> = () => {
               </Block>
 
               <Block>
-                <Yoga maxCol={2}>
-                  {data.showrooms.map((showroom, key) => (
-                    <div key={key}>
-                      <ShowroomCard showroom={showroom} />
-                    </div>
-                  ))}
-                </Yoga>
+                <Content transparent size={'XXL'}>
+                  <Yoga maxCol={2}>
+                    {data.showrooms.map((showroom, key) => (
+                      <div key={key}>
+                        <ShowroomCard showroom={showroom} />
+                      </div>
+                    ))}
+                  </Yoga>
+                </Content>
               </Block>
             </>
           )}

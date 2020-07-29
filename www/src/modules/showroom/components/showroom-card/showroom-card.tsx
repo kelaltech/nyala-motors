@@ -44,27 +44,20 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
           <hr />
           <p
             style={{
-              height: `${
-                isExpanded || showroom?.description?.length <= 70
-                  ? 'auto'
-                  : '72px'
-              }`,
+              height: `${isExpanded ? 'auto' : '72px'}`,
             }}
           >
             {showroom.description}
           </p>
-          <div
-            className="fg-blackish center right font-L expandable-icon"
-            onClick={() => setIsexapanded(!isExpanded)}
-          >
+          <div className="fg-blackish center right font-L expandable-icon">
             {showroom?.description?.length >= 70 ? (
-              <>{isExpanded ? <MdExpandLess /> : <MdExpandMore />}</>
+              <span onClick={() => setIsexapanded(!isExpanded)}>
+                {isExpanded ? <MdExpandLess /> : <MdExpandMore />}
+              </span>
             ) : (
               <MdExpandLess style={{ visibility: 'hidden' }} />
             )}
           </div>
-          {/* <img src={`${showroom.image?.url}`} width={'100%'} />
-            {showroom.image?.url} */}
         </Block>
       </Content>
     </>
