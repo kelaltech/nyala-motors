@@ -7,5 +7,16 @@ query About {
     awardImg {
       url
     }
+    slideImg {
+      url
+    }
+    boardMessage {
+      name
+      position
+      img {
+        url
+      }
+      message
+    }
   }
 }

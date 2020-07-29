@@ -1,6 +1,7 @@
 import React from 'react'
 import { Showroom } from '../../../../app/graphql'
 import { Content, Block } from 'gerami'
+
 import './showroom-card.scss'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
@@ -46,6 +47,8 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
             </Carousel>
             <hr />
             <p>{showroom.description}</p>
+            <img src={`${showroom.image?.url}`} width={'100%'} />
+            {showroom.image?.url}
           </div>
         </Block>
       </Content>

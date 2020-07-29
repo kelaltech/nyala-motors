@@ -6,7 +6,7 @@
   "nav.item.products": "Products ",
   "nav.item.aftersale": "Aftersales",
   "nav.item.services": "Services",
-  "nav.item.parts": "Geniuen Part",
+  "nav.item.parts": "Genuine Part",
   "nav.item.showroom": "Showroom ",
   "nav.item.news": "News ",
   "nav.item.contact": "Contact us",
@@ -20,7 +20,8 @@
 
   "home.hero.title": "Exclusive Importer and Distributor of Top Automotive Brands",
   "home.hero.desciption": "Nyala Motors S.C is the exclusive importer and distributor of Nissan vehicles, UD Trucks, Eicher trucks and buses, Unicarrier forklifts and Macpower batteries in Ethiopia. We also provide aftersales servicing and genuine part sales.",
-  "home.hero.btn": "Get Started",
+  "home.hero.btn.get-started": "Get Started",
+  "home.hero.btn.about": "Learn More",
 
   "home.about.title": "Nyala Motors",
   "home.about.description": "Nyala Motors Share Company was established in April 1973 in line with the Commercial Code of Ethiopia by five founding members with a registered capital of birr 50,000. When the company was setup it began its operation with the sales of Datsun automobiles and today it has become exclusive distributor for Nissan motors vehicles, UD trucks, VE commercial vehicles, Unicarrier forklifts and Macpower battery.",
@@ -30,7 +31,8 @@
   "home.link.product1": "PRODUCTS",
   "home.link.product2": "TO BUY",
   "home.link.aftersale1": "AFTERSALES",
-  "home.link.aftersale2": "SERVICE OR PARTS",
+  "home.link.aftersale.service": "SERVICES  ",
+  "home.link.aftersale.parts": "PARTS",
 
   "home.quote": "Step up performace, convenience, and style the easy way with Genuine Nissan accessories.",
 
