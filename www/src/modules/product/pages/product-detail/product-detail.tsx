@@ -1,19 +1,32 @@
 import React from 'react'
 import './product-detail.scss'
+import 'aframe'
+import 'aframe-particle-system-component'
+// import { Scene, Entity } from 'aframe-react';
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
 import { useProductDetailQuery } from '../../../../app/graphql'
 import { Loading, Warning, Content, Block, Yoga } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
-import { strapiApiBase } from '../../../../../constants'
 import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
 import Button from '../../../../shared/components/button/button'
+import Carousel, { consts } from 'react-elastic-carousel'
+import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 
 type ProductDetailProps = {}
 
 const ProductDetail: React.FC<ProductDetailProps> = () => {
+  const myArrow = ({ type, onClick }: any) => {
+    const pointer =
+      type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
+    return (
+      <div style={{ alignSelf: 'center' }} onClick={onClick}>
+        {pointer}
+      </div>
+    )
+  }
   const page = usePage()
   const query =
     qs.parse(page?.location.search || '?', {
@@ -44,7 +57,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
             <div className="product-detail-container">
               <div
                 style={{
-                  backgroundImage: `url(${strapiApiBase}${data?.product?.headerImg?.url})`,
+                  backgroundImage: `url(${data?.product?.headerImg?.url})`,
                 }}
                 className="product-detail-hero"
               >
@@ -78,14 +91,15 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
               <Content size="4XL" className="product-detail-description">
                 <Block first last />
-                <Block first last />
+                <Block first />
                 <Block id={'overview'} className="product-detail-overview">
-                  <h2>Overview</h2>
-                  <Markdown className="product-detail-overview-description">
-                    {data?.product?.description}
-                  </Markdown>
+                  <div className="product-detail-overview-description">
+                    <h2>Overview</h2>
+                    <hr />
+                    <Markdown>{data?.product?.description}</Markdown>
+                  </div>
                 </Block>
-
+                <Block first />
                 <Block
                   id={'specification'}
                   first
@@ -94,18 +108,31 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 >
                   {data?.product?.specification?.map((spec, key) => (
                     <div key={key}>
-                      <h2>{spec?.title}</h2>
-                      <div className="product-detail-overview-description">
-                        {spec?.description}
-                      </div>
                       <div className="product-detail-overview-img">
-                        <Yoga maxCol={3}>
-                          {spec?.specImages?.map((img, key) => (
-                            <img
-                              src={`${strapiApiBase}${img?.url}`}
-                              key={key}
-                            />
-                          ))}
+                        <Yoga maxCol={2}>
+                          <div className="product-detail-overview-description">
+                            <h2>{spec?.title}</h2>
+                            <hr />
+                            <Markdown>{spec?.description}</Markdown>
+                          </div>
+                          <div>
+                            <Carousel
+                              enableAutoPlay={true}
+                              pagination={false}
+                              renderArrow={myArrow}
+                              itemsToShow={1}
+                            >
+                              {spec?.specImages?.map((img, key) => (
+                                <div
+                                  key={key}
+                                  className={'spec-imgs'}
+                                  style={{
+                                    backgroundImage: `url(${img?.url})`,
+                                  }}
+                                />
+                              ))}
+                            </Carousel>
+                          </div>
                         </Yoga>
                       </div>
                     </div>
@@ -114,13 +141,20 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
                 <Block first last className="center">
                   <Button
-                    to={`${strapiApiBase}${data?.product?.brochure?.url}`}
+                    to={`${data?.product?.brochure?.url}`}
                     download
                     mode="primary-outline"
                   >
                     Download Brochure
                   </Button>
                 </Block>
+                {/* <Scene>
+                  <Entity
+                  primitive='a-sky' 
+                  src="../../../../../static/360/showroom.jpg"
+                  // rotation="0 -130 0"
+                  />
+                </Scene> */}
               </Content>
             </div>
           )}

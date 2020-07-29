@@ -1,12 +1,12 @@
 import React from 'react'
 import Markdown from 'markdown-to-jsx'
 import { Content, Block, Yoga, Loading, Warning, Card } from 'gerami'
-
 import './branches.scss'
 import { useBranchesQuery } from '../../../../app/graphql'
 import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { nameDealerType } from '../../../../shared/components/nameDealerType'
+import EmailContact from '../../components/contact/contact'
 
 type Branches = {}
 
@@ -80,6 +80,24 @@ const Branches: React.FC<Branches> = () => {
               ))}
             </>
           )}
+        </Content>
+        <Content transparent className="email-block">
+          <Yoga maxCol={2}>
+            <div className="email-block-left">
+              <p>
+                Do you have a question about our products or services, or have
+                you encountered a problem while using them?
+              </p>
+              <p>
+                Feel free to reach us by the form on the right or using our
+                feedback form. We will respond to your emailas soon as possible.
+              </p>
+            </div>
+
+            <div className="center email-block-right">
+              <EmailContact />
+            </div>
+          </Yoga>
         </Content>
       </LayoutDefault>
     </>

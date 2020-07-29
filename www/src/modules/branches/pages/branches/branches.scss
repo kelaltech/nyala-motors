@@ -42,3 +42,45 @@
     }
   }
 }
+
+.email-block {
+  background-color: white;
+  padding: 128px;
+  .email-block-left {
+    padding: 32px;
+    p:nth-child(1) {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 21px;
+      line-height: 32px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      color: rgba(0, 0, 0, 0.8);
+    }
+    p:nth-child(2) {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 24px;
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      color: #000000;
+
+      opacity: 0.7;
+
+      flex: none;
+      order: 1;
+      align-self: center;
+      margin: 0px 64px;
+    }
+    .email-block-right {
+      padding: 32px;
+    }
+  }
+}

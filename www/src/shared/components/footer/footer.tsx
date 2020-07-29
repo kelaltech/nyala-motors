@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = () => {
         <div className="shared-footer-links">
           <Anchor to="/vacancies">{lang`footer.item.vacancies`}</Anchor>
           <Anchor to="/bid">{lang`footer.item.bid`}</Anchor>
-          <Anchor to="/reports">{lang`footer.item.reports`}</Anchor>
+          {/* <Anchor to="/reports">{lang`footer.item.reports`}</Anchor> */}
           <Anchor to="/registration">{lang`footer.item.customer-reg`}</Anchor>
           <Anchor to="/faq">{lang`footer.item.faq`}</Anchor>
           <Anchor to="/feedback">{lang`footer.item.feedback`}</Anchor>

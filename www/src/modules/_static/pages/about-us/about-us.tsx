@@ -8,7 +8,6 @@ import Markdown from 'markdown-to-jsx'
 import { useAboutQuery } from '../../../../app/graphql'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
-import { strapiApiBase } from '../../../../../constants'
 type AboutUs = {}
 
 const AboutUs: React.FC<AboutUs> = () => {
