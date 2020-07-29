@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_board_message_board_messages",
+  "info": {
+    "name": "Board-Message",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}
