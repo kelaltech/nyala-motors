@@ -8,6 +8,7 @@ import { Loading, Warning, Yoga, Content, Block, Card } from 'gerami'
 import Layout from '../../../../shared/components/layout/layout'
 import Markdown from 'markdown-to-jsx'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
+import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Button from '../../../../shared/components/button/button'
 
 type ProductCategoriesProps = {}
@@ -24,18 +25,14 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
     variables: { where: { _q: id } },
   })
 
-  const compare = (a: any, b: any) => {
-    const bandA = a.eachCategory.toUpperCase()
-    const bandB = b.eachCategory.toUpperCase()
-
-    let comparison = 0
-    if (bandA > bandB) {
-      comparison = 1
-    } else if (bandA < bandB) {
-      comparison = -1
-    }
-    return comparison
-  }
+  const catagorize = [
+    'PASSENGER',
+    'CROSSOVER',
+    'SPORT_UTILITY',
+    'COMMERCIAL',
+    'CRONER',
+    'QUESTER',
+  ]
 
   return (
     <>
@@ -65,33 +62,56 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
               className="product-category-container"
             >
               <Block first last>
-                <Yoga maxCol={2} className="product-category-yoga">
-                  {data?.products?.sort(compare).map((product, key) => (
-                    <Card key={key} className="product-category-card">
-                      <h4> {product?.eachCategory} </h4>
-                      <h3>{product?.name} </h3>
-                      <div>
-                        <a href={`/products/detail/?id=${product!.id}`}>
-                          <img
-                            src={`${product?.headerImg?.url}`}
-                            width={'100%'}
-                          />
-                        </a>
-                      </div>
-                      <Markdown className="product-category-markdown">
-                        {product?.description}
-                      </Markdown>
-                      <div className="center">
-                        <Button
-                          to={`/products/detail/?id=${product!.id}`}
-                          mode="lite"
-                        >
-                          More detail
-                        </Button>
-                      </div>
-                    </Card>
-                  ))}
-                </Yoga>
+                {catagorize.map((x) => (
+                  <>
+                    {data?.products?.find((p) => p?.eachCategory === x) ? (
+                      <>
+                        <div
+                          style={{
+                            backgroundColor: '#c51632',
+                            height: '7px',
+                            width: '100px',
+                          }}
+                        />
+                        <h4 className={'product-category-title'}>
+                          {nameEachCat(x)}
+                        </h4>
+                        <hr />
+                        <Yoga maxCol={2} className="product-category-yoga">
+                          {data?.products
+                            ?.filter((p) => p?.eachCategory === x)
+                            .map((product, key) => (
+                              <Card key={key} className="product-category-card">
+                                <h3>{product?.name} </h3>
+                                <hr />
+                                <div>
+                                  <a
+                                    href={`/products/detail/?id=${product!.id}`}
+                                  >
+                                    <img
+                                      src={`${product?.headerImg?.url}`}
+                                      width={'100%'}
+                                    />
+                                  </a>
+                                </div>
+                                <Markdown className="product-category-markdown">
+                                  {product?.description}
+                                </Markdown>
+                                <div className="center">
+                                  <Button
+                                    to={`/products/detail/?id=${product!.id}`}
+                                    mode="lite"
+                                  >
+                                    More detail
+                                  </Button>
+                                </div>
+                              </Card>
+                            ))}
+                        </Yoga>
+                      </>
+                    ) : null}
+                  </>
+                ))}
               </Block>
             </Content>
           )}

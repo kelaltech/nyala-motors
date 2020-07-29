@@ -42,11 +42,15 @@ $mobile-threshold: $mobile * 1.6;
     }
   }
 }
-
+.product-category-title {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 32px;
+  padding-top: 16px;
+}
 .product-category-container {
   h3 {
     color: #c51632;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
   }
   .product-category-yoga {
@@ -55,9 +59,6 @@ $mobile-threshold: $mobile * 1.6;
       padding: 8px;
     }
     .product-category-card {
-      h4 {
-        color: rgba(197, 22, 50, 0.5);
-      }
       h3 {
         font-size: 21px;
         color: black;

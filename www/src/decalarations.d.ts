@@ -6,3 +6,6 @@
 declare module '*.svg'
 declare module 'react-elastic-carousel'
 declare module '@loadable/component'
+declare module 'aframe-react'
+declare module 'aframe'
+declare module 'aframe-particle-system-component'

@@ -10,7 +10,7 @@
   },
   "attributes": {
     "image": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -21,7 +21,11 @@
       "required": false
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "maxLength": 200
+    },
+    "date": {
+      "type": "date"
     }
   }
 }

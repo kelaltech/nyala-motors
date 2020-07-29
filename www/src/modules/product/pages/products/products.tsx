@@ -93,12 +93,12 @@ const Products: React.FC<ProductsProps> = () => {
                   <Yoga className="product-category-yoga" maxCol={2}>
                     <ProductCard
                       product={data?.products.find(
-                        (p) => p?.eachCategory == 'QUSETER'
+                        (p) => p?.eachCategory == 'QUESTER'
                       )}
                     />
                     <ProductCard
                       product={data?.products.find(
-                        (p) => p?.eachCategory == 'QUSETER'
+                        (p) => p?.eachCategory == 'QUESTER'
                       )}
                     />
                   </Yoga>

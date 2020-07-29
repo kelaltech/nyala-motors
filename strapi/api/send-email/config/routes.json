@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/sendemail",
+      "handler": "send-email.index"
+    }
+  ]
+}

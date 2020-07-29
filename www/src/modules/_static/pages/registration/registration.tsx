@@ -15,7 +15,7 @@ const Registration: React.FC<RegistrationProps> = () => {
       <Layout headerProps={{ mode: 'primary' }}>
         <Block className="center feedback-container">
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScGr8rLqD-tntjntVT5TupqORR4wcCZ9DEmAXNqr_ptZD9yaw/viewform?embedded=true"
+            src="http://eepurl.com/g_krOz"
             frameBorder={0}
             scrolling={'no'}
             className="feedback-form"
