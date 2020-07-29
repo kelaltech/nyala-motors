@@ -1,29 +1,35 @@
 @import '../../../../assets/styles/theme';
 
 .contact-form-container {
-  padding: ($space * 2);
+  background-color: $bg;
 
-  .gerami-input,
-  .gerami-textarea {
-    color: $bg;
+  border-radius: $space;
 
-    &:active,
+  .gerami-input {
+    &:hover {
+      border-bottom-width: 2px !important;
+      margin-bottom: 0 !important;
+    }
+
+    &:active {
+      border-bottom-width: 2px !important;
+      margin-bottom: 0 !important;
+    }
     &:focus {
-      color: $fg;
+      border-bottom-width: 2px !important;
+      margin-bottom: 0 !important;
     }
   }
-}
 
-.contact-form-send-message-input {
-  margin: 8px;
-  background-color: rgb(242, 242, 242);
-  border-radius: 5px;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
+  .btn-container {
+    width: 100%;
 
-  .gerami-textarea {
-    padding-top: $space !important;
-    line-height: 1.5 !important;
+    .shared-button {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-left-radius: $space - 2 !important;
+      border-bottom-right-radius: $space - 2 !important;
+      height: 60px !important;
+    }
   }
 }

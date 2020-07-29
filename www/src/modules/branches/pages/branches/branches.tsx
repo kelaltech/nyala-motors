@@ -81,23 +81,22 @@ const Branches: React.FC<Branches> = () => {
             </>
           )}
         </Content>
-        <Content transparent className="email-block">
-          <Yoga maxCol={2}>
-            <div className="email-block-left">
+        <Content className="email-block">
+          <div className={'contact-email-yoga'}>
+            <Block className="email-block-left">
+              <h1>Do you have a question?</h1>
               <p>
-                Do you have a question about our products or services, or have
-                you encountered a problem while using them?
+                about our products or services, or have you encountered a
+                problem while using them? Feel free to reach us by the form on
+                the right or using our feedback form. We will respond to your
+                emailas soon as possible.
               </p>
-              <p>
-                Feel free to reach us by the form on the right or using our
-                feedback form. We will respond to your emailas soon as possible.
-              </p>
-            </div>
+            </Block>
 
-            <div className="center email-block-right">
+            <Block className="center email-block-right">
               <EmailContact />
-            </div>
-          </Yoga>
+            </Block>
+          </div>
         </Content>
       </LayoutDefault>
     </>
