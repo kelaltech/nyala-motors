@@ -16,7 +16,6 @@ const Transporter = nodemailer.createTransport({
 module.exports = {
   index: async (ctx) => {
     const { to, subject, html } = ctx.request.body
-
     const mailOptions = {
       from: process.env.EMAIL_USER, // sender address
       to, // list of receivers
@@ -26,9 +25,10 @@ module.exports = {
 
     Transporter.sendMail(mailOptions, function (err) {
       if (err) ctx.body = err
-      else ctx.body = 'ok'
+      else ctx.body = 'done'
     })
 
     ctx.body = 'ok'
+
   },
 }
