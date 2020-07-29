@@ -1,7 +1,7 @@
 import React from 'react'
 import './product-detail.scss'
-import 'aframe'
-import 'aframe-particle-system-component'
+// import 'aframe'
+// import 'aframe-particle-system-component'
 // import { Scene, Entity } from 'aframe-react';
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'

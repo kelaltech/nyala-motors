@@ -1,7 +1,5 @@
 import { useRef, useLayoutEffect, DependencyList, useCallback } from 'react'
 
-const isBrowser = typeof window !== `undefined`
-
 function getScrollPosition({
   element,
   useWindow,
@@ -9,7 +7,7 @@ function getScrollPosition({
   element?: any
   useWindow?: boolean
 }) {
-  if (!isBrowser) return { x: 0, y: 0 }
+  if (typeof window === `undefined`) return { x: 0, y: 0 }
 
   const target = element ? element.current : document.body
   const position = target.getBoundingClientRect()
