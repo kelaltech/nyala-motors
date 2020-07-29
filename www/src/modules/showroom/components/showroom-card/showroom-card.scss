@@ -1,31 +1,29 @@
 @import '../../../../assets//styles/theme';
 
 .showroom-card-container {
-  background-color: $primary;
   box-shadow: inset 0 2px $primary, 0px 1px 3px rgba(0, 0, 0, 0.07);
-  border-radius: 0;
-  // max-width: 390.31px !important;
-  @media screen and (max-width: $mobile) {
-    // max-width: 100% !important;
-  }
+  border-radius: 7px;
   .showroom-card-pic {
-    width: 100%;
+    border-radius: 7px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
     height: 240px;
-    // margin-top: 15px;
-    border-radius: 7px;
-    background-color: #111;
+    background-color: $primary;
   }
-
   .showroom-card-content {
     p {
-      height: 72px;
       font-weight: 300;
-      font-size: 18px;
-      line-height: 170%;
+      font-size: 16px;
       overflow: hidden;
+    }
+
+    .expandable-icon {
+      &:hover {
+        cursor: pointer;
+        color: $primary !important;
+      }
     }
   }
 }

@@ -152,6 +152,15 @@ const Nav: React.FC<NavProps> = () => {
           >
             <span>{lang`nav.item.news`}</span>
           </Anchor>
+
+          <Anchor
+            to="/showroom"
+            className={`shared-header-nav-on-mobile ${
+              '/showroom' !== activePathname ? '' : 'shared-nav-link-active'
+            }`}
+          >
+            <span>{lang`nav.item.showroom`}</span>
+          </Anchor>
           <Anchor
             to="/about"
             className={`shared-header-nav-on-mobile ${
