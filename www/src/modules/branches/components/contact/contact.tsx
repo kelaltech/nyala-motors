@@ -1,15 +1,16 @@
 import React, { useState, useCallback } from 'react'
 
 import './contact.scss'
-import { Input, Block, Button } from 'gerami'
+import { Input, TextArea } from 'gerami'
 import { strapiApiBase, contactEmail } from '../../../../../constants'
+import Button from '../../../../shared/components/button/button'
 
 type EmailContactProps = {}
 
 const EmailContact = ({}: EmailContactProps) => {
   const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [artist, setArtist] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
 
   const [sending, setSending] = useState(false)
 
@@ -21,10 +22,10 @@ const EmailContact = ({}: EmailContactProps) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         to: contactEmail,
-        subject: `Awtar Artist Interviewee Suggestion`,
+        subject: `${subject}`,
         html: `
-          <p>SUGGESTED ARTIST: ${artist}<p>
-          <p>SUGGESTED BY: ${email} (${phone})<p>
+          <p>SUGGESTED ARTIST: ${message}<p>
+          <p>Emailed From: ${email} <p>
         `,
       }),
     })
@@ -33,60 +34,55 @@ const EmailContact = ({}: EmailContactProps) => {
       })
       .catch((e) => alert(e?.message || 'Unknown error.'))
       .finally(() => setSending(false))
-  }, [email, phone, artist])
+  }, [email, subject, message])
 
   return (
     <>
-      <div className="interview-suggestion-form">
-        <div style={{ flex: 1 }} />
-
-        <Block first className="padding-horizontal-none">
-          <h5>Your phone number:</h5>
-          <div className="padding-top-normal">
-            <Input
-              type="phone"
-              placeholder="Example: 0912345678"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+      <div className={'contact-form-container'}>
+        <div style={{ flex: 1 }} />          
+        
+        <div>
+          <Input
+            type="email"
+            placeholder="  Your Email"
+            value={email}
+            className={'contact-form-send-message-input'}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={sending}
+            required
+          />
+        </div>
+        <div>
+        <Input
+              type="subject"
+              placeholder="Subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              className={'contact-form-send-message-input'}
               disabled={sending}
               required
             />
-          </div>
-        </Block>
-
-        <Block className="padding-horizontal-none">
-          <h5>Your email address:</h5>
-          <div className="padding-top-normal">
-            <Input
-              type="email"
-              placeholder="Example: example@domain.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={sending}
-              required
-            />
-          </div>
-        </Block>
-
-        <Block last className="padding-horizontal-none">
-          <h5>Name of artist you want interviewed:</h5>
-          <div className="padding-top-normal">
-            <Input
-              type="text"
-              placeholder="Artist name"
-              value={artist}
-              onChange={(e) => setArtist(e.target.value)}
-              disabled={sending}
-              required
-            />
-          </div>
-        </Block>
-
-        <Block className="padding-horizontal-none">
-          <Button onClick={send} disabled={sending} className="margin-none">
+        </div>
+        <div>
+          <TextArea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Your Message"
+            className={'contact-form-send-message-input'}
+            required
+            disabled={sending}
+            rows={7}
+          />
+      </div>
+        <div>
+          <Button 
+          mode={'primary'}
+          onClick={send} 
+          disabled={sending} 
+          className="margin-none">
             Submit Suggestion
           </Button>
-        </Block>
+        </div>
       </div>
     </>
   )
