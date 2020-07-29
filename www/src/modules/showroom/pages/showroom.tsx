@@ -36,7 +36,7 @@ const Showroom: React.FC<ShowroomProps> = () => {
         <Modal show={openModal} modalClosed={() => setOpenModal(false)}>
           <div>
             <iframe
-              src={'../../../../static/360/showroom.html'}
+              src={'/360/showroom.html'}
               className="showroom-360"
               width={'100%'}
             />

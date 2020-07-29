@@ -19,7 +19,7 @@ const Parts: React.FC<PartsProps> = () => {
         <Block />
         <Content transparent size={'XL'}>
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSeR38xESMpy6VXZMJ9NaHHWt4SAsApCD23SD7PRV_N3JL6TWA/viewform?embedded=true"
+            src="https://docs.google.com/forms/d/e/1FAIpQLScJD3QW6HC8R6IEwdzZDuGgiejicbvrrvO5WraoXxnMlk1M4w/viewform?usp=sf_link"
             width={800}
             height={750}
             frameBorder={0}
