@@ -52,26 +52,35 @@ const Showroom: React.FC<ShowroomProps> = () => {
               <Warning problem={error as any} />
             </div>
           ) : (
-            <Content size="5XL" transparent={true} className={'showroom-list'}>
-              <div
-                style={{
-                  backgroundColor: '#c51632',
-                  height: '7px',
-                  width: '100px',
-                }}
-              />
-              <h3>Nyala Motors in Pictures </h3>
-              <hr />
-              {/* <Content> */}
-              <Yoga maxCol={3}>
-                {data.showrooms.map((showroom, key) => (
-                  <div key={key}>
-                    <ShowroomCard showroom={showroom} />
-                  </div>
-                ))}
-              </Yoga>
-              {/* </Content> */}
-            </Content>
+            <>
+              <Block>
+                <Content
+                  size="5XL"
+                  transparent={true}
+                  className={'showroom-list'}
+                >
+                  <div
+                    style={{
+                      backgroundColor: '#c51632',
+                      height: '4px',
+                      width: '100px',
+                    }}
+                  />
+                  <h3>Nyala Motors in Pictures </h3>
+                  <hr />
+                </Content>
+              </Block>
+
+              <Block>
+                <Yoga maxCol={2}>
+                  {data.showrooms.map((showroom, key) => (
+                    <div key={key}>
+                      <ShowroomCard showroom={showroom} />
+                    </div>
+                  ))}
+                </Yoga>
+              </Block>
+            </>
           )}
         </div>
       </LayoutDefault>
