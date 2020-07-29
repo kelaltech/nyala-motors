@@ -12,6 +12,9 @@ export type NavProps = {}
 
 const Nav: React.FC<NavProps> = () => {
   const [menuRef, isMenuOpen, openMenu] = useDropDown<HTMLDivElement>()
+  const [aftersaleRef, isAftersaleMenuOpen, aftersaleOpenMenu] = useDropDown<
+    HTMLDivElement
+  >()
   const lang = useLang()
 
   const page = usePage()
@@ -39,33 +42,35 @@ const Nav: React.FC<NavProps> = () => {
         </Anchor>
 
         <Anchor
-          to="/aftersales"
-          className={`${
-            '/aftersales' !== activePathname ? '' : 'shared-nav-link-active'
-          }`}
+          to="#"
+          className={` ${!isAftersaleMenuOpen ? '' : 'shared-nav-link-active'}`}
+          onClick={aftersaleOpenMenu}
         >
-          <h4 className={'aftersales-box'}>
-            <span>{lang`nav.item.aftersale`}</span>
-
-            <div className={'aftersales-nav-items'}>
-              {/* <Anchor
-                  to="/aftersales/services"
-                  className={`${
-                    '/services' !== activePathname ? '' : 'shared-nav-link-active'
-                  }`}
-                >
-                  <span>{lang`nav.item.services`}</span>
-                </Anchor>
+          <span>{lang`nav.item.aftersale`}</span>
+          {!isAftersaleMenuOpen ? null : (
+            <div className="aftersale-dropdown" ref={aftersaleRef}>
               <Anchor
-                to="/parts"
+                to="/aftersales/services"
                 className={`${
-                  '/parts' !== activePathname ? '' : 'shared-nav-link-active'
+                  '/aftersales/services' !== activePathname
+                    ? ''
+                    : 'shared-nav-link-active'
+                }`}
+              >
+                <span>{lang`nav.item.services`}</span>
+              </Anchor>
+              <Anchor
+                to="/aftersales/parts"
+                className={`${
+                  '/aftersales/parts' !== activePathname
+                    ? ''
+                    : 'shared-nav-link-active'
                 }`}
               >
                 <span>{lang`nav.item.parts`}</span>
-              </Anchor> */}
+              </Anchor>
             </div>
-          </h4>
+          )}
         </Anchor>
 
         <Anchor
@@ -118,13 +123,27 @@ const Nav: React.FC<NavProps> = () => {
             <span>{lang`nav.item.products`}</span>
           </Anchor>
           <Anchor
-            to="/aftersales"
+            to="/aftersales/services"
             className={`shared-header-nav-on-mobile ${
-              '/aftersales' !== activePathname ? '' : 'shared-nav-link-active'
+              '/aftersales/services' !== activePathname
+                ? ''
+                : 'shared-nav-link-active'
             }`}
           >
-            <span>{lang`nav.item.aftersale`}</span>
+            <span>{lang`nav.item.services`}</span>
           </Anchor>
+
+          <Anchor
+            to="/aftersales/parts"
+            className={`shared-header-nav-on-mobile ${
+              '/aftersales/parts' !== activePathname
+                ? ''
+                : 'shared-nav-link-active'
+            }`}
+          >
+            <span>{lang`nav.item.parts`}</span>
+          </Anchor>
+
           <Anchor
             to="/news"
             className={`shared-header-nav-on-mobile ${

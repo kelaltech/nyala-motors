@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/theme';
 .landing-body-container {
-  background-color: #fafafa;
+  background-color: #fefefe !important;
 }
 .lading-hero-section {
   height: 840px;
@@ -75,13 +75,16 @@
       letter-spacing: -0.05em;
       color: rgba(255, 255, 255, 0.74);
     }
+
+    .learn-more-btn {
+      color: #fafafa !important;
+      background-color: transparent;
+      border-color: #fafafa !important;
+    }
   }
 }
 
 .landing-products-list {
-  margin-top: -48px;
-  position: relative;
-
   .landing-products-list-box {
     display: flex;
     justify-content: space-evenly;
@@ -95,9 +98,11 @@
 
   .produc-list {
     align-self: center;
+    margin-bottom: 8px;
   }
   .produc-list-img-1 {
-    width: 77.35px;
+    // width: 77.35px;
+    width: 120px;
     height: auto;
   }
   .produc-list-img-2 {
@@ -261,7 +266,7 @@
 .landing-bottom-box {
   min-height: 340.52px;
   width: 100%;
-  margin-top: 319px;
+  margin-top: 320px;
   position: relative;
 
   @media screen and (max-width: 650px) {

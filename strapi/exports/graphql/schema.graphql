@@ -6,7 +6,9 @@ type About {
   values: String
   mission: String
   achievements: String
+  boardMessage: [ComponentBoardMessageBoardMessage]
   awardImg(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  slideImg(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 input AboutInput {
@@ -15,6 +17,8 @@ input AboutInput {
   mission: String
   achievements: String
   awardImg: [ID]
+  slideImg: [ID]
+  boardMessage: [ComponentBoardMessageBoardMessageInput]
 }
 
 type Bid {
@@ -199,6 +203,21 @@ input BranchInput {
   mapCoordinates: String
   phoneNumbers: [ComponentBranchPhoneNumberInput]
   emails: [ComponentBranchEmailInput]
+}
+
+type ComponentBoardMessageBoardMessage {
+  id: ID!
+  name: String
+  position: String
+  img: UploadFile
+  message: String
+}
+
+input ComponentBoardMessageBoardMessageInput {
+  name: String
+  position: String
+  img: ID
+  message: String
 }
 
 type ComponentBranchDealerType {
@@ -472,6 +491,8 @@ input editAboutInput {
   mission: String
   achievements: String
   awardImg: [ID]
+  slideImg: [ID]
+  boardMessage: [editComponentBoardMessageBoardMessageInput]
 }
 
 input editBidInput {
@@ -493,6 +514,14 @@ input editBranchInput {
   mapCoordinates: String
   phoneNumbers: [editComponentBranchPhoneNumberInput]
   emails: [editComponentBranchEmailInput]
+}
+
+input editComponentBoardMessageBoardMessageInput {
+  id: ID
+  name: String
+  position: String
+  img: ID
+  message: String
 }
 
 input editComponentBranchDealerTypeInput {

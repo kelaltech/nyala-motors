@@ -123,7 +123,9 @@ const NewsDetail: React.FC<{}> = () => {
                 transparent
                 size="XL"
               >
-                <Markdown>{description}</Markdown>
+                <Markdown className={'news-detail-markdown'}>
+                  {description}
+                </Markdown>
               </Content>
             </Block>
             <Block first last />

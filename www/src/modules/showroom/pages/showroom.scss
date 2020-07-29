@@ -66,5 +66,10 @@ $mobile-threshold: $mobile * 1.6;
     .button-360 {
       align-self: flex-end;
     }
+    @media screen and(max-width: $mobile-threshold) {
+      h3 {
+        padding: 32px;
+      }
+    }
   }
 }

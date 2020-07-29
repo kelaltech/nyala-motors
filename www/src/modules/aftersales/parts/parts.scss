@@ -1,0 +1,14 @@
+@import '../../../assets/styles/theme';
+
+.parts-container {
+  .parts-content-form {
+    width: 800px;
+    height: 700px;
+    @media screen and(max-width: $mobile*2) {
+      width: 400px;
+    }
+    @media screen and(max-width: $mobile) {
+      width: auto;
+    }
+  }
+}
