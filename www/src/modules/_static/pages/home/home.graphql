@@ -1,0 +1,5 @@
+query Home {
+  home {
+    youtubeLink
+  }
+}

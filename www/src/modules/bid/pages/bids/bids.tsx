@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import Layout from '../../../../shared/components/layout/layout'
 import { strapiApiBase } from '../../../../../constants'
 import { useBidsQuery } from '../../../../app/graphql'
@@ -20,10 +20,34 @@ const Bid: React.FC<BidsProps> = () => {
   const { heroBg } = useStaticQuery<BidsStaticQuery>(query)
   const [term, setTerm] = useState('')
 
+  const [selected, setOnSelected] = useState<{
+    name: string
+    url?: string
+  } | null>()
+
   const [limit, setLimit] = useState(COUNT)
 
+  const value = useMemo(
+    () =>
+      selected?.name
+        ? selected?.name === 'CLOSED'
+          ? { Deadline_lt: new Date().toISOString() }
+          : selected?.name === 'ACTIVE'
+          ? { Deadline_gte: new Date().toISOString() }
+          : {}
+        : {},
+    [selected]
+  )
+
   const { loading, error, data } = useBidsQuery({
-    variables: { limit, where: term ? { _q: term } : {} },
+    variables: {
+      limit,
+      sort: 'Deadline:DESC',
+      where: {
+        ...value,
+        ...(term ? { _q: term } : {}),
+      },
+    },
   })
   const [total] = useLazy(0, (set) => {
     fetch(`${strapiApiBase}/bids/count`)
@@ -31,15 +55,32 @@ const Bid: React.FC<BidsProps> = () => {
       .then((data) => set(Number(data)))
       .catch(console.error)
   })
+
+  const chips = useMemo(
+    () => [
+      {
+        name: 'CLOSED',
+        url: '',
+      },
+      {
+        name: 'ACTIVE',
+        url: '',
+      },
+    ],
+    []
+  )
   return (
     <>
       <SEO title="Bids" />
       <Layout headerProps={{ mode: 'white' }}>
         <HeroSearch
+          bg={heroBg?.childImageSharp?.fluid as any}
           title={`Bids & Auctions`}
           term={term}
           onTerm={setTerm}
-          bg={heroBg?.childImageSharp?.fluid as any}
+          chips={chips}
+          selectedChip={selected}
+          onSelectedChip={setOnSelected}
         />
         {!data && loading ? (
           <div className="padding-very-big">
@@ -75,7 +116,12 @@ const Bid: React.FC<BidsProps> = () => {
                         <BidCard key={key} bid={bid!} />
                       ))}
                   </div>
-                  {!data?.bids || data.bids.length >= total ? null : (
+                  {console.log('data', !data.bids)}
+                  {console.log('bids >= total', data.bids.length >= total)}
+                  {console.log('bids', data.bids.length)}
+                  {console.log('total', total)}
+
+                  {!data?.bids || data.bids.length <= total ? null : (
                     <Button
                       mode="primary-outline"
                       className="vacancy-vacancies-load-more"

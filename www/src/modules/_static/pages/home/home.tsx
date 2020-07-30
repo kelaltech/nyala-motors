@@ -2,7 +2,7 @@ import React from 'react'
 import './home.scss'
 import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
-import { Block, Content } from 'gerami'
+import { Block, Content, Loading, Warning } from 'gerami'
 import Button from '../../../../shared/components/button/button'
 import { graphql, useStaticQuery } from 'gatsby'
 import { HomeStaticQuery } from '../../../../../graphql-types'
@@ -10,6 +10,7 @@ import GatsbyImage from 'gatsby-image'
 import Anchor from '../../../../shared/components/anchor/anchor'
 import { FaCar, FaRegNewspaper, FaRegMap, FaCogs } from 'react-icons/fa'
 import useLang from '../../../../shared/hooks/lang/use-lang'
+import { useHomeQuery } from '../../../../app/graphql'
 
 type HomeProps = {}
 
@@ -25,6 +26,7 @@ const Home: React.FC<HomeProps> = () => {
   } = useStaticQuery<HomeStaticQuery>(query)
 
   const lang = useLang()
+  const { loading, error, data } = useHomeQuery()
 
   return (
     <>
@@ -163,16 +165,26 @@ const Home: React.FC<HomeProps> = () => {
             </blockquote>
           </Block>
 
-          <Block className={'landing-video-container'}>
-            <Content size={'XXL'}>
-              <iframe
-                className={'full-width'}
-                height={'500'}
-                src={`https://www.youtube.com/embed/A6ZgYvIxTL4`}
-                frameBorder="0"
-              />
-            </Content>
-          </Block>
+          {!data && loading ? (
+            <div className="padding-very-big">
+              <Loading className="margin-vertical-very-big" delay={700} />
+            </div>
+          ) : !data?.home || error ? (
+            <div className="padding-very-big">
+              <Warning problem={error as any} shy={true} />
+            </div>
+          ) : (
+            <Block className={'landing-video-container'}>
+              <Content size={'XXL'}>
+                <iframe
+                  className={'full-width'}
+                  height={'500'}
+                  src={`${data.home.youtubeLink}`}
+                  frameBorder="0"
+                />
+              </Content>
+            </Block>
+          )}
 
           <div className={'landing-bottom-box'}>
             <div className={'landing-bottom-slant'} />

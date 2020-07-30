@@ -1,32 +1,21 @@
-.product-card-container {
-  padding: 8px;
-  margin-bottom: 24px;
-  @media screen and(max-width: 750px) {
-    padding: 0;
+@import '../../../../assets/styles/theme';
+
+.product-card-content {
+  padding: 16px 0 !important;
+  border-radius: 7px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  h2,
+  h3,
+  p {
+    color: rgba(20, 20, 20, 0.85) !important;
   }
-  .product-card-content {
-    span {
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 32px;
-      color: rgba(0, 0, 0, 0.7);
-    }
-    a {
-      h4 {
-        font-style: normal;
-        font-weight: 420;
-        font-size: 21px;
-        line-height: 25px;
-        letter-spacing: -0.05em;
-        color: black;
-        padding-left: 15px;
-      }
-      div {
-        height: inherit;
-        max-height: 200px;
-        overflow: hidden;
-        border-radius: 7px;
-      }
-    }
+
+  .product-content-container {
+    padding: 0 8px;
+  }
+  .product-motto {
+    margin: 0 !important;
+    height: 30px;
+    overflow: hidden;
   }
 }

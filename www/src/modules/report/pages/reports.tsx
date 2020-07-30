@@ -76,7 +76,6 @@ const Reports = () => {
           selectedChip={selected}
           onSelectedChip={setOnSelected}
         />
-
         {loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />

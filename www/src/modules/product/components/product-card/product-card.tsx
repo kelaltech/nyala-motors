@@ -10,24 +10,19 @@ type ProductCardProps = {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  console.log(product)
   return (
-    <div className="product-card-container">
-      <div className="product-card-content">
-        <Anchor to={`/products/detail/?id=${product.id}`}>
-          <h4>{nameEachCat(product.eachCategory)}</h4>
-          <hr />
-          <div>
-            <img src={`${product?.headerImg?.url}`} width={'100%'} />
-          </div>
-        </Anchor>
-        <div className="center">
-          <span className="align-center">{product.name}</span>
-          {/* <br />
-          <span className="align-center">{product.motto}</span> */}
-        </div>
+    <Anchor
+      className="product-card-content"
+      to={`/products/detail/?id=${product.id}`}
+    >
+      <h2 className={'left'}>{nameEachCat(product.eachCategory)}</h2>
+      <img src={`${product?.headerImg?.url}`} width={'100%'} />
+
+      <div className="product-content-container">
+        <h2 className={'padding-top-big'}>{product.name}</h2>
+        <p className="product-motto  align-center">{product.motto}</p>
       </div>
-    </div>
+    </Anchor>
   )
 }
 
