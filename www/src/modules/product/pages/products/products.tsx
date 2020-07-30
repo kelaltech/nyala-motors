@@ -56,6 +56,7 @@ const Products: React.FC<ProductsProps> = () => {
               </div>
             ) : (
               <div className="product-products-content">
+                {/* 
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
@@ -87,10 +88,11 @@ const Products: React.FC<ProductsProps> = () => {
                     </Button>
                   </div>
                 </Card>
+ */}
 
                 <Card className="product-category-card">
-                  <h3>UD Trucks</h3>
-                  <Yoga className="product-category-yoga" maxCol={2}>
+                  <h2 className={'category-title'}>UD Trucks</h2>
+                  <Yoga className="product-category-yoga" maxCol={3}>
                     <ProductCard
                       product={data?.products.find(
                         (p) => p?.eachCategory == 'QUESTER'
