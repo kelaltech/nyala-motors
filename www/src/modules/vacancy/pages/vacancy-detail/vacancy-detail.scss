@@ -35,7 +35,7 @@ $mobile-threshold: $mobile * 1.4;
 
       > h1 {
         margin: 0;
-        padding: 0 0 32px;
+        padding: 0 0 16px;
 
         font-weight: 500;
         font-size: 36px;
@@ -65,7 +65,7 @@ $mobile-threshold: $mobile * 1.4;
     max-width: $crop;
 
     @media (max-width: $mobile-threshold) {
-      padding: 0 32px;
+      padding: 0 8px;
     }
 
     > div {
@@ -75,7 +75,7 @@ $mobile-threshold: $mobile * 1.4;
       color: rgba(66, 66, 66, 0.84);
 
       @media (max-width: $mobile-threshold) {
-        padding: 32px;
+        padding: 24px;
       }
 
       .vacancy-vacancy-detail-card-title {
@@ -91,3 +91,22 @@ $mobile-threshold: $mobile * 1.4;
     }
   }
 }
+
+.cv-container {
+  padding-top: 32px;
+  height: inherit;
+  .cv-form {
+    width: 65%;
+    height: 750px;
+    @media screen and(max-width: $mobile*2) {
+      width: 80%;
+      height: 900px;
+    }
+    @media screen and(max-width: $mobile) {
+      width: 100%;
+      height: 900px;
+
+    }
+  }
+}
+

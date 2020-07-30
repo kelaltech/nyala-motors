@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { useFaqQuery } from '../../../../app/graphql'
 import { Loading, Warning, Content, Block, Card } from 'gerami'
 import './faq.scss'
+import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import Button from '../../../../shared/components/button/button'
 
 type FaqProps = {}
 
-const FAQ: React.FC<FaqProps> = () => {
+const FAQ: React.FC<FaqProps> = () => {  
+  const [isExpanded, setIsexapanded] = useState(false)
   const { loading, error, data } = useFaqQuery()
   return (
     <>
@@ -28,15 +31,32 @@ const FAQ: React.FC<FaqProps> = () => {
             <Warning problem={error as any} />
           </div>
         ) : (
-          <Content transparent size="3XL">
-            <Block first last>
-              {data.faqs.map((faq, key) => (
-                <Card key={key} className="margin-vertical-very-big">
-                  <h3>{faq?.answer}</h3>
-                  <p>{faq?.question}</p>
-                </Card>
-              ))}
-            </Block>
+          <Content transparent size="3XL" className="faq-card-container">
+s            {data.faqs.map((faq, key) => (
+            <Card key={key} className="margin-vertical-very-big">
+              <h3 className="padding-horizontal-big">{faq?.question}</h3><hr/>
+              <Block className="faq-card-content">
+                <p
+                  style={{
+                    height: `${isExpanded ? 'auto' : '65px'}`,
+                  }}
+                >
+                  {faq?.answer}
+                </p>
+                {faq?.answer ? (                  
+                  <div className="fg-blackish center right font-L expandable-icon">
+                    {faq?.answer?.length >= 70 ? (
+                      <span onClick={() => setIsexapanded(!isExpanded)}>
+                        {isExpanded ? <MdExpandLess /> : <MdExpandMore />}
+                      </span>
+                    ) : (
+                    <MdExpandLess style={{ visibility: 'hidden' }} />
+                    )}                 
+                  </div>
+                ):null}
+              </Block>
+            </Card>
+            ))} 
           </Content>
         )}
       </LayoutDefault>
