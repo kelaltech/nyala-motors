@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Warning, Loading, Content } from 'gerami'
 import GatsbyImage from 'gatsby-image'
@@ -22,10 +22,32 @@ const Vacancies: React.FC<VacanciesProps> = () => {
   const { heroBg, midBg } = useStaticQuery<VacanciesStaticQuery>(query)
 
   const [term, setTerm] = useState('')
+  const [selected, setOnSelected] = useState<{
+    name: string
+    url?: string
+  } | null>()
 
   const [limit, setLimit] = useState(COUNT)
+  const value = useMemo(
+    () =>
+      selected?.name
+        ? selected?.name === 'CLOSED'
+          ? { deadline_lt: new Date().toISOString() }
+          : selected?.name === 'ACTIVE'
+          ? { deadline_gte: new Date().toISOString() }
+          : {}
+        : {},
+    [selected]
+  )
   const { loading, error, data } = useVacanciesQuery({
-    variables: { limit, where: term ? { _q: term } : {} },
+    variables: {
+      limit,
+      sort: 'deadline:DESC',
+      where: {
+        ...value,
+        ...(term ? { _q: term } : {}),
+      },
+    },
   })
 
   const [total] = useLazy(0, (set) => {
@@ -34,6 +56,20 @@ const Vacancies: React.FC<VacanciesProps> = () => {
       .then((data) => set(Number(data)))
       .catch(console.error)
   })
+
+  const chips = useMemo(
+    () => [
+      {
+        name: 'CLOSED',
+        url: '',
+      },
+      {
+        name: 'ACTIVE',
+        url: '',
+      },
+    ],
+    []
+  )
 
   return (
     <>
@@ -45,6 +81,9 @@ const Vacancies: React.FC<VacanciesProps> = () => {
           title={`Vacancies`}
           term={term}
           onTerm={setTerm}
+          chips={chips}
+          selectedChip={selected}
+          onSelectedChip={setOnSelected}
         />
 
         {!data && loading ? (
