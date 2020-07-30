@@ -1,11 +1,12 @@
 import React from 'react'
 import './product-card.scss'
 import { Products } from '../../../../app/graphql'
-// import Button from '../../../../shared/components/button/button'
+// import Button from '../../../../shared/components/button/button
+import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Anchor from '../../../../shared/components/anchor/anchor'
 
 type ProductCardProps = {
-  product: Pick<Products, 'id' | 'eachCategory' | 'headerImg' | 'motto'>
+  product: Pick<Products, 'id' | 'eachCategory' | 'headerImg' | 'motto' | 'name'>
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
@@ -14,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div className="product-card-container">
       <div className="product-card-content">
         <Anchor to={`/products/detail/?id=${product.id}`}>
-          <h4>{product.eachCategory}</h4>
+          <h4>{nameEachCat(product.eachCategory)}</h4>
           <hr />
           <div>
             <img src={`${product?.headerImg?.url}`} width={'100%'} />
@@ -22,8 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Anchor>
         <div className="center">
           <span className="align-center">{product.name}</span>
-          <br />
-          <span className="align-center">{product.motto}</span>
+          {/* <br />
+          <span className="align-center">{product.motto}</span> */}
         </div>
       </div>
     </div>

@@ -140,21 +140,16 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 </Block>
 
                 <Block first last className="center">
-                  <Button
+                  {data?.product?.brochure?.url ? (
+                    <Button
                     to={`${data?.product?.brochure?.url}`}
                     download
                     mode="primary-outline"
                   >
                     Download Brochure
                   </Button>
+                  ) : null}       
                 </Block>
-                {/* <Scene>
-                  <Entity
-                  primitive='a-sky' 
-                  src="../../../../../static/360/showroom.jpg"
-                  // rotation="0 -130 0"
-                  />
-                </Scene> */}
               </Content>
             </div>
           )}

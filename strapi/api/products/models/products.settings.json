@@ -71,8 +71,23 @@
         "SPORT_UTILITY",
         "COMMERCIAL",
         "CRONER",
-        "QUESTER"
+        "QUESTER",
+        "NEW_QUESTER",
+        "EICHER_SKYLINE_BUS",
+        "EICHER_PRO_3008",
+        "MACPOWER"
       ]
+    },
+    "vrImg": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
