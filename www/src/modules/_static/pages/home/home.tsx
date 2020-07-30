@@ -173,7 +173,8 @@ const Home: React.FC<HomeProps> = () => {
             <div className="padding-very-big">
               <Warning problem={error as any} shy={true} />
             </div>
-          ) : (
+          ) :data.home.youtubeLink ? 
+          (
             <Block className={'landing-video-container'}>
               <Content size={'XXL'}>
                 <iframe
@@ -184,7 +185,7 @@ const Home: React.FC<HomeProps> = () => {
                 />
               </Content>
             </Block>
-          )}
+          ): null}
 
           <div className={'landing-bottom-box'}>
             <div className={'landing-bottom-slant'} />
