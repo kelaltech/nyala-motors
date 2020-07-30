@@ -32,7 +32,7 @@ const FAQ: React.FC<FaqProps> = () => {
           </div>
         ) : (
           <Content transparent size="3XL" className="faq-card-container">
-s            {data.faqs.map((faq, key) => (
+            {data.faqs.map((faq, key) => (
             <Card key={key} className="margin-vertical-very-big">
               <h3 className="padding-horizontal-big">{faq?.question}</h3><hr/>
               <Block className="faq-card-content">
