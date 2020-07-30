@@ -148,7 +148,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                 {data.vacancy.applyByCV ? (
                   <Block className="center registration-container">
                     <iframe
-                      src="https://docs.google.com/forms/d/e/1FAIpQLSfoK2Wjw0ZI0La69NvpBNL5nftHxs9kam5fHpi2YFj1brzZHA/viewform?usp=sf_link"
+                      src="https://docs.google.com/forms/d/e/1FAIpQLSfi-p0VgOfr-V0VZY9IczxR4ZixdhWlR_WJZ4faP6fRfvffsA/viewform?usp=sf_link"
                       frameBorder={0}
                       scrolling={'no'}
                       className="registration-form"
