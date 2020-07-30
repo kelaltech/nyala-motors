@@ -118,9 +118,9 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                       ?.filter((vacancy) => !!vacancy)
                       ?.slice(0, 4)
                       .map((vacancy, i) => (
-                        <>
-                          <VacancyCard key={i} vacancy={vacancy!} />
-                        </>
+                        <div key={i}>
+                          <VacancyCard vacancy={vacancy!} />
+                        </div>
                       ))}
                   </div>
                 </div>
@@ -172,11 +172,13 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                       ?.filter((vacancy) => !!vacancy)
                       ?.slice(4)
                       .map((vacancy, i) => (
-                        <VacancyCard key={i} vacancy={vacancy!} />
+                        <div key={i}>
+                          <VacancyCard key={i} vacancy={vacancy!} />
+                        </div>
                       ))}
                   </div>
 
-                  {!data?.vacancies || data.vacancies.length >= total ? null : (
+                  {!data?.vacancies || data.vacancies.length <= total ? null : (
                     <Button
                       mode="primary-outline"
                       className="vacancy-vacancies-load-more"
