@@ -1,5 +1,5 @@
-query Bids($limit: Int, $where: JSON) {
-  bids(start: 0, limit: $limit, where: $where) {
+query Bids($limit: Int, $where: JSON, $sort: String) {
+  bids(start: 0, limit: $limit, where: $where, sort: $sort) {
     id
     Title
     Deadline

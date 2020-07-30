@@ -1,5 +1,5 @@
-query Vacancies($limit: Int, $where: JSON) {
-  vacancies(start: 0, limit: $limit, where: $where) {
+query Vacancies($limit: Int, $where: JSON, $sort: String) {
+  vacancies(start: 0, limit: $limit, where: $where, sort: $sort) {
     id
     title
     location
