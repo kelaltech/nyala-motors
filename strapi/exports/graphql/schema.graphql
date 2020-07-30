@@ -611,6 +611,7 @@ input editProductInput {
   active: Boolean
   brochure: ID
   eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: ID
 }
 
 input editPublicationInput {
@@ -695,6 +696,10 @@ enum ENUM_PRODUCTS_EACHCATEGORY {
   COMMERCIAL
   CRONER
   QUESTER
+  NEW_QUESTER
+  EICHER_SKYLINE_BUS
+  EICHER_PRO_3008
+  MACPOWER
 }
 
 enum ENUM_REPORT_TYPE {
@@ -890,6 +895,7 @@ input ProductInput {
   active: Boolean
   brochure: ID
   eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: ID
 }
 
 type Products {
@@ -906,6 +912,7 @@ type Products {
   active: Boolean
   brochure: UploadFile
   eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: UploadFile
 }
 
 type ProductsAggregator {
@@ -979,6 +986,11 @@ type ProductsConnectionUpdated_at {
   connection: ProductsConnection
 }
 
+type ProductsConnectionVrImg {
+  key: ID
+  connection: ProductsConnection
+}
+
 type ProductsGroupBy {
   id: [ProductsConnectionId]
   created_at: [ProductsConnectionCreated_at]
@@ -992,6 +1004,7 @@ type ProductsGroupBy {
   active: [ProductsConnectionActive]
   brochure: [ProductsConnectionBrochure]
   eachCategory: [ProductsConnectionEachCategory]
+  vrImg: [ProductsConnectionVrImg]
 }
 
 input PublicationInput {

@@ -1,14 +1,15 @@
 @import '../../../assets/styles/theme';
 
 .parts-container {
-  .parts-content-form {
-    width: 800px;
-    height: 700px;
+  height: inherit;
+  .parts-form {
+    width: 65%;
+    height: 900px;
     @media screen and(max-width: $mobile*2) {
-      width: 400px;
+      width: 80%;
     }
     @media screen and(max-width: $mobile) {
-      width: auto;
+      width: 100%;
     }
   }
 }

@@ -1,14 +1,15 @@
-@import '../../../../assets//styles/theme';
+@import '../../../../assets/styles/theme';
 
 .feedback-container {
+  height: inherit;
   .feedback-form {
-    width: 800px;
-    height: 700px;
+    width: 65%;
+    height: 1200px;
     @media screen and(max-width: $mobile*2) {
-      width: 400px;
+      width: 80%;
     }
     @media screen and(max-width: $mobile) {
-      width: auto;
+      width: 100%;
     }
   }
 }

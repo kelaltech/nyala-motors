@@ -12,5 +12,7 @@ export function nameEachCat(category: string) {
       return 'QUESTER'
     case 'PASSENGER':
       return 'PASSENGER'
+    case 'NEW_QUESTER':
+      return 'NEW QUESTER'
   }
 }

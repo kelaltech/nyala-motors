@@ -15,7 +15,9 @@ type ProductsProps = {}
 
 const Products: React.FC<ProductsProps> = () => {
   const { heroBg } = useStaticQuery<ProductStaticQuery>(query)
-
+  const nissanCategory = ['PASSENGER', 'CROSSOVER', 'SPORT_UTILITY']
+  const UD_Category = ['NEW_QUESTER', 'CRONER', 'QUESTER']
+  const others = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008', 'MACPOWER']
   const [term, setTerm] = useState('')
   const { loading, error, data } = useProductsQuery({
     variables: { where: term ? { _q: term } : {} },
@@ -56,53 +58,49 @@ const Products: React.FC<ProductsProps> = () => {
               </div>
             ) : (
               <div className="product-products-content">
-                {/* 
+                
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    <ProductCard
-                      product={data?.products.find(
-                        (p) => p?.eachCategory == 'PASSENGER'
-                      )}
-                    />
-                    <ProductCard
-                      product={data?.products.find(
-                        (p) => p?.eachCategory == 'CROSSOVER'
-                      )}
-                    />
-                    <ProductCard
-                      product={data?.products.find(
-                        (p) => p?.eachCategory == 'CROSSOVER'
-                      )}
-                    />
+                    {nissanCategory.map((prod)=>(
+                      <> 
+                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                          <ProductCard
+                            product={data?.products.find(
+                              (p) => p?.eachCategory === prod 
+                            )}
+                          />
+                      ): null}
+                       </>
+                    ))}
                   </Yoga>
 
                   <div className="center">
                     <Button
-                      // to={'https://nissanethiopia.com'}
-                      // target="_blank"
-                      to={`/products/categories/?id=NISSAN`}
+                      to={'https://nissanethiopia.com'}
+                      target="_blank"
                       mode="primary-outline"
                     >
                       Browse all Nissan vehicles
                     </Button>
                   </div>
                 </Card>
- */}
+
 
                 <Card className="product-category-card">
                   <h2 className={'category-title'}>UD Trucks</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    <ProductCard
-                      product={data?.products.find(
-                        (p) => p?.eachCategory == 'QUESTER'
-                      )}
-                    />
-                    <ProductCard
-                      product={data?.products.find(
-                        (p) => p?.eachCategory == 'QUESTER'
-                      )}
-                    />
+                    {UD_Category.map((prod)=>(
+                      <> 
+                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                          <ProductCard
+                            product={data?.products.find(
+                              (p) => p?.eachCategory === prod 
+                            )}
+                          />
+                      ): null}
+                       </>
+                    ))}
                   </Yoga>
 
                   <div className="center">
@@ -110,9 +108,43 @@ const Products: React.FC<ProductsProps> = () => {
                       to={`/products/categories/?id=UD_TRUCKS`}
                       mode="primary-outline"
                     >
-                      Browse all Nissan vehicles
+                      Browse all UD Trucks
                     </Button>
                   </div>
+                </Card>
+
+                <Card className="product-category-card">
+                  <h3> More Brands</h3>
+                  <Yoga className="product-category-yoga" maxCol={3}>
+                    {others.map((prod)=>(
+                      <> 
+                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                          <ProductCard
+                            product={data?.products.find(
+                              (p) => p?.eachCategory === prod 
+                            )}
+                          />
+                      ): null}
+                       </>
+                    ))}
+                  </Yoga>
+
+                  <Yoga maxCol={3} className="center">
+                    <Button
+                      to={`/products/categories/?id=EICHER`}
+                      mode="primary-outline"
+                      style={{width:'60%'}}
+                    >
+                      Browse all Echier Vehicles
+                    </Button>
+                    <Button
+                      to={`/products/categories/?id=MACPOWER`}
+                      mode="primary-outline"
+                      style={{width:'60%'}}
+                    >
+                      Browse all Macpower Battery
+                    </Button>
+                  </Yoga>
                 </Card>
               </div>
             )}
