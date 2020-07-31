@@ -5,7 +5,7 @@ import { useBidsQuery } from '../../../../app/graphql'
 import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import SEO from '../../../../shared/components/seo/seo'
 import HeroSearch from '../../../../shared/components/hero-search/hero-search'
-import { Loading, Warning, Content } from 'gerami'
+import { Loading, Warning, Content, Block } from 'gerami'
 import BidCard from '../../components/bid-card/bid-card'
 import './bids.scss'
 import Button from '../../../../shared/components/button/button'
@@ -116,23 +116,21 @@ const Bid: React.FC<BidsProps> = () => {
                         <BidCard key={key} bid={bid!} />
                       ))}
                   </div>
-                  {console.log('data', !data.bids)}
-                  {console.log('bids >= total', data.bids.length >= total)}
-                  {console.log('bids', data.bids.length)}
-                  {console.log('total', total)}
 
-                  {!data?.bids || data.bids.length <= total ? null : (
-                    <Button
-                      mode="primary-outline"
-                      className="vacancy-vacancies-load-more"
-                      onClick={() => {
-                        setLimit(limit + COUNT)
-                      }}
-                      disabled={loading}
-                    >
-                      Load more{loading ? '...' : ''}
-                    </Button>
-                  )}
+                  <Block first className="center">
+                    {!data?.bids || data.bids.length >= total ? null : (
+                      <Button
+                        mode="primary-outline"
+                        className="vacancy-vacancies-load-more"
+                        onClick={() => {
+                          setLimit(limit + COUNT)
+                        }}
+                        disabled={loading}
+                      >
+                        Load more{loading ? '...' : ''}
+                      </Button>
+                    )}
+                  </Block>
                 </div>
               )}
             </Content>

@@ -22,7 +22,7 @@ const News: React.FC<NewsProps> = () => {
   })
 
   const [total] = useLazy(0, (set) => {
-    fetch(`${strapiApiBase}/news/count`)
+    fetch(`${strapiApiBase}/publications/count`)
       .then((response) => response.json())
       .then((data) => set(Number(data)))
       .catch(console.error)
