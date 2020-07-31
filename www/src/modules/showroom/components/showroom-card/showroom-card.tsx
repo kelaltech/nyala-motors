@@ -23,7 +23,10 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
   const [isExpanded, setIsexapanded] = useState(false)
   return (
     <>
-      <Content className="showroom-card-container padding-top-big padding-horizontal-normal">
+      <Content
+        transparent
+        className="showroom-card-container padding-top-big padding-horizontal-normal"
+      >
         <Carousel
           enableAutoPlay={false}
           pagination={false}
@@ -41,7 +44,7 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
           ))}
         </Carousel>
         <Block className="showroom-card-content">
-          <hr />
+          {/* <hr /> */}
           <p
             style={{
               height: `${isExpanded ? 'auto' : '72px'}`,

@@ -13,12 +13,12 @@ const Registration: React.FC<RegistrationProps> = () => {
       <SEO title="Home" />
 
       <Layout headerProps={{ mode: 'primary' }}>
-        <Block className="center feedback-container">
+        <Block className="center registration-container">
           <iframe
             src="http://eepurl.com/g_DOGD"
             frameBorder={0}
             scrolling={'no'}
-            className="feedback-form"
+            className="registration-form"
           >
             Loading…
           </iframe>
