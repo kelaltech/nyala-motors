@@ -169,12 +169,13 @@ const Home: React.FC<HomeProps> = () => {
             <div className="padding-very-big">
               <Loading className="margin-vertical-very-big" delay={700} />
             </div>
-          ) : !data?.home || error ? (
+          ) : error ? (
             <div className="padding-very-big">
               <Warning problem={error as any} shy={true} />
             </div>
-          ) : (
-            <Block className={'landing-video-container'}>
+          ) :data?.home ? 
+          (
+          <Block className={'landing-video-container'}>
               <Content size={'XXL'}>
                 <iframe
                   className={'full-width'}
@@ -184,7 +185,7 @@ const Home: React.FC<HomeProps> = () => {
                 />
               </Content>
             </Block>
-          )}
+          ): null}
 
           <div className={'landing-bottom-box'}>
             <div className={'landing-bottom-slant'} />
