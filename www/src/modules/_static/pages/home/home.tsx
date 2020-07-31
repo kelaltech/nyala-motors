@@ -185,7 +185,7 @@ const Home: React.FC<HomeProps> = () => {
                 />
               </Content>
             </Block>
-          ): null}
+          ) : null}
 
           <div className={'landing-bottom-box'}>
             <div className={'landing-bottom-slant'} />
