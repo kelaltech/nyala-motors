@@ -18,8 +18,8 @@ query ProductDetail($id: ID!) {
     brochure {
       url
     }
-     vrImg{
-			url
+    vrImg{
+     url
     }
   }
 }
