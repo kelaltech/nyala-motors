@@ -153,16 +153,10 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   </div>
                 ))}
               </Block>
-<<<<<<< HEAD
-                <Block first last className="center">
-                  {data?.product?.brochure?.url ? (
-                    <Button
-=======
 
               <Block first last className="center">
                 {data?.product?.brochure?.url ? (
                   <Button
->>>>>>> b054dc173e53dcef704c100dbaa9cde872b1d718
                     to={`${data?.product?.brochure?.url}`}
                     download
                     mode="primary-outline"
