@@ -58,20 +58,21 @@ const Products: React.FC<ProductsProps> = () => {
               </div>
             ) : (
               <div className="product-products-content">
-                
                 <Card className="product-category-card">
                   <h3>Nissan Vehicles</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    {nissanCategory.map((prod)=>(
-                      <> 
-                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                    {nissanCategory.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
                           <ProductCard
                             product={data?.products.find(
-                              (p) => p?.eachCategory === prod 
+                              (p) => p?.eachCategory === prod
                             )}
                           />
-                      ): null}
-                       </>
+                        ) : null}
+                      </>
                     ))}
                   </Yoga>
 
@@ -86,20 +87,21 @@ const Products: React.FC<ProductsProps> = () => {
                   </div>
                 </Card>
 
-
                 <Card className="product-category-card">
                   <h2 className={'category-title'}>UD Trucks</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    {UD_Category.map((prod)=>(
-                      <> 
-                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                    {UD_Category.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
                           <ProductCard
                             product={data?.products.find(
-                              (p) => p?.eachCategory === prod 
+                              (p) => p?.eachCategory === prod
                             )}
                           />
-                      ): null}
-                       </>
+                        ) : null}
+                      </>
                     ))}
                   </Yoga>
 
@@ -116,16 +118,18 @@ const Products: React.FC<ProductsProps> = () => {
                 <Card className="product-category-card">
                   <h3> More Brands</h3>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    {others.map((prod)=>(
-                      <> 
-                        {data.products?.find((p)=> p?.eachCategory === prod) ? (
+                    {others.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
                           <ProductCard
                             product={data?.products.find(
-                              (p) => p?.eachCategory === prod 
+                              (p) => p?.eachCategory === prod
                             )}
                           />
-                      ): null}
-                       </>
+                        ) : null}
+                      </>
                     ))}
                   </Yoga>
 
@@ -133,14 +137,14 @@ const Products: React.FC<ProductsProps> = () => {
                     <Button
                       to={`/products/categories/?id=EICHER`}
                       mode="primary-outline"
-                      style={{width:'60%'}}
+                      style={{ width: '60%' }}
                     >
                       Browse all Echier Vehicles
                     </Button>
                     <Button
                       to={`/products/categories/?id=MACPOWER`}
                       mode="primary-outline"
-                      style={{width:'60%'}}
+                      style={{ width: '60%' }}
                     >
                       Browse all Macpower Battery
                     </Button>

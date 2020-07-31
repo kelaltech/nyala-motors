@@ -6,7 +6,10 @@ import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Anchor from '../../../../shared/components/anchor/anchor'
 
 type ProductCardProps = {
-  product: Pick<Products, 'id' | 'eachCategory' | 'headerImg' | 'motto' | 'name'>
+  product: Pick<
+    Products,
+    'id' | 'eachCategory' | 'headerImg' | 'motto' | 'name'
+  >
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
