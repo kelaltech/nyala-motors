@@ -76,3 +76,9 @@ $mobile-threshold: $mobile * 1.6;
 .showroom-360 {
   height: 80vh;
 }
+
+.video-showroom-box {
+  width: 100%;
+  background: $bg;
+  margin: 16px 0 !important;
+}

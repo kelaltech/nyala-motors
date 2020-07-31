@@ -55,7 +55,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
               <div>
                 <h6>Vacancy</h6>
                 <h1>{data.vacancy.title}</h1>
-                <hr/>
+                <hr />
                 {isExpired || !data.vacancy.attachment?.url ? null : (
                   <Button
                     to={`${data.vacancy.attachment.url}`}
@@ -147,12 +147,14 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                   How to Apply
                 </h2>
                 {data.vacancy.applyByCV ? (
-                  <Block >
-                    {data.vacancy.howToApply ? (<>
-                      <div>
-                        <Markdown>{data.vacancy.howToApply}</Markdown>
-                      </div>
-                    </>):null}
+                  <Block>
+                    {data.vacancy.howToApply ? (
+                      <>
+                        <div>
+                          <Markdown>{data.vacancy.howToApply}</Markdown>
+                        </div>
+                      </>
+                    ) : null}
                     <div className={'center cv-container'}>
                       <iframe
                         src="https://docs.google.com/forms/d/e/1FAIpQLSfi-p0VgOfr-V0VZY9IczxR4ZixdhWlR_WJZ4faP6fRfvffsA/viewform?usp=sf_link"

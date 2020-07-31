@@ -6,7 +6,6 @@ import Layout from '../../../../shared/components/layout/layout'
 import { Loading, Warning, Block, Yoga } from 'gerami'
 import FeaturedNews from '../../components/featured-news/featured-news'
 import NewsCard from '../../components/news-card/news-card'
-import VideoNews from '../../components/video-news/video-news'
 import { strapiApiBase } from '../../../../../constants'
 import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import Button from '../../../../shared/components/button/button'
@@ -23,7 +22,7 @@ const News: React.FC<NewsProps> = () => {
   })
 
   const [total] = useLazy(0, (set) => {
-    fetch(`${strapiApiBase}/news/count`)
+    fetch(`${strapiApiBase}/publications/count`)
       .then((response) => response.json())
       .then((data) => set(Number(data)))
       .catch(console.error)
@@ -63,8 +62,6 @@ const News: React.FC<NewsProps> = () => {
                 </Block>
               </div>
             )}
-            {/* videos from youtube playlist API */}
-            <VideoNews />
 
             {data?.publications?.length === 0 ? null : (
               <Block>

@@ -1,5 +1,5 @@
-query Showroom {
-  showrooms {
+query Showroom($limit: Int) {
+  showrooms(limit: $limit) {
     image {
       url
     }
