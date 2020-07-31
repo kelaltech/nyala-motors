@@ -15,7 +15,7 @@ const Registration: React.FC<RegistrationProps> = () => {
       <Layout headerProps={{ mode: 'primary' }}>
         <Block className="center registration-container">
           <iframe
-            src="http://eepurl.com/g_DOGD"
+            src="https://eepurl.com/g_DOGD"
             frameBorder={0}
             scrolling={'no'}
             className="registration-form"

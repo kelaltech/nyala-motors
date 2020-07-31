@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Nyala Motors | Showroom 360° View</title>
+    <meta name="description" content="360&deg; Image - A-Frame" />
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <script>
+        document.write(
+          '<a-sky src="' +
+            decodeURIComponent(location.search.replace(/\?src=/i, '')) +
+            '" rotation="0 -130 0"></a-sky>'
+        );
+      </script>
+    </a-scene>
+  </body>
+</html>
