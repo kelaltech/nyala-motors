@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
@@ -10,11 +10,14 @@ import { IoMdArrowDropright } from 'react-icons/io'
 import Markdown from 'markdown-to-jsx'
 import Button from '../../../../shared/components/button/button'
 import Carousel, { consts } from 'react-elastic-carousel'
+import Modal from '../../../../shared/components/modal/modal'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
+import { MdRotate90DegreesCcw } from 'react-icons/md'
 
 type ProductDetailProps = {}
 
 const ProductDetail: React.FC<ProductDetailProps> = () => {
+  const [openModal, setOpenModal] = useState(false)
   const myArrow = ({ type, onClick }: any) => {
     const pointer =
       type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
@@ -54,7 +57,27 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 backgroundImage: `url(${data?.product?.headerImg?.url})`,
               }}
               className="product-detail-hero"
-            ></div>
+            >
+              {data?.product?.vrImg?.url ? (<>
+                <Block className="product-detail-hero-tag">
+                    <Button className={'button-360'}
+                      onClick={()=>setOpenModal(true)}
+                      mode={'default'}
+                    >
+                      <MdRotate90DegreesCcw/> Explore in 360 or VR
+                    </Button>
+                </Block>
+              </>): null}
+            </div>
+            <Modal show={openModal} modalClosed={() => setOpenModal(false)}>
+              <div>
+                <iframe
+                  src={`/360/vr-frame.html?src=${data?.product?.vrImg?.url}`}
+                  className="showroom-360"
+                  width={'100%'}
+                />
+              </div>
+            </Modal>
 
             <div className="product-detail-navigator">
               <div className="product-detail-navigator-item">
@@ -130,10 +153,16 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   </div>
                 ))}
               </Block>
+<<<<<<< HEAD
+                <Block first last className="center">
+                  {data?.product?.brochure?.url ? (
+                    <Button
+=======
 
               <Block first last className="center">
                 {data?.product?.brochure?.url ? (
                   <Button
+>>>>>>> b054dc173e53dcef704c100dbaa9cde872b1d718
                     to={`${data?.product?.brochure?.url}`}
                     download
                     mode="primary-outline"
