@@ -8,14 +8,29 @@ import Modal from '../../../shared/components/modal/modal'
 import Button from '../../../shared/components/button/button'
 import './showroom.scss'
 import { MdRotate90DegreesCcw } from 'react-icons/md'
+import VideoNews from '../components/video-news/video-news'
+import { strapiApiBase } from '../../../../constants'
+import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
 
 type ShowroomProps = {}
-
+const COUNT = 12
 const Showroom: React.FC<ShowroomProps> = () => {
   const [openModal, setOpenModal] = useState(false)
-  const { loading, error, data } = useShowroomQuery()
-  console.log('openModal')
-  console.log(openModal)
+  const [limit, setLimit] = useState(COUNT)
+
+  const { loading, error, data } = useShowroomQuery({
+    variables: {
+      limit,
+    },
+  })
+
+  const [total] = useLazy(0, (set) => {
+    fetch(`${strapiApiBase}/showrooms/count`)
+      .then((response) => response.json())
+      .then((data) => set(Number(data)))
+      .catch(console.error)
+  })
+
   return (
     <>
       <SEO title="Showroom" />
@@ -74,13 +89,45 @@ const Showroom: React.FC<ShowroomProps> = () => {
               <Block>
                 <Content transparent size={'XXL'}>
                   <Yoga maxCol={2}>
-                    {data.showrooms.map((showroom, key) => (
+                    {data.showrooms.slice(0, 2).map((showroom, key) => (
                       <div key={key}>
                         <ShowroomCard showroom={showroom} />
                       </div>
                     ))}
                   </Yoga>
                 </Content>
+              </Block>
+
+              {/* videos from youtube playlist API */}
+              <div className={'video-showroom-box'}>
+                <VideoNews />
+              </div>
+
+              <Block>
+                <Content transparent size={'XXL'}>
+                  <Yoga maxCol={2}>
+                    {data.showrooms.slice(2).map((showroom, key) => (
+                      <div key={key}>
+                        <ShowroomCard showroom={showroom} />
+                      </div>
+                    ))}
+                  </Yoga>
+                </Content>
+              </Block>
+
+              <Block className={'center'}>
+                {!data?.showrooms || data.showrooms.length >= total ? null : (
+                  <Button
+                    mode="primary-outline"
+                    className="vacancy-vacancies-load-more"
+                    onClick={() => {
+                      setLimit(limit + COUNT)
+                    }}
+                    disabled={loading}
+                  >
+                    Load more{loading ? '...' : ''}
+                  </Button>
+                )}
               </Block>
             </>
           )}

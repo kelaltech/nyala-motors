@@ -1,14 +1,17 @@
 @import '../../../../assets//styles/theme';
 
 .registration-container {
+  height: inherit;
+
   .registration-form {
-    width: 800px;
+    width: 65%;
     height: 700px;
+
     @media screen and(max-width: $mobile*2) {
-      width: 400px;
+      width: 80%;
     }
     @media screen and(max-width: $mobile) {
-      width: auto;
+      width: 100%;
     }
   }
 }
