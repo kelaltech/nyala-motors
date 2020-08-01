@@ -110,6 +110,7 @@ coverage
 .env
 exports/**/*.*
 !exports/**/*.graphql
+license.txt
 .cache
 build
 
