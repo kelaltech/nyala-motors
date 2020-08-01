@@ -173,9 +173,8 @@ const Home: React.FC<HomeProps> = () => {
             <div className="padding-very-big">
               <Warning problem={error as any} shy={true} />
             </div>
-          ) :data?.home ? 
-          (
-          <Block className={'landing-video-container'}>
+          ) : data?.home ? (
+            <Block className={'landing-video-container'}>
               <Content size={'XXL'}>
                 <iframe
                   className={'full-width'}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
@@ -58,16 +58,19 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
               }}
               className="product-detail-hero"
             >
-              {data?.product?.vrImg?.url ? (<>
-                <Block className="product-detail-hero-tag">
-                    <Button className={'button-360'}
-                      onClick={()=>setOpenModal(true)}
+              {data?.product?.vrImg?.url ? (
+                <>
+                  <Block className="product-detail-hero-tag">
+                    <Button
+                      className={'button-360'}
+                      onClick={() => setOpenModal(true)}
                       mode={'default'}
                     >
-                      <MdRotate90DegreesCcw/> Explore in 360 or VR
+                      <MdRotate90DegreesCcw /> Explore in 360 or VR
                     </Button>
-                </Block>
-              </>): null}
+                  </Block>
+                </>
+              ) : null}
             </div>
             <Modal show={openModal} modalClosed={() => setOpenModal(false)}>
               <div>
