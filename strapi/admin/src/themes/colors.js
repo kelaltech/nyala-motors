@@ -1,7 +1,7 @@
 const colors = {
   black: '#333740',
   white: '#ffffff',
-  red: '#ff203c',
+  red: '#c51632',
   orange: '#ff5d00',
   lightOrange: '#f64d0a',
   yellow: '#ffd500',
@@ -25,8 +25,8 @@ const colors = {
   greyDark: '#292b2c',
   greyAlpha: 'rgba(227, 233, 243, 0.5)',
   lightBlue: '#E6F0FB',
-  mediumBlue: '#007eff',
-  darkBlue: '#AED4FB',
+  mediumBlue: '#e83350',
+  darkBlue: '#D11735',
   content: {
     background: '#fafafb',
     'background-alpha': 'rgba(14, 22, 34, 0.02)',
@@ -41,7 +41,7 @@ const colors = {
     gray: '#535f76',
     'blue-darker': '#18202e',
     'blue-dark': '#151c2e',
-    blue: '#0097f7',
+    blue: '#c51632',
   },
 }
 
