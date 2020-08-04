@@ -1,5 +1,15 @@
+/**
+ *
+ * LeftMenuLink
+ *
+ */
+
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
 import { startsWith } from 'lodash'
 import PropTypes from 'prop-types'
+// eslint-disable-next-line no-unused-vars
+import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 import { Link, withRouter } from 'react-router-dom'
 

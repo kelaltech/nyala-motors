@@ -1,8 +1,13 @@
 
 
-import { defineMessages } from 'react-intl'
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import { defineMessages, FormattedMessage } from 'react-intl'
 import { PropTypes } from 'prop-types'
 
+// eslint-disable-next-line no-unused-vars
+import Wrapper from './Wrapper'
 import messages from './messages.json'
 
 defineMessages(messages)
