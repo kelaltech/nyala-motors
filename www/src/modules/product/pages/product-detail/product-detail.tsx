@@ -64,7 +64,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                     <Button
                       className={'button-360'}
                       onClick={() => setOpenModal(true)}
-                      mode={'default'}
+                      mode={'primary'}
                     >
                       <MdRotate90DegreesCcw /> Explore in 360 or VR
                     </Button>
@@ -112,7 +112,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
               <Block id={'overview'} className="product-detail-overview">
                 <div className="product-detail-overview-description">
                   <h2>Overview</h2>
-                  <Markdown>{data?.product?.description}</Markdown>
+                  <Markdown>{data?.product?.description!}</Markdown>
                 </div>
               </Block>
               <Block first last />
@@ -128,7 +128,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                       <Yoga maxCol={2}>
                         <div className="product-detail-overview-description">
                           <h2>{spec?.title}</h2>
-                          <Markdown>{spec?.description}</Markdown>
+                          <Markdown>{spec?.description!}</Markdown>
                         </div>
                         {!spec?.specImages ||
                         spec?.specImages?.length === 0 ? null : (

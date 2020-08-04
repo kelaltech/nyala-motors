@@ -117,3 +117,15 @@ $mobile-threshold: $mobile * 2.2;
     color: $primary !important;
   }
 }
+
+.aftersale-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .aftersale-icon {
+    align-self: center;
+    padding-top: 4px;
+    padding-left: 2px;
+  }
+}

@@ -93,7 +93,7 @@ const Home: React.FC<HomeProps> = () => {
                         {lang`home.link.product1`}{' '}
                       </span>
                       <span
-                        className={'light'}
+                        className={'light '}
                       >{lang`home.link.product2`}</span>
                     </span>
                   </div>
@@ -117,13 +117,13 @@ const Home: React.FC<HomeProps> = () => {
                       </span>
                       <Anchor to={'/aftersales/services'}>
                         <span
-                          className={'light fg-whitish'}
+                          className={'light fg-white'}
                         >{lang`home.link.aftersale.service`}</span>
                       </Anchor>
                       <span className={'light'}>{` & `}</span>
                       <Anchor to={'/aftersales/parts'}>
                         <span
-                          className={'light fg-whitish'}
+                          className={'light fg-white'}
                         >{lang`home.link.aftersale.parts`}</span>
                       </Anchor>
                     </span>
@@ -138,26 +138,42 @@ const Home: React.FC<HomeProps> = () => {
               <Block className={'landing-products-list'}>
                 <Content>
                   <Block className={'landing-products-list-box'}>
-                    <GatsbyImage
-                      fluid={nissanLogo?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-1"
-                    />
-                    <GatsbyImage
-                      fluid={udtrucks?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-2"
-                    />
-                    <GatsbyImage
-                      fluid={elicher?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-3"
-                    />
-                    <GatsbyImage
-                      fluid={Unicarriers?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-4"
-                    />
-                    <GatsbyImage
-                      fluid={macpower?.childImageSharp?.fluid as any}
-                      className="produc-list produc-list-img-5"
-                    />
+                    <Anchor to={'https://nissanethiopia.com'}>
+                      <GatsbyImage
+                        fluid={nissanLogo?.childImageSharp?.fluid as any}
+                        className="produc-list produc-list-img-1"
+                      />
+                    </Anchor>
+
+                    <Anchor to={'https://www.udtrucks.com'}>
+                      <GatsbyImage
+                        fluid={udtrucks?.childImageSharp?.fluid as any}
+                        className="produc-list produc-list-img-2"
+                      />
+                    </Anchor>
+
+                    <Anchor to={'https://www.eicher.in/about-us'}>
+                      <GatsbyImage
+                        fluid={elicher?.childImageSharp?.fluid as any}
+                        className="produc-list produc-list-img-3"
+                      />
+                    </Anchor>
+                    <Anchor to={'https://www.unicarriers.co.jp/os_products/'}>
+                      <GatsbyImage
+                        fluid={Unicarriers?.childImageSharp?.fluid as any}
+                        className="produc-list produc-list-img-4"
+                      />
+                    </Anchor>
+                    <Anchor
+                      to={
+                        'https://mac-power.yigitaku.com/corporate-profile/?lang=en'
+                      }
+                    >
+                      <GatsbyImage
+                        fluid={macpower?.childImageSharp?.fluid as any}
+                        className="produc-list produc-list-img-5"
+                      />
+                    </Anchor>
                   </Block>
                 </Content>
               </Block>
@@ -167,7 +183,7 @@ const Home: React.FC<HomeProps> = () => {
           <Block className={'landing-qoute-container'}>
             <blockquote>
               {lang`home.quote`}
-              <span className={'fg-primary'}>#NyalaMotors</span>
+              <span className={'fg-primary'}>&nbsp;#NyalaMotors</span>
             </blockquote>
           </Block>
 
@@ -195,22 +211,23 @@ const Home: React.FC<HomeProps> = () => {
           <div className={'landing-bottom-box'}>
             <div className={'landing-bottom-slant'} />
             <div className={'landing-bottom-items'}>
-              <div className={'landing-bottom-item'}>
+              <Anchor to={'/news'} className={'landing-bottom-item'}>
                 <span className={'bottom-icons'}>
                   <FaRegNewspaper />
                 </span>
-                <Anchor to={'/news'} className={'bottom-title'}>
+                <span className={'bottom-title'}>
                   {lang`home.bottom.link1`}
-                </Anchor>
-              </div>
-              <div className={'landing-bottom-item'}>
+                </span>
+              </Anchor>
+
+              <Anchor to={'/contact'} className={'landing-bottom-item'}>
                 <span className={'bottom-icons'}>
                   <FaRegMap />
                 </span>
-                <Anchor to={'/contact'} className={'bottom-title'}>
+                <span className={'bottom-title'}>
                   {lang`home.bottom.link2`}
-                </Anchor>
-              </div>
+                </span>
+              </Anchor>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import GatsbyImage from 'gatsby-image'
 
@@ -8,7 +8,7 @@ import Anchor from '../anchor/anchor'
 import Wordmark from '../../../assets/images/shared/brand/wordmark.svg'
 import WordmarkAlt from '../../../assets/images/shared/brand/wordmark-alt.svg'
 import Nav from './components/nav/nav'
-
+import { useScrollPosition } from '../../../shared/hooks/use-scroll-position/use-scroll-position'
 export type HeaderProps = {
   mode?: 'default' | 'white' | 'transparent' | 'primary'
 }
@@ -16,10 +16,17 @@ export type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
   const { logo } = useStaticQuery<HeaderQuery>(query)
 
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  useScrollPosition(({ currPos }) => setPos(currPos))
+
   return (
     <header
       className={`shared-header ${
-        mode !== 'default' ? `shared-header-mode-${mode}` : ''
+        mode !== 'default'
+          ? `shared-header-mode-${
+              mode === 'transparent' && pos.y !== 0 ? 'white' : mode
+            }`
+          : `shared-header-mode-${pos.y !== 0 ? 'white' : ''}`
       }`}
     >
       <div>
@@ -29,9 +36,7 @@ const Header: React.FC<HeaderProps> = ({ mode = 'default' }) => {
             className="shared-header-mode-logo"
           />
 
-          {(['transparent', 'primary'] as HeaderProps['mode'][]).includes(
-            mode
-          ) ? (
+          {mode === 'primary' || (mode === 'transparent' && pos.y === 0) ? (
             <WordmarkAlt className="shared-header-mode-wordmark" />
           ) : (
             <Wordmark className="shared-header-mode-wordmark" />

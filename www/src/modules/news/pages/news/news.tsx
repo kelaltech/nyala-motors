@@ -30,7 +30,7 @@ const News: React.FC<NewsProps> = () => {
   return (
     <>
       <SEO title="News" />
-      <Layout headerProps={{ mode: 'default' }}>
+      <Layout headerProps={{ mode: 'primary' }}>
         <div className={'news-list-parent'} />
         {loading ? (
           <div className="padding-very-big">

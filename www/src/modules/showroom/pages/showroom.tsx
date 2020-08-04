@@ -11,12 +11,16 @@ import { MdRotate90DegreesCcw } from 'react-icons/md'
 import VideoNews from '../components/video-news/video-news'
 import { strapiApiBase } from '../../../../constants'
 import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
+import { graphql, useStaticQuery } from 'gatsby'
+import { ShowroomStaticQuery } from '../../../../graphql-types'
 
 type ShowroomProps = {}
 const COUNT = 12
 const Showroom: React.FC<ShowroomProps> = () => {
   const [openModal, setOpenModal] = useState(false)
   const [limit, setLimit] = useState(COUNT)
+
+  const { showroomHero } = useStaticQuery<ShowroomStaticQuery>(query)
 
   const { loading, error, data } = useShowroomQuery({
     variables: {
@@ -36,7 +40,12 @@ const Showroom: React.FC<ShowroomProps> = () => {
       <SEO title="Showroom" />
 
       <LayoutDefault headerProps={{ mode: 'transparent' }}>
-        <div className={'showroom-hero-container'}>
+        <div
+          className={'showroom-hero-container'}
+          style={{
+            backgroundImage: `url(${showroomHero?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <Block className="showroom-hero-tag">
             <h1>SHOWROOM</h1>
             <Button
@@ -138,3 +147,15 @@ const Showroom: React.FC<ShowroomProps> = () => {
 }
 
 export default Showroom
+
+const query = graphql`
+  query ShowroomStatic {
+    showroomHero: file(relativePath: { eq: "showroom/showroombg.png" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`

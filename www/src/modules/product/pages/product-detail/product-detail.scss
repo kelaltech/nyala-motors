@@ -2,23 +2,6 @@
 
 .product-detail-container {
   padding-bottom: 25px;
-  // @media screen and(max-width: 850px) {
-  //   .product-detail-hero {
-  //     max-height: 333px;
-  //     .product-detail-hero-overlay {
-  //       h3 {
-  //         font-size: 5vw !important;
-  //         line-height: 5.5vw !important;
-  //         height: 16.5vw !important;
-  //       }
-  //     }
-  //   }
-  //   .product-detail-page {
-  //     .product-detail-page-top {
-  //       padding-left: 20px;
-  //     }
-  //   }
-  // }
 }
 
 .product-detail-hero {
@@ -30,6 +13,10 @@
   background-color: $primary;
   clip-path: ellipse(125% 63% at 80% 26%);
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-detail-navigator {

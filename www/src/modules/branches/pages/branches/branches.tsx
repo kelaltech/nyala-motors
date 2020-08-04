@@ -7,23 +7,31 @@ import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { nameDealerType } from '../../../../shared/components/nameDealerType'
 import EmailContact from '../../components/contact/contact'
+import { graphql, useStaticQuery } from 'gatsby'
+import { BranchesStaticQuery } from '../../../../../graphql-types'
 
 type Branches = {}
 
 const Branches: React.FC<Branches> = () => {
   const { data, loading, error } = useBranchesQuery()
+  const { branchesHero } = useStaticQuery<BranchesStaticQuery>(query)
 
   return (
     <>
       <SEO title="Contacts" />
 
       <LayoutDefault>
-        <div className={'branches-hero-container'}>
+        <div
+          className={'branches-hero-container'}
+          style={{
+            backgroundImage: `url(${branchesHero?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <Block className="center branches-hero-tag">
             <h1>Contact Us </h1>
           </Block>
         </div>
-        <Content size={'4XL'} transparent={true}>
+        <Content size={'3XL'} transparent={true}>
           {!data && loading ? (
             <div className="padding-very-big">
               <Loading className="margin-vertical-very-big" delay={700} />
@@ -44,9 +52,9 @@ const Branches: React.FC<Branches> = () => {
                           Dealer Type
                         </h4>
                         <div>
-                          {val!.dealerTypes!.map((val: any, key: any) => (
+                          {val?.dealerTypes?.map((v, key) => (
                             <Markdown className={'markdown'} key={key}>
-                              {nameDealerType(val.dealerType)}
+                              {nameDealerType(v?.dealerType)}
                             </Markdown>
                           ))}
                         </div>
@@ -81,7 +89,12 @@ const Branches: React.FC<Branches> = () => {
             </>
           )}
         </Content>
-        <Content className="email-block">
+        <Content
+          className="email-block"
+          style={{
+            backgroundImage: `url(${branchesHero?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <div className={'contact-email-yoga'}>
             <Block className="email-block-left">
               <h1>Do you have a question?</h1>
@@ -104,3 +117,15 @@ const Branches: React.FC<Branches> = () => {
 }
 
 export default Branches
+
+const query = graphql`
+  query BranchesStatic {
+    branchesHero: file(relativePath: { eq: "about/nyala.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
