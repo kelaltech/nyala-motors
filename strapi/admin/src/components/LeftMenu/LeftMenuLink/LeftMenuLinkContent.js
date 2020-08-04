@@ -1,20 +1,15 @@
-/**
- *
- * LeftMenuLink
- *
- */
-
-import React from 'react'
 import { startsWith } from 'lodash'
 import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 import { Link, withRouter } from 'react-router-dom'
 
 import en from '../../../translations/en.json'
+// eslint-disable-next-line no-unused-vars
 import LeftMenuIcon from './LeftMenuIcon'
+// eslint-disable-next-line no-unused-vars
 import A from './A'
 
+// eslint-disable-next-line no-unused-vars
 const LinkLabel = styled.span`
   display: inline-block;
   width: 100%;
@@ -40,7 +35,7 @@ const LeftMenuLinkContent = ({ destination, iconName, label, location }) => {
           label: `${label.id || label}`,
         }}
       >
-        {message => <LinkLabel>{message}</LinkLabel>}
+        {(message) => <LinkLabel>{message}</LinkLabel>}
       </FormattedMessage>
     ) : (
       <LinkLabel>{labelId}</LinkLabel>

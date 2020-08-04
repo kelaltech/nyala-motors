@@ -1,19 +1,13 @@
-/**
- *
- * LeftMenuFooter
- *
- */
 
-import React from 'react'
-import { defineMessages, FormattedMessage } from 'react-intl'
+
+import { defineMessages } from 'react-intl'
 import { PropTypes } from 'prop-types'
 
-import Wrapper from './Wrapper'
 import messages from './messages.json'
 
 defineMessages(messages)
 
-function LeftMenuFooter({ version }) {
+function LeftMenuFooter() {
   return (
     <Wrapper>
       <div className="poweredBy">

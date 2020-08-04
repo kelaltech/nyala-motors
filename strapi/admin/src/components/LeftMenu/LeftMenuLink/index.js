@@ -1,12 +1,6 @@
-/**
- *
- * LeftMenuLink
- *
- */
-
-import React from 'react'
 import PropTypes from 'prop-types'
 
+// eslint-disable-next-line no-unused-vars
 import LeftMenuLinkContent from './LeftMenuLinkContent'
 
 const LeftMenuLink = ({ destination, iconName, label, location }) => {
