@@ -18,6 +18,12 @@ const Products: React.FC<ProductsProps> = () => {
   const nissanCategory = ['PASSENGER', 'CROSSOVER', 'SPORT_UTILITY']
   const UD_Category = ['NEW_QUESTER', 'CRONER', 'QUESTER']
   const others = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008', 'MACPOWER']
+  const forklift = [
+    'IC_ENGINE_FORKLIFT',
+    'REACH_TRUCKS_FORKLIFT',
+    'LARGE_SIZE_FORKLIFT',
+  ]
+
   const [term, setTerm] = useState('')
   const { loading, error, data } = useProductsQuery({
     variables: { where: term ? { _q: term } : {} },
@@ -59,7 +65,7 @@ const Products: React.FC<ProductsProps> = () => {
             ) : (
               <div className="product-products-content">
                 <Card className="product-category-card">
-                  <h3>Nissan Vehicles</h3>
+                  <h2 className={'category-title'}>Nissan Vehicles</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {nissanCategory.map((prod) => (
                       <>
@@ -114,9 +120,36 @@ const Products: React.FC<ProductsProps> = () => {
                     </Button>
                   </div>
                 </Card>
+                <Card className="product-category-card">
+                  <h2 className={'category-title'}> Unicarriers Forklift</h2>
+                  <Yoga className="product-category-yoga" maxCol={3}>
+                    {forklift.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
+                          <ProductCard
+                            product={data?.products.find(
+                              (p) => p?.eachCategory === prod
+                            )}
+                          />
+                        ) : null}
+                      </>
+                    ))}
+                  </Yoga>
+
+                  <div className="center">
+                    <Button
+                      to={`/products/categories/?id=UD_TRUCKS`}
+                      mode="primary-outline"
+                    >
+                      Browse all Unicarriers
+                    </Button>
+                  </div>
+                </Card>
 
                 <Card className="product-category-card">
-                  <h3> More Brands</h3>
+                  <h2 className={'category-title'}> More Brands</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {others.map((prod) => (
                       <>

@@ -21,17 +21,6 @@
       "type": "richtext",
       "required": true
     },
-    "heroBG": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "dealerTypes": {
       "type": "component",
       "repeatable": true,
