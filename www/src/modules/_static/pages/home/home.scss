@@ -94,6 +94,12 @@
     @media screen and (max-width: $mobile) {
       flex-wrap: wrap;
     }
+
+    a {
+      &:hover {
+        box-shadow: none !important;
+      }
+    }
   }
 
   .produc-list {

@@ -48,12 +48,14 @@
   }
 }
 .faq-card-container {
-  // border-radius: 7px;
   .faq-card-content {
     p {
-      font-weight: 300;
       font-size: 16px;
       overflow: hidden;
+
+      font-weight: 300;
+      text-align: justify;
+      color: rgba(0, 0, 0, 0.72);
     }
 
     .expandable-icon {

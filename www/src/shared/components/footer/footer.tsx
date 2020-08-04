@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = () => {
             target="_blank"
             rel="noopener nofollow"
           >
-            kelal tech.
+            Kelal Tech
           </Anchor>
         </div>
 

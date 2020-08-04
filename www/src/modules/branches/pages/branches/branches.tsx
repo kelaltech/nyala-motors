@@ -23,7 +23,7 @@ const Branches: React.FC<Branches> = () => {
             <h1>Contact Us </h1>
           </Block>
         </div>
-        <Content size={'4XL'} transparent={true}>
+        <Content size={'3XL'} transparent={true}>
           {!data && loading ? (
             <div className="padding-very-big">
               <Loading className="margin-vertical-very-big" delay={700} />
