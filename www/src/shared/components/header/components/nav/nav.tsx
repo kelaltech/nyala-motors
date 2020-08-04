@@ -5,7 +5,7 @@ import './nav.scss'
 import useDropDown from '../../../../hooks/use-drop-down/use-drop-down'
 import { usePage } from '../../../../../app/contexts/page-context/page-context'
 import Anchor from '../../../anchor/anchor'
-
+import { FaAngleDown } from 'react-icons/fa'
 import useLang from '../../../../hooks/lang/use-lang'
 
 export type NavProps = {}
@@ -43,10 +43,15 @@ const Nav: React.FC<NavProps> = () => {
 
         <Anchor
           to="#"
-          className={` ${!isAftersaleMenuOpen ? '' : 'shared-nav-link-active'}`}
+          className={`aftersale-icon-box ${
+            !isAftersaleMenuOpen ? '' : 'shared-nav-link-active'
+          }`}
           onClick={aftersaleOpenMenu}
         >
           <span>{lang`nav.item.aftersale`}</span>
+          <span className={'aftersale-icon'}>
+            <FaAngleDown />
+          </span>
           {!isAftersaleMenuOpen ? null : (
             <div className="aftersale-dropdown" ref={aftersaleRef}>
               <Anchor

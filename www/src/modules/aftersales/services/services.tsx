@@ -8,10 +8,15 @@ import { FaOilCan, FaCarBattery, FaWater } from 'react-icons/fa'
 import { BsThreeDots } from 'react-icons/bs'
 import ServiceCard from './components/service-card/service-card'
 import { useServiceQuery } from '../../../app/graphql'
+import { graphql, useStaticQuery } from 'gatsby'
+import { ServiceStaticQuery } from '../../../../graphql-types'
+
 type Services = {}
 
 const Services: React.FC<Services> = () => {
   const { data, loading, error } = useServiceQuery()
+
+  const { serviceHero } = useStaticQuery<ServiceStaticQuery>(query)
 
   return (
     <>
@@ -22,7 +27,12 @@ const Services: React.FC<Services> = () => {
           mode: 'transparent',
         }}
       >
-        <div className={'service-hero-section'}>
+        <div
+          className={'service-hero-section'}
+          style={{
+            backgroundImage: `url(${serviceHero?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <div className={'service-hero-content'}>
             <h1>CAR REPAIR SERVICES</h1>
             <p>
@@ -139,3 +149,15 @@ const Services: React.FC<Services> = () => {
 }
 
 export default Services
+
+const query = graphql`
+  query ServiceStatic {
+    serviceHero: file(relativePath: { eq: "aftersales/service-img.jpeg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`

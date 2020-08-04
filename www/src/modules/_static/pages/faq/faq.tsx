@@ -5,18 +5,26 @@ import { useFaqQuery } from '../../../../app/graphql'
 import { Loading, Warning, Content, Block, Card } from 'gerami'
 import './faq.scss'
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import { graphql, useStaticQuery } from 'gatsby'
+import { FaqStaticQuery } from '../../../../../graphql-types'
 
 type FaqProps = {}
 
 const FAQ: React.FC<FaqProps> = () => {
   const [isExpanded, setIsexapanded] = useState(false)
   const { loading, error, data } = useFaqQuery()
+  const { faqHero } = useStaticQuery<FaqStaticQuery>(query)
   return (
     <>
       <SEO title="FAQ" />
 
       <LayoutDefault>
-        <div className={'faq-hero-container'}>
+        <div
+          className={'faq-hero-container'}
+          style={{
+            backgroundImage: `url(${faqHero?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <Block className="center faq-hero-tag">
             <h1>Frequently asked Questions </h1>
           </Block>
@@ -65,3 +73,14 @@ const FAQ: React.FC<FaqProps> = () => {
 }
 
 export default FAQ
+const query = graphql`
+  query FaqStatic {
+    faqHero: file(relativePath: { eq: "about/nyala.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`

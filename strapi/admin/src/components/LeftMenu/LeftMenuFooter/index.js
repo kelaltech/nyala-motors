@@ -1,5 +1,3 @@
-
-
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 // eslint-disable-next-line no-unused-vars
@@ -21,8 +19,13 @@ function LeftMenuFooter() {
           defaultMessage={messages.poweredBy.defaultMessage}
           key="poweredBy"
         />
-        <a key="website" href="https://kelaltech.com" target="_blank" rel="noopener noreferrer">
-          kelaltech PLC
+        <a
+          key="website"
+          href="https://kelaltech.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kelal Tech PLC
         </a>
       </div>
     </Wrapper>

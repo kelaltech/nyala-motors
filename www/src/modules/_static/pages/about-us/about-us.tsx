@@ -8,11 +8,15 @@ import Markdown from 'markdown-to-jsx'
 import { useAboutQuery } from '../../../../app/graphql'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
+import { graphql, useStaticQuery } from 'gatsby'
+import { AboutStaticQuery } from '../../../../../graphql-types'
+
 type AboutUs = {}
 
 const AboutUs: React.FC<AboutUs> = () => {
   const { loading, error, data } = useAboutQuery()
 
+  const { aboutHero } = useStaticQuery<AboutStaticQuery>(query)
   const myArrow = ({ type, onClick }: any) => {
     const pointer =
       type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
@@ -36,7 +40,12 @@ const AboutUs: React.FC<AboutUs> = () => {
           </div>
         ) : (
           <>
-            <div className={'about-hero-container'}>
+            <div
+              className={'about-hero-container'}
+              style={{
+                backgroundImage: `url(${aboutHero?.childImageSharp?.fluid?.src})`,
+              }}
+            >
               {/* <Block className="center about-hero-tag">
                 <h1>About Nyala Motors S.C.</h1>
               </Block> */}
@@ -93,7 +102,7 @@ const AboutUs: React.FC<AboutUs> = () => {
               <Block id={'overview'} first last className={'overview-desc'}>
                 <h2>Overview</h2>
                 <Markdown className={'mark-down-p'}>
-                  {data.about.overviewHistory}
+                  {data?.about?.overviewHistory!}
                 </Markdown>
               </Block>
 
@@ -127,7 +136,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                   <Block first last className={'overview-desc'}>
                     <h2>Values</h2>
                     <Markdown className={'mark-down-values'}>
-                      {data.about.values}
+                      {data?.about?.values!}
                     </Markdown>
                   </Block>
                 </Content>
@@ -139,7 +148,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                     </div>
 
                     <Markdown className={'mark-down-mission'}>
-                      {data.about.mission}
+                      {data?.about?.mission!}
                     </Markdown>
                   </Block>
                 </Content>
@@ -151,7 +160,7 @@ const AboutUs: React.FC<AboutUs> = () => {
 
                 <div className={`achivements-container`}>
                   <div className="about-page-details-description">
-                    <Markdown>{data.about.achievements}</Markdown>
+                    <Markdown>{data?.about?.achievements!}</Markdown>
                   </div>
                   {data?.about?.awardImg?.length === 0 ? null : (
                     <div className={'carousel-box'}>
@@ -215,3 +224,15 @@ const AboutUs: React.FC<AboutUs> = () => {
 }
 
 export default AboutUs
+
+const query = graphql`
+  query AboutStatic {
+    aboutHero: file(relativePath: { eq: "about/nyala.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
