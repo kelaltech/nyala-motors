@@ -8,7 +8,7 @@ import Anchor from '../../../../shared/components/anchor/anchor'
 type ProductCardProps = {
   product: Pick<
     Products,
-    'id' | 'eachCategory' | 'headerImg' | 'motto' | 'name'
+    'id' | 'eachCategory' | 'headerImg' | 'motto' | 'name' | 'category'
   >
 }
 
@@ -16,7 +16,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Anchor
       className="product-card-content"
-      to={`/products/detail/?id=${product.id}`}
+      to={`${
+        product.category === 'NISSAN'
+          ? ``
+          : `/products/detail/?id=${product.id}`
+      }`}
     >
       <h2 className={'left'}>{nameEachCat(product.eachCategory)}</h2>
       <img src={`${product?.headerImg?.url}`} width={'100%'} />
