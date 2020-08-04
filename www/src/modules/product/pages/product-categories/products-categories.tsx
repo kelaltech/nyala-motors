@@ -10,17 +10,23 @@ import Markdown from 'markdown-to-jsx'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Button from '../../../../shared/components/button/button'
+import { graphql, useStaticQuery } from 'gatsby'
+import { ProductCatDetailStaticQuery } from '../../../../../graphql-types'
 
 type ProductCategoriesProps = {}
 
 const ProductCategories: React.FC<ProductCategoriesProps> = () => {
+  const { udTruck, eicher, unicarrier, macpower } = useStaticQuery<
+    ProductCatDetailStaticQuery
+  >(QUERY)
+
   const page = usePage()
   const query =
     qs.parse(page?.location.search || '?', {
       ignoreQueryPrefix: true,
     }) || {}
   const id = query.id
-  console.log(id)
+
   const { loading, error, data } = useProductCategoriesQuery({
     variables: { where: { _q: id } },
   })
@@ -34,12 +40,28 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
     'QUESTER',
   ]
 
+  const bgImg =
+    id === 'UD_TRUCKS'
+      ? udTruck
+      : id === 'UNICARRIER'
+      ? unicarrier
+      : id === 'EICHER'
+      ? eicher
+      : id === 'MAC_POWER'
+      ? macpower
+      : null
+
   return (
     <>
       <Layout headerProps={{ mode: 'white' }}>
-        <div className={'productCat-hero-container'}>
+        <div
+          className={'productCat-hero-container'}
+          style={{
+            backgroundImage: `url(${bgImg?.childImageSharp?.fluid?.src})`,
+          }}
+        >
           <Block className="center productCat-hero-tag">
-            <h1>{nameProductsType(id)}</h1>
+            <h1>{nameProductsType(id as any)}</h1>
           </Block>
         </div>
         <div>
@@ -95,7 +117,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
                                   </a>
                                 </div>
                                 <Markdown className="product-category-markdown">
-                                  {product?.description}
+                                  {product?.description!}
                                 </Markdown>
                                 <div className="center">
                                   <Button
@@ -122,3 +144,39 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
 }
 
 export default ProductCategories
+
+const QUERY = graphql`
+  query ProductCatDetailStatic {
+    eicher: file(relativePath: { eq: "products/eicher.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    udTruck: file(relativePath: { eq: "products/ud-truck.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    unicarrier: file(relativePath: { eq: "products/unicarrier.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    macpower: file(relativePath: { eq: "products/macpower-1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
