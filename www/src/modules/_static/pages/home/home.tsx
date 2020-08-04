@@ -23,6 +23,7 @@ const Home: React.FC<HomeProps> = () => {
     udtrucks,
     productLink,
     serviceLink,
+    landingHero,
   } = useStaticQuery<HomeStaticQuery>(query)
 
   const lang = useLang()
@@ -34,7 +35,12 @@ const Home: React.FC<HomeProps> = () => {
 
       <Layout headerProps={{ mode: 'transparent' }}>
         <div className={'landing-body-container'}>
-          <div className={'lading-hero-section'}>
+          <div
+            className={'lading-hero-section'}
+            style={{
+              backgroundImage: `url(${landingHero?.childImageSharp?.fluid?.src})`,
+            }}
+          >
             <Block className={'landing-hero-content'}>
               <h1>{lang`home.hero.title`}</h1>
               <p>{lang`home.hero.desciption`}</p>
@@ -217,44 +223,51 @@ export default Home
 
 const query = graphql`
   query HomeStatic {
+    landingHero: file(relativePath: { eq: "home/nyala-home.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1680, quality: 90, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     nissanLogo: file(relativePath: { eq: "home/nissan-logo.webp" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     udtrucks: file(relativePath: { eq: "home/udtrucks.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     elicher: file(relativePath: { eq: "home/elicher.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     Unicarriers: file(relativePath: { eq: "home/Unicarriers.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     macpower: file(relativePath: { eq: "home/macpower.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     productLink: file(relativePath: { eq: "home/product-link.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
