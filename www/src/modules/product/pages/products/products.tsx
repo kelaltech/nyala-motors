@@ -78,7 +78,7 @@ const Products: React.FC<ProductsProps> = () => {
 
                   <div className="center">
                     <Button
-                      to={'https://nissanethiopia.com'}
+                      to={'http://nissanethiopia.com/'}
                       target="_blank"
                       mode="primary-outline"
                     >

@@ -18,9 +18,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       className="product-card-content"
       to={`${
         product.category === 'NISSAN'
-          ? ``
+          ? `https://nissanethiopia.com/`
           : `/products/detail/?id=${product.id}`
       }`}
+      target={`${product.category === 'NISSAN' ? `_blank` : ``}`}
     >
       <h2 className={'left'}>{nameEachCat(product.eachCategory)}</h2>
       <img src={`${product?.headerImg?.url}`} width={'100%'} />
