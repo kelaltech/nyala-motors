@@ -13,12 +13,11 @@ const ServiceCard: React.FC<serviceCard> = ({ description, title }) => {
       <p style={{ height: `${isExpanded ? 'auto' : '120px'}` }}>
         {description}
       </p>
-      <div
-        className="fg-blackish center right font-L expandable-icon"
-        onClick={() => setIsexapanded(!isExpanded)}
-      >
+      <div className="fg-blackish center right font-L expandable-icon">
         {description.length >= 312 ? (
-          <>{isExpanded ? <MdExpandLess /> : <MdExpandMore />}</>
+          <span onClick={() => setIsexapanded(!isExpanded)}>
+            {isExpanded ? <MdExpandLess /> : <MdExpandMore />}
+          </span>
         ) : (
           <MdExpandLess style={{ visibility: 'hidden' }} />
         )}
