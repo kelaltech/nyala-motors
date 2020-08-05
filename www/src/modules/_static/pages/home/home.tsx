@@ -141,7 +141,7 @@ const Home: React.FC<HomeProps> = () => {
               <Block className={'landing-products-list'}>
                 <Content>
                   <Block className={'landing-products-list-box'}>
-                    <Anchor to={'https://nissanethiopia.com'}>
+                    <Anchor to={'http://nissanethiopia.com'}>
                       <GatsbyImage
                         fluid={nissanLogo?.childImageSharp?.fluid as any}
                         className="produc-list produc-list-img-1"
