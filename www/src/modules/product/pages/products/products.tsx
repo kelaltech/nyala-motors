@@ -17,18 +17,20 @@ const Products: React.FC<ProductsProps> = () => {
   const { heroBg } = useStaticQuery<ProductStaticQuery>(query)
   const nissanCategory = ['PASSENGER', 'CROSSOVER', 'SPORT_UTILITY']
   const UD_Category = ['NEW_QUESTER', 'CRONER', 'QUESTER']
-  const others = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008', 'MACPOWER']
   const forklift = [
     'IC_ENGINE_FORKLIFT',
     'REACH_TRUCKS_FORKLIFT',
     'LARGE_SIZE_FORKLIFT',
   ]
+  const eichers = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008', 'QUESTER']
+  const macpower = ['MACPOWER']
 
   const [term, setTerm] = useState('')
   const { loading, error, data } = useProductsQuery({
     variables: { where: term ? { _q: term } : {} },
   })
   const lang = useLang()
+
   return (
     <>
       <SEO title={'Products'} />
@@ -73,9 +75,11 @@ const Products: React.FC<ProductsProps> = () => {
                           (p) => p?.eachCategory === prod
                         ) ? (
                           <ProductCard
-                            product={data?.products.find(
-                              (p) => p?.eachCategory === prod
-                            )}
+                            product={
+                              data?.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
                           />
                         ) : null}
                       </>
@@ -84,7 +88,7 @@ const Products: React.FC<ProductsProps> = () => {
 
                   <div className="center">
                     <Button
-                      to={'http://nissanethiopia.com/'}
+                      to={'http://nissanethiopia.com/vehicles/'}
                       target="_blank"
                       mode="primary-outline"
                     >
@@ -102,9 +106,11 @@ const Products: React.FC<ProductsProps> = () => {
                           (p) => p?.eachCategory === prod
                         ) ? (
                           <ProductCard
-                            product={data?.products.find(
-                              (p) => p?.eachCategory === prod
-                            )}
+                            product={
+                              data.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
                           />
                         ) : null}
                       </>
@@ -120,6 +126,7 @@ const Products: React.FC<ProductsProps> = () => {
                     </Button>
                   </div>
                 </Card>
+
                 <Card className="product-category-card">
                   <h2 className={'category-title'}> Unicarriers Forklift</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
@@ -129,9 +136,11 @@ const Products: React.FC<ProductsProps> = () => {
                           (p) => p?.eachCategory === prod
                         ) ? (
                           <ProductCard
-                            product={data?.products.find(
-                              (p) => p?.eachCategory === prod
-                            )}
+                            product={
+                              data?.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
                           />
                         ) : null}
                       </>
@@ -140,7 +149,7 @@ const Products: React.FC<ProductsProps> = () => {
 
                   <div className="center">
                     <Button
-                      to={`/products/categories/?id=UD_TRUCKS`}
+                      to={`/products/categories/?id=UNICARRIER`}
                       mode="primary-outline"
                     >
                       Browse all Unicarriers
@@ -149,39 +158,63 @@ const Products: React.FC<ProductsProps> = () => {
                 </Card>
 
                 <Card className="product-category-card">
-                  <h2 className={'category-title'}> More Brands</h2>
+                  <h2 className={'category-title'}>Echier Vehicles</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
-                    {others.map((prod) => (
+                    {eichers.map((prod) => (
                       <>
                         {data.products?.find(
                           (p) => p?.eachCategory === prod
                         ) ? (
                           <ProductCard
-                            product={data?.products.find(
-                              (p) => p?.eachCategory === prod
-                            )}
+                            product={
+                              data?.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
                           />
                         ) : null}
                       </>
                     ))}
                   </Yoga>
 
-                  <Yoga maxCol={3} className="center">
+                  <div className="center">
                     <Button
                       to={`/products/categories/?id=EICHER`}
                       mode="primary-outline"
-                      style={{ width: '60%' }}
                     >
                       Browse all Echier Vehicles
                     </Button>
-                    <Button
-                      to={`/products/categories/?id=MACPOWER`}
-                      mode="primary-outline"
-                      style={{ width: '60%' }}
-                    >
-                      Browse all Macpower Battery
-                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="product-category-card">
+                  <h2 className={'category-title'}>Macpower Batteries</h2>
+                  <Yoga className="product-category-yoga" maxCol={3}>
+                    {macpower.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
+                          <ProductCard
+                            product={
+                              data?.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
+                          />
+                        ) : null}
+                      </>
+                    ))}
                   </Yoga>
+
+                  <div className="center">
+                    <Button
+                      to={`/products/categories/?id=MAC_POWER`}
+                      mode="primary-outline"
+                    >
+                      Macpower Battery
+                    </Button>
+                  </div>
                 </Card>
               </div>
             )}

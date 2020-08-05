@@ -42,23 +42,26 @@ const Home: React.FC<HomeProps> = () => {
             }}
           >
             <Block className={'landing-hero-content'}>
-              <h1>{lang`home.hero.title`}</h1>
-              <p>{lang`home.hero.desciption`}</p>
-              <div>
-                <Button
-                  to={'#get-started'}
-                  className={'get-started-btn'}
-                  mode={'primary'}
-                >{lang`home.hero.btn.get-started`}</Button>
+              <Content transparent size="6XL">
+                <h1>{lang`home.hero.title`}</h1>
+                <p>{lang`home.hero.desciption`}</p>
+                <div>
+                  <Button
+                    to={'#get-started'}
+                    className={'get-started-btn'}
+                    mode={'primary'}
+                  >{lang`home.hero.btn.get-started`}</Button>
 
-                <Button
-                  to={'/about'}
-                  className={'learn-more-btn margin-left-big'}
-                  mode={'primary-outline'}
-                >{lang`home.hero.btn.about`}</Button>
-              </div>
+                  <Button
+                    to={'/about'}
+                    className={'learn-more-btn margin-left-big'}
+                    mode={'primary-outline'}
+                  >{lang`home.hero.btn.about`}</Button>
+                </div>
+              </Content>
             </Block>
           </div>
+
           {/* <Block className={'landing-about-container'}>
             <Content transparent size={'L'} className={'center'}>
               <Block first />
