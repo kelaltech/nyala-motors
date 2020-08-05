@@ -1,15 +1,18 @@
 @import '../../../assets/styles/theme';
 
 .service-hero-section {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: 85vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: $bg;
+  margin-top: -96px;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -74,7 +77,7 @@
 }
 
 .service-content-box {
-  margin-top: 500px !important;
+  margin-top: 25px !important;
 
   h1 {
     font-style: normal;
