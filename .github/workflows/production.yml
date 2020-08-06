@@ -65,6 +65,9 @@ jobs:
           CI: true
           GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
           GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
+          GATSBY_CONTACT_EMAIL_TO: ${{ secrets.GATSBY_CONTACT_EMAIL_TO}}
+          GATSBY_YOUTUBE_PLAYLIST_ID: ${{ secrets.GATSBY_YOUTUBE_PLAYLIST_ID}}
+          GATSBY_YOUTUBE_API_KEY: ${{ secrets.GATSBY_YOUTUBE_API_KEY}}
 
       - name: yarn test
         run: yarn test
@@ -73,6 +76,10 @@ jobs:
           CI: true
           GATSBY_GRAPHQL_URL: ${{ secrets.GATSBY_GRAPHQL_URL }}
           GATSBY_STRAPI_API_BASE: ${{ secrets.GATSBY_STRAPI_API_BASE }}
+          GATSBY_CONTACT_EMAIL_TO: ${{ secrets.GATSBY_CONTACT_EMAIL_TO}}
+          GATSBY_YOUTUBE_PLAYLIST_ID: ${{ secrets.GATSBY_YOUTUBE_PLAYLIST_ID}}
+          GATSBY_YOUTUBE_API_KEY: ${{ secrets.GATSBY_YOUTUBE_API_KEY}}
+          
 
       - name: Deploy strapi on Heroku
         uses: akhileshns/heroku-deploy@v3.0.4

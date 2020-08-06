@@ -1,15 +1,18 @@
 @import '../../../assets/styles/theme';
 
 .service-hero-section {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: 85vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: $bg;
+  margin-top: -96px;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -47,7 +50,6 @@
     p {
       font-size: 21px;
       line-height: 32px;
-      letter-spacing: -0.05em;
       margin-top: 16px !important;
       margin-bottom: 0 !important;
       padding-bottom: 40px;
@@ -74,7 +76,7 @@
 }
 
 .service-content-box {
-  margin-top: 500px !important;
+  margin-top: 25px !important;
 
   h1 {
     font-style: normal;
@@ -88,7 +90,6 @@
     font-size: 18px;
     line-height: 32px;
     text-align: center;
-    letter-spacing: -0.05em;
     color: rgba(24, 23, 23, 0.65);
   }
 }
@@ -122,7 +123,6 @@
     font-size: 24px;
     line-height: 28px;
     text-align: center;
-    letter-spacing: -0.05em;
     color: rgba(0, 0, 0, 0.75);
   }
 
@@ -130,7 +130,6 @@
     font-size: 14px;
     line-height: 28px;
     text-align: center;
-    letter-spacing: -0.05em;
     color: #000000;
     opacity: 0.56;
   }

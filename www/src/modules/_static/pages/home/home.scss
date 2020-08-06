@@ -12,6 +12,8 @@
   margin-top: -96px;
   position: relative;
 
+  padding: 0 32px;
+
   @media screen and (max-width: $mobile) {
     height: 100vh !important;
   }
@@ -31,7 +33,7 @@
 
   .landing-hero-content {
     z-index: 1;
-    width: 54%;
+    width: 56%;
     padding-top: 0 !important;
     margin-top: -27px;
 
@@ -65,15 +67,15 @@
       font-weight: 500;
       font-size: 44px;
       line-height: 56px;
-      letter-spacing: -0.05em;
       color: rgba(255, 255, 255, 0.95);
     }
 
     p {
-      font-size: 21px;
+      font-size: 18px;
       line-height: 25px;
-      letter-spacing: -0.05em;
       color: rgba(255, 255, 255, 0.74);
+      opacity: 0.9;
+      padding-bottom: 16px;
     }
 
     .learn-more-btn {
@@ -85,6 +87,8 @@
 }
 
 .landing-products-list {
+  margin: 48px 24px 0;
+
   .landing-products-list-box {
     display: flex;
     justify-content: space-evenly;
@@ -93,6 +97,10 @@
 
     @media screen and (max-width: $mobile) {
       flex-wrap: wrap;
+    }
+
+    > * {
+      margin: auto;
     }
 
     a {
@@ -142,7 +150,6 @@
   p {
     font-size: 18px;
     line-height: 32px;
-    letter-spacing: -0.05em;
     color: rgba(66, 66, 66, 0.84);
   }
 }
@@ -154,7 +161,6 @@
     font-weight: 500;
     font-size: 36px;
     line-height: 42px;
-    letter-spacing: -0.05em;
 
     color: rgba(0, 0, 0, 0.7);
   }
@@ -272,8 +278,10 @@
 .landing-bottom-box {
   min-height: 340.52px;
   width: 100%;
-  margin-top: 320px;
+  margin-top: 180px;
   position: relative;
+
+  background-image: linear-gradient(to bottom, white, rgb(220, 220, 220));
 
   @media screen and (max-width: 650px) {
     margin-top: 100px;
@@ -315,6 +323,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      box-shadow: none !important;
+      transition: all 0.15s;
+
+      &:hover,
+      &:focus {
+        box-shadow: $shade-S !important;
+      }
 
       span {
         align-self: center;
