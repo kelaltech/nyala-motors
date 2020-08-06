@@ -35,7 +35,12 @@ const EmailContact = ({}: EmailContactProps) => {
       .catch((e) =>
         alert(e?.message || 'Something went wrong, Maybe try again !')
       )
-      .finally(() => setSending(false))
+      .finally(() => {
+        setSending(false)
+        setEmail('')
+        setSubject('')
+        setMessage('')
+      })
   }, [email, subject, message])
 
   return (

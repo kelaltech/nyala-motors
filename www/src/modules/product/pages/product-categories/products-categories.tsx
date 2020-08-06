@@ -12,6 +12,7 @@ import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Button from '../../../../shared/components/button/button'
 import { graphql, useStaticQuery } from 'gatsby'
 import { ProductCatDetailStaticQuery } from '../../../../../graphql-types'
+import Heritage from '../../components/heritage/heritage'
 
 type ProductCategoriesProps = {}
 
@@ -92,16 +93,25 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
               className="product-category-container"
             >
               <Block first last>
+                <Heritage id={id} />
                 {catagorize.map((x) => (
                   <>
                     {data?.products?.find((p) => p?.eachCategory === x) ? (
                       <>
                         <div
-                          style={{
-                            backgroundColor: '#c51632',
-                            height: '7px',
-                            width: '100px',
-                          }}
+                          style={
+                            id === 'UNICARRIER'
+                              ? {
+                                  backgroundColor: 'rgb(30,185,230)',
+                                  height: '7px',
+                                  width: '100px',
+                                }
+                              : {
+                                  backgroundColor: '#c51632',
+                                  height: '7px',
+                                  width: '100px',
+                                }
+                          }
                         />
                         <h4 className={'product-category-title'}>
                           {nameEachCat(x)}
