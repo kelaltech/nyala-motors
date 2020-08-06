@@ -140,7 +140,7 @@ const Products: React.FC<ProductsProps> = () => {
 
                   <div className="center">
                     <Button
-                      to={`/products/categories/?id=UD_TRUCKS`}
+                      to={`/products/categories/?id=UNICARRIER`}
                       mode="primary-outline"
                     >
                       Browse all Unicarriers
@@ -175,7 +175,7 @@ const Products: React.FC<ProductsProps> = () => {
                       Browse all Echier Vehicles
                     </Button>
                     <Button
-                      to={`/products/categories/?id=MACPOWER`}
+                      to={`/products/categories/?id=MAC_POWER`}
                       mode="primary-outline"
                       style={{ width: '60%' }}
                     >

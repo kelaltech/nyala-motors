@@ -38,6 +38,14 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
     'COMMERCIAL',
     'CRONER',
     'QUESTER',
+    'NEW_QUESTER',
+    'EICHER_SKYLINE_BUS',
+    'EICHER_PRO_3008',
+    'MACPOWER',
+    'IC_ENGINE_FORKLIFT',
+    'REACH_TRUCKS_FORKLIFT',
+    'LARGE_SIZE_FORKLIFT',
+    'ELECTRIC_COUNTERBALANCED_FORKLIFT',
   ]
 
   const bgImg =
