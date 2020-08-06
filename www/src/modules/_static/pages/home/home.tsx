@@ -48,13 +48,15 @@ const Home: React.FC<HomeProps> = () => {
                 <div>
                   <Button
                     to={'#get-started'}
-                    className={'get-started-btn'}
+                    className={
+                      'get-started-btn margin-vertical-normal margin-right-big'
+                    }
                     mode={'primary'}
                   >{lang`home.hero.btn.get-started`}</Button>
 
                   <Button
                     to={'/about'}
-                    className={'learn-more-btn margin-left-big'}
+                    className={'learn-more-btn margin-vertical-normal'}
                     mode={'primary-outline'}
                   >{lang`home.hero.btn.about`}</Button>
                 </div>
@@ -200,9 +202,9 @@ const Home: React.FC<HomeProps> = () => {
             </div>
           ) : data?.home ? (
             <Block className={'landing-video-container'}>
-              <Content size={'XXL'}>
+              <Content size={'XXL'} style={{ overflow: 'hidden' }}>
                 <iframe
-                  className={'full-width'}
+                  className={'full-width block'}
                   height={'500'}
                   src={`${data.home.youtubeLink}`}
                   frameBorder="0"

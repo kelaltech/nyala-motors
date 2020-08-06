@@ -46,7 +46,7 @@ const Services: React.FC<Services> = () => {
         </div>
 
         <Content transparent className="center service-content-box" size={'M'}>
-          <Block>
+          <Block first>
             <h1>Full Service</h1>
           </Block>
           <Block>
@@ -122,6 +122,7 @@ const Services: React.FC<Services> = () => {
             id={'services'}
             size={'4XL'}
             className={'service-list-container'}
+            style={{ borderBottomRightRadius: 0, borderBottomLeftRadius: 0 }}
           >
             <Block>
               <Block className="center padding-top-very-big">

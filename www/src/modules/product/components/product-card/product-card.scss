@@ -4,10 +4,16 @@
   padding: 16px 0 !important;
   border-radius: 7px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: none !important;
+
   h2,
   h3,
   p {
     color: rgba(20, 20, 20, 0.85) !important;
+  }
+
+  img {
+    object-fit: contain;
   }
 
   .product-content-container {
