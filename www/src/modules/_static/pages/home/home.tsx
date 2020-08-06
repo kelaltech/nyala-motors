@@ -48,13 +48,15 @@ const Home: React.FC<HomeProps> = () => {
                 <div>
                   <Button
                     to={'#get-started'}
-                    className={'get-started-btn'}
+                    className={
+                      'get-started-btn margin-vertical-normal margin-right-big'
+                    }
                     mode={'primary'}
                   >{lang`home.hero.btn.get-started`}</Button>
 
                   <Button
                     to={'/about'}
-                    className={'learn-more-btn margin-left-big'}
+                    className={'learn-more-btn margin-vertical-normal'}
                     mode={'primary-outline'}
                   >{lang`home.hero.btn.about`}</Button>
                 </div>
