@@ -68,8 +68,6 @@ jobs:
           GATSBY_CONTACT_EMAIL_TO: ${{ secrets.GATSBY_CONTACT_EMAIL_TO}}
           GATSBY_YOUTUBE_PLAYLIST_ID: ${{ secrets.GATSBY_YOUTUBE_PLAYLIST_ID}}
           GATSBY_YOUTUBE_API_KEY: ${{ secrets.GATSBY_YOUTUBE_API_KEY}}
-          GATSBY_CONTACT_EMAIL_TO: ${{secrets.GATSBY_CONTACT_EMAIL_TO}}
-
 
       - name: yarn test
         run: yarn test
