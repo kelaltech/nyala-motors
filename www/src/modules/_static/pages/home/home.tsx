@@ -202,9 +202,9 @@ const Home: React.FC<HomeProps> = () => {
             </div>
           ) : data?.home ? (
             <Block className={'landing-video-container'}>
-              <Content size={'XXL'}>
+              <Content size={'XXL'} style={{ overflow: 'hidden' }}>
                 <iframe
-                  className={'full-width'}
+                  className={'full-width block'}
                   height={'500'}
                   src={`${data.home.youtubeLink}`}
                   frameBorder="0"

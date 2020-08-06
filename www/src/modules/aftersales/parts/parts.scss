@@ -3,13 +3,7 @@
 .parts-container {
   height: inherit;
   .parts-form {
-    width: 65%;
-    height: 900px;
-    @media screen and(max-width: $mobile*2) {
-      width: 80%;
-    }
-    @media screen and(max-width: $mobile) {
-      width: 100%;
-    }
+    width: 100%;
+    height: 1000px;
   }
 }

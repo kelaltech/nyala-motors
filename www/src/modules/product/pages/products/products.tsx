@@ -23,7 +23,7 @@ const Products: React.FC<ProductsProps> = () => {
     'LARGE_SIZE_FORKLIFT',
   ]
   const eichers = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008']
-  const macpower = ['', 'MACPOWER']
+  const macpower = ['MACPOWER']
 
   const [term, setTerm] = useState('')
   const { loading, error, data } = useProductsQuery({
