@@ -22,8 +22,8 @@ const Products: React.FC<ProductsProps> = () => {
     'REACH_TRUCKS_FORKLIFT',
     'LARGE_SIZE_FORKLIFT',
   ]
-  const eichers = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008', 'QUESTER']
-  const macpower = ['MACPOWER']
+  const eichers = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008']
+  const macpower = ['', 'MACPOWER']
 
   const [term, setTerm] = useState('')
   const { loading, error, data } = useProductsQuery({
@@ -158,7 +158,7 @@ const Products: React.FC<ProductsProps> = () => {
                 </Card>
 
                 <Card className="product-category-card">
-                  <h2 className={'category-title'}>Echier Vehicles</h2>
+                  <h2 className={'category-title'}>Eicher Vehicles</h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {eichers.map((prod) => (
                       <>
