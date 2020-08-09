@@ -16,7 +16,7 @@ query ProductDetail($id: ID!) {
     }
     link
     brochure {
-      url
+      id
     }
     vrImg {
       url

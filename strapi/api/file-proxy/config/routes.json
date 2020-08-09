@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/file-proxy/:id",
+      "handler": "file-proxy.index"
+    }
+  ]
+}

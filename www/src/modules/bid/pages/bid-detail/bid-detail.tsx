@@ -11,6 +11,7 @@ import moment from 'moment'
 import { AiOutlineDownload } from 'react-icons/all'
 import { GoLocation } from 'react-icons/go'
 import Markdown from 'markdown-to-jsx'
+import { strapiApiBase } from '../../../../../constants'
 type BidDetailProps = {}
 
 const BidDetail: React.FC<BidDetailProps> = () => {
@@ -76,9 +77,9 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                     {data.bid.Location}
                   </div>
                 </Yoga>
-                {isExpired || !data.bid.attachment?.url ? null : (
+                {isExpired || !data.bid.attachment?.id ? null : (
                   <Button
-                    to={`${data.bid.attachment.url}`}
+                    to={`${strapiApiBase}/file-proxy/${data.bid.attachment.id}`}
                     download
                     target="_blank"
                     rel="noopener nofollow"

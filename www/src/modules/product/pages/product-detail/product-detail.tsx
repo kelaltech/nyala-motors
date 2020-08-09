@@ -13,6 +13,7 @@ import Carousel, { consts } from 'react-elastic-carousel'
 import Modal from '../../../../shared/components/modal/modal'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 import { MdRotate90DegreesCcw } from 'react-icons/md'
+import { strapiApiBase } from '../../../../../constants'
 
 type ProductDetailProps = {}
 
@@ -188,10 +189,10 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
               </Block>
 
               <Block first last className="center">
-                {data?.product?.brochure?.url ? (
+                {data?.product?.brochure?.id ? (
                   <Button
-                    to={`${data?.product?.brochure?.url}`}
-                    download={`${data?.product.name}.pdf`}
+                    to={`${strapiApiBase}/file-proxy/${data?.product?.brochure?.id}`}
+                    download
                     mode="primary-outline"
                   >
                     Download Brochure

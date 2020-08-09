@@ -108,7 +108,11 @@ const Reports = () => {
                   excerpt={node?.excerpt || ''}
                   title={node?.title!}
                   type={node?.type!}
-                  url={node?.attachments?.url!}
+                  url={
+                    node?.attachments?.id
+                      ? `${strapiApiBase}/file-proxy/${node.attachments.id}`
+                      : undefined
+                  }
                 />
               ))}
             </Yoga>

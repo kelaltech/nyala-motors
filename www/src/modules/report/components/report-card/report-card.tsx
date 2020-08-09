@@ -51,12 +51,18 @@ const ReportCard = ({ date, excerpt, title, type, url }: ReportCardProps) => {
             )}
           </span>
         </Block>
-        <div className="right">
-          <Button mode={'primary'} className="nyala-style-radius" to={`${url}`}>
-            <FiDownload className="margin-right-normal" />
-            Download
-          </Button>
-        </div>
+        {!url ? null : (
+          <div className="right">
+            <Button
+              mode={'primary'}
+              className="nyala-style-radius"
+              to={`${url}`}
+            >
+              <FiDownload className="margin-right-normal" />
+              Download
+            </Button>
+          </div>
+        )}
       </Content>
     </Block>
   )

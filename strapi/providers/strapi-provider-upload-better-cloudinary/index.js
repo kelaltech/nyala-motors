@@ -17,13 +17,13 @@ module.exports = {
         return new Promise((resolve, reject) => {
           const upload_stream = cloudinary.uploader.upload_stream(
             {
-              use_filename:true,
               resource_type: file.mime.match(/^(image|video)/i)
                 ? 'auto'
                 : 'raw',
               public_id: file.hash,
               ...customConfig,
             },
+
             (err, image) => {
               if (err) {
                 strapi.log.error(

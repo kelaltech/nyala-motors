@@ -6,7 +6,7 @@ query Reports($start: Int, $limit: Int, $where: JSON) {
     excerpt
     type
     attachments {
-      url
+      id
     }
   }
 }
