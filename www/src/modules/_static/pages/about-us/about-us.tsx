@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useCallback } from 'react'
 import './about-us.scss'
 import { Content, Block, Loading, Warning, Yoga } from 'gerami'
 import SEO from '../../../../shared/components/seo/seo'
@@ -26,6 +26,23 @@ const AboutUs: React.FC<AboutUs> = () => {
       </div>
     )
   }
+
+  const overviewRef = useRef<HTMLSpanElement | null>(null)
+  const valuesRef = useRef<HTMLSpanElement | null>(null)
+  const missionRef = useRef<HTMLSpanElement | null>(null)
+  const achievementsRef = useRef<HTMLSpanElement | null>(null)
+
+  const scrollToRef = useCallback(
+    (ref: React.MutableRefObject<HTMLSpanElement | null>) => {
+      if (typeof window === 'undefined') return
+
+      if (ref.current) {
+        window.scrollTo(0, ref.current.offsetTop - 96 - 32)
+      }
+    },
+    []
+  )
+
   return (
     <>
       <SEO title="About us" />
@@ -56,7 +73,15 @@ const AboutUs: React.FC<AboutUs> = () => {
                   <span>
                     <IoMdArrowDropright />
                   </span>
-                  <a href={'#overview'}>OVERVIEW</a>
+                  <a
+                    href="#overview"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToRef(overviewRef)
+                    }}
+                  >
+                    OVERVIEW
+                  </a>
                 </div>
               )}
 
@@ -65,7 +90,15 @@ const AboutUs: React.FC<AboutUs> = () => {
                   <span>
                     <IoMdArrowDropright />
                   </span>
-                  <a href={'#values'}>VALUES</a>
+                  <a
+                    href="#values"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToRef(valuesRef)
+                    }}
+                  >
+                    VALUES
+                  </a>
                 </div>
               )}
               {data.about.mission && (
@@ -73,7 +106,15 @@ const AboutUs: React.FC<AboutUs> = () => {
                   <span>
                     <IoMdArrowDropright />
                   </span>
-                  <a href={'#mission'}>MISSION</a>
+                  <a
+                    href="#mission"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToRef(missionRef)
+                    }}
+                  >
+                    MISSION
+                  </a>
                 </div>
               )}
 
@@ -82,7 +123,15 @@ const AboutUs: React.FC<AboutUs> = () => {
                   <span>
                     <IoMdArrowDropright />
                   </span>
-                  <a href={'#achivements'}>OUR ACHIVEMENTS</a>
+                  <a
+                    href="#achievements"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToRef(achievementsRef)
+                    }}
+                  >
+                    OUR ACHIEVEMENTS
+                  </a>
                 </div>
               )}
             </div>
@@ -94,12 +143,14 @@ const AboutUs: React.FC<AboutUs> = () => {
                 </div>
               </Block>
             </Content>
+
             <Block first last />
             <Block />
             <Content size="4XL" className={'about-main-container'}>
               <Block first last />
               <Block first last />
-              <Block id={'overview'} first last className={'overview-desc'}>
+              <Block first last className={'overview-desc'}>
+                <span ref={overviewRef} id="overview" />
                 <h2>Overview</h2>
                 <Markdown className={'mark-down-p'}>
                   {data?.about?.overviewHistory!}
@@ -131,9 +182,9 @@ const AboutUs: React.FC<AboutUs> = () => {
 
               <Block first last />
               <Yoga maxCol={2}>
-                <Content id={'values'} className={'values-card'}>
-                  {' '}
+                <Content className={'values-card'}>
                   <Block first last className={'overview-desc'}>
+                    <span ref={valuesRef} id="values" />
                     <h2>Values</h2>
                     <Markdown className={'mark-down-values'}>
                       {data?.about?.values!}
@@ -141,7 +192,8 @@ const AboutUs: React.FC<AboutUs> = () => {
                   </Block>
                 </Content>
 
-                <Content id={'mission'} className={'mission-card'}>
+                <Content className={'mission-card'}>
+                  <span ref={missionRef} id="mission" />
                   <Block first last className={'overview-desc'}>
                     <div className={'right full-width'}>
                       <h2 className={'right'}>Mission Statement</h2>
@@ -155,8 +207,9 @@ const AboutUs: React.FC<AboutUs> = () => {
               </Yoga>
 
               <Block first last />
-              <Block id={'achivements'} first last className={'overview-desc'}>
-                <h2>Our Achivements</h2>
+              <Block first last className={'overview-desc'}>
+                <span ref={achievementsRef} id="achievements" />
+                <h2>Our Achievements</h2>
 
                 <div className={`achivements-container`}>
                   <div className="about-page-details-description">
