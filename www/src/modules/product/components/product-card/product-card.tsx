@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       className="product-card-content"
       to={`${
         product.category === 'NISSAN'
-          ? `https://nissanethiopia.com/`
+          ? `http://nissanethiopia.com/`
           : `/products/detail/?id=${product.id}`
       }`}
       target={`${product.category === 'NISSAN' ? `_blank` : ``}`}
