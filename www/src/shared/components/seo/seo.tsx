@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import url from 'url'
 
 import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
+import { strapiApiBase } from '../../../../constants'
 
 type SEOProps = {
   title: string
@@ -25,7 +26,7 @@ function SEO({
 }: SEOProps) {
   const siteMetadata = useSiteMetadata()
 
-  const href = url.parse(process.env.GATSBY_GRAPHQL_URL || '')
+  const href = url.parse(strapiApiBase)
 
   return (
     <Helmet
