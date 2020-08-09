@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import url from 'url'
 
 import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
 
@@ -24,11 +25,17 @@ function SEO({
 }: SEOProps) {
   const siteMetadata = useSiteMetadata()
 
+  const href = url.parse(process.env.GATSBY_GRAPHQL_URL || '')
+
   return (
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
+      link={[
+        { rel: 'preconnect', href: `${href.protocol}//${href.host}` },
+        { rel: 'dns-prefetch', href: `${href.protocol}//${href.host}` },
+      ]}
       meta={[
         {
           name: `description`,
