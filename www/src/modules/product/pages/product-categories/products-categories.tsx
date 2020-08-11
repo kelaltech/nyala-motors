@@ -94,6 +94,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
             >
               <Block first last>
                 <Heritage id={id} />
+                <Block first last />
                 {catagorize.map((x) => (
                   <>
                     {data?.products?.find((p) => p?.eachCategory === x) ? (

@@ -16,7 +16,7 @@ type ProductsProps = {}
 const Products: React.FC<ProductsProps> = () => {
   const { heroBg } = useStaticQuery<ProductStaticQuery>(query)
   const nissanCategory = ['PASSENGER', 'CROSSOVER', 'SPORT_UTILITY']
-  const UD_Category = ['NEW_QUESTER', 'CRONER', 'QUESTER']
+  const UD_Category = ['CRONER', 'QUESTER']
   const forklift = [
     'IC_ENGINE_FORKLIFT',
     'REACH_TRUCKS_FORKLIFT',
