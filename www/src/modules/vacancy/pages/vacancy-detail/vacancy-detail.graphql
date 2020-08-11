@@ -4,7 +4,7 @@ query VacancyDetail($id: ID!) {
 
     title
     attachment {
-      url
+      id
     }
 
     deadline

@@ -3,11 +3,13 @@ import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch'
 import { ApolloProvider } from '@apollo/react-hooks'
 
+import { graphqlUrl } from '../../../constants'
+
 const ApolloClientProvider = ({ children }: PropsWithChildren<{}>) => {
   const apolloClient = useMemo(
     () =>
       new ApolloClient({
-        uri: process.env.GATSBY_GRAPHQL_URL || `http://localhost:1337/graphql`,
+        uri: graphqlUrl,
         fetch,
       }),
     []

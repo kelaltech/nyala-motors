@@ -9,8 +9,8 @@ query BidDetail($id: ID!) {
     requirement
     howToApply
     attachment {
+      id
       name
-      url
     }
   }
 }

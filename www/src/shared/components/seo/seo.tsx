@@ -1,7 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import url from 'url'
 
 import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
+import { graphqlUrl } from '../../../../constants'
 
 type SEOProps = {
   title: string
@@ -24,11 +26,17 @@ function SEO({
 }: SEOProps) {
   const siteMetadata = useSiteMetadata()
 
+  const href = url.parse(graphqlUrl)
+
   return (
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
+      link={[
+        { rel: 'preconnect', href: `${href.protocol}//${href.host}` },
+        { rel: 'dns-prefetch', href: `${href.protocol}//${href.host}` },
+      ]}
       meta={[
         {
           name: `description`,

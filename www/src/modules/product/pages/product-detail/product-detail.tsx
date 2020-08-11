@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import './product-detail.scss'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
@@ -13,6 +13,7 @@ import Carousel, { consts } from 'react-elastic-carousel'
 import Modal from '../../../../shared/components/modal/modal'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 import { MdRotate90DegreesCcw } from 'react-icons/md'
+import { strapiApiBase } from '../../../../../constants'
 
 type ProductDetailProps = {}
 
@@ -33,9 +34,24 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
       ignoreQueryPrefix: true,
     }) || {}
 
-  const id = query.id
+  const id = query.id as string
 
   const { loading, error, data } = useProductDetailQuery({ variables: { id } })
+
+  const overviewRef = useRef<HTMLSpanElement | null>(null)
+  const specsRef = useRef<HTMLSpanElement | null>(null)
+
+  const scrollToRef = useCallback(
+    (ref: React.MutableRefObject<HTMLSpanElement | null>) => {
+      if (typeof window === 'undefined') return
+
+      if (ref.current) {
+        window.scrollTo(0, ref.current.offsetTop - 96 - 32)
+      }
+    },
+    []
+  )
+
   return (
     <>
       <SEO title={`${data?.product?.name || ''} (Products)`} />
@@ -87,13 +103,29 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 <span>
                   <IoMdArrowDropright />
                 </span>
-                <a href={'#overview'}>OVERVIEW</a>
+                <a
+                  href="#overview"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToRef(overviewRef)
+                  }}
+                >
+                  OVERVIEW
+                </a>
               </div>
               <div className="product-detail-navigator-item">
                 <span>
                   <IoMdArrowDropright />
                 </span>
-                <a href={'#specification'}>SPECIFICATION</a>
+                <a
+                  href="#specs"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToRef(specsRef)
+                  }}
+                >
+                  SPECIFICATIONS
+                </a>
               </div>
             </div>
             <Content transparent size="4XL" className="product-detail-title">
@@ -109,19 +141,18 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
             {/* <Block> */}
             <Content size="4XL" className="product-detail-description">
-              <Block id={'overview'} className="product-detail-overview">
+              <Block className="product-detail-overview">
                 <div className="product-detail-overview-description">
+                  <span ref={overviewRef} id="overview" />
                   <h2>Overview</h2>
                   <Markdown>{data?.product?.description!}</Markdown>
                 </div>
               </Block>
+
               <Block first last />
-              <Block
-                id={'specification'}
-                first
-                last
-                className="product-detail-overview"
-              >
+
+              <span ref={specsRef} id="specs" />
+              <Block first last className="product-detail-overview">
                 {data?.product?.specification?.map((spec, key) => (
                   <div key={key}>
                     <div className="product-detail-overview-img">
@@ -158,9 +189,9 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
               </Block>
 
               <Block first last className="center">
-                {data?.product?.brochure?.url ? (
+                {data?.product?.brochure?.id ? (
                   <Button
-                    to={`${data?.product?.brochure?.url}`}
+                    to={`${strapiApiBase}/file-proxy/${data?.product?.brochure?.id}`}
                     download
                     mode="primary-outline"
                   >
