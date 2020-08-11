@@ -15,8 +15,13 @@ type ProductsProps = {}
 
 const Products: React.FC<ProductsProps> = () => {
   const { heroBg } = useStaticQuery<ProductStaticQuery>(query)
-  const nissanCategory = ['PASSENGER', 'CROSSOVER', 'SPORT_UTILITY']
-  const UD_Category = ['CRONER', 'QUESTER']
+  const nissanCategory = [
+    'PASSENGER',
+    'CROSSOVER',
+    'SPORT_UTILITY',
+    'COMMERCIAL',
+  ]
+  const UD_Category = ['QUESTER', 'CRONER']
   const forklift = [
     'IC_ENGINE_FORKLIFT',
     'REACH_TRUCKS_FORKLIFT',
@@ -68,7 +73,7 @@ const Products: React.FC<ProductsProps> = () => {
               <div className="product-products-content">
                 <Card className="product-category-card">
                   <h2 className={'category-title'}>Nissan Vehicles</h2>
-                  <Yoga className="product-category-yoga" maxCol={3}>
+                  <Yoga className="product-category-yoga" maxCol={4}>
                     {nissanCategory.map((prod) => (
                       <>
                         {data.products?.find(
