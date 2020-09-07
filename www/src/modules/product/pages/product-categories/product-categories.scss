@@ -53,7 +53,7 @@ $mobile-threshold: $mobile * 1.6;
     font-weight: 500;
   }
   .product-category-yoga {
-    padding: 32px;
+    padding: 16px 0 64px;
     @media screen and(max-width: $mobile-threshold) {
       padding: 8px;
     }
@@ -61,28 +61,36 @@ $mobile-threshold: $mobile * 1.6;
       h3 {
         font-size: 21px;
         color: black;
-        padding-left: 15px;
       }
       div {
         a {
-          height: inherit;
-          // max-height: 330px;
+          position: relative;
           overflow: hidden;
-          border-radius: 7px;
         }
+      }
+      img {
+        height: 240px;
+        width: 100%;
+
+        object-fit: contain;
       }
       .product-category-markdown {
         margin: 0;
         padding: 8px;
         font-weight: 400;
         font-size: 16px;
-        line-height: 30px;
-        height: 90px;
+        line-height: 28px;
+        height: 60px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-line-clamp: 2; /* number of lines to show */
         -webkit-box-orient: vertical;
+
+        * {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
       }
     }
   }

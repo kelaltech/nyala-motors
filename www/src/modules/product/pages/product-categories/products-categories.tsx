@@ -3,7 +3,6 @@ import './product-categories.scss'
 import { useProductCategoriesQuery } from '../../../../app/graphql'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
 import qs from 'qs'
-// import SEO from '../../../../shared/components/seo/seo'
 import { Loading, Warning, Yoga, Content, Block, Card } from 'gerami'
 import Layout from '../../../../shared/components/layout/layout'
 import Markdown from 'markdown-to-jsx'
@@ -93,7 +92,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
               className="product-category-container"
             >
               <Block first last>
-                <Heritage id={id} />
+                <Heritage id={id as string} />
                 <Block first last />
                 {catagorize.map((x) => (
                   <>
@@ -118,7 +117,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
                           {nameEachCat(x)}
                         </h4>
                         <hr />
-                        <Yoga maxCol={2} className="product-category-yoga">
+                        <Yoga maxCol={3} className="product-category-yoga">
                           {data?.products
                             ?.filter((p) => p?.eachCategory === x)
                             .map((product, key) => (
