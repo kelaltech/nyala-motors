@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {product.category === 'NISSAN' ? (
         <Button
           mode={'primary'}
-          style={{ borderRadius: '0px', width: '100%', marginTop: '15px' }}
+          style={{ borderRadius: '0px', width: '100%', marginTop: '10px' }}
         >
           EXPLORE MORE
         </Button>
