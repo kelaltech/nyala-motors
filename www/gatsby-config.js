@@ -99,17 +99,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Roboto`,
-            variants: [
-              `300`,
-              `300i`,
-              `400`,
-              `400i`,
-              `500`,
-              `500i`,
-              `700`,
-              `700i`,
-            ],
+            family: `Merriweather`,
+            variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`],
           },
         ],
       },
