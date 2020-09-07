@@ -97,7 +97,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                       scrollToRef(valuesRef)
                     }}
                   >
-                    VALUES
+                    VISION
                   </a>
                 </div>
               )}
@@ -185,7 +185,7 @@ const AboutUs: React.FC<AboutUs> = () => {
                 <Content className={'values-card'}>
                   <Block first last className={'overview-desc'}>
                     <span ref={valuesRef} id="values" />
-                    <h2>Values</h2>
+                    <h2>Vision</h2>
                     <Markdown className={'mark-down-values'}>
                       {data?.about?.values!}
                     </Markdown>

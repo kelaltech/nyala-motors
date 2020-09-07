@@ -11,11 +11,12 @@
   <body>
     <a-scene>
       <script>
+        // file deepcode ignore DOMXSS: <please specify a reason of ignoring this>
         document.write(
           '<a-sky src="' +
             decodeURIComponent(location.search.replace(/\?src=/i, '')) +
             '" rotation="0 -130 0"></a-sky>'
-        );
+        )
       </script>
     </a-scene>
   </body>

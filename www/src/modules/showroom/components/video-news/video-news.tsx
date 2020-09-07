@@ -4,9 +4,10 @@ import Axios from 'axios'
 import { Yoga, Content, Block } from 'gerami'
 import { youtubeApi, youtubePlaylistId } from '../../../../../constants'
 import * as moment from 'moment'
-type VIDEONEWSPROPS = {}
 
-const VideoNews: React.FC<VIDEONEWSPROPS> = () => {
+type VideoNewsProps = {}
+
+const VideoNews: React.FC<VideoNewsProps> = () => {
   const [videoNews, setVideoNews] = useState([])
   useEffect(() => {
     //only the top for will be selected
@@ -30,9 +31,8 @@ const VideoNews: React.FC<VIDEONEWSPROPS> = () => {
             <Block>
               <Yoga maxCol={2}>
                 {videoNews.map((video: any, i) => (
-                  <Content transparent className="margin-bottom-big">
+                  <Content key={i} transparent className="margin-bottom-big">
                     <iframe
-                      key={i}
                       className="full-width"
                       height="280"
                       src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`}
