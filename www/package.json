@@ -8,7 +8,7 @@
     "run-s": "run-s",
     "format": "prettier --write src gatsby-*.js",
     "clean": "gatsby clean",
-    "build": "gatsby build",
+    "build": "cd .. && run-s codegen && cd www && gatsby build",
     "serve": "gatsby serve",
     "develop": "gatsby develop",
     "start": "run-s clean \"run-p 'develop --open' 'test --watch'\"",
