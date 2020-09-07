@@ -136,18 +136,10 @@ module.exports = {
     //
     // ANALYSIS:
     //
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: { trackingId: `TODO:` },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-google-tagmanager`,
-    //   options: { id: `TODO:` },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-fullstory`,
-    //   options: { fs_org: `TODO:` },
-    // },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: { id: `GTM-NJKSHC5` },
+    },
 
     //
     // META, PWA & SEO

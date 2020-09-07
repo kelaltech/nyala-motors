@@ -100,7 +100,7 @@ const Showroom: React.FC<ShowroomProps> = () => {
                   <Yoga maxCol={2}>
                     {data.showrooms.slice(0, 2).map((showroom, key) => (
                       <div key={key}>
-                        <ShowroomCard showroom={showroom} />
+                        <ShowroomCard showroom={showroom as any} />
                       </div>
                     ))}
                   </Yoga>
@@ -117,7 +117,7 @@ const Showroom: React.FC<ShowroomProps> = () => {
                   <Yoga maxCol={2}>
                     {data.showrooms.slice(2).map((showroom, key) => (
                       <div key={key}>
-                        <ShowroomCard showroom={showroom} />
+                        <ShowroomCard showroom={showroom as any} />
                       </div>
                     ))}
                   </Yoga>
@@ -150,7 +150,7 @@ export default Showroom
 
 const query = graphql`
   query ShowroomStatic {
-    showroomHero: file(relativePath: { eq: "showroom/showroombg.png" }) {
+    showroomHero: file(relativePath: { eq: "showroom/showroom-hero.png" }) {
       childImageSharp {
         fluid(quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
