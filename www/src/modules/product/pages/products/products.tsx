@@ -163,7 +163,9 @@ const Products: React.FC<ProductsProps> = () => {
                 </Card>
 
                 <Card className="product-category-card">
-                  <h2 className={'category-title'}>Eicher Vehicles</h2>
+                  <h2 className={'category-title'}>
+                    Eicher Busses &amp; Trucks
+                  </h2>
                   <Yoga className="product-category-yoga" maxCol={3}>
                     {eichers.map((prod) => (
                       <>
