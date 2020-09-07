@@ -27,7 +27,7 @@ const Products: React.FC<ProductsProps> = () => {
     'REACH_TRUCKS_FORKLIFT',
     'LARGE_SIZE_FORKLIFT',
   ]
-  const eichers = ['EICHER_SKYLINE_BUS', 'EICHER_PRO_3008']
+  const eichers = ['EICHER_BUS', 'EICHER_3008']
   const macpower = ['MACPOWER']
 
   const [term, setTerm] = useState('')

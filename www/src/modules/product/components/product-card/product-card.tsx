@@ -4,6 +4,7 @@ import { Products } from '../../../../app/graphql'
 // import Button from '../../../../shared/components/button/button
 import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import Anchor from '../../../../shared/components/anchor/anchor'
+import Button from '../../../../shared/components/button/button'
 
 type ProductCardProps = {
   product: Pick<
@@ -27,12 +28,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <img src={`${product?.headerImg?.url}`} width={'100%'} height={200} />
 
       {product.category === 'NISSAN' ? (
-        <div style={{ backgroundColor: 'red', width: '70%' }}>
-          <h3 className="center" style={{ color: 'white' }}>
-            {' '}
-            Explore More{' '}
-          </h3>
-        </div>
+        <Button
+          mode={'primary'}
+          style={{ borderRadius: '0px', width: '100%', marginTop: '15px' }}
+        >
+          EXPLORE MORE
+        </Button>
       ) : (
         <div className="product-content-container">
           <h2 className={'padding-top-big'}>{product.name}</h2>

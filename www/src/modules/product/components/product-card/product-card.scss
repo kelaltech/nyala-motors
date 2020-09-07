@@ -25,3 +25,13 @@
     overflow: hidden;
   }
 }
+.nissan-content-container {
+  margin: 15px auto;
+  background-color: $primary;
+  width: 85%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  h3 {
+    color: white;
+  }
+}
