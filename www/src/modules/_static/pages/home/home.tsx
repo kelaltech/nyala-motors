@@ -245,7 +245,7 @@ export default Home
 
 const query = graphql`
   query HomeStatic {
-    landingHero: file(relativePath: { eq: "home/nyala-home.png" }) {
+    landingHero: file(relativePath: { eq: "home/nyala-home-1.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1680, quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp

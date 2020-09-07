@@ -189,17 +189,17 @@ module.exports = {
         start_url: `/`,
         background_color: `rgb(255, 255, 255)`,
         theme_color: `#bd0504`,
-        cache_busting_mode: 'none',
+        // cache_busting_mode: 'none', // TODO: temp
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/*`],
-        workboxConfig: {
-          globPatterns: ['**/*'],
-        },
-      },
-    },
+    // { // TODO: temp
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     precachePages: [`/*`],
+    //     workboxConfig: {
+    //       globPatterns: ['**/*'],
+    //     },
+    //   },
+    // },
   ],
 }
