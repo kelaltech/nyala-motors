@@ -36,8 +36,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Button>
       ) : (
         <div className="product-content-container">
-          <h2 className={'padding-top-big'}>{product.name}</h2>
-          <p className="product-motto  align-center">{product.motto}</p>
+          <h4 className={'padding-top-big'}>{product.name}</h4>
+          <p className="product-motto font-M align-center">{product.motto}</p>
         </div>
       )}
     </Anchor>
