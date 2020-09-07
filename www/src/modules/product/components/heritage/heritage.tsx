@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Yoga, Block } from 'gerami'
-import Button from '../../../../shared/components/button/button'
 
 type modalProps = { id: string }
 
@@ -22,18 +21,19 @@ const Heritage: React.FC<modalProps> = (props) => {
           </h2>
           <div className="padding-vertical-normal">
             <Block first last style={{ fontSize: '16px' }}>
-              <b>Our company was established in 1935. </b>Our founder Kenzo
-              Adachi had a vision to make the trucks the world needs today. His
-              belief in making trucks with “ultimate dependability“ makes up our
-              DNA, and has been inherited over generations to this very day. Our
-              history is one of realizing his vision and core value.
+              <b>UD Trucks company was established in 1935. </b>The founder
+              Kenzo Adachi had a vision to make the trucks the world needs
+              today. His belief in making trucks with “ultimate dependability“
+              makes up the company's DNA, and has been inherited over
+              generations to this very day. UD's history is one of realizing his
+              vision and core value.
               <br />
               <br />
               To meet the development of the logistics system which economy,
-              society and living rest on, we reach for the ultimate truck, a
+              society and living rest on, UD reaches for the ultimate truck, a
               truck with high durability and less trouble, a truck with high
-              payload and superior fuel efficiency. This was the vision of our
-              founder over 80 years ago, and it is still our vision today.
+              payload and superior fuel efficiency. This was the vision of the
+              founder over 80 years ago, and it is still be the vision today.
             </Block>
           </div>
           {/* <div className={'padding-top-big'}>
@@ -56,17 +56,18 @@ const Heritage: React.FC<modalProps> = (props) => {
           <div className="padding-vertical-normal">
             <Block first last style={{ fontSize: '16px' }}>
               <b> UD Trucks’ brand philosophy articulates our brand values. </b>{' '}
-              It is our guiding beacon. At UD Trucks we are going the extra mile
-              for our customers, every single day. Ultimate dependability is our
-              core value, our DNA. We are smart and modern in everything we do.
-              We continuously improve performance to excel on the essentials. We
-              work as one UD team with the UD gemba spirit. <br />
+              It is UD's guiding beacon. At UD Trucks we are going the extra
+              mile for their customers, every single day. Ultimate dependability
+              is our core value, our DNA. UD Trucks are smart and modern in
+              everything we do. We continuously improve performance to excel on
+              the essentials. We work as one UD team with the UD gemba spirit.{' '}
               <br />
-              Our relentless focus to excel on the essentials that make our
-              customers profitable. We strive to create the optimum balance of
-              features, cost and efficiency. From fuel efficiency, uptime and
-              productivity, to safety and drivability. All that you need, but
-              not more than you want.
+              <br />
+              At UD Trucks, we have relentless focus to excel on the essentials
+              that make our customers profitable, &amp; strive to create the
+              optimum balance of features, cost and efficiency. From fuel
+              efficiency, uptime and productivity, to safety and drivability.
+              All that you need, but not more than you want.
             </Block>
           </div>
           {/* <div className={'padding-top-big'}>
