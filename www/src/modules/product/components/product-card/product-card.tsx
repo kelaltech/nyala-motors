@@ -26,10 +26,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <h2 className={'left'}>{nameEachCat(product.eachCategory!)}</h2>
       <img src={`${product?.headerImg?.url}`} width={'100%'} height={200} />
 
-      <div className="product-content-container">
-        <h2 className={'padding-top-big'}>{product.name}</h2>
-        <p className="product-motto  align-center">{product.motto}</p>
-      </div>
+      {product.category === 'NISSAN' ? (
+        <div style={{ backgroundColor: 'red', width: '70%' }}>
+          <h3 className="center" style={{ color: 'white' }}>
+            {' '}
+            Explore More{' '}
+          </h3>
+        </div>
+      ) : (
+        <div className="product-content-container">
+          <h2 className={'padding-top-big'}>{product.name}</h2>
+          <p className="product-motto  align-center">{product.motto}</p>
+        </div>
+      )}
     </Anchor>
   )
 }

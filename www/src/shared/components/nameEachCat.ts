@@ -14,10 +14,10 @@ export function nameEachCat(category: string) {
       return 'PASSENGER'
     case 'NEW_QUESTER':
       return 'NEW QUESTER'
-    case 'EICHER_SKYLINE_BUS':
-      return 'EICHER SKYLINE BUS'
-    case 'EICHER_PRO_3008':
-      return 'EICHER PRO 3008'
+    case 'EICHER_BUS':
+      return 'EICHER BUS'
+    case 'EICHER_TRUCKS':
+      return 'EICHER TRUCKS'
     case 'MACPOWER':
       return 'MACPOWER'
     case 'IC_ENGINE_FORKLIFT':

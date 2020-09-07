@@ -55,8 +55,15 @@
 
       .shared-hero-search-field {
         vertical-align: middle;
-
+        opacity: 0.5;
+        backdrop-filter: blur(5px);
         padding-right: 48px;
+        &:hover,
+        &:focus,
+        &:active {
+          opacity: 1;
+        }
+        transition: all 0.15s;
       }
 
       .shared-hero-search-icon {

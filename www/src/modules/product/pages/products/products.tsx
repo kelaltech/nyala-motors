@@ -86,7 +86,7 @@ const Products: React.FC<ProductsProps> = () => {
                     ))}
                   </Yoga>
 
-                  <div className="center">
+                  {/* <div className="center">
                     <Button
                       to={'http://nissanethiopia.com/vehicles/'}
                       target="_blank"
@@ -94,7 +94,7 @@ const Products: React.FC<ProductsProps> = () => {
                     >
                       Browse all Nissan vehicles
                     </Button>
-                  </div>
+                  </div> */}
                 </Card>
 
                 <Card className="product-category-card">
@@ -229,7 +229,7 @@ export default Products
 
 const query = graphql`
   query ProductStatic {
-    heroBg: file(relativePath: { eq: "vacancy/hero-bg.jpg" }) {
+    heroBg: file(relativePath: { eq: "hero/product-hero.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp
