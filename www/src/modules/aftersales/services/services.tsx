@@ -156,7 +156,7 @@ const query = graphql`
   query ServiceStatic {
     serviceHero: file(relativePath: { eq: "aftersales/service-img.jpeg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

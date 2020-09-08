@@ -8,7 +8,7 @@ import { IoMdArrowDropright } from 'react-icons/io'
 
 import { AboutStaticQuery } from '../../../../../graphql-types'
 import { useAboutQuery } from '../../../../app/graphql'
-import LayoutDefault from '../../../../shared/components/layout/layout'
+import Layout from '../../../../shared/components/layout/layout'
 import SEO from '../../../../shared/components/seo/seo'
 import './about-us.scss'
 
@@ -46,8 +46,9 @@ const AboutUs: React.FC<AboutUs> = () => {
 
   return (
     <>
-      <SEO title="About us" />
-      <LayoutDefault headerProps={{ mode: 'white' }}>
+      <SEO title="About Us" />
+
+      <Layout headerProps={{ mode: 'white' }}>
         {!data && loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
@@ -272,7 +273,7 @@ const AboutUs: React.FC<AboutUs> = () => {
             </Content>
           </>
         )}
-      </LayoutDefault>
+      </Layout>
     </>
   )
 }
@@ -283,7 +284,7 @@ const query = graphql`
   query AboutStatic {
     aboutHero: file(relativePath: { eq: "about/about-hero.png" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

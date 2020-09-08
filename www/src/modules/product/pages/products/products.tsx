@@ -239,7 +239,7 @@ const query = graphql`
   query ProductStatic {
     heroBg: file(relativePath: { eq: "hero/product-hero.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 1680, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

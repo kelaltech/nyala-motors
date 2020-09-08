@@ -153,7 +153,7 @@ const query = graphql`
   query ShowroomStatic {
     showroomHero: file(relativePath: { eq: "showroom/showroom-hero.png" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

@@ -78,7 +78,7 @@ const query = graphql`
   query FaqStatic {
     faqHero: file(relativePath: { eq: "about/nyala.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

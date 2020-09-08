@@ -8,8 +8,8 @@ import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
 import Anchor from '../anchor/anchor'
 import './footer.scss'
 
-const LoadLanguage = Loadable(() =>
-  import('../language-preference/language-preference')
+const LoadLanguage = Loadable(
+  () => import('../language-preference/language-preference')
 )
 
 type FooterProps = {}

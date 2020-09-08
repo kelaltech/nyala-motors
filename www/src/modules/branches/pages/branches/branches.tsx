@@ -121,9 +121,9 @@ export default Branches
 
 const query = graphql`
   query BranchesStatic {
-    branchesHero: file(relativePath: { eq: "about/nyala.jpg" }) {
+    branchesHero: file(relativePath: { eq: "about/about-hero.png" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

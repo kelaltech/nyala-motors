@@ -206,7 +206,7 @@ const query = graphql`
   query VacanciesStatic {
     heroBg: file(relativePath: { eq: "vacancy/hero-bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 1680, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -214,7 +214,7 @@ const query = graphql`
 
     midBg: file(relativePath: { eq: "vacancy/mid-bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 1680, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

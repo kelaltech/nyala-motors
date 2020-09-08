@@ -10,7 +10,9 @@ import { useProductCategoriesQuery } from '../../../../app/graphql'
 import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
 import { nameEachCat } from '../../../../shared/components/nameEachCat'
-import { nameProductsType } from '../../../../shared/components/nameProductsType'
+import {
+  nameProductsType
+} from '../../../../shared/components/nameProductsType'
 import Heritage from '../../components/heritage/heritage'
 import './product-categories.scss'
 
@@ -168,7 +170,7 @@ const QUERY = graphql`
   query ProductCatDetailStatic {
     eicher: file(relativePath: { eq: "products/eicher.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -176,7 +178,7 @@ const QUERY = graphql`
 
     udTruck: file(relativePath: { eq: "products/ud-truck.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -184,7 +186,7 @@ const QUERY = graphql`
 
     unicarrier: file(relativePath: { eq: "products/unicarrier.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -192,7 +194,7 @@ const QUERY = graphql`
 
     macpower: file(relativePath: { eq: "products/macpower-1.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

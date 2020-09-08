@@ -1,9 +1,10 @@
-schema: ./strapi/exports/**/*.graphql
-documents: www/src/**/*.graphql
+schema: ../strapi/exports/graphql/schema.graphql
+documents: ./src/**/*.graphql
 extensions:
   codegen:
+    overwrite: true
     generates:
-      www/src/app/graphql.tsx:
+      ./src/app/graphql.tsx:
         config:
           withComponent: false
           withHOC: false
@@ -12,5 +13,4 @@ extensions:
           - typescript
           - typescript-operations
           - typescript-react-apollo
-        documents: 'www/src/**/*.{graphql,gql}'
-    overwrite: true
+        documents: ./www/src/**/*.graphql
