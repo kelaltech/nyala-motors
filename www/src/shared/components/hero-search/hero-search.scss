@@ -46,40 +46,28 @@
       }
     }
 
-    .shared-hero-search-bar {
-      margin-bottom: 16px;
+    .shared-hero-search-title {
+      padding-top: 64px;
+    }
 
-      text-align: right;
+    .shared-hero-search-bar {
+      padding-top: 40px;
 
       .shared-hero-search-field {
-        display: inline-block;
         vertical-align: middle;
-
-        padding: 12px 48px 12px 16px;
-
-        max-width: 240px;
-
-        background-color: rgba(255, 255, 255, 0.56);
-
-        backdrop-filter: blur(3px);
-
-        transition: all 0.3s;
-
+        opacity: 0.5;
+        backdrop-filter: blur(5px);
+        padding-right: 48px;
         &:hover,
         &:focus,
         &:active {
-          background-color: rgba(255, 255, 255, 1);
+          opacity: 1;
         }
-
-        &::placeholder {
-          color: rgba(0, 0, 0, 0.35) !important;
-        }
+        transition: all 0.15s;
       }
 
       .shared-hero-search-icon {
-        position: relative;
         vertical-align: middle;
-        z-index: 1;
 
         width: 16px;
         height: 16px;
@@ -88,10 +76,6 @@
 
         color: black;
       }
-    }
-
-    .shared-hero-search-title {
-      padding-top: 64px;
     }
 
     .shared-hero-search-chips {
