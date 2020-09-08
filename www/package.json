@@ -14,7 +14,7 @@
     "type-check": "tsc --pretty --noEmit",
     "ts": "run-s \"type-check --watch --preserveWatchOutput\"",
     "build-only": "gatsby build",
-    "build": "cross-env NODE_ENV=production dotenv run-s codegen \"run-p type-check build-only\"",
+    "build": "cross-env NODE_ENV=production dotenv run-s codegen build-only type-check",
     "prod": "run-p format \"run-s clean build\"",
     "serve": "cross-env NODE_ENV=production dotenv gatsby serve",
     "develop": "cross-env NODE_ENV=development dotenv run-s codegen && run-p gen \"gatsby develop --open\" ts",
