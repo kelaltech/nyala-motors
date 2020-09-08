@@ -11,8 +11,8 @@ import {
   WhatsappShareButton,
 } from 'react-share'
 
+import { usePublicationDetailQuery } from '../../../../../gen/apollo-types'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
-import { usePublicationDetailQuery } from '../../../../app/graphql'
 import CopyToClipboard from '../../../../shared/components/copy-to-clipboard/copy-to-clipboard'
 import Layout from '../../../../shared/components/layout/layout'
 import SEO from '../../../../shared/components/seo/seo'

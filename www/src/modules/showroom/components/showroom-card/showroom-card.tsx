@@ -4,7 +4,7 @@ import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 import { MdExpandLess, MdExpandMore } from 'react-icons/md'
 
-import { Showroom } from '../../../../app/graphql'
+import { Showroom } from '../../../../../gen/apollo-types'
 import './showroom-card.scss'
 
 type ShowroomCardProps = {

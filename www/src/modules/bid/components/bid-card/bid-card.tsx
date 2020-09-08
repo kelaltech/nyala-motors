@@ -2,7 +2,7 @@ import moment from 'moment'
 import React, { useMemo } from 'react'
 import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/ai'
 
-import { Bid } from '../../../../app/graphql'
+import { Bid } from '../../../../../gen/apollo-types'
 import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
 import Anchor from '../../../../shared/components/anchor/anchor'
 import Button from '../../../../shared/components/button/button'

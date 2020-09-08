@@ -59,18 +59,6 @@ module.exports = {
     //     ]
     //   }
     // },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        fileName: `./graphql-types.ts`,
-        documentPaths: [
-          `./src/**/*.{ts,tsx}`,
-          // `./.cache/fragments/*.js`,
-          // `./node_modules/gatsby-*/!(node_modules)**/*.js`,
-          `../node_modules/gatsby-*/!(node_modules)**/*.js`,
-        ],
-      },
-    },
 
     //
     // ASSETS:

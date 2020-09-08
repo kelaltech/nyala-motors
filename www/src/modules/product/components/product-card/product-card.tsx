@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Products } from '../../../../app/graphql'
+import { Products } from '../../../../../gen/apollo-types'
 import Anchor from '../../../../shared/components/anchor/anchor'
 import Button from '../../../../shared/components/button/button'
 // import Button from '../../../../shared/components/button/button

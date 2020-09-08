@@ -2,12 +2,10 @@ import { graphql, useStaticQuery } from 'gatsby'
 import GatsbyImage from 'gatsby-image'
 import React, { useState } from 'react'
 
-import { HeaderQuery } from '../../../../graphql-types'
+import { HeaderQuery } from '../../../../gen/gatsby-types'
 import WordmarkAlt from '../../../assets/images/shared/brand/wordmark-alt.svg'
 import Wordmark from '../../../assets/images/shared/brand/wordmark.svg'
-import {
-  useScrollPosition
-} from '../../../shared/hooks/use-scroll-position/use-scroll-position'
+import { useScrollPosition } from '../../../shared/hooks/use-scroll-position/use-scroll-position'
 import Anchor from '../anchor/anchor'
 import Nav from './components/nav/nav'
 import './header.scss'

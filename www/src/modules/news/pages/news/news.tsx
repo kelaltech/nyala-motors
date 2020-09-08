@@ -2,7 +2,7 @@ import { Block, Loading, Warning, Yoga } from 'gerami'
 import React, { useState } from 'react'
 
 import { strapiApiBase } from '../../../../../constants'
-import { usePublicationsQuery } from '../../../../app/graphql'
+import { usePublicationsQuery } from '../../../../../gen/apollo-types'
 import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
 import SEO from '../../../../shared/components/seo/seo'

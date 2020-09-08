@@ -4,15 +4,13 @@ import Markdown from 'markdown-to-jsx'
 import qs from 'qs'
 import React from 'react'
 
-import { ProductCatDetailStaticQuery } from '../../../../../graphql-types'
+import { useProductCategoriesQuery } from '../../../../../gen/apollo-types'
+import { ProductCatDetailStaticQuery } from '../../../../../gen/gatsby-types'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
-import { useProductCategoriesQuery } from '../../../../app/graphql'
 import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
 import { nameEachCat } from '../../../../shared/components/nameEachCat'
-import {
-  nameProductsType
-} from '../../../../shared/components/nameProductsType'
+import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import Heritage from '../../components/heritage/heritage'
 import './product-categories.scss'
 
