@@ -10,5 +10,7 @@ export function nameJobType(category: string) {
       return 'Internship'
     case 'SEASONAL':
       return 'Seasonal'
+    default:
+      return ''
   }
 }

@@ -1,7 +1,8 @@
-import React from 'react'
-import './modal.scss'
 // import Close from './close/close'
 import { Button } from 'gerami'
+import React from 'react'
+
+import './modal.scss'
 
 type modalProps = {
   show: boolean

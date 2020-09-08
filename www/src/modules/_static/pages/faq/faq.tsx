@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
-import { useFaqQuery } from '../../../../app/graphql'
-import { Loading, Warning, Content, Block, Card } from 'gerami'
-import './faq.scss'
-import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 import { graphql, useStaticQuery } from 'gatsby'
+import { Block, Card, Content, Loading, Warning } from 'gerami'
+import React, { useState } from 'react'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
+
 import { FaqStaticQuery } from '../../../../../graphql-types'
+import { useFaqQuery } from '../../../../app/graphql'
+import LayoutDefault from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './faq.scss'
 
 type FaqProps = {}
 

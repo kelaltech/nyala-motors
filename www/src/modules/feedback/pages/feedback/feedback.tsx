@@ -1,7 +1,8 @@
-import React from 'react'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
 import { Block } from 'gerami'
+import React from 'react'
+
+import LayoutDefault from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
 import './feedback.scss'
 
 type FeedbackProps = {}

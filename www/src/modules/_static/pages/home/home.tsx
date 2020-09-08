@@ -1,16 +1,17 @@
-import React from 'react'
-import './home.scss'
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
-import { Block, Content, Loading, Warning } from 'gerami'
-import Button from '../../../../shared/components/button/button'
 import { graphql, useStaticQuery } from 'gatsby'
-import { HomeStaticQuery } from '../../../../../graphql-types'
 import GatsbyImage from 'gatsby-image'
-import Anchor from '../../../../shared/components/anchor/anchor'
-import { FaCar, FaRegNewspaper, FaRegMap, FaCogs } from 'react-icons/fa'
-import useLang from '../../../../shared/hooks/lang/use-lang'
+import { Block, Content, Loading, Warning } from 'gerami'
+import React from 'react'
+import { FaCar, FaCogs, FaRegMap, FaRegNewspaper } from 'react-icons/fa'
+
+import { HomeStaticQuery } from '../../../../../graphql-types'
 import { useHomeQuery } from '../../../../app/graphql'
+import Anchor from '../../../../shared/components/anchor/anchor'
+import Button from '../../../../shared/components/button/button'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import useLang from '../../../../shared/hooks/lang/use-lang'
+import './home.scss'
 
 type HomeProps = {}
 

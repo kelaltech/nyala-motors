@@ -1,15 +1,16 @@
-import React, { useRef, useCallback } from 'react'
-import './about-us.scss'
-import { Content, Block, Loading, Warning, Yoga } from 'gerami'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
-import { IoMdArrowDropright } from 'react-icons/io'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import Markdown from 'markdown-to-jsx'
-import { useAboutQuery } from '../../../../app/graphql'
+import React, { useCallback, useRef } from 'react'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
-import { graphql, useStaticQuery } from 'gatsby'
+import { IoMdArrowDropright } from 'react-icons/io'
+
 import { AboutStaticQuery } from '../../../../../graphql-types'
+import { useAboutQuery } from '../../../../app/graphql'
+import LayoutDefault from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './about-us.scss'
 
 type AboutUs = {}
 

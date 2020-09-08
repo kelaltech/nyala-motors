@@ -1,9 +1,9 @@
+import { Block, Content } from 'gerami'
 import React from 'react'
-import { Content, Block } from 'gerami'
 
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
 import Towing from '../../../../assets/images/_static/four04/towing.svg'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
 
 type Four4 = {}
 

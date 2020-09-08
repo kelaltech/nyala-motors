@@ -1,7 +1,7 @@
 import React from 'react'
 
-import './button.scss'
 import Anchor, { AnchorProps } from '../anchor/anchor'
+import './button.scss'
 
 type ButtonProps = Partial<AnchorProps> &
   React.DetailedHTMLProps<

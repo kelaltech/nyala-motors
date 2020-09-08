@@ -1,10 +1,9 @@
-import React from 'react'
 import GatsbyImage, { FluidObject } from 'gatsby-image'
-import { AiOutlineSearch } from 'react-icons/ai'
+import React from 'react'
+import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
 
-import './hero-search.scss'
 import Input from '../input/input'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
+import './hero-search.scss'
 
 type HeroSearchProps = {
   bg?: FluidObject | FluidObject[]

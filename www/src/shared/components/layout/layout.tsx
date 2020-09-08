@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Header, { HeaderProps } from '../header/header'
 import Footer from '../footer/footer'
+import Header, { HeaderProps } from '../header/header'
 
 type LayoutProps = React.PropsWithChildren<{
   headerProps?: HeaderProps

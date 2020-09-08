@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
-import { useProductsQuery } from '../../../../app/graphql'
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
-import { Loading, Warning, Yoga, Card } from 'gerami'
-import Button from '../../../../shared/components/button/button'
-import './products.scss'
-import ProductCard from '../../components/product-card/product-card'
-import HeroSearch from '../../../../shared/components/hero-search/hero-search'
 import { graphql, useStaticQuery } from 'gatsby'
+import { Card, Loading, Warning, Yoga } from 'gerami'
+import React, { useState } from 'react'
+
 import { ProductStaticQuery } from '../../../../../graphql-types'
+import { useProductsQuery } from '../../../../app/graphql'
+import Button from '../../../../shared/components/button/button'
+import HeroSearch from '../../../../shared/components/hero-search/hero-search'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
 import useLang from '../../../../shared/hooks/lang/use-lang'
+import ProductCard from '../../components/product-card/product-card'
+import './products.scss'
 
 type ProductsProps = {}
 

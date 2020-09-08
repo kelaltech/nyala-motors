@@ -1,14 +1,15 @@
-import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Block, Card, Content, Loading, Warning, Yoga } from 'gerami'
 import Markdown from 'markdown-to-jsx'
-import { Content, Block, Yoga, Loading, Warning, Card } from 'gerami'
-import './branches.scss'
+import React from 'react'
+
+import { BranchesStaticQuery } from '../../../../../graphql-types'
 import { useBranchesQuery } from '../../../../app/graphql'
-import SEO from '../../../../shared/components/seo/seo'
 import LayoutDefault from '../../../../shared/components/layout/layout'
 import { nameDealerType } from '../../../../shared/components/nameDealerType'
+import SEO from '../../../../shared/components/seo/seo'
 import EmailContact from '../../components/contact/contact'
-import { graphql, useStaticQuery } from 'gatsby'
-import { BranchesStaticQuery } from '../../../../../graphql-types'
+import './branches.scss'
 
 type Branches = {}
 
@@ -54,7 +55,7 @@ const Branches: React.FC<Branches> = () => {
                         <div>
                           {val?.dealerTypes?.map((v, key) => (
                             <Markdown className={'markdown'} key={key}>
-                              {nameDealerType(v?.dealerType)}
+                              {nameDealerType(v?.dealerType!) || ''}
                             </Markdown>
                           ))}
                         </div>

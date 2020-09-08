@@ -1,18 +1,18 @@
-import React, { useState, useMemo } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Warning, Loading, Content } from 'gerami'
 import GatsbyImage from 'gatsby-image'
+import { Content, Loading, Warning } from 'gerami'
+import React, { useMemo, useState } from 'react'
 
-import './vacancies.scss'
+import { strapiApiBase } from '../../../../../constants'
 import { VacanciesStaticQuery } from '../../../../../graphql-types'
 import { useVacanciesQuery } from '../../../../app/graphql'
-import { strapiApiBase } from '../../../../../constants'
-import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
-import HeroSearch from '../../../../shared/components/hero-search/hero-search'
-import VacancyCard from '../../components/vacancy-card/vacancy-card'
 import Button from '../../../../shared/components/button/button'
+import HeroSearch from '../../../../shared/components/hero-search/hero-search'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
+import VacancyCard from '../../components/vacancy-card/vacancy-card'
+import './vacancies.scss'
 
 type VacanciesProps = {}
 
@@ -119,7 +119,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                       ?.slice(0, 4)
                       .map((vacancy, i) => (
                         <div key={i}>
-                          <VacancyCard vacancy={vacancy!} />
+                          <VacancyCard vacancy={vacancy as any} />
                         </div>
                       ))}
                   </div>
@@ -173,7 +173,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
                       ?.slice(4)
                       .map((vacancy, i) => (
                         <div key={i}>
-                          <VacancyCard key={i} vacancy={vacancy!} />
+                          <VacancyCard key={i} vacancy={vacancy as any} />
                         </div>
                       ))}
                   </div>

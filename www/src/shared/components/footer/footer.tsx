@@ -1,11 +1,12 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa'
 
-import './footer.scss'
+import Loadable from '@loadable/component'
+
+import useLang from '../../hooks/lang/use-lang'
 import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
 import Anchor from '../anchor/anchor'
-import useLang from '../../hooks/lang/use-lang'
-import Loadable from '@loadable/component'
+import './footer.scss'
 
 const LoadLanguage = Loadable(() =>
   import('../language-preference/language-preference')

@@ -1,8 +1,8 @@
+import { Block } from 'gerami'
 import React from 'react'
 
-import SEO from '../../../../shared/components/seo/seo'
 import Layout from '../../../../shared/components/layout/layout'
-import { Block } from 'gerami'
+import SEO from '../../../../shared/components/seo/seo'
 import './registration.scss'
 
 type RegistrationProps = {}

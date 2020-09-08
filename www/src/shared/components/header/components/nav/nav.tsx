@@ -1,12 +1,11 @@
 import React from 'react'
-import { FaCaretDown } from 'react-icons/fa'
+import { FaAngleDown, FaCaretDown } from 'react-icons/fa'
 
-import './nav.scss'
-import useDropDown from '../../../../hooks/use-drop-down/use-drop-down'
 import { usePage } from '../../../../../app/contexts/page-context/page-context'
-import Anchor from '../../../anchor/anchor'
-import { FaAngleDown } from 'react-icons/fa'
 import useLang from '../../../../hooks/lang/use-lang'
+import useDropDown from '../../../../hooks/use-drop-down/use-drop-down'
+import Anchor from '../../../anchor/anchor'
+import './nav.scss'
 
 export type NavProps = {}
 

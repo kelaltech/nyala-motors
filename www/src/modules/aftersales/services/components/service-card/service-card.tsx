@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
+
 import './service-card.scss'
-import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+
 type serviceCard = {
   title: string
   description: string

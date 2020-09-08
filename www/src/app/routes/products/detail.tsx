@@ -1,5 +1,6 @@
-import React from 'react'
 import { PageRendererProps } from 'gatsby'
+import React from 'react'
+
 import ProductDetail from '../../../modules/product/pages/product-detail/product-detail'
 import App from '../../app'
 

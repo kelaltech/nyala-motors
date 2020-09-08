@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, DependencyList, useCallback } from 'react'
+import { DependencyList, useCallback, useLayoutEffect, useRef } from 'react'
 
 function getScrollPosition({
   element,

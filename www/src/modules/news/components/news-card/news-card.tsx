@@ -1,8 +1,9 @@
-import React from 'react'
-import './news-card.scss'
-import { Content, Block } from 'gerami'
-import Button from '../../../../shared/components/button/button'
+import { Block, Content } from 'gerami'
 import * as moment from 'moment'
+import React from 'react'
+
+import Button from '../../../../shared/components/button/button'
+import './news-card.scss'
 
 type NewsCardProps = {
   title: string

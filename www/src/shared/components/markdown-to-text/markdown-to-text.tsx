@@ -1,5 +1,5 @@
-import React from 'react'
 import Markdown, { MarkdownProps } from 'markdown-to-jsx'
+import React from 'react'
 
 function filterOutMd(str: string): string {
   return str

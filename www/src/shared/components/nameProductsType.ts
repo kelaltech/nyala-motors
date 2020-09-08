@@ -10,5 +10,7 @@ export function nameProductsType(category: string) {
       return 'Eicher'
     case 'MAC_POWER':
       return 'Macpower Battrey'
+    default:
+      return ''
   }
 }

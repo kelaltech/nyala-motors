@@ -1,15 +1,16 @@
-import React, { useState, useMemo } from 'react'
-import { Block, Yoga, Loading, Warning } from 'gerami'
 import { graphql, useStaticQuery } from 'gatsby'
-import ReportCard from '../components/report-card/report-card'
-import { useReportsQuery } from '../../../app/graphql'
-import { ReportsStaticQuery } from '../../../../graphql-types'
-import SEO from '../../../shared/components/seo/seo'
-import Layout from '../../../shared/components/layout/layout'
-import HeroSearch from '../../../shared/components/hero-search/hero-search'
+import { Block, Loading, Warning, Yoga } from 'gerami'
+import React, { useMemo, useState } from 'react'
+
 import { strapiApiBase } from '../../../../constants'
-import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
+import { ReportsStaticQuery } from '../../../../graphql-types'
+import { useReportsQuery } from '../../../app/graphql'
 import Button from '../../../shared/components/button/button'
+import HeroSearch from '../../../shared/components/hero-search/hero-search'
+import Layout from '../../../shared/components/layout/layout'
+import SEO from '../../../shared/components/seo/seo'
+import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
+import ReportCard from '../components/report-card/report-card'
 
 const COUNT = 12
 

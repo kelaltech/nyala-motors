@@ -2,8 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import url from 'url'
 
-import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
 import { graphqlUrl } from '../../../../constants'
+import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
 
 type SEOProps = {
   title: string
