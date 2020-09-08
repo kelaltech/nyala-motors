@@ -280,7 +280,7 @@ export default AboutUs
 
 const query = graphql`
   query AboutStatic {
-    aboutHero: file(relativePath: { eq: "about/about-hero.png" }) {
+    aboutHero: file(relativePath: { eq: "about/nyala.jpg" }) {
       childImageSharp {
         fluid(quality: 90, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
