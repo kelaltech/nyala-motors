@@ -119,6 +119,15 @@ const Nav: React.FC<NavProps> = () => {
       {!isMenuOpen ? null : (
         <div className="shared-header-nav-menu" ref={menuRef}>
           <Anchor
+            to="/about"
+            className={`shared-header-nav-on-mobile ${
+              '/about' !== activePathname ? '' : 'shared-nav-link-active'
+            }`}
+          >
+            <span>{lang`nav.item.about`}</span>
+          </Anchor>
+
+          <Anchor
             to="/products"
             className={`shared-header-nav-on-mobile ${
               '/products' !== activePathname ? '' : 'shared-nav-link-active'
@@ -126,6 +135,7 @@ const Nav: React.FC<NavProps> = () => {
           >
             <span>{lang`nav.item.products`}</span>
           </Anchor>
+
           <Anchor
             to="/aftersales/services"
             className={`shared-header-nav-on-mobile ${
@@ -165,14 +175,7 @@ const Nav: React.FC<NavProps> = () => {
           >
             <span>{lang`nav.item.showroom`}</span>
           </Anchor>
-          <Anchor
-            to="/about"
-            className={`shared-header-nav-on-mobile ${
-              '/about' !== activePathname ? '' : 'shared-nav-link-active'
-            }`}
-          >
-            <span>{lang`nav.item.about`}</span>
-          </Anchor>
+
           <Anchor
             to="/contact"
             className={`shared-header-nav-important-link shared-header-nav-on-mobile ${
