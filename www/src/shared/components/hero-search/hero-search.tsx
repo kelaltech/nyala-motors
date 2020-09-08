@@ -43,8 +43,6 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
         className="shared-hero-search-overlay"
         style={color ? { backgroundColor: 'rgba(0,0,0,0.5)' } : {}}
       >
-        {!title ? null : <h1 className="shared-hero-search-title">{title}</h1>}
-
         <label className="shared-hero-search-bar">
           <Input
             type="search"
@@ -57,6 +55,8 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
           />
           <AiOutlineSearch className="shared-hero-search-icon" />
         </label>
+
+        {!title ? null : <h1 className="shared-hero-search-title">{title}</h1>}
         <div className="shared-hero-search-chips">
           {chips?.map((chip, i) => (
             <div className="center" key={i}>
