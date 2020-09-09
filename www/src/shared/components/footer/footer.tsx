@@ -15,8 +15,10 @@ const LoadLanguage = Loadable(
 type FooterProps = {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const { copyright } = useSiteMetadata()
   const lang = useLang()
+
+  const { copyright } = useSiteMetadata()
+
   return (
     <footer className="shared-footer">
       <div className="shared-footer-top-row">
