@@ -40,7 +40,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
     'QUESTER',
     'NEW_QUESTER',
     'EICHER_BUS',
-    'EICHER_TRUCK',
+    'EICHER_TRUCKS',
     'MACPOWER',
     'IC_ENGINE_FORKLIFT',
     'REACH_TRUCKS_FORKLIFT',
