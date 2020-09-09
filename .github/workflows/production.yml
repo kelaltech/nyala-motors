@@ -94,6 +94,8 @@ jobs:
         with:
           # Vercel token
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          # args
+          vercel-args: --prod
           # the working directory
           working-directory: www/public/
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
