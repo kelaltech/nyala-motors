@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import './language-preference.scss'
-import { changeLocale } from 'gatsby-plugin-intl'
-import { useLocalStorage } from 'react-use-storage'
 import GatsbyImage from 'gatsby-image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { changeLocale } from 'gatsby-plugin-intl'
+import React, { useEffect } from 'react'
+import { useLocalStorage } from 'react-use-storage'
+
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import './language-preference.scss'
 
 const LanguagePreference = () => {
   const [language, setLanguage] = useLocalStorage('language', 'am')
@@ -13,7 +15,7 @@ const LanguagePreference = () => {
   useEffect(() => {
     const url = typeof window !== 'undefined' ? window.location.pathname : null
 
-    setLanguage(url?.split('/')[1])
+    setLanguage(url?.split('/')[1] || 'en')
   }, [])
 
   const data = useStaticQuery(graphql`

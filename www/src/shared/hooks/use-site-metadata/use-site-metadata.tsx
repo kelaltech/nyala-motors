@@ -1,6 +1,6 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-import { UseSiteMetadataQuery } from '../../../../graphql-types'
+import { UseSiteMetadataQuery } from '../../../../gen/gatsby-types'
 
 const useSiteMetadata = () => {
   const { site } = useStaticQuery<UseSiteMetadataQuery>(query)

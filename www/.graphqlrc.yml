@@ -1,0 +1,54 @@
+projects:
+  gatsby-ast:
+    extensions:
+      codegen:
+        overwrite: true
+        generates:
+          # gatsby ast
+          gen/gatsby-ast.graphql:
+            schema:
+              - http://localhost:8000/___graphql
+            plugins:
+              - schema-ast
+            config:
+              includeDirectives: true
+              commentDescriptions: true
+
+  default:
+    extensions:
+      codegen:
+        overwrite: true
+        generates:
+          # apollo types
+          gen/apollo-types.tsx:
+            schema: ../strapi/exports/graphql/schema.graphql
+            documents:
+              - ./src/**/*.graphql
+            plugins:
+              - typescript
+              - typescript-operations
+              - typescript-react-apollo
+            config:
+              skipTypename: true
+              enumsAsTypes: true
+              exportFragmentSpreadSubTypes: true
+              withComponent: false
+              withHOC: false
+              withHooks: true
+
+          # gatsby types
+          gen/gatsby-types.ts:
+            schema: ./gen/gatsby-ast.graphql
+            documents:
+              - ./src/**/*.{ts,tsx}
+              - ../node_modules/gatsby*/!(node_modules)/**/*.js
+            plugins:
+              - typescript
+              - typescript-operations
+            pluckConfig:
+              modules:
+                - { name: gatsby, identifier: graphql }
+            config:
+              skipTypename: true
+              enumsAsTypes: true
+              exportFragmentSpreadSubTypes: true

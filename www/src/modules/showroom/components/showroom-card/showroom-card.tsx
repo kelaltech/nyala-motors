@@ -1,11 +1,12 @@
+import { Block, Content } from 'gerami'
 import React, { useState } from 'react'
-import { Showroom } from '../../../../app/graphql'
-import { Content, Block } from 'gerami'
-
-import './showroom-card.scss'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
-import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
+
+import { Showroom } from '../../../../../gen/apollo-types'
+import './showroom-card.scss'
+
 type ShowroomCardProps = {
   showroom: Pick<Showroom, 'image' | 'description'>
 }
@@ -20,7 +21,7 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
     )
   }
 
-  const [isExpanded, setIsexapanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   return (
     <>
       <Content
@@ -53,8 +54,8 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
             {showroom.description}
           </p>
           <div className="fg-blackish center right font-L expandable-icon">
-            {showroom?.description?.length >= 70 ? (
-              <span onClick={() => setIsexapanded(!isExpanded)}>
+            {showroom?.description && showroom.description.length >= 70 ? (
+              <span onClick={() => setIsExpanded(!isExpanded)}>
                 {isExpanded ? <MdExpandLess /> : <MdExpandMore />}
               </span>
             ) : (

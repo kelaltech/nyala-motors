@@ -1,5 +1,5 @@
+import Markdown from 'markdown-to-jsx'
 import React from 'react'
-import Markdown, { MarkdownProps } from 'markdown-to-jsx'
 
 function filterOutMd(str: string): string {
   return str
@@ -31,7 +31,10 @@ const Plain: React.FC<PlainProps> = ({ children }) => {
   return <></>
 }
 
-type MarkdownToTextProps = MarkdownProps & {}
+type MarkdownToTextProps = {
+  [key: string]: any
+  children: string
+}
 
 const MarkdownToText: React.FC<MarkdownToTextProps> = ({
   options,

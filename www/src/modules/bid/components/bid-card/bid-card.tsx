@@ -1,14 +1,13 @@
-import React, { useMemo } from 'react'
-
-import './bid-card.scss'
-
-import { Bid } from '../../../../app/graphql'
-import Anchor from '../../../../shared/components/anchor/anchor'
-import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
-import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/ai'
-import Button from '../../../../shared/components/button/button'
 import moment from 'moment'
+import React, { useMemo } from 'react'
+import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/ai'
+
+import { Bid } from '../../../../../gen/apollo-types'
+import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
+import Anchor from '../../../../shared/components/anchor/anchor'
+import Button from '../../../../shared/components/button/button'
 import MarkdownToText from '../../../../shared/components/markdown-to-text/markdown-to-text'
+import './bid-card.scss'
 
 type BidCardProps = {
   bid: Pick<
@@ -50,7 +49,7 @@ const BidCard: React.FC<BidCardProps> = ({ bid }) => {
           </div>
         </h5>
         <p>
-          <MarkdownToText>{bid.description}</MarkdownToText>
+          <MarkdownToText>{bid.description || ''}</MarkdownToText>
         </p>
       </div>
 

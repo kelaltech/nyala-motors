@@ -1,21 +1,27 @@
-import React from 'react'
-import './home.scss'
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
-import { Block, Content, Loading, Warning } from 'gerami'
-import Button from '../../../../shared/components/button/button'
 import { graphql, useStaticQuery } from 'gatsby'
-import { HomeStaticQuery } from '../../../../../graphql-types'
 import GatsbyImage from 'gatsby-image'
+import { Block, Content, Loading, Warning } from 'gerami'
+import React, { useRef } from 'react'
+import Carousel from 'react-elastic-carousel'
+import { FaCar, FaCogs, FaRegMap, FaRegNewspaper } from 'react-icons/fa'
+
+import { useHomeQuery } from '../../../../../gen/apollo-types'
+import { HomeStaticQuery } from '../../../../../gen/gatsby-types'
 import Anchor from '../../../../shared/components/anchor/anchor'
-import { FaCar, FaRegNewspaper, FaRegMap, FaCogs } from 'react-icons/fa'
+import Button from '../../../../shared/components/button/button'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
 import useLang from '../../../../shared/hooks/lang/use-lang'
-import { useHomeQuery } from '../../../../app/graphql'
+import './home.scss'
 
 type HomeProps = {}
 
 const Home: React.FC<HomeProps> = () => {
   const {
+    heroSlide1,
+    heroSlide2,
+    heroSlide3,
+
     Unicarriers,
     elicher,
     macpower,
@@ -23,11 +29,12 @@ const Home: React.FC<HomeProps> = () => {
     udtrucks,
     productLink,
     serviceLink,
-    landingHero,
   } = useStaticQuery<HomeStaticQuery>(query)
 
   const lang = useLang()
   const { loading, error, data } = useHomeQuery()
+
+  const carousel = useRef<any>(null)
 
   return (
     <>
@@ -35,14 +42,29 @@ const Home: React.FC<HomeProps> = () => {
 
       <Layout headerProps={{ mode: 'transparent' }}>
         <div className={'landing-body-container'}>
-          <div
-            className={'lading-hero-section'}
-            style={{
-              backgroundImage: `url(${landingHero?.childImageSharp?.fluid?.src})`,
-            }}
-          >
-            <Block className={'landing-hero-content'}>
-              <Content transparent size="6XL">
+          <div className={'lading-hero-section'}>
+            <Carousel
+              ref={carousel}
+              className="home-hero-slides"
+              enableTilt
+              enableAutoPlay
+              autoPlaySpeed={5000}
+              itemsToShow={1}
+              pagination={false}
+              renderArrow={() => <></>}
+              onChange={(_obj: any, i: number) => {
+                if (i >= 2) {
+                  setTimeout(() => carousel.current?.goTo(0), 5000)
+                }
+              }}
+            >
+              <GatsbyImage fluid={heroSlide1?.childImageSharp?.fluid as any} />
+              <GatsbyImage fluid={heroSlide2?.childImageSharp?.fluid as any} />
+              <GatsbyImage fluid={heroSlide3?.childImageSharp?.fluid as any} />
+            </Carousel>
+
+            <div className={'landing-hero-content'}>
+              <div>
                 <h1>{lang`home.hero.title`}</h1>
                 <p>{lang`home.hero.desciption`}</p>
                 <div>
@@ -60,26 +82,9 @@ const Home: React.FC<HomeProps> = () => {
                     mode={'primary-outline'}
                   >{lang`home.hero.btn.about`}</Button>
                 </div>
-              </Content>
-            </Block>
-          </div>
-
-          {/* <Block className={'landing-about-container'}>
-            <Content transparent size={'L'} className={'center'}>
-              <Block first />
-              <div>
-                <h1>{lang`home.about.title`}</h1>
-                <Block>
-                  <hr />
-                </Block>
-                <p>{lang`home.about.description`}</p>
-                <Block first last>
-                  <Anchor to={'/about'}>{lang`home.about.link`}</Anchor>
-                </Block>
               </div>
-              <Block first />
-            </Content>
-          </Block> */}
+            </div>
+          </div>
 
           <Block className={'landing-to-link-container'}>
             <Content id={'get-started'} transparent size={'4XL'}>
@@ -185,10 +190,10 @@ const Home: React.FC<HomeProps> = () => {
             </Content>
           </Block>
 
-          <Block className={'landing-qoute-container'}>
+          <Block className={'landing-quote-container'}>
             <blockquote>
               {lang`home.quote`}
-              <span className={'fg-primary'}>&nbsp;#NyalaMotors</span>
+              <span className={'fg-primary'}> #NyalaMotors</span>
             </blockquote>
           </Block>
 
@@ -245,51 +250,66 @@ export default Home
 
 const query = graphql`
   query HomeStatic {
-    landingHero: file(relativePath: { eq: "home/nyala-home-1.jpg" }) {
+    heroSlide1: file(relativePath: { eq: "home/home-hero-slide-1.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 1680, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
+    heroSlide2: file(relativePath: { eq: "home/home-hero-slide-2.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1680, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroSlide3: file(relativePath: { eq: "home/home-hero-slide-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1680, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
     nissanLogo: file(relativePath: { eq: "home/nissan-logo.webp" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     udtrucks: file(relativePath: { eq: "home/udtrucks.png" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     elicher: file(relativePath: { eq: "home/elicher.png" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     Unicarriers: file(relativePath: { eq: "home/Unicarriers.png" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     macpower: file(relativePath: { eq: "home/macpower.png" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     productLink: file(relativePath: { eq: "home/product-link.png" }) {
       childImageSharp {
-        fluid(maxWidth: 420, quality: 90, cropFocus: CENTER) {
+        fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -297,7 +317,7 @@ const query = graphql`
 
     serviceLink: file(relativePath: { eq: "aftersales/service-img.jpeg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 1680, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

@@ -1,17 +1,18 @@
-import React from 'react'
-import './product-categories.scss'
-import { useProductCategoriesQuery } from '../../../../app/graphql'
-import { usePage } from '../../../../app/contexts/page-context/page-context'
-import qs from 'qs'
-import { Loading, Warning, Yoga, Content, Block, Card } from 'gerami'
-import Layout from '../../../../shared/components/layout/layout'
-import Markdown from 'markdown-to-jsx'
-import { nameProductsType } from '../../../../shared/components/nameProductsType'
-import { nameEachCat } from '../../../../shared/components/nameEachCat'
-import Button from '../../../../shared/components/button/button'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ProductCatDetailStaticQuery } from '../../../../../graphql-types'
+import { Block, Card, Content, Loading, Warning, Yoga } from 'gerami'
+import Markdown from 'markdown-to-jsx'
+import qs from 'qs'
+import React from 'react'
+
+import { useProductCategoriesQuery } from '../../../../../gen/apollo-types'
+import { ProductCatDetailStaticQuery } from '../../../../../gen/gatsby-types'
+import { usePage } from '../../../../app/contexts/page-context/page-context'
+import Button from '../../../../shared/components/button/button'
+import Layout from '../../../../shared/components/layout/layout'
+import { nameEachCat } from '../../../../shared/components/nameEachCat'
+import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import Heritage from '../../components/heritage/heritage'
+import './product-categories.scss'
 
 type ProductCategoriesProps = {}
 
@@ -167,7 +168,7 @@ const QUERY = graphql`
   query ProductCatDetailStatic {
     eicher: file(relativePath: { eq: "products/eicher.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -175,7 +176,7 @@ const QUERY = graphql`
 
     udTruck: file(relativePath: { eq: "products/ud-truck.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -183,7 +184,7 @@ const QUERY = graphql`
 
     unicarrier: file(relativePath: { eq: "products/unicarrier.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -191,7 +192,7 @@ const QUERY = graphql`
 
     macpower: file(relativePath: { eq: "products/macpower-1.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

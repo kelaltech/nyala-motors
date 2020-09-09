@@ -1,5 +1,5 @@
+import { Block, Card, Yoga } from 'gerami'
 import React from 'react'
-import { Card, Yoga, Block } from 'gerami'
 
 type modalProps = { id: string }
 

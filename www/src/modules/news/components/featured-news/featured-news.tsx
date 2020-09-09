@@ -1,8 +1,9 @@
-import React from 'react'
-import './featured-news.scss'
-import { Content, Block } from 'gerami'
-import Button from '../../../../shared/components/button/button'
+import { Block, Content } from 'gerami'
 import * as moment from 'moment'
+import React from 'react'
+
+import Button from '../../../../shared/components/button/button'
+import './featured-news.scss'
 
 type FeaturedNewsProps = {
   title: string

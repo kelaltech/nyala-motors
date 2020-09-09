@@ -1,13 +1,13 @@
+import moment from 'moment'
 import React, { useMemo } from 'react'
 import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/all'
-import moment from 'moment'
 
-import './vacancy-card.scss'
+import { Vacancy } from '../../../../../gen/apollo-types'
 import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
-import { Vacancy } from '../../../../app/graphql'
+import Anchor from '../../../../shared/components/anchor/anchor'
 import Button from '../../../../shared/components/button/button'
 import MarkdownToText from '../../../../shared/components/markdown-to-text/markdown-to-text'
-import Anchor from '../../../../shared/components/anchor/anchor'
+import './vacancy-card.scss'
 
 type VacancyCardProps = {
   vacancy: Pick<

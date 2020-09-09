@@ -1,16 +1,17 @@
-import React, { useState, useMemo } from 'react'
-import Layout from '../../../../shared/components/layout/layout'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Block, Content, Loading, Warning } from 'gerami'
+import React, { useMemo, useState } from 'react'
+
 import { strapiApiBase } from '../../../../../constants'
-import { useBidsQuery } from '../../../../app/graphql'
-import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
-import SEO from '../../../../shared/components/seo/seo'
+import { useBidsQuery } from '../../../../../gen/apollo-types'
+import { BidsStaticQuery } from '../../../../../gen/gatsby-types'
+import Button from '../../../../shared/components/button/button'
 import HeroSearch from '../../../../shared/components/hero-search/hero-search'
-import { Loading, Warning, Content, Block } from 'gerami'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import BidCard from '../../components/bid-card/bid-card'
 import './bids.scss'
-import Button from '../../../../shared/components/button/button'
-import { BidsStaticQuery } from '../../../../../graphql-types'
-import { useStaticQuery, graphql } from 'gatsby'
 
 const COUNT = 12
 
@@ -113,7 +114,7 @@ const Bid: React.FC<BidsProps> = () => {
                     {data?.bids
                       ?.filter((bid) => !!bid)
                       .map((bid, key) => (
-                        <BidCard key={key} bid={bid!} />
+                        <BidCard key={key} bid={bid as any} />
                       ))}
                   </div>
 
@@ -147,7 +148,7 @@ const query = graphql`
   query BidsStatic {
     heroBg: file(relativePath: { eq: "vacancy/hero-bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1680, quality: 90, cropFocus: NORTH) {
+        fluid(maxWidth: 1680, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

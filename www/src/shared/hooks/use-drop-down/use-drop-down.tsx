@@ -1,4 +1,4 @@
-import React, { useState, useRef, RefObject } from 'react'
+import React, { RefObject, useRef, useState } from 'react'
 
 const useDropDown = function <T extends Element = any>(): [
   RefObject<T>,

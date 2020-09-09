@@ -1,11 +1,10 @@
-import React from 'react'
 import { PageRendererProps } from 'gatsby'
-
 import 'normalize.css'
-import '../assets/styles/index.scss'
+import React from 'react'
 
-import { PageProvider } from './contexts/page-context/page-context'
+import '../assets/styles/index.scss'
 import ApolloClientProvider from './configs/apollo-client-provider'
+import { PageProvider } from './contexts/page-context/page-context'
 
 type AppProps = React.PropsWithChildren<{
   pageRendererProps: PageRendererProps

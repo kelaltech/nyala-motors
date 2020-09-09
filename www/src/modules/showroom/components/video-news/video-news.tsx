@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import './video-news.scss'
 import Axios from 'axios'
-import { Yoga, Content, Block } from 'gerami'
-import { youtubeApi, youtubePlaylistId } from '../../../../../constants'
+import { Block, Content, Yoga } from 'gerami'
 import * as moment from 'moment'
+import React, { useEffect, useState } from 'react'
+
+import { youtubeApi, youtubePlaylistId } from '../../../../../constants'
+import './video-news.scss'
 
 type VideoNewsProps = {}
 

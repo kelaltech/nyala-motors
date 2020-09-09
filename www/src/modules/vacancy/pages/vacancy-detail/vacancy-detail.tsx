@@ -1,20 +1,20 @@
-import React, { useMemo } from 'react'
-import { Yoga, Loading, Warning, Block } from 'gerami'
+import { Block, Loading, Warning, Yoga } from 'gerami'
 import Markdown from 'markdown-to-jsx'
-import qs from 'qs'
 import moment from 'moment'
+import qs from 'qs'
+import React, { useMemo } from 'react'
 import { AiOutlineDownload } from 'react-icons/all'
+import { GoLocation } from 'react-icons/go'
 
-import './vacancy-detail.scss'
+import { strapiApiBase } from '../../../../../constants'
+import { useVacancyDetailQuery } from '../../../../../gen/apollo-types'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
-import { useVacancyDetailQuery } from '../../../../app/graphql'
-import SEO from '../../../../shared/components/seo/seo'
+import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
 import { nameJobType } from '../../../../shared/components/nameJobType'
 import { nameSalaryType } from '../../../../shared/components/nameSalaryType'
-import { GoLocation } from 'react-icons/go'
-import Button from '../../../../shared/components/button/button'
-import { strapiApiBase } from '../../../../../constants'
+import SEO from '../../../../shared/components/seo/seo'
+import './vacancy-detail.scss'
 
 type VacancyDetailProps = {}
 
@@ -24,7 +24,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
     qs.parse(page?.location.search || '?', {
       ignoreQueryPrefix: true,
     }) || {}
-  const id = query.id
+  const id = query.id as string
 
   const { loading, error, data } = useVacancyDetailQuery({ variables: { id } })
 
@@ -99,7 +99,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                     </p>
                     <p>
                       {' '}
-                      <b>Job Type: </b> {nameJobType(data.vacancy.type)}
+                      <b>Job Type: </b> {nameJobType(data.vacancy.type!)}
                     </p>
                   </div>
 
@@ -110,7 +110,7 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
                       for the job
                     </p>
                     <p>
-                      {nameSalaryType(data.vacancy.salaryPeriod)} salary:{' '}
+                      {nameSalaryType(data.vacancy.salaryPeriod!)} salary:{' '}
                       {data.vacancy.salary || <i>Not specified</i>}
                     </p>
                   </div>

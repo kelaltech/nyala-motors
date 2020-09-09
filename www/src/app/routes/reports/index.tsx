@@ -1,7 +1,8 @@
-import React from 'react'
 import { PageRendererProps } from 'gatsby'
-import App from '../../app'
+import React from 'react'
+
 import Reports from '../../../modules/report/pages/reports'
+import App from '../../app'
 
 export default (props: PageRendererProps) => {
   return (

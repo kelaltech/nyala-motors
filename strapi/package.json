@@ -13,31 +13,31 @@
     "test": "echo \"Testing has not been configured for strapi yet.\""
   },
   "dependencies": {
-    "connection-string": "3.4.2",
+    "connection-string": "4.2.0",
     "dotenv": "8.2.0",
     "find-config": "1.0.0",
-    "knex": "<0.20.0",
-    "node-fetch": "^2.6.0",
-    "nodemailer": "^6.4.11",
-    "pg": "latest",
-    "strapi": "3.1.3",
-    "strapi-admin": "3.1.3",
-    "strapi-connector-bookshelf": "3.1.3",
-    "strapi-plugin-content-manager": "3.1.3",
-    "strapi-plugin-content-type-builder": "3.1.3",
-    "strapi-plugin-email": "3.1.3",
-    "strapi-plugin-graphql": "3.1.3",
-    "strapi-plugin-upload": "3.1.3",
-    "strapi-plugin-users-permissions": "3.1.3",
+    "knex": "0.21.5",
+    "node-fetch": "2.6.1",
+    "nodemailer": "6.4.11",
+    "pg": "8.3.3",
+    "strapi": "3.1.4",
+    "strapi-admin": "3.1.4",
+    "strapi-connector-bookshelf": "3.1.4",
+    "strapi-plugin-content-manager": "3.1.4",
+    "strapi-plugin-content-type-builder": "3.1.4",
+    "strapi-plugin-email": "3.1.4",
+    "strapi-plugin-graphql": "3.1.4",
+    "strapi-plugin-upload": "3.1.4",
+    "strapi-plugin-users-permissions": "3.1.4",
     "strapi-provider-upload-better-cloudinary": "file:providers/strapi-provider-upload-better-cloudinary",
-    "strapi-utils": "3.1.3"
+    "strapi-utils": "3.1.4"
   },
   "devDependencies": {},
   "strapi": {
     "uuid": "0047084f-a1d3-4f49-b247-5a0ca7a6c001"
   },
   "engines": {
-    "node": "^12",
-    "yarn": "^1"
+    "node": "12",
+    "yarn": "1"
   }
 }

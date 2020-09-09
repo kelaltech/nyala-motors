@@ -1,4 +1,5 @@
 import { useIntl } from 'gatsby-plugin-intl'
+
 const useLang = () => {
   const intl = useIntl()
   return (id: string | TemplateStringsArray, options: any = {}) => {

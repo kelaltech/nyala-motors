@@ -11,7 +11,7 @@
   }
 
   a {
-    color: transparentize(white, 1 - 1);
+    color: transparentize(white, 1 - 1) !important;
   }
 
   .shared-footer-top-row,

@@ -1,14 +1,15 @@
+import { Block, Loading, Warning, Yoga } from 'gerami'
 import React, { useState } from 'react'
-import './news.scss'
-import { usePublicationsQuery } from '../../../../app/graphql'
-import SEO from '../../../../shared/components/seo/seo'
+
+import { strapiApiBase } from '../../../../../constants'
+import { usePublicationsQuery } from '../../../../../gen/apollo-types'
+import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
-import { Loading, Warning, Block, Yoga } from 'gerami'
+import SEO from '../../../../shared/components/seo/seo'
+import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import FeaturedNews from '../../components/featured-news/featured-news'
 import NewsCard from '../../components/news-card/news-card'
-import { strapiApiBase } from '../../../../../constants'
-import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
-import Button from '../../../../shared/components/button/button'
+import './news.scss'
 
 type NewsProps = {}
 

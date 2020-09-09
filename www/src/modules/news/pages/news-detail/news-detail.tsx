@@ -1,17 +1,8 @@
-import React from 'react'
-import './news-detail.scss'
-
-import { usePublicationDetailQuery } from '../../../../app/graphql'
-
-import SEO from '../../../../shared/components/seo/seo'
-import Layout from '../../../../shared/components/layout/layout'
-import { Loading, Warning, Block, Content, Flex, FlexSpacer } from 'gerami'
-import { usePage } from '../../../../app/contexts/page-context/page-context'
-import qs from 'qs'
-import * as moment from 'moment'
+import { Block, Content, Flex, FlexSpacer, Loading, Warning } from 'gerami'
 import Markdown from 'markdown-to-jsx'
-import CopyToClipboard from '../../../../shared/components/copy-to-clipboard/copy-to-clipboard'
-
+import * as moment from 'moment'
+import qs from 'qs'
+import React from 'react'
 import { FaFacebook, FaTelegram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 import {
   FacebookShareButton,
@@ -20,13 +11,20 @@ import {
   WhatsappShareButton,
 } from 'react-share'
 
+import { usePublicationDetailQuery } from '../../../../../gen/apollo-types'
+import { usePage } from '../../../../app/contexts/page-context/page-context'
+import CopyToClipboard from '../../../../shared/components/copy-to-clipboard/copy-to-clipboard'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './news-detail.scss'
+
 const NewsDetail: React.FC<{}> = () => {
   const page = usePage()
   const query =
     qs.parse(page?.location.search || '?', {
       ignoreQueryPrefix: true,
     }) || {}
-  const id = query.id
+  const id = query.id as string
 
   const { data, loading, error } = usePublicationDetailQuery({
     variables: { id },
@@ -124,7 +122,7 @@ const NewsDetail: React.FC<{}> = () => {
                 size="XL"
               >
                 <Markdown className={'news-detail-markdown'}>
-                  {description}
+                  {description || ''}
                 </Markdown>
               </Content>
             </Block>

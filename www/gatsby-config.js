@@ -59,18 +59,6 @@ module.exports = {
     //     ]
     //   }
     // },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        fileName: `./graphql-types.ts`,
-        documentPaths: [
-          `./src/**/*.{ts,tsx}`,
-          // `./.cache/fragments/*.js`,
-          // `./node_modules/gatsby-*/!(node_modules)**/*.js`,
-          `../node_modules/gatsby-*/!(node_modules)**/*.js`,
-        ],
-      },
-    },
 
     //
     // ASSETS:
@@ -99,17 +87,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Roboto`,
-            variants: [
-              `300`,
-              `300i`,
-              `400`,
-              `400i`,
-              `500`,
-              `500i`,
-              `700`,
-              `700i`,
-            ],
+            family: `Merriweather`,
+            variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`],
           },
         ],
       },
@@ -145,18 +124,10 @@ module.exports = {
     //
     // ANALYSIS:
     //
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: { trackingId: `TODO:` },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-google-tagmanager`,
-    //   options: { id: `TODO:` },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-fullstory`,
-    //   options: { fs_org: `TODO:` },
-    // },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: { id: `GTM-NJKSHC5` },
+    },
 
     //
     // META, PWA & SEO

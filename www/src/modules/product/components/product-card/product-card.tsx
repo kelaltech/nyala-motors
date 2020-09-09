@@ -1,10 +1,11 @@
 import React from 'react'
-import './product-card.scss'
-import { Products } from '../../../../app/graphql'
-// import Button from '../../../../shared/components/button/button
-import { nameEachCat } from '../../../../shared/components/nameEachCat'
+
+import { Products } from '../../../../../gen/apollo-types'
 import Anchor from '../../../../shared/components/anchor/anchor'
 import Button from '../../../../shared/components/button/button'
+// import Button from '../../../../shared/components/button/button
+import { nameEachCat } from '../../../../shared/components/nameEachCat'
+import './product-card.scss'
 
 type ProductCardProps = {
   product: Pick<

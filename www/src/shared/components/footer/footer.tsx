@@ -1,21 +1,24 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa'
 
-import './footer.scss'
-import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
-import Anchor from '../anchor/anchor'
-import useLang from '../../hooks/lang/use-lang'
 import Loadable from '@loadable/component'
 
-const LoadLanguage = Loadable(() =>
-  import('../language-preference/language-preference')
+import useLang from '../../hooks/lang/use-lang'
+import useSiteMetadata from '../../hooks/use-site-metadata/use-site-metadata'
+import Anchor from '../anchor/anchor'
+import './footer.scss'
+
+const LoadLanguage = Loadable(
+  () => import('../language-preference/language-preference')
 )
 
 type FooterProps = {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const { copyright } = useSiteMetadata()
   const lang = useLang()
+
+  const { copyright } = useSiteMetadata()
+
   return (
     <footer className="shared-footer">
       <div className="shared-footer-top-row">

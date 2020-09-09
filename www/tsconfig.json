@@ -67,5 +67,10 @@
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    ".cache",
+    "node_modules",
+    "public"
+  ]
 }

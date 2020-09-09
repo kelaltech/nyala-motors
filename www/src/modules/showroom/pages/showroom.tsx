@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import SEO from '../../../shared/components/seo/seo'
-import LayoutDefault from '../../../shared/components/layout/layout'
-import { useShowroomQuery } from '../../../app/graphql'
-import { Warning, Loading, Content, Yoga, Block } from 'gerami'
-import ShowroomCard from '../components/showroom-card/showroom-card'
-import Modal from '../../../shared/components/modal/modal'
-import Button from '../../../shared/components/button/button'
-import './showroom.scss'
-import { MdRotate90DegreesCcw } from 'react-icons/md'
-import VideoNews from '../components/video-news/video-news'
-import { strapiApiBase } from '../../../../constants'
-import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ShowroomStaticQuery } from '../../../../graphql-types'
+import { Block, Content, Loading, Warning, Yoga } from 'gerami'
+import React, { useState } from 'react'
+import { MdRotate90DegreesCcw } from 'react-icons/md'
+
+import { strapiApiBase } from '../../../../constants'
+import { useShowroomQuery } from '../../../../gen/apollo-types'
+import { ShowroomStaticQuery } from '../../../../gen/gatsby-types'
+import Button from '../../../shared/components/button/button'
+import LayoutDefault from '../../../shared/components/layout/layout'
+import Modal from '../../../shared/components/modal/modal'
+import SEO from '../../../shared/components/seo/seo'
+import useLazy from '../../../shared/hooks/use-lazy/use-lazy'
+import ShowroomCard from '../components/showroom-card/showroom-card'
+import VideoNews from '../components/video-news/video-news'
+import './showroom.scss'
 
 type ShowroomProps = {}
 const COUNT = 12
@@ -100,7 +101,7 @@ const Showroom: React.FC<ShowroomProps> = () => {
                   <Yoga maxCol={2}>
                     {data.showrooms.slice(0, 2).map((showroom, key) => (
                       <div key={key}>
-                        <ShowroomCard showroom={showroom} />
+                        <ShowroomCard showroom={showroom as any} />
                       </div>
                     ))}
                   </Yoga>
@@ -117,7 +118,7 @@ const Showroom: React.FC<ShowroomProps> = () => {
                   <Yoga maxCol={2}>
                     {data.showrooms.slice(2).map((showroom, key) => (
                       <div key={key}>
-                        <ShowroomCard showroom={showroom} />
+                        <ShowroomCard showroom={showroom as any} />
                       </div>
                     ))}
                   </Yoga>
@@ -150,9 +151,9 @@ export default Showroom
 
 const query = graphql`
   query ShowroomStatic {
-    showroomHero: file(relativePath: { eq: "showroom/showroombg.png" }) {
+    showroomHero: file(relativePath: { eq: "showroom/showroom-hero.png" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

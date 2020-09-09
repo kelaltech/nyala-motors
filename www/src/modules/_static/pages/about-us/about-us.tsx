@@ -1,15 +1,16 @@
-import React, { useRef, useCallback } from 'react'
-import './about-us.scss'
-import { Content, Block, Loading, Warning, Yoga } from 'gerami'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
-import { IoMdArrowDropright } from 'react-icons/io'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import Markdown from 'markdown-to-jsx'
-import { useAboutQuery } from '../../../../app/graphql'
+import React, { useCallback, useRef } from 'react'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
-import { graphql, useStaticQuery } from 'gatsby'
-import { AboutStaticQuery } from '../../../../../graphql-types'
+import { IoMdArrowDropright } from 'react-icons/io'
+
+import { useAboutQuery } from '../../../../../gen/apollo-types'
+import { AboutStaticQuery } from '../../../../../gen/gatsby-types'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './about-us.scss'
 
 type AboutUs = {}
 
@@ -45,8 +46,9 @@ const AboutUs: React.FC<AboutUs> = () => {
 
   return (
     <>
-      <SEO title="About us" />
-      <LayoutDefault headerProps={{ mode: 'white' }}>
+      <SEO title="About Us" />
+
+      <Layout headerProps={{ mode: 'white' }}>
         {!data && loading ? (
           <div className="padding-very-big">
             <Loading className="margin-vertical-very-big" delay={700} />
@@ -271,7 +273,7 @@ const AboutUs: React.FC<AboutUs> = () => {
             </Content>
           </>
         )}
-      </LayoutDefault>
+      </Layout>
     </>
   )
 }
@@ -280,9 +282,9 @@ export default AboutUs
 
 const query = graphql`
   query AboutStatic {
-    aboutHero: file(relativePath: { eq: "about/nyala.jpg" }) {
+    aboutHero: file(relativePath: { eq: "about/about-hero.png" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

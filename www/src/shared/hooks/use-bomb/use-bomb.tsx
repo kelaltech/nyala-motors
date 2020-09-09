@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 
 const useBomb = (timeout = 5000): [boolean, () => void] => {
   const [isActive, setIsActive] = useState(false)

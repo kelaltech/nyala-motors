@@ -1,20 +1,27 @@
-import React, { PropsWithChildren, useMemo } from 'react'
-import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch'
-import { ApolloProvider } from '@apollo/react-hooks'
+import React, { PropsWithChildren } from 'react'
 
-import { graphqlUrl } from '../../../constants'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
+import { createHttpLink } from '@apollo/react-hooks'
+
+const httpLink = createHttpLink({
+  uri: process.env.GATSBY_GRAPHQL_URL || `http://localhost:4000/graphql`,
+  fetch,
+})
+
+const errorLink = onError(({ networkError }) => {
+  if (networkError) {
+    console.error(`[Network error]: ${networkError}`)
+  }
+})
+
+export const apolloClient = new ApolloClient({
+  link: errorLink.concat(httpLink),
+  cache: new InMemoryCache(),
+})
 
 const ApolloClientProvider = ({ children }: PropsWithChildren<{}>) => {
-  const apolloClient = useMemo(
-    () =>
-      new ApolloClient({
-        uri: graphqlUrl,
-        fetch,
-      }),
-    []
-  )
-
   return (
     <ApolloProvider client={apolloClient}>
       <>{children}</>

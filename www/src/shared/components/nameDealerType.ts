@@ -6,5 +6,7 @@ export function nameDealerType(category: string) {
       return 'Geniune Parts Sale '
     case 'SERVICE':
       return 'Services'
+    default:
+      return ''
   }
 }

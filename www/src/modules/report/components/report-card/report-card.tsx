@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import './report-card.scss'
-import { Content, Block, Flex, FlexSpacer } from 'gerami'
-import { FiDownload } from 'react-icons/fi'
-import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import { Block, Content, Flex, FlexSpacer } from 'gerami'
 import * as moment from 'moment'
+import React, { useState } from 'react'
+import { FiDownload } from 'react-icons/fi'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
+
 import Button from '../../../../shared/components/button/button'
+import './report-card.scss'
 
 type ReportCardProps = {
   title: string

@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react'
+import { Block, Content, Input, TextArea } from 'gerami'
+import React, { useCallback, useState } from 'react'
 
-import './contact.scss'
-import { Input, TextArea, Block, Content } from 'gerami'
-import { strapiApiBase, contactEmail } from '../../../../../constants'
+import { contactEmail, strapiApiBase } from '../../../../../constants'
 import Button from '../../../../shared/components/button/button'
+import './contact.scss'
 
 type EmailContactProps = {}
 

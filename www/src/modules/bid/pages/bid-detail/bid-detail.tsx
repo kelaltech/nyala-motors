@@ -1,17 +1,19 @@
-import React, { useMemo } from 'react'
-import qs from 'qs'
-import Layout from '../../../../shared/components/layout/layout'
-import { usePage } from '../../../../app/contexts/page-context/page-context'
-import { useBidDetailQuery } from '../../../../app/graphql'
-import SEO from '../../../../shared/components/seo/seo'
-import './bid-detail.scss'
-import Button from '../../../../shared/components/button/button'
 import { Loading, Warning, Yoga } from 'gerami'
+import Markdown from 'markdown-to-jsx'
 import moment from 'moment'
+import qs from 'qs'
+import React, { useMemo } from 'react'
 import { AiOutlineDownload } from 'react-icons/all'
 import { GoLocation } from 'react-icons/go'
-import Markdown from 'markdown-to-jsx'
+
 import { strapiApiBase } from '../../../../../constants'
+import { useBidDetailQuery } from '../../../../../gen/apollo-types'
+import { usePage } from '../../../../app/contexts/page-context/page-context'
+import Button from '../../../../shared/components/button/button'
+import Layout from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './bid-detail.scss'
+
 type BidDetailProps = {}
 
 const BidDetail: React.FC<BidDetailProps> = () => {
@@ -20,7 +22,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
     qs.parse(page?.location.search || '?', {
       ignoreQueryPrefix: true,
     }) || {}
-  const id = query.id
+  const id = query.id as string
   const { loading, error, data } = useBidDetailQuery({ variables: { id } })
   const deadline = useMemo(() => new Date(data?.bid?.Deadline), [
     data?.bid?.Deadline,
@@ -98,14 +100,14 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                   <h3>About the Job</h3>
                 </div>
                 <div>
-                  <Markdown>{data.bid.description}</Markdown>
+                  <Markdown>{data.bid.description || ''}</Markdown>
                 </div>
                 <br />
                 <div>
-                  <h3>Application Requirment</h3>
+                  <h3>Application Requirement</h3>
                 </div>
                 <div>
-                  <Markdown>{data.bid.requirement}</Markdown>
+                  <Markdown>{data.bid.requirement || ''}</Markdown>
                 </div>
               </div>
             </div>
@@ -116,7 +118,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                   <h3>How to Apply</h3>
                 </div>
                 <div>
-                  <Markdown>{data.bid.howToApply}</Markdown>
+                  <Markdown>{data.bid.howToApply || ''}</Markdown>
                 </div>
               </div>
             </div>

@@ -28,5 +28,7 @@ export function nameEachCat(category: string) {
       return 'LARGE SIZE FORKLIFT'
     case 'ELECTRIC_COUNTERBALANCED_FORKLIFT':
       return 'ELECTRIC COUNTERBALANCED FORKLIFT'
+    default:
+      return ''
   }
 }

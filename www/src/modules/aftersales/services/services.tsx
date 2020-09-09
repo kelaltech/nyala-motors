@@ -1,15 +1,16 @@
-import React from 'react'
-import './services.scss'
-import SEO from '../../../shared/components/seo/seo'
-import LayoutDefault from '../../../shared/components/layout/layout'
-import Button from '../../../shared/components/button/button'
-import { Content, Block, Yoga, Loading, Warning } from 'gerami'
-import { FaOilCan, FaCarBattery, FaWater } from 'react-icons/fa'
-import { BsThreeDots } from 'react-icons/bs'
-import ServiceCard from './components/service-card/service-card'
-import { useServiceQuery } from '../../../app/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ServiceStaticQuery } from '../../../../graphql-types'
+import { Block, Content, Loading, Warning, Yoga } from 'gerami'
+import React from 'react'
+import { BsThreeDots } from 'react-icons/bs'
+import { FaCarBattery, FaOilCan, FaWater } from 'react-icons/fa'
+
+import { useServiceQuery } from '../../../../gen/apollo-types'
+import { ServiceStaticQuery } from '../../../../gen/gatsby-types'
+import Button from '../../../shared/components/button/button'
+import LayoutDefault from '../../../shared/components/layout/layout'
+import SEO from '../../../shared/components/seo/seo'
+import ServiceCard from './components/service-card/service-card'
+import './services.scss'
 
 type Services = {}
 
@@ -155,7 +156,7 @@ const query = graphql`
   query ServiceStatic {
     serviceHero: file(relativePath: { eq: "aftersales/service-img.jpeg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

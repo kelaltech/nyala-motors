@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import SEO from '../../../../shared/components/seo/seo'
-import LayoutDefault from '../../../../shared/components/layout/layout'
-import { useFaqQuery } from '../../../../app/graphql'
-import { Loading, Warning, Content, Block, Card } from 'gerami'
-import './faq.scss'
-import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 import { graphql, useStaticQuery } from 'gatsby'
-import { FaqStaticQuery } from '../../../../../graphql-types'
+import { Block, Card, Content, Loading, Warning } from 'gerami'
+import React, { useState } from 'react'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
+
+import { useFaqQuery } from '../../../../../gen/apollo-types'
+import { FaqStaticQuery } from '../../../../../gen/gatsby-types'
+import LayoutDefault from '../../../../shared/components/layout/layout'
+import SEO from '../../../../shared/components/seo/seo'
+import './faq.scss'
 
 type FaqProps = {}
 
@@ -77,7 +78,7 @@ const query = graphql`
   query FaqStatic {
     faqHero: file(relativePath: { eq: "about/nyala.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, cropFocus: CENTER) {
+        fluid(cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

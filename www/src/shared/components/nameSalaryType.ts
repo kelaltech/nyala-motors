@@ -12,5 +12,7 @@ export function nameSalaryType(category: string) {
       return 'Monthly'
     case 'YEARLY':
       return 'Yearly'
+    default:
+      return ''
   }
 }
