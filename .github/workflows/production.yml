@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'master'
+  workflow_dispatch:
 
 jobs:
   build_test_and_deploy:
@@ -52,12 +53,6 @@ jobs:
         env:
           CI: true
 
-      - name: yarn codegen
-        run: yarn codegen
-        env:
-          NODE_ENV: production
-          CI: true
-
       - name: yarn build
         run: yarn build
         env:
@@ -79,7 +74,6 @@ jobs:
           GATSBY_CONTACT_EMAIL_TO: ${{ secrets.GATSBY_CONTACT_EMAIL_TO}}
           GATSBY_YOUTUBE_PLAYLIST_ID: ${{ secrets.GATSBY_YOUTUBE_PLAYLIST_ID}}
           GATSBY_YOUTUBE_API_KEY: ${{ secrets.GATSBY_YOUTUBE_API_KEY}}
-          
 
       - name: Deploy strapi on Heroku
         uses: akhileshns/heroku-deploy@v3.0.4
@@ -92,15 +86,3 @@ jobs:
           NODE_ENV: production
           CI: true
           CD: true
-
-#       - name: Deploy www on Netlify
-#         uses: South-Paw/action-netlify-deploy@v1.0.3
-#         with:
-#           github-token: ${{ secrets.GITHUB_TOKEN }}
-#           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-#           build-dir: www/public/
-#         env:
-#           NODE_ENV: production
-#           CI: true
-#           CD: true

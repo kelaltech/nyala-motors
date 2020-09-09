@@ -1,12 +1,10 @@
 name: CI
 
 on:
-  # push:
-  #   branches-ignore:
-  #     - 'master'
   pull_request:
     branches:
       - 'master'
+  workflow_dispatch:
 
 jobs:
   build_and_test:
@@ -53,12 +51,6 @@ jobs:
       - name: yarn install
         run: yarn install --frozen-lockfile
         env:
-          CI: true
-
-      - name: yarn codegen
-        run: yarn codegen
-        env:
-          NODE_ENV: production
           CI: true
 
       - name: yarn build
