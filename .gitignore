@@ -689,3 +689,5 @@ MigrationBackup/
 reduxcache*/
 www/public
 www/gen/*-types.*
+
+.vercel

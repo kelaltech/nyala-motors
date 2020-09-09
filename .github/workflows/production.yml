@@ -85,8 +85,8 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
-          CD: true 
-          
+          CD: true
+
       - name: Deploy www/public to Vercel
         # You may pin to the exact commit or the version.
         # uses: amondnet/vercel-action@77cb0ce3642a451f7f18d63821c0e26f7adead9a
@@ -96,12 +96,10 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           # the working directory
           working-directory: www/public/
-#           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-#           vercel-project-id: # optional
-#           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-#           vercel-org-id: # optional
-#           # zeit.co token
-#           zeit-token: 
+          # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
+          vercel-org-id: ${{ secrets.VERCEL_ORD_ID }}
           # The name of the project; if absent we'll use the `vercel inspect` command to determine.
           vercel-project-name: nyalamotors
           # If you are work in team scope, you should set this value to your team id.
