@@ -190,7 +190,7 @@ const Home: React.FC<HomeProps> = () => {
             </Content>
           </Block>
 
-          <Block className={'landing-qoute-container'}>
+          <Block className={'landing-quote-container'}>
             <blockquote>
               {lang`home.quote`}
               <span className={'fg-primary'}> #NyalaMotors</span>

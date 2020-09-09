@@ -267,29 +267,24 @@
   }
 }
 
-.landing-qoute-container {
-  padding-top: 96px !important;
-  display: flex;
-  justify-content: center;
+.landing-quote-container {
+  padding: 96px 0 0 !important;
+
   blockquote {
-    width: 60%;
+    display: block !important;
+
+    margin: 0 auto !important;
+    padding: 32px 64px 48px;
+
+    max-width: 840px !important;
+
     font-style: italic;
     font-weight: 300;
     font-size: 28px;
     line-height: 48px;
     text-align: center;
-    color: rgba(66, 66, 66, 0.7);
-  }
 
-  @media screen and (max-width: 800px) {
-    blockquote {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: $mobile) {
-    blockquote {
-      width: 100%;
-    }
+    color: rgba(0, 0, 0, 0.56);
   }
 }
 
