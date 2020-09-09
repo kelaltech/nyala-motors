@@ -99,7 +99,7 @@ jobs:
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-          vercel-org-id: ${{ secrets.VERCEL_ORD_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           # The name of the project; if absent we'll use the `vercel inspect` command to determine.
           vercel-project-name: nyalamotors
           # If you are work in team scope, you should set this value to your team id.
