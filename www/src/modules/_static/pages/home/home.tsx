@@ -257,14 +257,14 @@ const query = graphql`
         }
       }
     }
-    heroSlide2: file(relativePath: { eq: "home/home-hero-slide-1.jpg" }) {
+    heroSlide2: file(relativePath: { eq: "home/home-hero-slide-2.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1680, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    heroSlide3: file(relativePath: { eq: "home/home-hero-slide-1.jpg" }) {
+    heroSlide3: file(relativePath: { eq: "home/home-hero-slide-3.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1680, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
