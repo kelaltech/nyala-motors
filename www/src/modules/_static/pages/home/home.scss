@@ -50,7 +50,7 @@
       height: 100%;
       width: 100%;
 
-      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
     }
 
     > div {
@@ -67,7 +67,7 @@
     }
 
     h1 {
-      max-width: 840px;
+      max-width: 770px;
 
       font-weight: 500;
       font-size: 44px;
@@ -84,7 +84,7 @@
     p {
       padding-bottom: 16px;
 
-      max-width: 840px;
+      max-width: 560px;
 
       font-size: 18px;
       line-height: 25px;
