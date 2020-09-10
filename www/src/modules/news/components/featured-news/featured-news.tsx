@@ -4,7 +4,7 @@ import React from 'react'
 
 import Button from '../../../../shared/components/button/button'
 import './featured-news.scss'
-
+import Anchor from '../../../../shared/components/anchor/anchor'
 type FeaturedNewsProps = {
   title: string
   author: string
@@ -23,7 +23,10 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
   id,
 }) => {
   return (
-    <>
+    <Anchor
+      to={`/news/detail/?id=${id}`}
+      className={'featured-news-card-anchor'}
+    >
       <Content className="featured-news-container">
         <div
           style={{
@@ -35,7 +38,7 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
             <h3>{title}</h3>
           </div>
         </div>
-        <Block className="featured-news-content">
+        <Block first last className="featured-news-content">
           <div className="featured-tag">
             <label> FEATURED ARTICLE</label>
           </div>
@@ -51,7 +54,7 @@ const FeaturedNews: React.FC<FeaturedNewsProps> = ({
           </div>
         </Block>
       </Content>
-    </>
+    </Anchor>
   )
 }
 

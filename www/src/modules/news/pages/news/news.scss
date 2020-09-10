@@ -16,7 +16,24 @@
 .padding-optimizer {
   padding: 64px;
 
+  @media screen and (max-width: 900px) {
+    padding: 0 !important;
+  }
+}
+.padding-optimizer-big {
+  @media screen and (max-width: 900px) {
+    padding: 10px !important;
+  }
+}
+
+.feature-padding-optimizer {
   @media screen and (max-width: 650px) {
     padding: 0 !important;
+  }
+}
+
+.feature-padding-optimizer-big {
+  @media screen and (max-width: 650px) {
+    padding: 10px !important;
   }
 }

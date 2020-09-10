@@ -1,22 +1,28 @@
 @import '../../../../assets//styles/theme';
 
+.news-card-anchor {
+  &:hover {
+    box-shadow: none;
+    .news-card-container {
+      box-shadow: inset 0 -2px $primary, 0px 1px 3px rgba(0, 0, 0, 0.07);
+    }
+  }
+}
 .news-card-container {
-  box-shadow: inset 0 2px $primary, 0px 1px 3px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: inset 0 0 $primary, 0px 1px 3px rgba(0, 0, 0, 0.07);
   border-radius: 0;
   max-width: 390.31px !important;
+
+  img {
+    object-fit: cover;
+  }
   @media screen and (max-width: $mobile) {
     max-width: 100% !important;
   }
-  .news-card-pic {
-    width: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 240px;
-    margin-top: 15px;
-  }
 
   .news-card-content {
+    padding: 5px 10px;
     .news-card-title {
       height: 60px;
       font-weight: 500;

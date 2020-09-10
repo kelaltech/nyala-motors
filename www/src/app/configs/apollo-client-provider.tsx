@@ -4,9 +4,9 @@ import React, { PropsWithChildren } from 'react'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { createHttpLink } from '@apollo/react-hooks'
-
+import { graphqlUrl } from '../../../constants'
 const httpLink = createHttpLink({
-  uri: process.env.GATSBY_GRAPHQL_URL || `http://localhost:4000/graphql`,
+  uri: graphqlUrl,
   fetch,
 })
 

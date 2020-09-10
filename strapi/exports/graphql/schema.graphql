@@ -1,40 +1,3 @@
-type UsersPermissionsMe {
-  id: ID!
-  username: String!
-  email: String!
-  confirmed: Boolean
-  blocked: Boolean
-  role: UsersPermissionsMeRole
-}
-
-type UsersPermissionsMeRole {
-  id: ID!
-  name: String!
-  description: String
-  type: String
-}
-
-input UsersPermissionsRegisterInput {
-  username: String!
-  email: String!
-  password: String!
-}
-
-input UsersPermissionsLoginInput {
-  identifier: String!
-  password: String!
-  provider: String = "local"
-}
-
-type UsersPermissionsLoginPayload {
-  jwt: String
-  user: UsersPermissionsMe!
-}
-
-type UserPermissionsPasswordPayload {
-  ok: Boolean!
-}
-
 type About {
   id: ID!
   created_at: DateTime!
@@ -62,28 +25,9 @@ input AboutInput {
   updated_by: ID
 }
 
-input editAboutInput {
-  overviewHistory: String
-  values: String
-  mission: String
-  achievements: String
-  awardImg: [ID]
-  slideImg: [ID]
-  boardMessage: [editComponentBoardMessageBoardMessageInput]
-  created_by: ID
-  updated_by: ID
-}
-
-input updateAboutInput {
-  data: editAboutInput
-}
-
-type updateAboutPayload {
-  about: About
-}
-
-type deleteAboutPayload {
-  about: About
+type AdminUser {
+  id: ID!
+  username: String
 }
 
 type Bid {
@@ -101,15 +45,75 @@ type Bid {
   updated_by: AdminUser
 }
 
+type BidAggregator {
+  count: Int
+  totalCount: Int
+}
+
 type BidConnection {
   values: [Bid]
   groupBy: BidGroupBy
   aggregate: BidAggregator
 }
 
-type BidAggregator {
-  count: Int
-  totalCount: Int
+type BidConnectionAttachment {
+  key: ID
+  connection: BidConnection
+}
+
+type BidConnectionCreated_at {
+  key: DateTime
+  connection: BidConnection
+}
+
+type BidConnectionCreated_by {
+  key: ID
+  connection: BidConnection
+}
+
+type BidConnectionDeadline {
+  key: ID
+  connection: BidConnection
+}
+
+type BidConnectionDescription {
+  key: String
+  connection: BidConnection
+}
+
+type BidConnectionHowToApply {
+  key: String
+  connection: BidConnection
+}
+
+type BidConnectionId {
+  key: ID
+  connection: BidConnection
+}
+
+type BidConnectionLocation {
+  key: String
+  connection: BidConnection
+}
+
+type BidConnectionRequirement {
+  key: String
+  connection: BidConnection
+}
+
+type BidConnectionTitle {
+  key: String
+  connection: BidConnection
+}
+
+type BidConnectionUpdated_at {
+  key: DateTime
+  connection: BidConnection
+}
+
+type BidConnectionUpdated_by {
+  key: ID
+  connection: BidConnection
 }
 
 type BidGroupBy {
@@ -127,66 +131,6 @@ type BidGroupBy {
   updated_by: [BidConnectionUpdated_by]
 }
 
-type BidConnectionId {
-  key: ID
-  connection: BidConnection
-}
-
-type BidConnectionCreated_at {
-  key: DateTime
-  connection: BidConnection
-}
-
-type BidConnectionUpdated_at {
-  key: DateTime
-  connection: BidConnection
-}
-
-type BidConnectionTitle {
-  key: String
-  connection: BidConnection
-}
-
-type BidConnectionDeadline {
-  key: ID
-  connection: BidConnection
-}
-
-type BidConnectionLocation {
-  key: String
-  connection: BidConnection
-}
-
-type BidConnectionDescription {
-  key: String
-  connection: BidConnection
-}
-
-type BidConnectionRequirement {
-  key: String
-  connection: BidConnection
-}
-
-type BidConnectionHowToApply {
-  key: String
-  connection: BidConnection
-}
-
-type BidConnectionAttachment {
-  key: ID
-  connection: BidConnection
-}
-
-type BidConnectionCreated_by {
-  key: ID
-  connection: BidConnection
-}
-
-type BidConnectionUpdated_by {
-  key: ID
-  connection: BidConnection
-}
-
 input BidInput {
   Title: String
   Deadline: Date
@@ -197,43 +141,6 @@ input BidInput {
   attachment: ID
   created_by: ID
   updated_by: ID
-}
-
-input editBidInput {
-  Title: String
-  Deadline: Date
-  Location: String
-  description: String
-  requirement: String
-  howToApply: String
-  attachment: ID
-  created_by: ID
-  updated_by: ID
-}
-
-input createBidInput {
-  data: BidInput
-}
-
-type createBidPayload {
-  bid: Bid
-}
-
-input updateBidInput {
-  where: InputID
-  data: editBidInput
-}
-
-type updateBidPayload {
-  bid: Bid
-}
-
-input deleteBidInput {
-  where: InputID
-}
-
-type deleteBidPayload {
-  bid: Bid
 }
 
 type Branch {
@@ -251,15 +158,60 @@ type Branch {
   updated_by: AdminUser
 }
 
+type BranchAggregator {
+  count: Int
+  totalCount: Int
+}
+
 type BranchConnection {
   values: [Branch]
   groupBy: BranchGroupBy
   aggregate: BranchAggregator
 }
 
-type BranchAggregator {
-  count: Int
-  totalCount: Int
+type BranchConnectionCreated_at {
+  key: DateTime
+  connection: BranchConnection
+}
+
+type BranchConnectionCreated_by {
+  key: ID
+  connection: BranchConnection
+}
+
+type BranchConnectionId {
+  key: ID
+  connection: BranchConnection
+}
+
+type BranchConnectionMapCoordinates {
+  key: String
+  connection: BranchConnection
+}
+
+type BranchConnectionName {
+  key: String
+  connection: BranchConnection
+}
+
+type BranchConnectionPhysicalAddress {
+  key: String
+  connection: BranchConnection
+}
+
+type BranchConnectionUpdated_at {
+  key: DateTime
+  connection: BranchConnection
+}
+
+type BranchConnectionUpdated_by {
+  key: ID
+  connection: BranchConnection
+}
+
+type BranchConnectionWorkingHours {
+  key: String
+  connection: BranchConnection
 }
 
 type BranchGroupBy {
@@ -274,51 +226,6 @@ type BranchGroupBy {
   updated_by: [BranchConnectionUpdated_by]
 }
 
-type BranchConnectionId {
-  key: ID
-  connection: BranchConnection
-}
-
-type BranchConnectionCreated_at {
-  key: DateTime
-  connection: BranchConnection
-}
-
-type BranchConnectionUpdated_at {
-  key: DateTime
-  connection: BranchConnection
-}
-
-type BranchConnectionName {
-  key: String
-  connection: BranchConnection
-}
-
-type BranchConnectionPhysicalAddress {
-  key: String
-  connection: BranchConnection
-}
-
-type BranchConnectionWorkingHours {
-  key: String
-  connection: BranchConnection
-}
-
-type BranchConnectionMapCoordinates {
-  key: String
-  connection: BranchConnection
-}
-
-type BranchConnectionCreated_by {
-  key: ID
-  connection: BranchConnection
-}
-
-type BranchConnectionUpdated_by {
-  key: ID
-  connection: BranchConnection
-}
-
 input BranchInput {
   name: String!
   physicalAddress: String!
@@ -327,6 +234,314 @@ input BranchInput {
   mapCoordinates: String
   phoneNumbers: [ComponentBranchPhoneNumberInput]
   emails: [ComponentBranchEmailInput]
+  created_by: ID
+  updated_by: ID
+}
+
+type ComponentBoardMessageBoardMessage {
+  id: ID!
+  name: String
+  position: String
+  img: UploadFile
+  message: String
+}
+
+input ComponentBoardMessageBoardMessageInput {
+  name: String
+  position: String
+  img: ID
+  message: String
+}
+
+type ComponentBranchDealerType {
+  id: ID!
+  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
+}
+
+input ComponentBranchDealerTypeInput {
+  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
+}
+
+type ComponentBranchEmail {
+  id: ID!
+  email: String
+}
+
+input ComponentBranchEmailInput {
+  email: String
+}
+
+input ComponentBranchPhoneNumberInput {
+  phoneNumber: String
+}
+
+type ComponentBranchPhoneNumbers {
+  id: ID!
+  phoneNumber: String
+}
+
+type ComponentDealerTypeDealerType {
+  id: ID!
+  dealerType: String
+}
+
+input ComponentDealerTypeDealerTypeInput {
+  dealerType: String
+}
+
+type ComponentProductTypeProductType {
+  id: ID!
+  name: String
+  motto: String
+  description: String
+  specification: [ComponentSpecificationSpecification]
+  link: String
+  active: Boolean
+  brochure: UploadFile
+  headerImgs(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentProductTypeProductTypeInput {
+  name: String
+  motto: String
+  description: String
+  headerImgs: [ID]
+  specification: [ComponentSpecificationSpecificationInput]
+  link: String
+  active: Boolean
+  brochure: ID
+}
+
+type ComponentServiceTypeServiceType {
+  id: ID!
+  title: String
+  description: String
+}
+
+input ComponentServiceTypeServiceTypeInput {
+  title: String
+  description: String
+}
+
+type ComponentSpecificationSpecification {
+  id: ID!
+  title: String
+  description: String
+  specImages(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentSpecificationSpecificationInput {
+  title: String
+  description: String
+  specImages: [ID]
+}
+
+input createBidInput {
+  data: BidInput
+}
+
+type createBidPayload {
+  bid: Bid
+}
+
+input createBranchInput {
+  data: BranchInput
+}
+
+type createBranchPayload {
+  branch: Branch
+}
+
+input createFaqInput {
+  data: FaqInput
+}
+
+type createFaqPayload {
+  faq: Faq
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Products
+}
+
+input createPublicationInput {
+  data: PublicationInput
+}
+
+type createPublicationPayload {
+  publication: Publications
+}
+
+input createReportInput {
+  data: ReportInput
+}
+
+type createReportPayload {
+  report: Report
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createShowroomInput {
+  data: ShowroomInput
+}
+
+type createShowroomPayload {
+  showroom: Showroom
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input createVacancyInput {
+  data: VacancyInput
+}
+
+type createVacancyPayload {
+  vacancy: Vacancy
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type deleteAboutPayload {
+  about: About
+}
+
+input deleteBidInput {
+  where: InputID
+}
+
+type deleteBidPayload {
+  bid: Bid
+}
+
+input deleteBranchInput {
+  where: InputID
+}
+
+type deleteBranchPayload {
+  branch: Branch
+}
+
+input deleteFaqInput {
+  where: InputID
+}
+
+type deleteFaqPayload {
+  faq: Faq
+}
+
+type deleteHomePayload {
+  home: Home
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Products
+}
+
+input deletePublicationInput {
+  where: InputID
+}
+
+type deletePublicationPayload {
+  publication: Publications
+}
+
+input deleteReportInput {
+  where: InputID
+}
+
+type deleteReportPayload {
+  report: Report
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type deleteServicePayload {
+  service: Services
+}
+
+input deleteShowroomInput {
+  where: InputID
+}
+
+type deleteShowroomPayload {
+  showroom: Showroom
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteVacancyInput {
+  where: InputID
+}
+
+type deleteVacancyPayload {
+  vacancy: Vacancy
+}
+
+input editAboutInput {
+  overviewHistory: String
+  values: String
+  mission: String
+  achievements: String
+  awardImg: [ID]
+  slideImg: [ID]
+  boardMessage: [editComponentBoardMessageBoardMessageInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editBidInput {
+  Title: String
+  Deadline: Date
+  Location: String
+  description: String
+  requirement: String
+  howToApply: String
+  attachment: ID
   created_by: ID
   updated_by: ID
 }
@@ -343,102 +558,57 @@ input editBranchInput {
   updated_by: ID
 }
 
-input createBranchInput {
-  data: BranchInput
+input editComponentBoardMessageBoardMessageInput {
+  id: ID
+  name: String
+  position: String
+  img: ID
+  message: String
 }
 
-type createBranchPayload {
-  branch: Branch
+input editComponentBranchDealerTypeInput {
+  id: ID
+  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
 }
 
-input updateBranchInput {
-  where: InputID
-  data: editBranchInput
+input editComponentBranchEmailInput {
+  id: ID
+  email: String
 }
 
-type updateBranchPayload {
-  branch: Branch
+input editComponentBranchPhoneNumberInput {
+  id: ID
+  phoneNumber: String
 }
 
-input deleteBranchInput {
-  where: InputID
+input editComponentDealerTypeDealerTypeInput {
+  id: ID
+  dealerType: String
 }
 
-type deleteBranchPayload {
-  branch: Branch
+input editComponentProductTypeProductTypeInput {
+  id: ID
+  name: String
+  motto: String
+  description: String
+  headerImgs: [ID]
+  specification: [editComponentSpecificationSpecificationInput]
+  link: String
+  active: Boolean
+  brochure: ID
 }
 
-type Faq {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  question: String
-  answer: String
-  created_by: AdminUser
-  updated_by: AdminUser
+input editComponentServiceTypeServiceTypeInput {
+  id: ID
+  title: String
+  description: String
 }
 
-type FaqConnection {
-  values: [Faq]
-  groupBy: FaqGroupBy
-  aggregate: FaqAggregator
-}
-
-type FaqAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type FaqGroupBy {
-  id: [FaqConnectionId]
-  created_at: [FaqConnectionCreated_at]
-  updated_at: [FaqConnectionUpdated_at]
-  question: [FaqConnectionQuestion]
-  answer: [FaqConnectionAnswer]
-  created_by: [FaqConnectionCreated_by]
-  updated_by: [FaqConnectionUpdated_by]
-}
-
-type FaqConnectionId {
-  key: ID
-  connection: FaqConnection
-}
-
-type FaqConnectionCreated_at {
-  key: DateTime
-  connection: FaqConnection
-}
-
-type FaqConnectionUpdated_at {
-  key: DateTime
-  connection: FaqConnection
-}
-
-type FaqConnectionQuestion {
-  key: String
-  connection: FaqConnection
-}
-
-type FaqConnectionAnswer {
-  key: String
-  connection: FaqConnection
-}
-
-type FaqConnectionCreated_by {
-  key: ID
-  connection: FaqConnection
-}
-
-type FaqConnectionUpdated_by {
-  key: ID
-  connection: FaqConnection
-}
-
-input FaqInput {
-  question: String
-  answer: String
-  created_by: ID
-  updated_by: ID
+input editComponentSpecificationSpecificationInput {
+  id: ID
+  title: String
+  description: String
+  specImages: [ID]
 }
 
 input editFaqInput {
@@ -448,42 +618,22 @@ input editFaqInput {
   updated_by: ID
 }
 
-input createFaqInput {
-  data: FaqInput
-}
-
-type createFaqPayload {
-  faq: Faq
-}
-
-input updateFaqInput {
-  where: InputID
-  data: editFaqInput
-}
-
-type updateFaqPayload {
-  faq: Faq
-}
-
-input deleteFaqInput {
-  where: InputID
-}
-
-type deleteFaqPayload {
-  faq: Faq
-}
-
-type Home {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  youtubeLink: String
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-input HomeInput {
-  youtubeLink: String
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
   created_by: ID
   updated_by: ID
 }
@@ -494,16 +644,101 @@ input editHomeInput {
   updated_by: ID
 }
 
-input updateHomeInput {
-  data: editHomeInput
+input editProductInput {
+  category: ENUM_PRODUCTS_CATEGORY
+  name: String
+  motto: String
+  description: String
+  headerImg: ID
+  specification: [editComponentSpecificationSpecificationInput]
+  link: String
+  active: Boolean
+  brochure: ID
+  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: ID
+  created_by: ID
+  updated_by: ID
 }
 
-type updateHomePayload {
-  home: Home
+input editPublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
+  created_by: ID
+  updated_by: ID
 }
 
-type deleteHomePayload {
-  home: Home
+input editReportInput {
+  title: String
+  type: ENUM_REPORT_TYPE
+  excerpt: String
+  attachments: ID
+  featured: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editServiceInput {
+  serviceType: [editComponentServiceTypeServiceTypeInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editShowroomInput {
+  image: [ID]
+  description: String
+  date: Date
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editVacancyInput {
+  title: String
+  type: ENUM_VACANCY_TYPE
+  location: String
+  deadline: DateTime
+  description: String
+  requirements: String
+  attachment: ID
+  howToApply: String
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int
+  salary: String
+  applyByCV: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+enum ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE {
+  VEHICLE_SALES
+  PART_SALES
+  SERVICE
 }
 
 enum ENUM_PRODUCTS_CATEGORY {
@@ -531,613 +766,11 @@ enum ENUM_PRODUCTS_EACHCATEGORY {
   ELECTRIC_COUNTERBALANCED_FORKLIFT
 }
 
-type Products {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  category: ENUM_PRODUCTS_CATEGORY
-  name: String
-  motto: String
-  description: String
-  headerImg: UploadFile
-  specification: [ComponentSpecificationSpecification]
-  link: String
-  active: Boolean
-  brochure: UploadFile
-  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
-  vrImg: UploadFile
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-type ProductsConnection {
-  values: [Products]
-  groupBy: ProductsGroupBy
-  aggregate: ProductsAggregator
-}
-
-type ProductsAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type ProductsGroupBy {
-  id: [ProductsConnectionId]
-  created_at: [ProductsConnectionCreated_at]
-  updated_at: [ProductsConnectionUpdated_at]
-  category: [ProductsConnectionCategory]
-  name: [ProductsConnectionName]
-  motto: [ProductsConnectionMotto]
-  description: [ProductsConnectionDescription]
-  headerImg: [ProductsConnectionHeaderImg]
-  link: [ProductsConnectionLink]
-  active: [ProductsConnectionActive]
-  brochure: [ProductsConnectionBrochure]
-  eachCategory: [ProductsConnectionEachCategory]
-  vrImg: [ProductsConnectionVrImg]
-  created_by: [ProductsConnectionCreated_by]
-  updated_by: [ProductsConnectionUpdated_by]
-}
-
-type ProductsConnectionId {
-  key: ID
-  connection: ProductsConnection
-}
-
-type ProductsConnectionCreated_at {
-  key: DateTime
-  connection: ProductsConnection
-}
-
-type ProductsConnectionUpdated_at {
-  key: DateTime
-  connection: ProductsConnection
-}
-
-type ProductsConnectionCategory {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionName {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionMotto {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionDescription {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionHeaderImg {
-  key: ID
-  connection: ProductsConnection
-}
-
-type ProductsConnectionLink {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionActive {
-  key: Boolean
-  connection: ProductsConnection
-}
-
-type ProductsConnectionBrochure {
-  key: ID
-  connection: ProductsConnection
-}
-
-type ProductsConnectionEachCategory {
-  key: String
-  connection: ProductsConnection
-}
-
-type ProductsConnectionVrImg {
-  key: ID
-  connection: ProductsConnection
-}
-
-type ProductsConnectionCreated_by {
-  key: ID
-  connection: ProductsConnection
-}
-
-type ProductsConnectionUpdated_by {
-  key: ID
-  connection: ProductsConnection
-}
-
-input ProductInput {
-  category: ENUM_PRODUCTS_CATEGORY
-  name: String
-  motto: String
-  description: String
-  headerImg: ID
-  specification: [ComponentSpecificationSpecificationInput]
-  link: String
-  active: Boolean
-  brochure: ID
-  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
-  vrImg: ID
-  created_by: ID
-  updated_by: ID
-}
-
-input editProductInput {
-  category: ENUM_PRODUCTS_CATEGORY
-  name: String
-  motto: String
-  description: String
-  headerImg: ID
-  specification: [editComponentSpecificationSpecificationInput]
-  link: String
-  active: Boolean
-  brochure: ID
-  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
-  vrImg: ID
-  created_by: ID
-  updated_by: ID
-}
-
-input createProductInput {
-  data: ProductInput
-}
-
-type createProductPayload {
-  product: Products
-}
-
-input updateProductInput {
-  where: InputID
-  data: editProductInput
-}
-
-type updateProductPayload {
-  product: Products
-}
-
-input deleteProductInput {
-  where: InputID
-}
-
-type deleteProductPayload {
-  product: Products
-}
-
-type Publications {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  title: String
-  excerpt: String
-  description: String
-  picture: UploadFile
-  author: String
-  featured: Boolean
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-type PublicationsConnection {
-  values: [Publications]
-  groupBy: PublicationsGroupBy
-  aggregate: PublicationsAggregator
-}
-
-type PublicationsAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type PublicationsGroupBy {
-  id: [PublicationsConnectionId]
-  created_at: [PublicationsConnectionCreated_at]
-  updated_at: [PublicationsConnectionUpdated_at]
-  title: [PublicationsConnectionTitle]
-  excerpt: [PublicationsConnectionExcerpt]
-  description: [PublicationsConnectionDescription]
-  picture: [PublicationsConnectionPicture]
-  author: [PublicationsConnectionAuthor]
-  featured: [PublicationsConnectionFeatured]
-  created_by: [PublicationsConnectionCreated_by]
-  updated_by: [PublicationsConnectionUpdated_by]
-}
-
-type PublicationsConnectionId {
-  key: ID
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionCreated_at {
-  key: DateTime
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionUpdated_at {
-  key: DateTime
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionTitle {
-  key: String
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionExcerpt {
-  key: String
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionDescription {
-  key: String
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionPicture {
-  key: ID
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionAuthor {
-  key: String
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionFeatured {
-  key: Boolean
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionCreated_by {
-  key: ID
-  connection: PublicationsConnection
-}
-
-type PublicationsConnectionUpdated_by {
-  key: ID
-  connection: PublicationsConnection
-}
-
-input PublicationInput {
-  title: String
-  excerpt: String
-  description: String
-  picture: ID
-  author: String
-  featured: Boolean
-  created_by: ID
-  updated_by: ID
-}
-
-input editPublicationInput {
-  title: String
-  excerpt: String
-  description: String
-  picture: ID
-  author: String
-  featured: Boolean
-  created_by: ID
-  updated_by: ID
-}
-
-input createPublicationInput {
-  data: PublicationInput
-}
-
-type createPublicationPayload {
-  publication: Publications
-}
-
-input updatePublicationInput {
-  where: InputID
-  data: editPublicationInput
-}
-
-type updatePublicationPayload {
-  publication: Publications
-}
-
-input deletePublicationInput {
-  where: InputID
-}
-
-type deletePublicationPayload {
-  publication: Publications
-}
-
 enum ENUM_REPORT_TYPE {
   ANNUAL
   QUARTER
   SEMIANNUAL
   FINANCIAL
-}
-
-type Report {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  title: String!
-  type: ENUM_REPORT_TYPE!
-  excerpt: String!
-  attachments: UploadFile
-  featured: Boolean
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-type ReportConnection {
-  values: [Report]
-  groupBy: ReportGroupBy
-  aggregate: ReportAggregator
-}
-
-type ReportAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type ReportGroupBy {
-  id: [ReportConnectionId]
-  created_at: [ReportConnectionCreated_at]
-  updated_at: [ReportConnectionUpdated_at]
-  title: [ReportConnectionTitle]
-  type: [ReportConnectionType]
-  excerpt: [ReportConnectionExcerpt]
-  attachments: [ReportConnectionAttachments]
-  featured: [ReportConnectionFeatured]
-  created_by: [ReportConnectionCreated_by]
-  updated_by: [ReportConnectionUpdated_by]
-}
-
-type ReportConnectionId {
-  key: ID
-  connection: ReportConnection
-}
-
-type ReportConnectionCreated_at {
-  key: DateTime
-  connection: ReportConnection
-}
-
-type ReportConnectionUpdated_at {
-  key: DateTime
-  connection: ReportConnection
-}
-
-type ReportConnectionTitle {
-  key: String
-  connection: ReportConnection
-}
-
-type ReportConnectionType {
-  key: String
-  connection: ReportConnection
-}
-
-type ReportConnectionExcerpt {
-  key: String
-  connection: ReportConnection
-}
-
-type ReportConnectionAttachments {
-  key: ID
-  connection: ReportConnection
-}
-
-type ReportConnectionFeatured {
-  key: Boolean
-  connection: ReportConnection
-}
-
-type ReportConnectionCreated_by {
-  key: ID
-  connection: ReportConnection
-}
-
-type ReportConnectionUpdated_by {
-  key: ID
-  connection: ReportConnection
-}
-
-input ReportInput {
-  title: String!
-  type: ENUM_REPORT_TYPE!
-  excerpt: String!
-  attachments: ID
-  featured: Boolean
-  created_by: ID
-  updated_by: ID
-}
-
-input editReportInput {
-  title: String
-  type: ENUM_REPORT_TYPE
-  excerpt: String
-  attachments: ID
-  featured: Boolean
-  created_by: ID
-  updated_by: ID
-}
-
-input createReportInput {
-  data: ReportInput
-}
-
-type createReportPayload {
-  report: Report
-}
-
-input updateReportInput {
-  where: InputID
-  data: editReportInput
-}
-
-type updateReportPayload {
-  report: Report
-}
-
-input deleteReportInput {
-  where: InputID
-}
-
-type deleteReportPayload {
-  report: Report
-}
-
-type Services {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  serviceType: [ComponentServiceTypeServiceType]
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-input ServiceInput {
-  serviceType: [ComponentServiceTypeServiceTypeInput]
-  created_by: ID
-  updated_by: ID
-}
-
-input editServiceInput {
-  serviceType: [editComponentServiceTypeServiceTypeInput]
-  created_by: ID
-  updated_by: ID
-}
-
-input updateServiceInput {
-  data: editServiceInput
-}
-
-type updateServicePayload {
-  service: Services
-}
-
-type deleteServicePayload {
-  service: Services
-}
-
-type Showroom {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  description: String
-  date: Date
-  created_by: AdminUser
-  updated_by: AdminUser
-  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-type ShowroomConnection {
-  values: [Showroom]
-  groupBy: ShowroomGroupBy
-  aggregate: ShowroomAggregator
-}
-
-type ShowroomAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type ShowroomGroupBy {
-  id: [ShowroomConnectionId]
-  created_at: [ShowroomConnectionCreated_at]
-  updated_at: [ShowroomConnectionUpdated_at]
-  description: [ShowroomConnectionDescription]
-  date: [ShowroomConnectionDate]
-  created_by: [ShowroomConnectionCreated_by]
-  updated_by: [ShowroomConnectionUpdated_by]
-}
-
-type ShowroomConnectionId {
-  key: ID
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionCreated_at {
-  key: DateTime
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionUpdated_at {
-  key: DateTime
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionDescription {
-  key: String
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionDate {
-  key: ID
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionCreated_by {
-  key: ID
-  connection: ShowroomConnection
-}
-
-type ShowroomConnectionUpdated_by {
-  key: ID
-  connection: ShowroomConnection
-}
-
-input ShowroomInput {
-  image: [ID]
-  description: String
-  date: Date
-  created_by: ID
-  updated_by: ID
-}
-
-input editShowroomInput {
-  image: [ID]
-  description: String
-  date: Date
-  created_by: ID
-  updated_by: ID
-}
-
-input createShowroomInput {
-  data: ShowroomInput
-}
-
-type createShowroomPayload {
-  showroom: Showroom
-}
-
-input updateShowroomInput {
-  where: InputID
-  data: editShowroomInput
-}
-
-type updateShowroomPayload {
-  showroom: Showroom
-}
-
-input deleteShowroomInput {
-  where: InputID
-}
-
-type deleteShowroomPayload {
-  showroom: Showroom
-}
-
-enum ENUM_VACANCY_TYPE {
-  FULL_TIME
-  PART_TIME
-  CONTRACTUAL
-  INTERNSHIP
-  SEASONAL
 }
 
 enum ENUM_VACANCY_SALARYPERIOD {
@@ -1149,398 +782,85 @@ enum ENUM_VACANCY_SALARYPERIOD {
   YEARLY
 }
 
-type Vacancy {
+enum ENUM_VACANCY_TYPE {
+  FULL_TIME
+  PART_TIME
+  CONTRACTUAL
+  INTERNSHIP
+  SEASONAL
+}
+
+type Faq {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  title: String!
-  type: ENUM_VACANCY_TYPE
-  location: String!
-  deadline: DateTime
-  description: String!
-  requirements: String!
-  attachment: UploadFile
-  howToApply: String!
-  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
-  quantity: Int
-  salary: String
-  applyByCV: Boolean
+  question: String
+  answer: String
   created_by: AdminUser
   updated_by: AdminUser
 }
 
-type VacancyConnection {
-  values: [Vacancy]
-  groupBy: VacancyGroupBy
-  aggregate: VacancyAggregator
-}
-
-type VacancyAggregator {
+type FaqAggregator {
   count: Int
   totalCount: Int
-  sum: VacancyAggregatorSum
-  avg: VacancyAggregatorAvg
-  min: VacancyAggregatorMin
-  max: VacancyAggregatorMax
 }
 
-type VacancyAggregatorSum {
-  quantity: Float
+type FaqConnection {
+  values: [Faq]
+  groupBy: FaqGroupBy
+  aggregate: FaqAggregator
 }
 
-type VacancyAggregatorAvg {
-  quantity: Float
+type FaqConnectionAnswer {
+  key: String
+  connection: FaqConnection
 }
 
-type VacancyAggregatorMin {
-  quantity: Float
-}
-
-type VacancyAggregatorMax {
-  quantity: Float
-}
-
-type VacancyGroupBy {
-  id: [VacancyConnectionId]
-  created_at: [VacancyConnectionCreated_at]
-  updated_at: [VacancyConnectionUpdated_at]
-  title: [VacancyConnectionTitle]
-  type: [VacancyConnectionType]
-  location: [VacancyConnectionLocation]
-  deadline: [VacancyConnectionDeadline]
-  description: [VacancyConnectionDescription]
-  requirements: [VacancyConnectionRequirements]
-  attachment: [VacancyConnectionAttachment]
-  howToApply: [VacancyConnectionHowToApply]
-  salaryPeriod: [VacancyConnectionSalaryPeriod]
-  quantity: [VacancyConnectionQuantity]
-  salary: [VacancyConnectionSalary]
-  applyByCV: [VacancyConnectionApplyByCV]
-  created_by: [VacancyConnectionCreated_by]
-  updated_by: [VacancyConnectionUpdated_by]
-}
-
-type VacancyConnectionId {
-  key: ID
-  connection: VacancyConnection
-}
-
-type VacancyConnectionCreated_at {
+type FaqConnectionCreated_at {
   key: DateTime
-  connection: VacancyConnection
+  connection: FaqConnection
 }
 
-type VacancyConnectionUpdated_at {
+type FaqConnectionCreated_by {
+  key: ID
+  connection: FaqConnection
+}
+
+type FaqConnectionId {
+  key: ID
+  connection: FaqConnection
+}
+
+type FaqConnectionQuestion {
+  key: String
+  connection: FaqConnection
+}
+
+type FaqConnectionUpdated_at {
   key: DateTime
-  connection: VacancyConnection
+  connection: FaqConnection
 }
 
-type VacancyConnectionTitle {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionType {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionLocation {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionDeadline {
-  key: DateTime
-  connection: VacancyConnection
-}
-
-type VacancyConnectionDescription {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionRequirements {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionAttachment {
+type FaqConnectionUpdated_by {
   key: ID
-  connection: VacancyConnection
+  connection: FaqConnection
 }
 
-type VacancyConnectionHowToApply {
-  key: String
-  connection: VacancyConnection
+type FaqGroupBy {
+  id: [FaqConnectionId]
+  created_at: [FaqConnectionCreated_at]
+  updated_at: [FaqConnectionUpdated_at]
+  question: [FaqConnectionQuestion]
+  answer: [FaqConnectionAnswer]
+  created_by: [FaqConnectionCreated_by]
+  updated_by: [FaqConnectionUpdated_by]
 }
 
-type VacancyConnectionSalaryPeriod {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionQuantity {
-  key: Int
-  connection: VacancyConnection
-}
-
-type VacancyConnectionSalary {
-  key: String
-  connection: VacancyConnection
-}
-
-type VacancyConnectionApplyByCV {
-  key: Boolean
-  connection: VacancyConnection
-}
-
-type VacancyConnectionCreated_by {
-  key: ID
-  connection: VacancyConnection
-}
-
-type VacancyConnectionUpdated_by {
-  key: ID
-  connection: VacancyConnection
-}
-
-input VacancyInput {
-  title: String!
-  type: ENUM_VACANCY_TYPE
-  location: String!
-  deadline: DateTime
-  description: String!
-  requirements: String!
-  attachment: ID
-  howToApply: String!
-  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
-  quantity: Int
-  salary: String
-  applyByCV: Boolean
+input FaqInput {
+  question: String
+  answer: String
   created_by: ID
   updated_by: ID
-}
-
-input editVacancyInput {
-  title: String
-  type: ENUM_VACANCY_TYPE
-  location: String
-  deadline: DateTime
-  description: String
-  requirements: String
-  attachment: ID
-  howToApply: String
-  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
-  quantity: Int
-  salary: String
-  applyByCV: Boolean
-  created_by: ID
-  updated_by: ID
-}
-
-input createVacancyInput {
-  data: VacancyInput
-}
-
-type createVacancyPayload {
-  vacancy: Vacancy
-}
-
-input updateVacancyInput {
-  where: InputID
-  data: editVacancyInput
-}
-
-type updateVacancyPayload {
-  vacancy: Vacancy
-}
-
-input deleteVacancyInput {
-  where: InputID
-}
-
-type deleteVacancyPayload {
-  vacancy: Vacancy
-}
-
-type UploadFile {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  name: String!
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: JSON
-  hash: String!
-  ext: String
-  mime: String!
-  size: Float!
-  url: String!
-  previewUrl: String
-  provider: String!
-  provider_metadata: JSON
-  created_by: AdminUser
-  updated_by: AdminUser
-  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
-}
-
-type UploadFileConnection {
-  values: [UploadFile]
-  groupBy: UploadFileGroupBy
-  aggregate: UploadFileAggregator
-}
-
-type UploadFileAggregator {
-  count: Int
-  totalCount: Int
-  sum: UploadFileAggregatorSum
-  avg: UploadFileAggregatorAvg
-  min: UploadFileAggregatorMin
-  max: UploadFileAggregatorMax
-}
-
-type UploadFileAggregatorSum {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorAvg {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorMin {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorMax {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileGroupBy {
-  id: [UploadFileConnectionId]
-  created_at: [UploadFileConnectionCreated_at]
-  updated_at: [UploadFileConnectionUpdated_at]
-  name: [UploadFileConnectionName]
-  alternativeText: [UploadFileConnectionAlternativeText]
-  caption: [UploadFileConnectionCaption]
-  width: [UploadFileConnectionWidth]
-  height: [UploadFileConnectionHeight]
-  formats: [UploadFileConnectionFormats]
-  hash: [UploadFileConnectionHash]
-  ext: [UploadFileConnectionExt]
-  mime: [UploadFileConnectionMime]
-  size: [UploadFileConnectionSize]
-  url: [UploadFileConnectionUrl]
-  previewUrl: [UploadFileConnectionPreviewUrl]
-  provider: [UploadFileConnectionProvider]
-  provider_metadata: [UploadFileConnectionProvider_metadata]
-  created_by: [UploadFileConnectionCreated_by]
-  updated_by: [UploadFileConnectionUpdated_by]
-}
-
-type UploadFileConnectionId {
-  key: ID
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCreated_at {
-  key: DateTime
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionUpdated_at {
-  key: DateTime
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionName {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionAlternativeText {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCaption {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionWidth {
-  key: Int
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionHeight {
-  key: Int
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionFormats {
-  key: JSON
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionHash {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionExt {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionMime {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionSize {
-  key: Float
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionUrl {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionPreviewUrl {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionProvider {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionProvider_metadata {
-  key: JSON
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCreated_by {
-  key: ID
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionUpdated_by {
-  key: ID
-  connection: UploadFileConnection
 }
 
 input FileInput {
@@ -1563,499 +883,34 @@ input FileInput {
   updated_by: ID
 }
 
-input editFileInput {
-  name: String
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: JSON
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  previewUrl: String
-  provider: String
-  provider_metadata: JSON
-  related: [ID]
-  created_by: ID
-  updated_by: ID
-}
-
-type UsersPermissionsPermission {
-  id: ID!
-  type: String!
-  controller: String!
-  action: String!
-  enabled: Boolean!
-  policy: String
-  role: UsersPermissionsRole
-  created_by: AdminUser
-  updated_by: AdminUser
-}
-
-type UsersPermissionsRole {
-  id: ID!
-  name: String!
-  description: String
-  type: String
-  created_by: AdminUser
-  updated_by: AdminUser
-  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
-}
-
-type UsersPermissionsRoleConnection {
-  values: [UsersPermissionsRole]
-  groupBy: UsersPermissionsRoleGroupBy
-  aggregate: UsersPermissionsRoleAggregator
-}
-
-type UsersPermissionsRoleAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type UsersPermissionsRoleGroupBy {
-  id: [UsersPermissionsRoleConnectionId]
-  name: [UsersPermissionsRoleConnectionName]
-  description: [UsersPermissionsRoleConnectionDescription]
-  type: [UsersPermissionsRoleConnectionType]
-  created_by: [UsersPermissionsRoleConnectionCreated_by]
-  updated_by: [UsersPermissionsRoleConnectionUpdated_by]
-}
-
-type UsersPermissionsRoleConnectionId {
-  key: ID
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnectionName {
-  key: String
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnectionDescription {
-  key: String
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnectionType {
-  key: String
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnectionCreated_by {
-  key: ID
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnectionUpdated_by {
-  key: ID
-  connection: UsersPermissionsRoleConnection
-}
-
-input RoleInput {
-  name: String!
-  description: String
-  type: String
-  permissions: [ID]
-  users: [ID]
-  created_by: ID
-  updated_by: ID
-}
-
-input editRoleInput {
-  name: String
-  description: String
-  type: String
-  permissions: [ID]
-  users: [ID]
-  created_by: ID
-  updated_by: ID
-}
-
-input createRoleInput {
-  data: RoleInput
-}
-
-type createRolePayload {
-  role: UsersPermissionsRole
-}
-
-input updateRoleInput {
-  where: InputID
-  data: editRoleInput
-}
-
-type updateRolePayload {
-  role: UsersPermissionsRole
-}
-
-input deleteRoleInput {
-  where: InputID
-}
-
-type deleteRolePayload {
-  role: UsersPermissionsRole
-}
-
-type UsersPermissionsUser {
+type Home {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  username: String!
-  email: String!
-  provider: String
-  confirmed: Boolean
-  blocked: Boolean
-  role: UsersPermissionsRole
+  youtubeLink: String
   created_by: AdminUser
   updated_by: AdminUser
 }
 
-type UsersPermissionsUserConnection {
-  values: [UsersPermissionsUser]
-  groupBy: UsersPermissionsUserGroupBy
-  aggregate: UsersPermissionsUserAggregator
-}
-
-type UsersPermissionsUserAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type UsersPermissionsUserGroupBy {
-  id: [UsersPermissionsUserConnectionId]
-  created_at: [UsersPermissionsUserConnectionCreated_at]
-  updated_at: [UsersPermissionsUserConnectionUpdated_at]
-  username: [UsersPermissionsUserConnectionUsername]
-  email: [UsersPermissionsUserConnectionEmail]
-  provider: [UsersPermissionsUserConnectionProvider]
-  confirmed: [UsersPermissionsUserConnectionConfirmed]
-  blocked: [UsersPermissionsUserConnectionBlocked]
-  role: [UsersPermissionsUserConnectionRole]
-  created_by: [UsersPermissionsUserConnectionCreated_by]
-  updated_by: [UsersPermissionsUserConnectionUpdated_by]
-}
-
-type UsersPermissionsUserConnectionId {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionCreated_at {
-  key: DateTime
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionUpdated_at {
-  key: DateTime
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionUsername {
-  key: String
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionEmail {
-  key: String
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionProvider {
-  key: String
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionConfirmed {
-  key: Boolean
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionBlocked {
-  key: Boolean
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionRole {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionCreated_by {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionUpdated_by {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
-input UserInput {
-  username: String!
-  email: String!
-  provider: String
-  password: String
-  resetPasswordToken: String
-  confirmed: Boolean
-  blocked: Boolean
-  role: ID
+input HomeInput {
+  youtubeLink: String
   created_by: ID
   updated_by: ID
 }
-
-input editUserInput {
-  username: String
-  email: String
-  provider: String
-  password: String
-  resetPasswordToken: String
-  confirmed: Boolean
-  blocked: Boolean
-  role: ID
-  created_by: ID
-  updated_by: ID
-}
-
-input createUserInput {
-  data: UserInput
-}
-
-type createUserPayload {
-  user: UsersPermissionsUser
-}
-
-input updateUserInput {
-  where: InputID
-  data: editUserInput
-}
-
-type updateUserPayload {
-  user: UsersPermissionsUser
-}
-
-input deleteUserInput {
-  where: InputID
-}
-
-type deleteUserPayload {
-  user: UsersPermissionsUser
-}
-
-type ComponentBoardMessageBoardMessage {
-  id: ID!
-  name: String
-  position: String
-  img: UploadFile
-  message: String
-}
-
-input ComponentBoardMessageBoardMessageInput {
-  name: String
-  position: String
-  img: ID
-  message: String
-}
-
-input editComponentBoardMessageBoardMessageInput {
-  id: ID
-  name: String
-  position: String
-  img: ID
-  message: String
-}
-
-enum ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE {
-  VEHICLE_SALES
-  PART_SALES
-  SERVICE
-}
-
-type ComponentBranchDealerType {
-  id: ID!
-  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
-}
-
-input ComponentBranchDealerTypeInput {
-  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
-}
-
-input editComponentBranchDealerTypeInput {
-  id: ID
-  dealerType: ENUM_COMPONENTBRANCHDEALERTYPE_DEALERTYPE
-}
-
-type ComponentBranchEmail {
-  id: ID!
-  email: String
-}
-
-input ComponentBranchEmailInput {
-  email: String
-}
-
-input editComponentBranchEmailInput {
-  id: ID
-  email: String
-}
-
-type ComponentBranchPhoneNumbers {
-  id: ID!
-  phoneNumber: String
-}
-
-input ComponentBranchPhoneNumberInput {
-  phoneNumber: String
-}
-
-input editComponentBranchPhoneNumberInput {
-  id: ID
-  phoneNumber: String
-}
-
-type ComponentDealerTypeDealerType {
-  id: ID!
-  dealerType: String
-}
-
-input ComponentDealerTypeDealerTypeInput {
-  dealerType: String
-}
-
-input editComponentDealerTypeDealerTypeInput {
-  id: ID
-  dealerType: String
-}
-
-type ComponentProductTypeProductType {
-  id: ID!
-  name: String
-  motto: String
-  description: String
-  specification: [ComponentSpecificationSpecification]
-  link: String
-  active: Boolean
-  brochure: UploadFile
-  headerImgs(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input ComponentProductTypeProductTypeInput {
-  name: String
-  motto: String
-  description: String
-  headerImgs: [ID]
-  specification: [ComponentSpecificationSpecificationInput]
-  link: String
-  active: Boolean
-  brochure: ID
-}
-
-input editComponentProductTypeProductTypeInput {
-  id: ID
-  name: String
-  motto: String
-  description: String
-  headerImgs: [ID]
-  specification: [editComponentSpecificationSpecificationInput]
-  link: String
-  active: Boolean
-  brochure: ID
-}
-
-type ComponentServiceTypeServiceType {
-  id: ID!
-  title: String
-  description: String
-}
-
-input ComponentServiceTypeServiceTypeInput {
-  title: String
-  description: String
-}
-
-input editComponentServiceTypeServiceTypeInput {
-  id: ID
-  title: String
-  description: String
-}
-
-type ComponentSpecificationSpecification {
-  id: ID!
-  title: String
-  description: String
-  specImages(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input ComponentSpecificationSpecificationInput {
-  title: String
-  description: String
-  specImages: [ID]
-}
-
-input editComponentSpecificationSpecificationInput {
-  id: ID
-  title: String
-  description: String
-  specImages: [ID]
-}
-
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | About | updateAboutPayload | deleteAboutPayload | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | BidConnectionCreated_by | BidConnectionUpdated_by | createBidPayload | updateBidPayload | deleteBidPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionMapCoordinates | BranchConnectionCreated_by | BranchConnectionUpdated_by | createBranchPayload | updateBranchPayload | deleteBranchPayload | Faq | FaqConnection | FaqAggregator | FaqGroupBy | FaqConnectionId | FaqConnectionCreated_at | FaqConnectionUpdated_at | FaqConnectionQuestion | FaqConnectionAnswer | FaqConnectionCreated_by | FaqConnectionUpdated_by | createFaqPayload | updateFaqPayload | deleteFaqPayload | Home | updateHomePayload | deleteHomePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionDescription | ProductsConnectionHeaderImg | ProductsConnectionLink | ProductsConnectionActive | ProductsConnectionBrochure | ProductsConnectionEachCategory | ProductsConnectionVrImg | ProductsConnectionCreated_by | ProductsConnectionUpdated_by | createProductPayload | updateProductPayload | deleteProductPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | PublicationsConnectionCreated_by | PublicationsConnectionUpdated_by | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | ReportConnectionCreated_by | ReportConnectionUpdated_by | createReportPayload | updateReportPayload | deleteReportPayload | Services | updateServicePayload | deleteServicePayload | Showroom | ShowroomConnection | ShowroomAggregator | ShowroomGroupBy | ShowroomConnectionId | ShowroomConnectionCreated_at | ShowroomConnectionUpdated_at | ShowroomConnectionDescription | ShowroomConnectionDate | ShowroomConnectionCreated_by | ShowroomConnectionUpdated_by | createShowroomPayload | updateShowroomPayload | deleteShowroomPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | VacancyConnectionApplyByCV | VacancyConnectionCreated_by | VacancyConnectionUpdated_by | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBoardMessageBoardMessage | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers | ComponentDealerTypeDealerType | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
 
 input InputID {
   id: ID!
 }
 
-type AdminUser {
-  id: ID!
-  username: String
-}
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
 
-type Query {
-  about: About
-  bid(id: ID!): Bid
-  bids(sort: String, limit: Int, start: Int, where: JSON): [Bid]
-  bidsConnection(sort: String, limit: Int, start: Int, where: JSON): BidConnection
-  branch(id: ID!): Branch
-  branches(sort: String, limit: Int, start: Int, where: JSON): [Branch]
-  branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchConnection
-  faq(id: ID!): Faq
-  faqs(sort: String, limit: Int, start: Int, where: JSON): [Faq]
-  faqsConnection(sort: String, limit: Int, start: Int, where: JSON): FaqConnection
-  home: Home
-  product(id: ID!): Products
-  products(sort: String, limit: Int, start: Int, where: JSON): [Products]
-  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
-  publication(id: ID!): Publications
-  publications(sort: String, limit: Int, start: Int, where: JSON): [Publications]
-  publicationsConnection(sort: String, limit: Int, start: Int, where: JSON): PublicationsConnection
-  report(id: ID!): Report
-  reports(sort: String, limit: Int, start: Int, where: JSON): [Report]
-  reportsConnection(sort: String, limit: Int, start: Int, where: JSON): ReportConnection
-  service: Services
-  showroom(id: ID!): Showroom
-  showrooms(sort: String, limit: Int, start: Int, where: JSON): [Showroom]
-  showroomsConnection(sort: String, limit: Int, start: Int, where: JSON): ShowroomConnection
-  vacancy(id: ID!): Vacancy
-  vacancies(sort: String, limit: Int, start: Int, where: JSON): [Vacancy]
-  vacanciesConnection(sort: String, limit: Int, start: Int, where: JSON): VacancyConnection
-  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
-  role(id: ID!): UsersPermissionsRole
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
 
-  """
-  Retrieve all the existing roles. You can't apply filters on this query.
-  """
-  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
-  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
-  user(id: ID!): UsersPermissionsUser
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
-  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
-  me: UsersPermissionsMe
-}
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | About | updateAboutPayload | deleteAboutPayload | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionAttachment | BidConnectionCreated_by | BidConnectionUpdated_by | createBidPayload | updateBidPayload | deleteBidPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionMapCoordinates | BranchConnectionCreated_by | BranchConnectionUpdated_by | createBranchPayload | updateBranchPayload | deleteBranchPayload | Faq | FaqConnection | FaqAggregator | FaqGroupBy | FaqConnectionId | FaqConnectionCreated_at | FaqConnectionUpdated_at | FaqConnectionQuestion | FaqConnectionAnswer | FaqConnectionCreated_by | FaqConnectionUpdated_by | createFaqPayload | updateFaqPayload | deleteFaqPayload | Home | updateHomePayload | deleteHomePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionDescription | ProductsConnectionHeaderImg | ProductsConnectionLink | ProductsConnectionActive | ProductsConnectionBrochure | ProductsConnectionEachCategory | ProductsConnectionVrImg | ProductsConnectionCreated_by | ProductsConnectionUpdated_by | createProductPayload | updateProductPayload | deleteProductPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | PublicationsConnectionCreated_by | PublicationsConnectionUpdated_by | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | ReportConnectionCreated_by | ReportConnectionUpdated_by | createReportPayload | updateReportPayload | deleteReportPayload | Services | updateServicePayload | deleteServicePayload | Showroom | ShowroomConnection | ShowroomAggregator | ShowroomGroupBy | ShowroomConnectionId | ShowroomConnectionCreated_at | ShowroomConnectionUpdated_at | ShowroomConnectionDescription | ShowroomConnectionDate | ShowroomConnectionCreated_by | ShowroomConnectionUpdated_by | createShowroomPayload | updateShowroomPayload | deleteShowroomPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | VacancyConnectionApplyByCV | VacancyConnectionCreated_by | VacancyConnectionUpdated_by | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBoardMessageBoardMessage | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers | ComponentDealerTypeDealerType | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
 
 type Mutation {
   updateAbout(input: updateAboutInput): updateAboutPayload
@@ -2115,26 +970,1175 @@ type Mutation {
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
+input ProductInput {
+  category: ENUM_PRODUCTS_CATEGORY
+  name: String
+  motto: String
+  description: String
+  headerImg: ID
+  specification: [ComponentSpecificationSpecificationInput]
+  link: String
+  active: Boolean
+  brochure: ID
+  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: ID
+  created_by: ID
+  updated_by: ID
+}
 
-"""
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-"""
-scalar DateTime
+type Products {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  category: ENUM_PRODUCTS_CATEGORY
+  name: String
+  motto: String
+  description: String
+  headerImg: UploadFile
+  specification: [ComponentSpecificationSpecification]
+  link: String
+  active: Boolean
+  brochure: UploadFile
+  eachCategory: ENUM_PRODUCTS_EACHCATEGORY
+  vrImg: UploadFile
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type ProductsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductsConnection {
+  values: [Products]
+  groupBy: ProductsGroupBy
+  aggregate: ProductsAggregator
+}
+
+type ProductsConnectionActive {
+  key: Boolean
+  connection: ProductsConnection
+}
+
+type ProductsConnectionBrochure {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCategory {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCreated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCreated_by {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionDescription {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionEachCategory {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionHeaderImg {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionId {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionLink {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionMotto {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionName {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionUpdated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionUpdated_by {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionVrImg {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsGroupBy {
+  id: [ProductsConnectionId]
+  created_at: [ProductsConnectionCreated_at]
+  updated_at: [ProductsConnectionUpdated_at]
+  category: [ProductsConnectionCategory]
+  name: [ProductsConnectionName]
+  motto: [ProductsConnectionMotto]
+  description: [ProductsConnectionDescription]
+  headerImg: [ProductsConnectionHeaderImg]
+  link: [ProductsConnectionLink]
+  active: [ProductsConnectionActive]
+  brochure: [ProductsConnectionBrochure]
+  eachCategory: [ProductsConnectionEachCategory]
+  vrImg: [ProductsConnectionVrImg]
+  created_by: [ProductsConnectionCreated_by]
+  updated_by: [ProductsConnectionUpdated_by]
+}
+
+input PublicationInput {
+  title: String
+  excerpt: String
+  description: String
+  picture: ID
+  author: String
+  featured: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+type Publications {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  excerpt: String
+  description: String
+  picture: UploadFile
+  author: String
+  featured: Boolean
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type PublicationsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PublicationsConnection {
+  values: [Publications]
+  groupBy: PublicationsGroupBy
+  aggregate: PublicationsAggregator
+}
+
+type PublicationsConnectionAuthor {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionCreated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionCreated_by {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionDescription {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionExcerpt {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionFeatured {
+  key: Boolean
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionId {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionPicture {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionTitle {
+  key: String
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionUpdated_at {
+  key: DateTime
+  connection: PublicationsConnection
+}
+
+type PublicationsConnectionUpdated_by {
+  key: ID
+  connection: PublicationsConnection
+}
+
+type PublicationsGroupBy {
+  id: [PublicationsConnectionId]
+  created_at: [PublicationsConnectionCreated_at]
+  updated_at: [PublicationsConnectionUpdated_at]
+  title: [PublicationsConnectionTitle]
+  excerpt: [PublicationsConnectionExcerpt]
+  description: [PublicationsConnectionDescription]
+  picture: [PublicationsConnectionPicture]
+  author: [PublicationsConnectionAuthor]
+  featured: [PublicationsConnectionFeatured]
+  created_by: [PublicationsConnectionCreated_by]
+  updated_by: [PublicationsConnectionUpdated_by]
+}
+
+type Query {
+  about: About
+  bid(id: ID!): Bid
+  bids(sort: String, limit: Int, start: Int, where: JSON): [Bid]
+  bidsConnection(sort: String, limit: Int, start: Int, where: JSON): BidConnection
+  branch(id: ID!): Branch
+  branches(sort: String, limit: Int, start: Int, where: JSON): [Branch]
+  branchesConnection(sort: String, limit: Int, start: Int, where: JSON): BranchConnection
+  faq(id: ID!): Faq
+  faqs(sort: String, limit: Int, start: Int, where: JSON): [Faq]
+  faqsConnection(sort: String, limit: Int, start: Int, where: JSON): FaqConnection
+  home: Home
+  product(id: ID!): Products
+  products(sort: String, limit: Int, start: Int, where: JSON): [Products]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  publication(id: ID!): Publications
+  publications(sort: String, limit: Int, start: Int, where: JSON): [Publications]
+  publicationsConnection(sort: String, limit: Int, start: Int, where: JSON): PublicationsConnection
+  report(id: ID!): Report
+  reports(sort: String, limit: Int, start: Int, where: JSON): [Report]
+  reportsConnection(sort: String, limit: Int, start: Int, where: JSON): ReportConnection
+  service: Services
+  showroom(id: ID!): Showroom
+  showrooms(sort: String, limit: Int, start: Int, where: JSON): [Showroom]
+  showroomsConnection(sort: String, limit: Int, start: Int, where: JSON): ShowroomConnection
+  vacancy(id: ID!): Vacancy
+  vacancies(sort: String, limit: Int, start: Int, where: JSON): [Vacancy]
+  vacanciesConnection(sort: String, limit: Int, start: Int, where: JSON): VacancyConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Report {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  type: ENUM_REPORT_TYPE!
+  excerpt: String!
+  attachments: UploadFile
+  featured: Boolean
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type ReportAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ReportConnection {
+  values: [Report]
+  groupBy: ReportGroupBy
+  aggregate: ReportAggregator
+}
+
+type ReportConnectionAttachments {
+  key: ID
+  connection: ReportConnection
+}
+
+type ReportConnectionCreated_at {
+  key: DateTime
+  connection: ReportConnection
+}
+
+type ReportConnectionCreated_by {
+  key: ID
+  connection: ReportConnection
+}
+
+type ReportConnectionExcerpt {
+  key: String
+  connection: ReportConnection
+}
+
+type ReportConnectionFeatured {
+  key: Boolean
+  connection: ReportConnection
+}
+
+type ReportConnectionId {
+  key: ID
+  connection: ReportConnection
+}
+
+type ReportConnectionTitle {
+  key: String
+  connection: ReportConnection
+}
+
+type ReportConnectionType {
+  key: String
+  connection: ReportConnection
+}
+
+type ReportConnectionUpdated_at {
+  key: DateTime
+  connection: ReportConnection
+}
+
+type ReportConnectionUpdated_by {
+  key: ID
+  connection: ReportConnection
+}
+
+type ReportGroupBy {
+  id: [ReportConnectionId]
+  created_at: [ReportConnectionCreated_at]
+  updated_at: [ReportConnectionUpdated_at]
+  title: [ReportConnectionTitle]
+  type: [ReportConnectionType]
+  excerpt: [ReportConnectionExcerpt]
+  attachments: [ReportConnectionAttachments]
+  featured: [ReportConnectionFeatured]
+  created_by: [ReportConnectionCreated_by]
+  updated_by: [ReportConnectionUpdated_by]
+}
+
+input ReportInput {
+  title: String!
+  type: ENUM_REPORT_TYPE!
+  excerpt: String!
+  attachments: ID
+  featured: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input ServiceInput {
+  serviceType: [ComponentServiceTypeServiceTypeInput]
+  created_by: ID
+  updated_by: ID
+}
+
+type Services {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  serviceType: [ComponentServiceTypeServiceType]
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type Showroom {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  description: String
+  date: Date
+  created_by: AdminUser
+  updated_by: AdminUser
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type ShowroomAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ShowroomConnection {
+  values: [Showroom]
+  groupBy: ShowroomGroupBy
+  aggregate: ShowroomAggregator
+}
+
+type ShowroomConnectionCreated_at {
+  key: DateTime
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionCreated_by {
+  key: ID
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionDate {
+  key: ID
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionDescription {
+  key: String
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionId {
+  key: ID
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionUpdated_at {
+  key: DateTime
+  connection: ShowroomConnection
+}
+
+type ShowroomConnectionUpdated_by {
+  key: ID
+  connection: ShowroomConnection
+}
+
+type ShowroomGroupBy {
+  id: [ShowroomConnectionId]
+  created_at: [ShowroomConnectionCreated_at]
+  updated_at: [ShowroomConnectionUpdated_at]
+  description: [ShowroomConnectionDescription]
+  date: [ShowroomConnectionDate]
+  created_by: [ShowroomConnectionCreated_by]
+  updated_by: [ShowroomConnectionUpdated_by]
+}
+
+input ShowroomInput {
+  image: [ID]
+  description: String
+  date: Date
+  created_by: ID
+  updated_by: ID
+}
 
 """A time string with format: HH:mm:ss.SSS"""
 scalar Time
 
-"""
-A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-"""
-scalar Date
+input updateAboutInput {
+  data: editAboutInput
+}
 
-"""The `Long` scalar type represents 52-bit integers"""
-scalar Long
+type updateAboutPayload {
+  about: About
+}
+
+input updateBidInput {
+  where: InputID
+  data: editBidInput
+}
+
+type updateBidPayload {
+  bid: Bid
+}
+
+input updateBranchInput {
+  where: InputID
+  data: editBranchInput
+}
+
+type updateBranchPayload {
+  branch: Branch
+}
+
+input updateFaqInput {
+  where: InputID
+  data: editFaqInput
+}
+
+type updateFaqPayload {
+  faq: Faq
+}
+
+input updateHomeInput {
+  data: editHomeInput
+}
+
+type updateHomePayload {
+  home: Home
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Products
+}
+
+input updatePublicationInput {
+  where: InputID
+  data: editPublicationInput
+}
+
+type updatePublicationPayload {
+  publication: Publications
+}
+
+input updateReportInput {
+  where: InputID
+  data: editReportInput
+}
+
+type updateReportPayload {
+  report: Report
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateServiceInput {
+  data: editServiceInput
+}
+
+type updateServicePayload {
+  service: Services
+}
+
+input updateShowroomInput {
+  where: InputID
+  data: editShowroomInput
+}
+
+type updateShowroomPayload {
+  showroom: Showroom
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateVacancyInput {
+  where: InputID
+  data: editVacancyInput
+}
+
+type updateVacancyPayload {
+  vacancy: Vacancy
+}
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  created_by: AdminUser
+  updated_by: AdminUser
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+  created_by: [UploadFileConnectionCreated_by]
+  updated_by: [UploadFileConnectionUpdated_by]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+  created_by: [UsersPermissionsRoleConnectionCreated_by]
+  updated_by: [UsersPermissionsRoleConnectionUpdated_by]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  created_by: [UsersPermissionsUserConnectionCreated_by]
+  updated_by: [UsersPermissionsUserConnectionUpdated_by]
+}
+
+type Vacancy {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  type: ENUM_VACANCY_TYPE
+  location: String!
+  deadline: DateTime
+  description: String!
+  requirements: String!
+  attachment: UploadFile
+  howToApply: String!
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int
+  salary: String
+  applyByCV: Boolean
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type VacancyAggregator {
+  count: Int
+  totalCount: Int
+  sum: VacancyAggregatorSum
+  avg: VacancyAggregatorAvg
+  min: VacancyAggregatorMin
+  max: VacancyAggregatorMax
+}
+
+type VacancyAggregatorAvg {
+  quantity: Float
+}
+
+type VacancyAggregatorMax {
+  quantity: Float
+}
+
+type VacancyAggregatorMin {
+  quantity: Float
+}
+
+type VacancyAggregatorSum {
+  quantity: Float
+}
+
+type VacancyConnection {
+  values: [Vacancy]
+  groupBy: VacancyGroupBy
+  aggregate: VacancyAggregator
+}
+
+type VacancyConnectionApplyByCV {
+  key: Boolean
+  connection: VacancyConnection
+}
+
+type VacancyConnectionAttachment {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionCreated_at {
+  key: DateTime
+  connection: VacancyConnection
+}
+
+type VacancyConnectionCreated_by {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionDeadline {
+  key: DateTime
+  connection: VacancyConnection
+}
+
+type VacancyConnectionDescription {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionHowToApply {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionId {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyConnectionLocation {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionQuantity {
+  key: Int
+  connection: VacancyConnection
+}
+
+type VacancyConnectionRequirements {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionSalary {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionSalaryPeriod {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionTitle {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionType {
+  key: String
+  connection: VacancyConnection
+}
+
+type VacancyConnectionUpdated_at {
+  key: DateTime
+  connection: VacancyConnection
+}
+
+type VacancyConnectionUpdated_by {
+  key: ID
+  connection: VacancyConnection
+}
+
+type VacancyGroupBy {
+  id: [VacancyConnectionId]
+  created_at: [VacancyConnectionCreated_at]
+  updated_at: [VacancyConnectionUpdated_at]
+  title: [VacancyConnectionTitle]
+  type: [VacancyConnectionType]
+  location: [VacancyConnectionLocation]
+  deadline: [VacancyConnectionDeadline]
+  description: [VacancyConnectionDescription]
+  requirements: [VacancyConnectionRequirements]
+  attachment: [VacancyConnectionAttachment]
+  howToApply: [VacancyConnectionHowToApply]
+  salaryPeriod: [VacancyConnectionSalaryPeriod]
+  quantity: [VacancyConnectionQuantity]
+  salary: [VacancyConnectionSalary]
+  applyByCV: [VacancyConnectionApplyByCV]
+  created_by: [VacancyConnectionCreated_by]
+  updated_by: [VacancyConnectionUpdated_by]
+}
+
+input VacancyInput {
+  title: String!
+  type: ENUM_VACANCY_TYPE
+  location: String!
+  deadline: DateTime
+  description: String!
+  requirements: String!
+  attachment: ID
+  howToApply: String!
+  salaryPeriod: ENUM_VACANCY_SALARYPERIOD
+  quantity: Int
+  salary: String
+  applyByCV: Boolean
+  created_by: ID
+  updated_by: ID
+}

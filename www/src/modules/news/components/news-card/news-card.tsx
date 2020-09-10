@@ -1,10 +1,10 @@
-import { Block, Content } from 'gerami'
+import { Content } from 'gerami'
 import * as moment from 'moment'
 import React from 'react'
 
 import Button from '../../../../shared/components/button/button'
 import './news-card.scss'
-
+import Anchor from '../../../../shared/components/anchor/anchor'
 type NewsCardProps = {
   title: string
   author: string
@@ -22,30 +22,25 @@ const NewsCard: React.FC<NewsCardProps> = ({
   id,
 }) => {
   return (
-    <>
+    <Anchor to={`/news/detail/?id=${id}`} className={'news-card-anchor'}>
       <Content className="news-card-container">
-        <Block>
-          <div
-            style={{
-              backgroundImage: `url(${picture_url})`,
-            }}
-            className="news-card-pic"
-          />
+        <div>
+          <img src={picture_url} alt={`${title}`} width={'100%'} height={240} />
           <div className="news-card-content">
             <h3 className="margin-top-normal news-card-title">{title}</h3>
             <span className="font-S fg-blackish news-card-date">
               {moment.default(date).format('ddd, MMMM Do YYYY')}
             </span>
             <p className="news-card-excerpt">{excerpt}</p>
-            <div className="right">
+            <div className="right padding-bottom-big">
               <Button to={`/news/detail/?id=${id}`} mode={'lite'}>
                 Read More
               </Button>
             </div>
           </div>
-        </Block>
+        </div>
       </Content>
-    </>
+    </Anchor>
   )
 }
 

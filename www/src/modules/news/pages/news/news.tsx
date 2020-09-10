@@ -1,4 +1,4 @@
-import { Block, Loading, Warning, Yoga } from 'gerami'
+import { Block, Loading, Warning, Yoga, Content } from 'gerami'
 import React, { useState } from 'react'
 
 import { strapiApiBase } from '../../../../../constants'
@@ -10,6 +10,7 @@ import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import FeaturedNews from '../../components/featured-news/featured-news'
 import NewsCard from '../../components/news-card/news-card'
 import './news.scss'
+import { MdSignalCellularConnectedNoInternet3Bar } from 'react-icons/md'
 
 type NewsProps = {}
 
@@ -32,45 +33,45 @@ const News: React.FC<NewsProps> = () => {
     <>
       <SEO title="News" />
       <Layout headerProps={{ mode: 'primary' }}>
-        <div className={'news-list-parent'} />
-        {loading ? (
-          <div className="padding-very-big">
-            <Loading className="margin-vertical-very-big" delay={700} />
-          </div>
-        ) : error ? (
-          <div className="padding-very-big">
-            <Warning problem={error as any} />
-          </div>
-        ) : data ? (
-          <div>
-            {data?.featured?.length === 0 ? null : (
-              <div>
-                <Block>
-                  <Block />
-                  <Block>
-                    {data?.featured?.map((news, i) => (
-                      <FeaturedNews
-                        key={i}
-                        title={news?.title!}
-                        date={news?.created_at!}
-                        author={news?.author!}
-                        excerpt={news?.excerpt!}
-                        picture_url={news?.picture?.url!}
-                        id={news?.id!}
-                      />
-                    ))}
+        <Content size={'9XL'} transparent>
+          <div className={'news-list-parent'} />
+          {loading ? (
+            <div className="padding-very-big">
+              <Loading className="margin-vertical-very-big" delay={700} />
+            </div>
+          ) : error ? (
+            <div className="padding-very-big">
+              <Warning problem={error as any} />
+            </div>
+          ) : data ? (
+            <div>
+              {data?.featured?.length === 0 ? null : (
+                <div>
+                  <Block className={'feature-padding-optimizer-big'}>
+                    <Block />
+                    <Block className={'feature-padding-optimizer'}>
+                      {data?.featured?.map((news, i) => (
+                        <FeaturedNews
+                          key={i}
+                          title={news?.title!}
+                          date={news?.created_at!}
+                          author={news?.author!}
+                          excerpt={news?.excerpt!}
+                          picture_url={news?.picture?.url!}
+                          id={news?.id!}
+                        />
+                      ))}
+                    </Block>
                   </Block>
-                </Block>
-              </div>
-            )}
+                </div>
+              )}
 
-            {data?.publications?.length === 0 ? null : (
-              <Block>
-                <Block className="padding-optimizer">
-                  <Block first last>
+              {data?.publications?.length === 0 ? null : (
+                <Block className="feature-padding-optimizer-big">
+                  <Block className="feature-padding-optimizer">
+                    <Block first />
                     <h3 className="title-component">Latest News Articles</h3>
-                  </Block>
-                  <Block>
+                    <Block first />
                     <Yoga maxCol={3}>
                       {data?.publications?.map((news, i) => (
                         <NewsCard
@@ -100,21 +101,21 @@ const News: React.FC<NewsProps> = () => {
                     </Block>
                   </Block>
                 </Block>
-              </Block>
-            )}
-          </div>
-        ) : (
-          <div>
-            <Block>
-              <Block first last>
-                <h1>News List</h1>
-              </Block>
+              )}
+            </div>
+          ) : (
+            <div>
               <Block>
-                <p>cant find News files ...please try later!</p>
+                <Block first last>
+                  <h1>News List</h1>
+                </Block>
+                <Block>
+                  <p>cant find News files ...please try later!</p>
+                </Block>
               </Block>
-            </Block>
-          </div>
-        )}
+            </div>
+          )}
+        </Content>
       </Layout>
     </>
   )
