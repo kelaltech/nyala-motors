@@ -10,7 +10,6 @@ import useLazy from '../../../../shared/hooks/use-lazy/use-lazy'
 import FeaturedNews from '../../components/featured-news/featured-news'
 import NewsCard from '../../components/news-card/news-card'
 import './news.scss'
-import { MdSignalCellularConnectedNoInternet3Bar } from 'react-icons/md'
 
 type NewsProps = {}
 
