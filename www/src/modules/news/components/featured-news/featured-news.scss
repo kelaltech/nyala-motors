@@ -1,6 +1,10 @@
 @import '../../../../assets//styles/theme';
 
 .featured-news-card-anchor {
+  display: block;
+
+  margin-top: 32px;
+
   &:hover {
     box-shadow: none;
   }

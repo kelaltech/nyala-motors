@@ -1,4 +1,4 @@
-import { Block, Loading, Warning, Yoga, Content } from 'gerami'
+import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import React, { useState } from 'react'
 
 import { strapiApiBase } from '../../../../../constants'
@@ -32,7 +32,7 @@ const News: React.FC<NewsProps> = () => {
     <>
       <SEO title="News" />
       <Layout headerProps={{ mode: 'primary' }}>
-        <Content size={'9XL'} transparent>
+        <Content size={'7XL'} transparent>
           <div className={'news-list-parent'} />
           {loading ? (
             <div className="padding-very-big">
@@ -71,7 +71,7 @@ const News: React.FC<NewsProps> = () => {
                     <Block first />
                     <h3 className="title-component">Latest News Articles</h3>
                     <Block first />
-                    <Yoga maxCol={3}>
+                    <Yoga maxCol={4}>
                       {data?.publications?.map((news, i) => (
                         <NewsCard
                           key={i}
