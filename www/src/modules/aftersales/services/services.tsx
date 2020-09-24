@@ -59,7 +59,7 @@ const Services: React.FC<Services> = () => {
           </Block>
         </Content>
 
-        <Content transparent size={'XXL'} className={'service-yoga-container'}>
+        {/* <Content transparent size={'XXL'} className={'service-yoga-container'}>
           <Yoga maxCol={4}>
             <div className={'service-yoga-card'}>
               <div className={'service-yoga-card-icon'}>
@@ -99,7 +99,7 @@ const Services: React.FC<Services> = () => {
               <small>HORN</small>
             </div>
           </Yoga>
-        </Content>
+        </Content> */}
 
         {loading ? (
           <div className="padding-very-big">
