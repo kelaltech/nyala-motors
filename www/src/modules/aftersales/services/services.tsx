@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import React from 'react'
-import { BsThreeDots } from 'react-icons/bs'
-import { FaCarBattery, FaOilCan, FaWater } from 'react-icons/fa'
+// import { BsThreeDots } from 'react-icons/bs'
+// import { FaCarBattery, FaOilCan, FaWater } from 'react-icons/fa'
 
 import { useServiceQuery } from '../../../../gen/apollo-types'
 import { ServiceStaticQuery } from '../../../../gen/gatsby-types'
