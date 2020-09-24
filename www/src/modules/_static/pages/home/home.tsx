@@ -21,6 +21,7 @@ const Home: React.FC<HomeProps> = () => {
     heroSlide1,
     heroSlide2,
     heroSlide3,
+    heroSlide4,
 
     Unicarriers,
     elicher,
@@ -53,7 +54,7 @@ const Home: React.FC<HomeProps> = () => {
               pagination={false}
               renderArrow={() => <></>}
               onChange={(_obj: any, i: number) => {
-                if (i >= 2) {
+                if (i >= 3) {
                   setTimeout(() => carousel.current?.goTo(0), 5000)
                 }
               }}
@@ -61,6 +62,7 @@ const Home: React.FC<HomeProps> = () => {
               <GatsbyImage fluid={heroSlide1?.childImageSharp?.fluid as any} />
               <GatsbyImage fluid={heroSlide2?.childImageSharp?.fluid as any} />
               <GatsbyImage fluid={heroSlide3?.childImageSharp?.fluid as any} />
+              <GatsbyImage fluid={heroSlide4?.childImageSharp?.fluid as any} />
             </Carousel>
 
             <div className={'landing-hero-content'}>
@@ -265,6 +267,13 @@ const query = graphql`
       }
     }
     heroSlide3: file(relativePath: { eq: "home/home-hero-slide-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1680, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroSlide4: file(relativePath: { eq: "home/home-hero-slide-4.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1680, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
