@@ -1,5 +1,10 @@
 query Publications($limit: Int, $where: JSON) {
-  publications(start: 0, limit: $limit, where: $where) {
+  publications(
+    start: 0
+    limit: $limit
+    where: $where
+    sort: "created_at:DESC"
+  ) {
     id
     title
     created_at
@@ -9,7 +14,11 @@ query Publications($limit: Int, $where: JSON) {
       url
     }
   }
-  featured: publications(limit: 1, where: { featured: true }) {
+  featured: publications(
+    limit: 1
+    where: { featured: true }
+    sort: "created_at:DESC"
+  ) {
     id
     created_at
     title
