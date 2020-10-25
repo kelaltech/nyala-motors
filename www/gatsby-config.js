@@ -160,17 +160,13 @@ module.exports = {
         start_url: `/`,
         background_color: `rgb(255, 255, 255)`,
         theme_color: `#bd0504`,
-        // cache_busting_mode: 'none', // TODO: temp
       },
     },
-    // { // TODO: temp
-    //   resolve: `gatsby-plugin-offline`,
-    //   options: {
-    //     precachePages: [`/*`],
-    //     workboxConfig: {
-    //       globPatterns: ['**/*'],
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/*`],
+      },
+    },
   ],
 }

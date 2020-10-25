@@ -3,7 +3,7 @@
 .contact-form-container {
   background-color: $bg;
 
-  border-radius: $space;
+  border-radius: $space !important;
 
   .gerami-input {
     &:hover {
