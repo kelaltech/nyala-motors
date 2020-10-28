@@ -17,7 +17,7 @@ const Parts: React.FC<PartsProps> = () => {
           mode: 'primary',
         }}
       >
-        <Block className="center parts-container">
+        <Block className="center parts-container padding-none">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLScJD3QW6HC8R6IEwdzZDuGgiejicbvrrvO5WraoXxnMlk1M4w/viewform?usp=sf_link"
             frameBorder={0}
