@@ -123,7 +123,7 @@ const NewsDetail: React.FC<{}> = () => {
                 <Content
                   className="news-detail-description"
                   transparent
-                  size="XL"
+                  size="XXL"
                 >
                   <Markdown className={'news-detail-markdown'}>
                     {description || ''}

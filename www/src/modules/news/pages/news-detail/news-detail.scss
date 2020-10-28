@@ -9,8 +9,8 @@
 }
 
 .news-detail-article-card {
-  margin-top: -48px !important;
-  padding-bottom: 48px;
+  margin-top: -64px !important;
+  padding-bottom: 32px;
 
   background-color: white !important;
 }
@@ -21,6 +21,8 @@
 }
 
 .news-detail-title {
+  margin-top: 16px;
+
   width: 100%;
   font-weight: 500;
   font-size: 32px;
@@ -31,10 +33,10 @@
 .news-detail-description {
   font-family: $Merriweather;
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2;
   text-align: justify;
-  color: rgba(0, 0, 0, 0.72);
+  color: rgba(0, 0, 0, 1);
 }
 
 .news-detail-markdown {
