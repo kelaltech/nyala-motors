@@ -58,74 +58,79 @@ const NewsDetail: React.FC<{}> = () => {
               }}
               className="news-detail-img"
             />
-            <Block first last>
-              <h3 className="margin-top-very-big news-detail-title">{title}</h3>
-              <Flex className="news-detail-passive">
-                <span className="font-S fg-blackish">
-                  {moment.default(created_at).format('ddd, MMMM Do YYYY')}
-                </span>
 
-                <FlexSpacer />
+            <Content size="3XL" className="news-detail-article-card">
+              <Block first last>
+                <h3 className="news-detail-title">{title}</h3>
+                <Flex className="news-detail-subtitle">
+                  <span className="font-S fg-blackish">
+                    {moment.default(created_at).format('MMMM Do, YYYY')}
+                  </span>
 
-                <span className="margin-vertical-auto fg-blackish right">
-                  <small className="inline-block middle margin-small margin-right-normal">
-                    Share:
-                  </small>
+                  <FlexSpacer />
 
-                  <FacebookShareButton
-                    className="margin-horizontal-normal font-L middle"
-                    url={url}
-                    quote={`${title} | Blog – ${appName}\n\n${excerpt}`}
-                    hashtag={
-                      appName ? `#${appName.replace(/ /g, '')}` : undefined
-                    }
-                  >
-                    <FaFacebook />
-                  </FacebookShareButton>
+                  <span className="margin-vertical-auto fg-blackish right">
+                    <small className="inline-block middle margin-small margin-right-normal">
+                      Share:
+                    </small>
 
-                  <TelegramShareButton
-                    className="margin-horizontal-normal font-L middle"
-                    url={url}
-                    title={`${title} | Blog – ${appName}: ${excerpt}`}
-                  >
-                    <FaTelegram />
-                  </TelegramShareButton>
+                    <FacebookShareButton
+                      className="margin-horizontal-normal font-L middle"
+                      url={url}
+                      quote={`${title} | Blog – ${appName}\n\n${excerpt}`}
+                      hashtag={
+                        appName ? `#${appName.replace(/ /g, '')}` : undefined
+                      }
+                    >
+                      <FaFacebook />
+                    </FacebookShareButton>
 
-                  <TwitterShareButton
-                    className="margin-horizontal-normal font-L middle"
-                    url={url}
-                    title={`${title} | Blog – ${appName}`}
-                    hashtags={appName ? [appName.replace(/ /g, ``)] : undefined}
-                  >
-                    <FaTwitter />
-                  </TwitterShareButton>
+                    <TelegramShareButton
+                      className="margin-horizontal-normal font-L middle"
+                      url={url}
+                      title={`${title} | Blog – ${appName}: ${excerpt}`}
+                    >
+                      <FaTelegram />
+                    </TelegramShareButton>
 
-                  <WhatsappShareButton
-                    className="margin-horizontal-normal font-L middle"
-                    url={url}
-                    title={`${title} | Blog – ${appName}: ${excerpt}`}
-                  >
-                    <FaWhatsapp />
-                  </WhatsappShareButton>
+                    <TwitterShareButton
+                      className="margin-horizontal-normal font-L middle"
+                      url={url}
+                      title={`${title} | Blog – ${appName}`}
+                      hashtags={
+                        appName ? [appName.replace(/ /g, ``)] : undefined
+                      }
+                    >
+                      <FaTwitter />
+                    </TwitterShareButton>
 
-                  <CopyToClipboard
-                    value={url}
-                    className="margin-horizontal-normal font-L middle"
-                  />
-                </span>
-              </Flex>
+                    <WhatsappShareButton
+                      className="margin-horizontal-normal font-L middle"
+                      url={url}
+                      title={`${title} | Blog – ${appName}: ${excerpt}`}
+                    >
+                      <FaWhatsapp />
+                    </WhatsappShareButton>
 
-              <Block first last />
-              <Content
-                className="news-detail-description"
-                transparent
-                size="XL"
-              >
-                <Markdown className={'news-detail-markdown'}>
-                  {description || ''}
-                </Markdown>
-              </Content>
-            </Block>
+                    <CopyToClipboard
+                      value={url}
+                      className="margin-horizontal-normal font-L middle"
+                    />
+                  </span>
+                </Flex>
+
+                <Block first last />
+                <Content
+                  className="news-detail-description"
+                  transparent
+                  size="XL"
+                >
+                  <Markdown className={'news-detail-markdown'}>
+                    {description || ''}
+                  </Markdown>
+                </Content>
+              </Block>
+            </Content>
             <Block first last />
           </>
         ) : null}
