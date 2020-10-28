@@ -134,36 +134,6 @@ const Products: React.FC<ProductsProps> = () => {
                 </Card>
 
                 <Card className="product-category-card">
-                  <h2 className={'category-title'}> Unicarriers Forklift</h2>
-                  <Yoga className="product-category-yoga" maxCol={3}>
-                    {forklift.map((prod) => (
-                      <>
-                        {data.products?.find(
-                          (p) => p?.eachCategory === prod
-                        ) ? (
-                          <ProductCard
-                            product={
-                              data?.products.find(
-                                (p) => p?.eachCategory === prod
-                              ) as any
-                            }
-                          />
-                        ) : null}
-                      </>
-                    ))}
-                  </Yoga>
-
-                  <div className="center">
-                    <Button
-                      to={`/products/categories/?id=UNICARRIER`}
-                      mode="primary-outline"
-                    >
-                      Browse all Unicarriers
-                    </Button>
-                  </div>
-                </Card>
-
-                <Card className="product-category-card">
                   <h2 className={'category-title'}>
                     Eicher Busses &amp; Trucks
                   </h2>
@@ -191,6 +161,36 @@ const Products: React.FC<ProductsProps> = () => {
                       mode="primary-outline"
                     >
                       Browse all Echier Vehicles
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="product-category-card">
+                  <h2 className={'category-title'}> Unicarriers Forklift</h2>
+                  <Yoga className="product-category-yoga" maxCol={3}>
+                    {forklift.map((prod) => (
+                      <>
+                        {data.products?.find(
+                          (p) => p?.eachCategory === prod
+                        ) ? (
+                          <ProductCard
+                            product={
+                              data?.products.find(
+                                (p) => p?.eachCategory === prod
+                              ) as any
+                            }
+                          />
+                        ) : null}
+                      </>
+                    ))}
+                  </Yoga>
+
+                  <div className="center">
+                    <Button
+                      to={`/products/categories/?id=UNICARRIER`}
+                      mode="primary-outline"
+                    >
+                      Browse all Unicarriers
                     </Button>
                   </div>
                 </Card>
