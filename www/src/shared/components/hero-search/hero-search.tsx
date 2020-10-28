@@ -14,7 +14,7 @@ type HeroSearchProps = {
   chips?: { name: string; url?: string }[]
   selectedChip?: { name: string; url?: string } | null
   onSelectedChip?: (chips: { name: string; url?: string } | null) => void
-  color?: boolean
+  color?: boolean | string
 }
 
 const HeroSearch: React.FC<HeroSearchProps> = ({
@@ -40,7 +40,14 @@ const HeroSearch: React.FC<HeroSearchProps> = ({
           onSubmit && onSubmit((e.target as any)?.search?.value)
         }}
         className="shared-hero-search-overlay"
-        style={color ? { backgroundColor: 'rgba(0,0,0,0.5)' } : {}}
+        style={
+          color
+            ? {
+                backgroundColor:
+                  typeof color === 'string' ? color : 'rgba(0,0,0,0.5)',
+              }
+            : {}
+        }
       >
         <label className="shared-hero-search-bar">
           <Input
