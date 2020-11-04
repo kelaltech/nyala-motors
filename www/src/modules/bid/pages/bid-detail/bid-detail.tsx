@@ -32,7 +32,10 @@ const BidDetail: React.FC<BidDetailProps> = () => {
   ])
   return (
     <>
-      <SEO title={`${data?.bid?.Title || ''} (Bid)`} />
+      <SEO
+        title={`${data?.bid?.Title || ''} (Bid)`}
+        author={'Nyala Motor S.C.'}
+      />
       <Layout headerProps={{ mode: 'white' }}>
         {loading ? (
           <div className="padding-very-big">

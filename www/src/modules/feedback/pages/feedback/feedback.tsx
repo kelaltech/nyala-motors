@@ -10,7 +10,10 @@ type FeedbackProps = {}
 const Feedback: React.FC<FeedbackProps> = () => {
   return (
     <>
-      <SEO title="Feedback" />
+      <SEO
+        title="Nyala Motors S.C Feedback Form"
+        description={`If you have any feedbacks regarding our products and services, please don't hesitate to write it here on the form; Nyala Motors S.C.`}
+      />
 
       <LayoutDefault headerProps={{ mode: 'primary' }}>
         <Block first last className="center feedback-container">

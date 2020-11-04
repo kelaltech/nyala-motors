@@ -10,7 +10,10 @@ type PartsProps = {}
 const Parts: React.FC<PartsProps> = () => {
   return (
     <>
-      <SEO title="Geniune Parts" />
+      <SEO
+        title="Geniune Parts"
+        description={`Request form for Geniune parts/ sperparts`}
+      />
 
       <LayoutDefault
         headerProps={{

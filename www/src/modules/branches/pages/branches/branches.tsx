@@ -19,7 +19,10 @@ const Branches: React.FC<Branches> = () => {
 
   return (
     <>
-      <SEO title="Contacts" />
+      <SEO
+        title="Contacts"
+        description={`Nyala Motors S.C. branches and contact informations`}
+      />
 
       <LayoutDefault>
         <div

@@ -73,7 +73,11 @@ const Vacancies: React.FC<VacanciesProps> = () => {
 
   return (
     <>
-      <SEO title="Vacancies" />
+      <SEO
+        title="Vacancies"
+        author={'Nyala Motors S.C.'}
+        description={'latest vacancies and jop posts from Nyala Motors S.C.'}
+      />
 
       <Layout headerProps={{ mode: 'white' }}>
         <HeroSearch

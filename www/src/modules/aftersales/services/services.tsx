@@ -1,9 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import React from 'react'
-// import { BsThreeDots } from 'react-icons/bs'
-// import { FaCarBattery, FaOilCan, FaWater } from 'react-icons/fa'
-
 import { useServiceQuery } from '../../../../gen/apollo-types'
 import { ServiceStaticQuery } from '../../../../gen/gatsby-types'
 import Button from '../../../shared/components/button/button'
@@ -21,7 +18,11 @@ const Services: React.FC<Services> = () => {
 
   return (
     <>
-      <SEO title={'Services'} />
+      <SEO
+        title={'Services'}
+        description={`Nyala Motors S.C. provides aftersales services to ensure the
+              maximum satisfaction of its esteemed customers.`}
+      />
 
       <LayoutDefault
         headerProps={{

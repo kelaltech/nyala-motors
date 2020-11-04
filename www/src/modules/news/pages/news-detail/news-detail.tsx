@@ -40,7 +40,11 @@ const NewsDetail: React.FC<{}> = () => {
 
   return (
     <>
-      <SEO title={`${title || ''} (Vacancy)`} />
+      <SEO
+        title={`${title || ''} (News Article)`}
+        author={'Nyala Motor S.C.'}
+        image={picture?.url}
+      />
       <Layout>
         {loading ? (
           <div className="padding-very-big">

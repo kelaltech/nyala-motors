@@ -30,7 +30,12 @@ const News: React.FC<NewsProps> = () => {
   })
   return (
     <>
-      <SEO title="News" />
+      <SEO
+        title="News Articles from Nyala Motors S.C."
+        description={
+          'latest News articles about the automotive industry leaders like Nissan, UD trucks, Eicher, UNI Carriers and Macpower from Nyala Motors S.C.'
+        }
+      />
       <Layout headerProps={{ mode: 'primary' }}>
         <Content size={'7XL'} transparent>
           <div className={'news-list-parent'} />

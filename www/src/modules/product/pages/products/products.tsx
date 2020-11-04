@@ -37,7 +37,11 @@ const Products: React.FC<ProductsProps> = () => {
 
   return (
     <>
-      <SEO title={'Products'} />
+      <SEO
+        title={'Products'}
+        description={`Nyala Motors imports the Latest products from Nissan, UD trucks, Eicher, UNI Carriers and Macpower`}
+        author={'Nyala Motors S.C'}
+      />
 
       <Layout headerProps={{ mode: 'white' }}>
         <HeroSearch

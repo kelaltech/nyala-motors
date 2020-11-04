@@ -37,7 +37,11 @@ const VacancyDetail: React.FC<VacancyDetailProps> = () => {
 
   return (
     <>
-      <SEO title={`${data?.vacancy?.title || ''} (Vacancy)`} />
+      <SEO
+        title={`${data?.vacancy?.title || ''} (Vacancy)`}
+        author={'Nyala Motors S.C.'}
+        description={data?.vacancy?.description.slice(0, 200) || ''}
+      />
 
       <Layout headerProps={{ mode: 'primary' }}>
         {!data && loading ? (

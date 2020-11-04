@@ -55,7 +55,14 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
   return (
     <>
-      <SEO title={`${data?.product?.name || ''} (Products)`} />
+      <SEO
+        title={`${data?.product?.name || ''} (Products)`}
+        author={'Nyala Motor S.C'}
+        image={data?.product?.headerImg?.url}
+        description={
+          data?.product?.motto || data?.product?.description!.slice(0, 115)
+        }
+      />
       <Layout headerProps={{ mode: 'primary' }}>
         {!data && loading ? (
           <div>

@@ -38,7 +38,11 @@ const Showroom: React.FC<ShowroomProps> = () => {
 
   return (
     <>
-      <SEO title="Showroom" />
+      <SEO
+        title="Nyala Motor's Showroom"
+        author={'Nyala Motors S.C.'}
+        description={`Get the latest product showcase and image galleries from Nyala Motors showroom!`}
+      />
 
       <LayoutDefault headerProps={{ mode: 'transparent' }}>
         <div

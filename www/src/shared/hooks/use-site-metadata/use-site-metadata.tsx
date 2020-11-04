@@ -17,9 +17,9 @@ const query = graphql`
         title
         description
         author
+        image
         twitter
         copyright
-
         siteUrl
       }
     }

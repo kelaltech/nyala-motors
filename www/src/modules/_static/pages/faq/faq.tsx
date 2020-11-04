@@ -17,7 +17,10 @@ const FAQ: React.FC<FaqProps> = () => {
   const { faqHero } = useStaticQuery<FaqStaticQuery>(query)
   return (
     <>
-      <SEO title="FAQ" />
+      <SEO
+        title="FAQ"
+        description={'Frequently asked questions about Nyala Motors S.C.'}
+      />
 
       <LayoutDefault>
         <div

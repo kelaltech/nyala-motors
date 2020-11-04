@@ -10,7 +10,10 @@ type RegistrationProps = {}
 const Registration: React.FC<RegistrationProps> = () => {
   return (
     <>
-      <SEO title="Home" />
+      <SEO
+        title="Customer Registration Form"
+        description={'Register and get instant updates from Nyala Motors S.C.'}
+      />
 
       <Layout headerProps={{ mode: 'primary' }}>
         <Block className="center registration-container">

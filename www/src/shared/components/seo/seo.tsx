@@ -9,6 +9,7 @@ type SEOProps = {
   title: string
   description?: string
   author?: string
+  image?: string | any
   twitter?: string
   copyright?: string
   lang?: string
@@ -19,6 +20,7 @@ function SEO({
   title,
   description = ``,
   author = ``,
+  image = ``,
   twitter = ``,
   copyright = ``,
   lang = `en`,
@@ -41,6 +43,10 @@ function SEO({
         {
           name: `description`,
           content: description || siteMetadata.description || ``,
+        },
+        {
+          property: `og:image`,
+          content: image || siteMetadata.image || ``,
         },
         {
           name: `author`,

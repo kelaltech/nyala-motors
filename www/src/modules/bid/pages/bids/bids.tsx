@@ -72,7 +72,10 @@ const Bid: React.FC<BidsProps> = () => {
   )
   return (
     <>
-      <SEO title="Bids" />
+      <SEO
+        title="Bids and Auctions"
+        description={`Get all the information you need, about Bids and Auctions from Nyala Motors S.C.`}
+      />
       <Layout headerProps={{ mode: 'white' }}>
         <HeroSearch
           bg={heroBg?.childImageSharp?.fluid as any}

@@ -46,7 +46,13 @@ const AboutUs: React.FC<AboutUs> = () => {
 
   return (
     <>
-      <SEO title="About Us" />
+      <SEO
+        title="About Nyala Mototrs S.C."
+        description={
+          data?.about?.overviewHistory ||
+          'Official website of Nyala Motors S.C.'
+        }
+      />
 
       <Layout headerProps={{ mode: 'white' }}>
         {!data && loading ? (
