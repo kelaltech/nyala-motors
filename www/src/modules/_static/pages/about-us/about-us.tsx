@@ -50,8 +50,9 @@ const AboutUs: React.FC<AboutUs> = () => {
         title="About Nyala Mototrs S.C."
         description={
           data?.about?.overviewHistory ||
-          'Official website of Nyala Motors S.C.'
+          `Nyala Motors Share Company was established in April 1973. When the company was setup it began its operation with the sales of Datsun automobiles and today it has become exclusive distributor for Nissan motors vehicles, UD trucks, VE commercial vehicles, Unicarrier forklifts and Macpower battery`
         }
+        author={'Nyala Motors S.C.'}
       />
 
       <Layout headerProps={{ mode: 'white' }}>

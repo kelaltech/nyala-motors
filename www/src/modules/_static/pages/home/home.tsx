@@ -39,7 +39,10 @@ const Home: React.FC<HomeProps> = () => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO
+        title="Nyala Motors Home Page"
+        description={`Nyala Motors S.C is the exclusive importer and distributor of Nissan vehicles, UD Trucks, Eicher trucks and buses, Unicarrier forklifts and Macpower batteries in Ethiopia`}
+      />
 
       <Layout headerProps={{ mode: 'transparent' }}>
         <div className={'landing-body-container'}>
