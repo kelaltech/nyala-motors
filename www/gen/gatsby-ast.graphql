@@ -1234,6 +1234,7 @@ input SitePluginPluginOptionsFilterInput {
   legacy: BooleanQueryOperatorInput
   theme_color_in_head: BooleanQueryOperatorInput
   cacheDigest: StringQueryOperatorInput
+  precachePages: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
 }
 input SitePluginPluginOptionsFontsFilterListInput {
@@ -1378,6 +1379,7 @@ type SitePluginPluginOptions {
   legacy: Boolean
   theme_color_in_head: Boolean
   cacheDigest: String
+  precachePages: [String]
   pathCheck: Boolean
 }
 type SitePluginPluginOptionsFonts {
@@ -1626,6 +1628,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___legacy
   pluginCreator___pluginOptions___theme_color_in_head
   pluginCreator___pluginOptions___cacheDigest
+  pluginCreator___pluginOptions___precachePages
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
@@ -1677,6 +1680,7 @@ input SiteSiteMetadataFilterInput {
   author: StringQueryOperatorInput
   twitter: StringQueryOperatorInput
   copyright: StringQueryOperatorInput
+  image: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
 }
 type Site implements Node {
@@ -1714,6 +1718,7 @@ type SiteSiteMetadata {
   author: String
   twitter: String
   copyright: String
+  image: String
   siteUrl: String
 }
 input SiteFilterInput {
@@ -1739,6 +1744,7 @@ enum SiteFieldsEnum {
   siteMetadata___author
   siteMetadata___twitter
   siteMetadata___copyright
+  siteMetadata___image
   siteMetadata___siteUrl
   port
   host
@@ -2281,6 +2287,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___legacy
   pluginOptions___theme_color_in_head
   pluginOptions___cacheDigest
+  pluginOptions___precachePages
   pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
