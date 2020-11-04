@@ -2,8 +2,14 @@
 
 .parts-container {
   height: inherit;
+
   .parts-form {
+    display: block;
+
+    padding: 16px 0 0;
+
     width: 100%;
-    height: 1000px;
+
+    height: 1200px;
   }
 }

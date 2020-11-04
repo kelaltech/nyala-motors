@@ -19,7 +19,7 @@ const Heritage: React.FC<modalProps> = (props) => {
           <h2 className="center padding-top-big" style={{ color: 'white' }}>
             History
           </h2>
-          <div className="padding-vertical-normal">
+          <div className="padding-vertical-normal justify">
             <Block first last style={{ fontSize: '16px' }}>
               <b>UD Trucks company was established in 1935. </b>The founder
               Kenzo Adachi had a vision to make the trucks the world needs
@@ -53,7 +53,7 @@ const Heritage: React.FC<modalProps> = (props) => {
           <div className=" padding-top-big center">
             <h2>Brand Philosophy</h2>
           </div>
-          <div className="padding-vertical-normal">
+          <div className="padding-vertical-normal justify">
             <Block first last style={{ fontSize: '16px' }}>
               <b> UD Trucks’ brand philosophy articulates our brand values. </b>{' '}
               It is UD's guiding beacon. At UD Trucks we are going the extra
@@ -95,7 +95,7 @@ const Heritage: React.FC<modalProps> = (props) => {
         <h2 className="center" style={{ color: 'white' }}>
           Heritage
         </h2>
-        <div className="padding-vertical-normal">
+        <div className="padding-vertical-normal justify">
           <Block style={{ color: 'rgba(255, 255, 255, 0.9)' }} first last>
             The heritage of UniCarriers forklifts begins when the first Nissan
             Forklift rolled off the assembly line at Nissan Motor’s Totsuka
@@ -138,7 +138,7 @@ const Heritage: React.FC<modalProps> = (props) => {
           <h2 className="center padding-top-big" style={{ color: 'white' }}>
             Heritage
           </h2>
-          <div className="padding-vertical-normal">
+          <div className="padding-vertical-normal justify">
             <Block first last style={{ fontSize: '16px' }}>
               Eicher has a joint venture with Sweden’s AB Volvo (Volvo Eicher
               Commercial Vehicles Limited) and{' '}
@@ -166,7 +166,7 @@ const Heritage: React.FC<modalProps> = (props) => {
         </Card>
         <Card className={'padding-normal'} style={{ margin: '20px auto' }}>
           <h2 className="center padding-top-big">Milestones</h2>
-          <div className="padding-vertical-normal">
+          <div className="padding-vertical-normal justify">
             <Block first last style={{ fontSize: '16px' }}>
               <strong>
                 A journey, spanning over five decades, Eicher has come a long
@@ -206,7 +206,7 @@ const Heritage: React.FC<modalProps> = (props) => {
         <h2 className="center padding-top-big" style={{ color: 'white' }}>
           Heritage
         </h2>
-        <div className="padding-vertical-normal">
+        <div className="padding-vertical-normal justify">
           <Block first last style={{ fontSize: '16px' }}>
             Yigit Aku Corp. provides service with its portfolio of brands which
             are globally known “Platin, Tunç, Macpower, and Helden” portfolio of

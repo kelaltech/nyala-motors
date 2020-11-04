@@ -17,8 +17,8 @@
     height: 420px;
     background: linear-gradient(
       3.27deg,
-      rgba(0, 0, 0, 0.7) 8.18%,
-      rgba(0, 0, 0, 0.42) 91.07%
+      rgba(0, 0, 0, 0.42) 8.18%,
+      rgba(0, 0, 0, 0.14) 91.07%
     );
   }
 
@@ -218,11 +218,14 @@
     flex-direction: column;
 
     .carousel-box {
+      margin-left: 0;
+
       width: 100% !important;
     }
   }
   .carousel-box {
-    width: 50%;
+    margin-left: 6%;
+    width: 94%;
   }
 
   .award-imgs {

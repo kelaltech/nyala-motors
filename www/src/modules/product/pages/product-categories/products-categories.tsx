@@ -67,6 +67,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
           className={'productCat-hero-container'}
           style={{
             backgroundImage: `url(${bgImg?.childImageSharp?.fluid?.src})`,
+            ...(id === 'UD_TRUCKS' ? { backgroundPosition: 'bottom' } : {}),
           }}
         >
           <Block className="center productCat-hero-tag">
@@ -168,15 +169,15 @@ const QUERY = graphql`
   query ProductCatDetailStatic {
     eicher: file(relativePath: { eq: "products/eicher.jpg" }) {
       childImageSharp {
-        fluid(cropFocus: CENTER) {
+        fluid(quality: 90) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
 
-    udTruck: file(relativePath: { eq: "products/ud-truck.jpg" }) {
+    udTruck: file(relativePath: { eq: "products/ud-trucks.jpg" }) {
       childImageSharp {
-        fluid(cropFocus: CENTER) {
+        fluid(quality: 90) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -184,7 +185,7 @@ const QUERY = graphql`
 
     unicarrier: file(relativePath: { eq: "products/unicarrier.jpg" }) {
       childImageSharp {
-        fluid(cropFocus: CENTER) {
+        fluid(quality: 90) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -192,7 +193,7 @@ const QUERY = graphql`
 
     macpower: file(relativePath: { eq: "products/macpower-1.jpg" }) {
       childImageSharp {
-        fluid(cropFocus: CENTER) {
+        fluid(quality: 90) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

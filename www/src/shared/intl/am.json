@@ -6,7 +6,7 @@
   "nav.item.products": "ምርቶች ",
   "nav.item.aftersale": "ከሽያጭ በሁላ",
   "nav.item.services": "አገልግሎቶች",
-  "nav.item.parts": "Genuine Part",
+  "nav.item.parts": "መለዋወጫ ክፍሎች",
   "nav.item.showroom": "ማሳያ ክፍል ",
   "nav.item.news": "ዜናዎች ",
   "nav.item.contact": "አግኙን",
@@ -19,12 +19,12 @@
   "footer.item.feedback": "አስተያየቶች",
 
   "home.hero.title": "የከፍተኛ ብራንድ አውቶሞቲቭ ምርቶች አስመጪ እና አከፋፋይ",
-  "home.hero.desciption": "Nyala Motors S.C is the exclusive importer and distributor of Nissan vehicles, UD Trucks, Eicher trucks and buses, Unicarrier forklifts and Macpower batteries in Ethiopia. We also provide aftersales servicing and genuine part sales.",
+  "home.hero.desciption": "ኒያላ ሞተርስ አ.ማ. ኒሳን ተሽከርካሪዎችን ፣ ዩዲ ትራኮችን ፣ ኤቸር የጭነት መኪናዎችንና አውቶብሶችን ፣ ዩኒኬርየር ፎርክሊፍቶችን እና የማክፔሪያ ባትሪዎችን በኢትዮጵያ ውስጥ አስመጪና አከፋፋይ ነው። በተጨማሪም የአገልጋይነትን ባሕርይ የተላበሰና እውነተኛ የሆነ የትርፍ ድርሻ ሽያጭ እናከናውናለን።",
   "home.hero.btn.get-started": "ይጀምሩ",
   "home.hero.btn.about": "የበለጠ ለመረዳት",
 
   "home.about.title": "ኒያላ ሞተርስ",
-  "home.about.description": "የኒያላ ሞተርስ አክሲዮን ማህበር በገንዘብ 50,000 የተመዘገበ ካፒታል ባላቸው አምስት መስራች አባላት መሠረት በኢትዮጵያ ንግድ ሕግ መሠረት በሚያዝያ ወር 1973 ተቋቋመ ፡፡ ኩባንያው ሲዋቀር Datsun አውቶሞቢሎች ሽያጭ ላይ ሥራውን የጀመረ ሲሆን ዛሬ የኒሳን ሞተርስ  ተሽከርካሪዎች ፣ ለ UD የጭነት መኪናዎች ፣ ለ VE የንግድ ተሽከርካሪዎች ፣ ለUnicarrier forklifts እና Macpower ባትሪ ብቸኛ አከፋፋይ ሆኗል ፡፡",
+  "home.about.description": "የኒያላ ሞተርስ አክሲዮን ማህበር በአምስት መስራች አባላት በኢትዮጵያ ንግድ ሕግ መሠረት በሚያዝያ ወር 1973 ተቋቋመ፡፡ ኩባንያው ሲዋቀር Datsun አውቶሞቢሎች ሽያጭ ላይ ሥራውን የጀመረ ሲሆን ዛሬ የኒሳን ሞተርስ  ተሽከርካሪዎች ፣ ለ UD የጭነት መኪናዎች ፣ ለ VE የንግድ ተሽከርካሪዎች ፣ ለUnicarrier forklifts እና Macpower ባትሪ ብቸኛ አከፋፋይ ሆኗል፡፡",
   "home.about.link": "ስለ ኩባንያው የበለጠ ለመረዳት",
 
   "home.link.title": "ምን እየፈለጉ ነው?",
@@ -34,7 +34,7 @@
   "home.link.aftersale.service": "አገልግሎቶች",
   "home.link.aftersale.parts": "ክፍሎች",
 
-  "home.quote": "Step up performace, convenience, and style the easy way with Genuine Nissan accessories.",
+  "home.quote": "በአፈፃፀም ከፍተኛ የሆኑ ፣ በምቾትና በቀላል መንገድ የእውነተኛ የኒሳን መለዋወጫዎች ከኛ ያግኙ።",
 
   "home.bottom.link1": "የቅርብ ጊዜ ዜናዎች ያንብቡ",
   "home.bottom.link2": "አድራሻችንን ወይም እኛን ያግኙ",
