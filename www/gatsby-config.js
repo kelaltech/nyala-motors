@@ -27,7 +27,7 @@ module.exports = {
     author: `Kelal Tech PLC (https://www.kelaltech.com)`,
     twitter: `@NMSC2016`,
     copyright: `© ${new Date().getFullYear()} Nyala Motors S.C. All Rights reserved.`,
-
+    image: `/images/logo.png`,
     siteUrl: config.GATSBY_SITE_URL || `http://localhost:8000`,
   },
 
