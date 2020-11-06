@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import GatsbyImage from 'gatsby-image'
 import { Block, Content, Loading, Warning } from 'gerami'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Carousel from 'react-elastic-carousel'
 import { FaCar, FaCogs, FaRegMap, FaRegNewspaper } from 'react-icons/fa'
 
@@ -37,8 +37,6 @@ const Home: React.FC<HomeProps> = () => {
 
   const carousel = useRef<any>(null)
 
-  const [isLight, setLight] = useState(true)
-
   return (
     <>
       <SEO
@@ -59,8 +57,6 @@ const Home: React.FC<HomeProps> = () => {
               pagination={false}
               renderArrow={() => <></>}
               onChange={(_obj: any, i: number) => {
-                setLight(i === 0 || i === 3)
-
                 if (i >= 3) {
                   setTimeout(() => carousel.current?.goTo(0), 5000)
                 }
@@ -72,11 +68,7 @@ const Home: React.FC<HomeProps> = () => {
               <GatsbyImage fluid={heroSlide4?.childImageSharp?.fluid as any} />
             </Carousel>
 
-            <div
-              className={`landing-hero-content ${
-                isLight ? 'landing-hero-content-light' : ''
-              }`}
-            >
+            <div className={`landing-hero-content`}>
               <div>
                 <h1>{lang`home.hero.title`}</h1>
                 <p>{lang`home.hero.desciption`}</p>
@@ -327,7 +319,7 @@ const query = graphql`
         }
       }
     }
-    productLink: file(relativePath: { eq: "home/product-link.png" }) {
+    productLink: file(relativePath: { eq: "home/product-link.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 420, cropFocus: CENTER) {
           ...GatsbyImageSharpFluid_withWebp
