@@ -33,6 +33,16 @@
     }
   }
 
+  .landing-hero-content-light {
+    &::before {
+      background: linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      ) !important;
+    }
+  }
+
   .landing-hero-content {
     position: relative;
 
