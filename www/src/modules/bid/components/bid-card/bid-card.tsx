@@ -1,6 +1,6 @@
 import moment from 'moment'
 import React, { useMemo } from 'react'
-import { AiOutlineClockCircle, AiOutlineDownload } from 'react-icons/ai'
+import { AiOutlineClockCircle } from 'react-icons/ai'
 
 import { Bid } from '../../../../../gen/apollo-types'
 import LocationPin from '../../../../assets/icons/cil_location-pin.svg'
@@ -57,18 +57,6 @@ const BidCard: React.FC<BidCardProps> = ({ bid }) => {
         <Button to={`/bid/detail/?id=${bid.id}`} mode="lite">
           More detail
         </Button>
-        {isExpired || !bid.attachment?.url ? null : (
-          <Button
-            to={`${bid.attachment.url}`}
-            download
-            target="_blank"
-            rel="noopener nofollow"
-            mode="primary"
-          >
-            <AiOutlineDownload />
-            <span>Download</span>
-          </Button>
-        )}
       </div>
     </div>
   )

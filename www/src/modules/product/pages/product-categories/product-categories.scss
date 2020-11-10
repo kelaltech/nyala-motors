@@ -96,3 +96,32 @@ $mobile-threshold: $mobile * 1.6;
     }
   }
 }
+
+.download-app-btn {
+  display: inline-block;
+  margin: 0;
+  padding: 12px 24px;
+
+  border: 2px solid $primary;
+  border-radius: $radius;
+  outline: 0;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #424242 !important;
+  box-shadow: none !important;
+  background: $primary;
+  color: white !important;
+
+  cursor: pointer;
+
+  &:active {
+    filter: $shy;
+    transform: $touch;
+  }
+
+  > * {
+    vertical-align: middle;
+  }
+}

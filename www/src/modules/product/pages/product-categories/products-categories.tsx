@@ -13,7 +13,7 @@ import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import Heritage from '../../components/heritage/heritage'
 import './product-categories.scss'
-
+import Anchor from '../../../../shared/components/anchor/anchor'
 type ProductCategoriesProps = {}
 
 const ProductCategories: React.FC<ProductCategoriesProps> = () => {
@@ -76,15 +76,15 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
 
           {id === 'EICHER' ? (
             <Block className="center productCat-hero-tag download-btn">
-              <Button
+              <Anchor
                 to={
                   'https://play.google.com/store/apps/details?id=com.eicher.app'
                 }
-                target={true}
-                mode="primary"
+                target={'_black'}
+                className="download-app-btn"
               >
                 Download the app
-              </Button>
+              </Anchor>
             </Block>
           ) : null}
         </div>

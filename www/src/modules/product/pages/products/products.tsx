@@ -62,7 +62,7 @@ const Products: React.FC<ProductsProps> = () => {
           <>
             {!data?.products?.length ? (
               <div>
-                No results found
+                No products found found
                 {!term ? null : (
                   <>
                     {' '}
