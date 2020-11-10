@@ -9,12 +9,14 @@ type ButtonProps = Partial<AnchorProps> &
     HTMLButtonElement
   > & {
     to?: string
+    target?: boolean
     /** @default 'default' */
     mode?: 'default' | 'lite' | 'primary' | 'primary-outline'
   }
 
 const Button: React.FC<ButtonProps> = ({
   to,
+  target,
   mode = 'default',
   className = '',
   ...otherProps
@@ -22,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   return to ? (
     <Anchor
       to={to}
+      target={target ? '_blank' : ''}
       {...otherProps}
       className={`shared-button shared-button-mode-${mode} ${className}`}
     />

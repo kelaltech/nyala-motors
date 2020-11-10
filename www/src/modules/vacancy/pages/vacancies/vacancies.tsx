@@ -103,7 +103,7 @@ const Vacancies: React.FC<VacanciesProps> = () => {
             <Content size={'4XL'} transparent={true}>
               {!data?.vacancies?.length ? (
                 <div className="margin-vertical-very-big padding-very-big center fg-blackish">
-                  No result found
+                  No vacancies found
                   {!term ? null : (
                     <>
                       {' '}

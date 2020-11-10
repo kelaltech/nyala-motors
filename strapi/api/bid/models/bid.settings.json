@@ -28,7 +28,7 @@
       "type": "richtext"
     },
     "attachment": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",

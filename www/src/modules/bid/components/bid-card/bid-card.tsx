@@ -44,7 +44,7 @@ const BidCard: React.FC<BidCardProps> = ({ bid }) => {
               ) : (
                 <> Apply by </>
               )}{' '}
-              {moment(deadline).format('MMMM d, YYYY')}
+              {moment(deadline).format('MMMM Do YYYY')}
             </span>
           </div>
         </h5>

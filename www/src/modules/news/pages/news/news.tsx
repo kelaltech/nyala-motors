@@ -114,7 +114,7 @@ const News: React.FC<NewsProps> = () => {
                   <h1>News List</h1>
                 </Block>
                 <Block>
-                  <p>cant find News files ...please try later!</p>
+                  <p>cant find news articles ...please try later!</p>
                 </Block>
               </Block>
             </div>

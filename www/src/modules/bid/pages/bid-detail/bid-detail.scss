@@ -8,6 +8,7 @@ $mobile-threshold: $mobile * 1.4;
   .bid-bid-detail-hero {
     margin: 0 0 -48px;
 
+    padding-bottom: 48px;
     background: $primary;
     color: transparentize($color: white, $amount: 1 - 0.95);
 
@@ -26,7 +27,7 @@ $mobile-threshold: $mobile * 1.4;
         padding: 72px 0 4px;
 
         font-weight: 500;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 21px;
         text-transform: uppercase;
 
@@ -35,25 +36,31 @@ $mobile-threshold: $mobile * 1.4;
 
       > h1 {
         margin: 0;
-        padding: 0 0 32px;
+        padding: 0 0 16px;
 
         font-weight: 500;
-        font-size: 48px;
+        font-size: 36px;
         line-height: 56px;
 
         color: rgba(255, 255, 255, 0.95);
       }
 
       .gerami-yoga {
-        padding: 0 0 80px;
+        padding: 0 0 20px;
 
         p {
           margin: 0;
           padding: 0 0 16px;
 
-          font-size: 18px;
+          font-size: 16px;
           line-height: 21px;
         }
+      }
+    }
+    .download-bid-attachement {
+      padding: 0 0 30px;
+      a {
+        margin: 4px;
       }
     }
   }
@@ -63,19 +70,17 @@ $mobile-threshold: $mobile * 1.4;
     padding: 0 64px;
 
     max-width: $crop;
-
     @media (max-width: $mobile-threshold) {
-      padding: 0 32px;
+      padding: 0 8px;
     }
 
     > div {
       padding: 64px;
-
       background: white;
       color: rgba(66, 66, 66, 0.84);
 
       @media (max-width: $mobile-threshold) {
-        padding: 32px;
+        padding: 24px;
       }
 
       .bid-bid-detail-card-title {

@@ -27,6 +27,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
   const deadline = useMemo(() => new Date(data?.bid?.Deadline), [
     data?.bid?.Deadline,
   ])
+
   const isExpired = useMemo(() => Date.now() - deadline.getTime() > 0, [
     deadline,
   ])
@@ -48,8 +49,8 @@ const BidDetail: React.FC<BidDetailProps> = () => {
             />
           </div>
         ) : (
-          <div className="vacancy-vacancy-detail-content">
-            <div className="vacancy-vacancy-detail-hero">
+          <div className="bid-bid-detail-content">
+            <div className="bid-bid-detail-hero">
               <div>
                 <h6>Bid</h6>
                 <h1>{data.bid.Title} </h1>
@@ -68,13 +69,13 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                       ) : (
                         <b> Apply by </b>
                       )}{' '}
-                      {moment(deadline).format('MMMM d, YYYY')}
+                      {moment(deadline).format('MMMM Do YYYY')}
                     </p>
                   </div>
                   <div>
                     <p>
                       Posted on{' '}
-                      {moment(data.bid.created_at).format('MMMM d, YYYY')}{' '}
+                      {moment(data.bid.created_at).format('MMMM Do YYYY')}{' '}
                     </p>
                   </div>
                   <div>
@@ -82,25 +83,31 @@ const BidDetail: React.FC<BidDetailProps> = () => {
                     {data.bid.Location}
                   </div>
                 </Yoga>
-                {isExpired || !data.bid.attachment?.id ? null : (
-                  <Button
-                    to={`${strapiApiBase}/file-proxy/${data.bid.attachment.id}`}
-                    download
-                    target="_blank"
-                    rel="noopener nofollow"
-                    mode="default"
-                  >
-                    <AiOutlineDownload />
-                    <span> Download </span>
-                  </Button>
-                )}
+                <div className="download-bid-attachement">
+                  {isExpired || data.bid?.attachment?.length === 0
+                    ? null
+                    : data.bid?.attachment?.map((bid, i) => (
+                        <div key={i}>
+                          <Button
+                            to={`${strapiApiBase}/file-proxy/${bid?.id}`}
+                            download
+                            target="_blank"
+                            rel="noopener nofollow"
+                            mode="default"
+                          >
+                            <AiOutlineDownload />
+                            <span>{` Download attachment ${i + 1}`} </span>
+                          </Button>
+                        </div>
+                      ))}
+                </div>
               </div>
             </div>
 
-            <div className="vacancy-vacancy-detail-card">
+            <div className="bid-bid-detail-card">
               <div>
                 <div>
-                  <h3>About the Job</h3>
+                  <h3>About the bid</h3>
                 </div>
                 <div>
                   <Markdown>{data.bid.description || ''}</Markdown>
@@ -115,7 +122,7 @@ const BidDetail: React.FC<BidDetailProps> = () => {
               </div>
             </div>
 
-            <div className="vacancy-vacancy-detail-card">
+            <div className="bid-bid-detail-card">
               <div>
                 <div>
                   <h3>How to Apply</h3>

@@ -99,7 +99,7 @@ const Bid: React.FC<BidsProps> = () => {
             <Content size={'4XL'} transparent={true}>
               {!data?.bids?.length ? (
                 <div className="margin-vertical-very-big padding-very-big center fg-blackish">
-                  No result found
+                  No bids found
                   {!term ? null : (
                     <>
                       {' '}

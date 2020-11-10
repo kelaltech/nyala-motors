@@ -73,6 +73,20 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
           <Block className="center productCat-hero-tag">
             <h1>{nameProductsType(id as any)}</h1>
           </Block>
+
+          {id === 'EICHER' ? (
+            <Block className="center productCat-hero-tag download-btn">
+              <Button
+                to={
+                  'https://play.google.com/store/apps/details?id=com.eicher.app'
+                }
+                target={true}
+                mode="primary"
+              >
+                Download the app
+              </Button>
+            </Block>
+          ) : null}
         </div>
         <div>
           {!data && loading ? (
