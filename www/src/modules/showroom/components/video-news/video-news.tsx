@@ -11,7 +11,7 @@ type VideoNewsProps = {}
 const VideoNews: React.FC<VideoNewsProps> = () => {
   const [videoNews, setVideoNews] = useState([])
   useEffect(() => {
-    //only the top for will be selected
+    //only the top four will be selected
     Axios.get(
       `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${youtubePlaylistId}&key=${youtubeApi}&maxResults=2`
     )
@@ -25,19 +25,17 @@ const VideoNews: React.FC<VideoNewsProps> = () => {
       {videoNews.length === 0 ? null : (
         <Block>
           <Block className="padding-optimizer padding-bottom-none">
-            {/* <Block first last>
-              <h3 className="title-component">Video News</h3>
-              <hr className="full-width" />
-            </Block> */}
             <Block>
               <Yoga maxCol={2}>
                 {videoNews.map((video: any, i) => (
                   <Content key={i} transparent className="margin-bottom-big">
+                    {console.log(video)}
                     <iframe
                       className="full-width"
                       height="280"
                       src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`}
                       frameBorder="0"
+                      loading="lazy"
                     />
                     <h3 className={'video-news-card-title margin-top-normal'}>
                       {video.snippet.title}

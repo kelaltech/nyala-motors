@@ -218,6 +218,7 @@ const Home: React.FC<HomeProps> = () => {
                   height={'500'}
                   src={`${data.home.youtubeLink}`}
                   frameBorder="0"
+                  loading="lazy"
                 />
               </Content>
             </Block>
