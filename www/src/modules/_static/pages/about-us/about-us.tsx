@@ -44,6 +44,8 @@ const AboutUs: React.FC<AboutUs> = () => {
     []
   )
 
+  const carousel = useRef<any>(null)
+  const carouselAward = useRef<any>(null)
   return (
     <>
       <SEO
@@ -71,11 +73,7 @@ const AboutUs: React.FC<AboutUs> = () => {
               style={{
                 backgroundImage: `url(${aboutHero?.childImageSharp?.fluid?.src})`,
               }}
-            >
-              {/* <Block className="center about-hero-tag">
-                <h1>About Nyala Motors S.C.</h1>
-              </Block> */}
-            </div>
+            ></div>
             <div className={'about-outline-box'}>
               {data.about.overviewHistory && (
                 <div className={'about-outline-item'}>
@@ -170,10 +168,20 @@ const AboutUs: React.FC<AboutUs> = () => {
                 {data?.about?.slideImg?.length === 0 ? null : (
                   <div className={'about-slider-box'}>
                     <Carousel
-                      enableAutoPlay={true}
+                      ref={carousel}
+                      enableTilt
+                      enableAutoPlay
                       pagination={false}
+                      autoPlaySpeed={1500}
                       renderArrow={myArrow}
                       itemsToShow={1}
+                      onNextEnd={({ index }: any) => {
+                        if (index + 1 >= data?.about?.slideImg?.length!) {
+                          setTimeout(() => {
+                            carousel.current.goTo(0)
+                          }, 1500)
+                        }
+                      }}
                     >
                       {data?.about?.slideImg?.map((img, i) => (
                         <div
@@ -227,10 +235,21 @@ const AboutUs: React.FC<AboutUs> = () => {
                   {data?.about?.awardImg?.length === 0 ? null : (
                     <div className={'carousel-box'}>
                       <Carousel
-                        enableAutoPlay={true}
+                        ref={carouselAward}
+                        enableTilt
+                        enableAutoPlay
+                        disableArrowsOnEnd
                         pagination={false}
+                        autoPlaySpeed={1500}
                         renderArrow={myArrow}
                         itemsToShow={1}
+                        onNextEnd={({ index }: any) => {
+                          if (index + 1 >= data?.about?.awardImg?.length!) {
+                            setTimeout(() => {
+                              carouselAward.current.goTo(0)
+                            }, 1500)
+                          }
+                        }}
                       >
                         {data?.about?.awardImg?.map((img, i) => (
                           <div
