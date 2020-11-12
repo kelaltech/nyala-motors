@@ -85,7 +85,7 @@ const Branches: React.FC<Branches> = () => {
                           <div>
                             {val?.phoneNumbers?.map((v, key) => (
                               <Markdown className={'markdown'} key={key}>
-                                {nameDealerType(v?.phoneNumber!) || ''}
+                                {v?.phoneNumber!}
                               </Markdown>
                             ))}
                           </div>
@@ -97,7 +97,7 @@ const Branches: React.FC<Branches> = () => {
                           <div>
                             {val?.emails?.map((v, key) => (
                               <Markdown className={'markdown'} key={key}>
-                                {nameDealerType(v?.email!) || ''}
+                                {v?.email!}
                               </Markdown>
                             ))}
                           </div>
