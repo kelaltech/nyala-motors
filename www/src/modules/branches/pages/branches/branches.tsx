@@ -77,17 +77,45 @@ const Branches: React.FC<Branches> = () => {
                           {val!.workingHours}
                         </Markdown>
                       </div>
+                      {val?.phoneNumbers?.length === 0 ? null : (
+                        <div>
+                          <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>
+                            Phone Numbers
+                          </h4>
+                          <div>
+                            {val?.phoneNumbers?.map((v, key) => (
+                              <Markdown className={'markdown'} key={key}>
+                                {nameDealerType(v?.phoneNumber!) || ''}
+                              </Markdown>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {val?.emails?.length === 0 ? null : (
+                        <div>
+                          <h4 style={{ color: 'rgba(0,0,0, 0.7)' }}>Emails</h4>
+                          <div>
+                            {val?.emails?.map((v, key) => (
+                              <Markdown className={'markdown'} key={key}>
+                                {nameDealerType(v?.email!) || ''}
+                              </Markdown>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </Yoga>
                   </Block>
-                  <Block>
-                    <iframe
-                      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAjYTKIXdz_UsyZC5mDX6PH4HdrI_PnMl0&q=${val?.mapCoordinates}`}
-                      frameBorder={0}
-                      width="100%"
-                      height="200"
-                      style={{ border: 0 }}
-                    ></iframe>
-                  </Block>
+                  {val?.mapCoordinates ? (
+                    <Block>
+                      <iframe
+                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAjYTKIXdz_UsyZC5mDX6PH4HdrI_PnMl0&q=${val?.mapCoordinates}`}
+                        frameBorder={0}
+                        width="100%"
+                        height="200"
+                        style={{ border: 0 }}
+                      ></iframe>
+                    </Block>
+                  ) : null}
                 </Card>
               ))}
             </>
@@ -103,7 +131,7 @@ const Branches: React.FC<Branches> = () => {
             <Block className="email-block-left">
               <h1>Do you have a question?</h1>
               <p>
-                about our products or services, or have you encountered a
+                About our products or services, or have you encountered a
                 problem while using them? Feel free to reach us by the form on
                 the right or using our feedback form. We will respond to your
                 emailas soon as possible.
