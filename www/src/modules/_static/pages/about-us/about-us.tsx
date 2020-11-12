@@ -172,14 +172,14 @@ const AboutUs: React.FC<AboutUs> = () => {
                       enableTilt
                       enableAutoPlay
                       pagination={false}
-                      autoPlaySpeed={1500}
+                      autoPlaySpeed={2500}
                       renderArrow={myArrow}
                       itemsToShow={1}
                       onNextEnd={({ index }: any) => {
                         if (index + 1 >= data?.about?.slideImg?.length!) {
                           setTimeout(() => {
                             carousel.current.goTo(0)
-                          }, 1500)
+                          }, 2500)
                         }
                       }}
                     >
@@ -240,14 +240,14 @@ const AboutUs: React.FC<AboutUs> = () => {
                         enableAutoPlay
                         disableArrowsOnEnd
                         pagination={false}
-                        autoPlaySpeed={1500}
+                        autoPlaySpeed={2500}
                         renderArrow={myArrow}
                         itemsToShow={1}
                         onNextEnd={({ index }: any) => {
                           if (index + 1 >= data?.about?.awardImg?.length!) {
                             setTimeout(() => {
                               carouselAward.current.goTo(0)
-                            }, 1500)
+                            }, 2500)
                           }
                         }}
                       >
