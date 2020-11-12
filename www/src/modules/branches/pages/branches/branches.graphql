@@ -1,5 +1,5 @@
 query Branches {
-  branches {
+  branches(sort: "name:ASC") {
     name
     mapCoordinates
     physicalAddress
