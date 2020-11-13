@@ -1,5 +1,5 @@
 import { Block, Content } from 'gerami'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 import { MdExpandLess, MdExpandMore } from 'react-icons/md'
@@ -11,6 +11,7 @@ type ShowroomCardProps = {
   showroom: Pick<Showroom, 'image' | 'description'>
 }
 const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
+  const carousel = useRef<any>(null)
   const myArrow = ({ type, onClick }: any) => {
     const pointer =
       type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
@@ -29,10 +30,21 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
         className="showroom-card-container padding-top-big padding-horizontal-normal"
       >
         <Carousel
-          enableAutoPlay={false}
+          enableAutoPlay={true}
           pagination={false}
+          ref={carousel}
+          enableTilt
+          disableArrowsOnEnd
+          autoPlaySpeed={2500}
           renderArrow={myArrow}
           itemsToShow={1}
+          onNextEnd={({ index }: any) => {
+            if (index + 1 >= showroom?.image?.length!) {
+              setTimeout(() => {
+                carousel.current.goTo(0)
+              }, 2500)
+            }
+          }}
         >
           {showroom?.image?.map((img, key) => (
             <div
@@ -45,7 +57,6 @@ const ShowroomCard: React.FC<ShowroomCardProps> = ({ showroom }) => {
           ))}
         </Carousel>
         <Block className="showroom-card-content">
-          {/* <hr /> */}
           <p
             style={{
               height: `${isExpanded ? 'auto' : '72px'}`,
