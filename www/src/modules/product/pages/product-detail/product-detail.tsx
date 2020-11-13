@@ -20,6 +20,7 @@ type ProductDetailProps = {}
 
 const ProductDetail: React.FC<ProductDetailProps> = () => {
   const [openModal, setOpenModal] = useState(false)
+  const carousel = useRef<any>(null)
   const myArrow = ({ type, onClick }: any) => {
     const pointer =
       type === consts.PREV ? <AiOutlineLeftCircle /> : <AiOutlineRightCircle />
@@ -175,8 +176,19 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                             <Carousel
                               enableAutoPlay={true}
                               pagination={false}
+                              ref={carousel}
+                              enableTilt
+                              disableArrowsOnEnd
+                              autoPlaySpeed={2500}
                               renderArrow={myArrow}
                               itemsToShow={1}
+                              onNextEnd={({ index }: any) => {
+                                if (index + 1 >= spec?.specImages?.length!) {
+                                  setTimeout(() => {
+                                    carousel.current.goTo(0)
+                                  }, 2500)
+                                }
+                              }}
                             >
                               {spec?.specImages?.map((img, key) => (
                                 <div

@@ -70,9 +70,11 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
             ...(id === 'UD_TRUCKS' ? { backgroundPosition: 'bottom' } : {}),
           }}
         >
-          <Block className="center productCat-hero-tag">
-            <h1>{nameProductsType(id as any)}</h1>
-          </Block>
+          {id === 'EICHER' || id === 'UNICARRIER' ? null : (
+            <Block className="center productCat-hero-tag">
+              <h1>{nameProductsType(id as any)}</h1>
+            </Block>
+          )}
 
           {id === 'EICHER' ? (
             <Block className="center productCat-hero-tag download-btn">
