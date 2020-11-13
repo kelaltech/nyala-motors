@@ -46,7 +46,10 @@ const Services: React.FC<Services> = () => {
             </Button>
           </div>
         </div>
-
+        <Button mode={'primary'} to={`/aftersales/service-form`}>
+          {' '}
+          Form{' '}
+        </Button>
         <Content transparent className="center service-content-box" size={'M'}>
           <Block first>
             <h1>Full Service</h1>

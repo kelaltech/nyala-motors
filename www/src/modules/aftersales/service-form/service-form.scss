@@ -1,0 +1,15 @@
+@import '../../../assets/styles/theme';
+
+.service-form-container {
+  height: inherit;
+
+  .service-form {
+    display: block;
+
+    padding: 16px 0 0;
+
+    width: 100%;
+
+    height: 1000px;
+  }
+}

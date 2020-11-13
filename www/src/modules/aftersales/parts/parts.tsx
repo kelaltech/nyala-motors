@@ -12,7 +12,7 @@ const Parts: React.FC<PartsProps> = () => {
     <>
       <SEO
         title="Geniune Parts"
-        description={`Request form for Geniune parts/ sperparts`}
+        description={`Request form for Geniune parts/ spare parts`}
       />
 
       <LayoutDefault
