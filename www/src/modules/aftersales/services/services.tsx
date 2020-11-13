@@ -41,15 +41,20 @@ const Services: React.FC<Services> = () => {
               Nyala Motors S.C. provides aftersales services to ensure the
               maximum satisfaction of its esteemed customers.
             </p>
-            <Button mode={'primary'} to={'#services'}>
-              See Services
-            </Button>
+            <Block>
+              <Yoga maxCol={2}>
+                <Button mode={'default'} to={`/aftersales/service-form`}>
+                  {' '}
+                  Book a Service{' '}
+                </Button>
+                <Button mode={'primary'} to={'#services'}>
+                  See Services
+                </Button>
+              </Yoga>
+            </Block>
           </div>
         </div>
-        <Button mode={'primary'} to={`/aftersales/service-form`}>
-          {' '}
-          Form{' '}
-        </Button>
+
         <Content transparent className="center service-content-box" size={'M'}>
           <Block first>
             <h1>Full Service</h1>
