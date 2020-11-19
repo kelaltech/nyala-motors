@@ -8,7 +8,7 @@ const Heritage: React.FC<modalProps> = (props) => {
     props.id === 'UD_TRUCKS' ? (
       <Yoga maxCol={2}>
         <Card
-          className={'padding-normal'}
+          className={'padding-horizontal-normal padding-vertical-big'}
           style={{
             margin: '20px auto',
             backgroundColor: '#c51632',
@@ -47,7 +47,7 @@ const Heritage: React.FC<modalProps> = (props) => {
           </div> */}
         </Card>
         <Card
-          className={'padding-normal'}
+          className={'padding-horizontal-normal padding-vertical-big'}
           style={{ margin: '20px auto', height: 'inherit' }}
         >
           <div className=" padding-top-big center">
@@ -85,7 +85,7 @@ const Heritage: React.FC<modalProps> = (props) => {
       </Yoga>
     ) : props.id === 'UNICARRIER' ? (
       <Card
-        className={'padding-normal'}
+        className={'padding-horizontal-normal padding-vertical-big'}
         style={{
           margin: '20px auto',
           height: 'inherit',
@@ -93,6 +93,10 @@ const Heritage: React.FC<modalProps> = (props) => {
         }}
       >
         <h2 className="center" style={{ color: 'white' }}>
+          Unicarrier{' '}
+          <span style={{ fontWeight: 100, opacity: 0.42, padding: '0 8px' }}>
+            |
+          </span>{' '}
           Heritage
         </h2>
         <div className="padding-vertical-normal justify">
@@ -128,7 +132,7 @@ const Heritage: React.FC<modalProps> = (props) => {
     ) : props.id === 'EICHER' ? (
       <Yoga maxCol={2}>
         <Card
-          className={'padding-normal'}
+          className={'padding-horizontal-normal padding-vertical-big'}
           style={{
             margin: '20px auto',
             backgroundColor: '#c51632',
@@ -164,7 +168,10 @@ const Heritage: React.FC<modalProps> = (props) => {
             </Button>
           </div> */}
         </Card>
-        <Card className={'padding-normal'} style={{ margin: '20px auto' }}>
+        <Card
+          className={'padding-horizontal-normal padding-vertical-big'}
+          style={{ margin: '20px auto' }}
+        >
           <h2 className="center padding-top-big">Milestones</h2>
           <div className="padding-vertical-normal justify">
             <Block first last style={{ fontSize: '16px' }}>
@@ -195,7 +202,7 @@ const Heritage: React.FC<modalProps> = (props) => {
       </Yoga>
     ) : props.id === 'MAC_POWER' ? (
       <Card
-        className={'padding-normal'}
+        className={'padding-horizontal-normal padding-vertical-big'}
         style={{
           margin: '20px auto',
           height: '250px',

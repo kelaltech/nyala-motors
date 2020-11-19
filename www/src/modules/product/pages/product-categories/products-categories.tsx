@@ -7,13 +7,14 @@ import React from 'react'
 import { useProductCategoriesQuery } from '../../../../../gen/apollo-types'
 import { ProductCatDetailStaticQuery } from '../../../../../gen/gatsby-types'
 import { usePage } from '../../../../app/contexts/page-context/page-context'
+import Anchor from '../../../../shared/components/anchor/anchor'
 import Button from '../../../../shared/components/button/button'
 import Layout from '../../../../shared/components/layout/layout'
 import { nameEachCat } from '../../../../shared/components/nameEachCat'
 import { nameProductsType } from '../../../../shared/components/nameProductsType'
 import Heritage from '../../components/heritage/heritage'
 import './product-categories.scss'
-import Anchor from '../../../../shared/components/anchor/anchor'
+
 type ProductCategoriesProps = {}
 
 const ProductCategories: React.FC<ProductCategoriesProps> = () => {
@@ -85,7 +86,7 @@ const ProductCategories: React.FC<ProductCategoriesProps> = () => {
                 target={'_black'}
                 className="download-app-btn"
               >
-                Download the app
+                Download the Eicher App
               </Anchor>
             </Block>
           ) : null}
