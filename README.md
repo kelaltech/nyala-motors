@@ -1,4 +1,4 @@
-[![CI/CD](https://github.com/kelaltech/nyala-motors/workflows/CI/CD/badge.svg)](https://github.com/kelaltech/nyala-motors/actions)
+[![CI/CD](https://github.com/kelaltech/nyala-motors/workflows/CI%20+%20Production%20Deploy/badge.svg)](https://github.com/kelaltech/nyala-motors/actions)
 
 # nyala-motors
 
