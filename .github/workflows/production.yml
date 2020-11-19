@@ -88,7 +88,7 @@ jobs:
           CD: true
 
       - name: Deploy www/public to Vercel
-        uses: amondnet/vercel-action@19.0.1+4
+        uses: amondnet/vercel-action@v19.0.1+4
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: --prod
