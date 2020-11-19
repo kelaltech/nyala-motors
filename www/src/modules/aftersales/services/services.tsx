@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { Block, Content, Loading, Warning, Yoga } from 'gerami'
 import React from 'react'
+
 import { useServiceQuery } from '../../../../gen/apollo-types'
 import { ServiceStaticQuery } from '../../../../gen/gatsby-types'
 import Button from '../../../shared/components/button/button'
@@ -41,14 +42,20 @@ const Services: React.FC<Services> = () => {
               Nyala Motors S.C. provides aftersales services to ensure the
               maximum satisfaction of its esteemed customers.
             </p>
-            <Block>
+            <Block className="padding-right-none">
               <Yoga maxCol={2}>
-                <Button mode={'default'} to={`/aftersales/service-form`}>
-                  {' '}
-                  Book a Service{' '}
-                </Button>
-                <Button mode={'primary'} to={'#services'}>
+                <Button mode={'default'} to={'#services'} className="center">
                   See Services
+                  <span style={{ padding: '0 0 0 8px', fontSize: '80%' }}>
+                    ↓
+                  </span>
+                </Button>
+                <Button
+                  mode={'primary'}
+                  to={`/aftersales/service-form`}
+                  className="center"
+                >
+                  Book a Service
                 </Button>
               </Yoga>
             </Block>
