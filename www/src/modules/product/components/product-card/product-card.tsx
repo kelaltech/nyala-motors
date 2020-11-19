@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <img src={`${product?.headerImg?.url}`} width={'100%'} height={200} />
 
       {product.category === 'NISSAN' ? (
-        <div style={{ display: 'grid', gap: 4 }}>
+        <div style={{ display: 'grid', gap: 4, marginTop: 16 }}>
           {nissanCars
             .filter((item) => item.type === product.eachCategory)
             .map((item) => (
@@ -100,7 +100,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   borderRadius: 2,
                   textTransform: 'uppercase',
                 }}
-                className="bg-primary fg-white center padding-normal font-S"
+                className="fg-primary bg-white bold center padding-big font-S"
               >
                 {item.name}
               </Anchor>
