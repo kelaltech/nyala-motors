@@ -163,7 +163,6 @@ const AboutUs: React.FC<AboutUs> = () => {
                   {data?.about?.overviewHistory!}
                 </Markdown>
               </Block>
-
               <Block first last>
                 {data?.about?.slideImg?.length === 0 ? null : (
                   <div className={'about-slider-box'}>
