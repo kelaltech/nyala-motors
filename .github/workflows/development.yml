@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2.1.2
         with:
-          node-version: '12'
+          node-version: ^12
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Reuse cached node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.3
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -33,7 +33,7 @@ jobs:
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Reuse strapi build caches
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.3
         with:
           path: |
             strapi/.cache
@@ -41,7 +41,7 @@ jobs:
           key: strapi-${{ hashFiles('strapi/**/*') }}
 
       - name: Reuse www build caches
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.3
         with:
           path: |
             www/.cache
