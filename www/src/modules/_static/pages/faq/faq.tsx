@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Block, Card, Content, Loading, Warning } from 'gerami'
 import React, { useState } from 'react'
 import { MdExpandLess, MdExpandMore } from 'react-icons/md'
-
+import Markdown from 'markdown-to-jsx'
 import { useFaqQuery } from '../../../../../gen/apollo-types'
 import { FaqStaticQuery } from '../../../../../gen/gatsby-types'
 import LayoutDefault from '../../../../shared/components/layout/layout'
@@ -53,7 +53,7 @@ const FAQ: React.FC<FaqProps> = () => {
                       height: `${isExpanded ? 'auto' : '65px'}`,
                     }}
                   >
-                    {faq?.answer}
+                    <Markdown>{faq?.answer || ''}</Markdown>
                   </p>
                   {faq?.answer ? (
                     <div className="fg-blackish center right font-L expandable-icon">
