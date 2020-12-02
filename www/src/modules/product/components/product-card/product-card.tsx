@@ -97,11 +97,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 target="_blank"
                 style={{
                   boxShadow: 'none',
-                  borderRadius: 4,
+                  borderRadius: 7,
                   textTransform: 'uppercase',
                   border: '2px solid',
                 }}
-                className="fg-primary bg-white bold center padding-normal"
+                className="fg-primary bg-white center padding-normal"
               >
                 {item.name}
               </Anchor>
