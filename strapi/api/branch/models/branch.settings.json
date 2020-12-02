@@ -38,6 +38,12 @@
       "type": "component",
       "repeatable": true,
       "component": "branch.email"
+    },
+    "order": {
+      "type": "integer",
+      "required": false,
+      "default": 0,
+      "unique": false
     }
   }
 }

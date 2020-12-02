@@ -148,6 +148,7 @@ type Branch {
   mapCoordinates: String
   phoneNumbers: [ComponentBranchPhoneNumbers]
   emails: [ComponentBranchEmail]
+  order: Int
   created_by: AdminUser
   updated_by: AdminUser
 }
@@ -155,6 +156,26 @@ type Branch {
 type BranchAggregator {
   count: Int
   totalCount: Int
+  sum: BranchAggregatorSum
+  avg: BranchAggregatorAvg
+  min: BranchAggregatorMin
+  max: BranchAggregatorMax
+}
+
+type BranchAggregatorAvg {
+  order: Float
+}
+
+type BranchAggregatorMax {
+  order: Float
+}
+
+type BranchAggregatorMin {
+  order: Float
+}
+
+type BranchAggregatorSum {
+  order: Float
 }
 
 type BranchConnection {
@@ -188,6 +209,11 @@ type BranchConnectionName {
   connection: BranchConnection
 }
 
+type BranchConnectionOrder {
+  key: Int
+  connection: BranchConnection
+}
+
 type BranchConnectionPhysicalAddress {
   key: String
   connection: BranchConnection
@@ -216,6 +242,7 @@ type BranchGroupBy {
   physicalAddress: [BranchConnectionPhysicalAddress]
   workingHours: [BranchConnectionWorkingHours]
   mapCoordinates: [BranchConnectionMapCoordinates]
+  order: [BranchConnectionOrder]
   created_by: [BranchConnectionCreated_by]
   updated_by: [BranchConnectionUpdated_by]
 }
@@ -228,6 +255,7 @@ input BranchInput {
   mapCoordinates: String
   phoneNumbers: [ComponentBranchPhoneNumberInput]
   emails: [ComponentBranchEmailInput]
+  order: Int
   created_by: ID
   updated_by: ID
 }
@@ -548,6 +576,7 @@ input editBranchInput {
   mapCoordinates: String
   phoneNumbers: [editComponentBranchPhoneNumberInput]
   emails: [editComponentBranchEmailInput]
+  order: Int
   created_by: ID
   updated_by: ID
 }
@@ -904,7 +933,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | About | updateAboutPayload | deleteAboutPayload | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionCreated_by | BidConnectionUpdated_by | createBidPayload | updateBidPayload | deleteBidPayload | Branch | BranchConnection | BranchAggregator | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionMapCoordinates | BranchConnectionCreated_by | BranchConnectionUpdated_by | createBranchPayload | updateBranchPayload | deleteBranchPayload | Faq | FaqConnection | FaqAggregator | FaqGroupBy | FaqConnectionId | FaqConnectionCreated_at | FaqConnectionUpdated_at | FaqConnectionQuestion | FaqConnectionAnswer | FaqConnectionCreated_by | FaqConnectionUpdated_by | createFaqPayload | updateFaqPayload | deleteFaqPayload | Home | updateHomePayload | deleteHomePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionDescription | ProductsConnectionHeaderImg | ProductsConnectionLink | ProductsConnectionActive | ProductsConnectionBrochure | ProductsConnectionEachCategory | ProductsConnectionVrImg | ProductsConnectionCreated_by | ProductsConnectionUpdated_by | createProductPayload | updateProductPayload | deleteProductPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | PublicationsConnectionCreated_by | PublicationsConnectionUpdated_by | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | ReportConnectionCreated_by | ReportConnectionUpdated_by | createReportPayload | updateReportPayload | deleteReportPayload | Services | updateServicePayload | deleteServicePayload | Showroom | ShowroomConnection | ShowroomAggregator | ShowroomGroupBy | ShowroomConnectionId | ShowroomConnectionCreated_at | ShowroomConnectionUpdated_at | ShowroomConnectionDescription | ShowroomConnectionDate | ShowroomConnectionCreated_by | ShowroomConnectionUpdated_by | createShowroomPayload | updateShowroomPayload | deleteShowroomPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | VacancyConnectionApplyByCV | VacancyConnectionCreated_by | VacancyConnectionUpdated_by | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBoardMessageBoardMessage | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers | ComponentDealerTypeDealerType | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | About | updateAboutPayload | deleteAboutPayload | Bid | BidConnection | BidAggregator | BidGroupBy | BidConnectionId | BidConnectionCreated_at | BidConnectionUpdated_at | BidConnectionTitle | BidConnectionDeadline | BidConnectionLocation | BidConnectionDescription | BidConnectionRequirement | BidConnectionHowToApply | BidConnectionCreated_by | BidConnectionUpdated_by | createBidPayload | updateBidPayload | deleteBidPayload | Branch | BranchConnection | BranchAggregator | BranchAggregatorSum | BranchAggregatorAvg | BranchAggregatorMin | BranchAggregatorMax | BranchGroupBy | BranchConnectionId | BranchConnectionCreated_at | BranchConnectionUpdated_at | BranchConnectionName | BranchConnectionPhysicalAddress | BranchConnectionWorkingHours | BranchConnectionMapCoordinates | BranchConnectionOrder | BranchConnectionCreated_by | BranchConnectionUpdated_by | createBranchPayload | updateBranchPayload | deleteBranchPayload | Faq | FaqConnection | FaqAggregator | FaqGroupBy | FaqConnectionId | FaqConnectionCreated_at | FaqConnectionUpdated_at | FaqConnectionQuestion | FaqConnectionAnswer | FaqConnectionCreated_by | FaqConnectionUpdated_by | createFaqPayload | updateFaqPayload | deleteFaqPayload | Home | updateHomePayload | deleteHomePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionName | ProductsConnectionMotto | ProductsConnectionDescription | ProductsConnectionHeaderImg | ProductsConnectionLink | ProductsConnectionActive | ProductsConnectionBrochure | ProductsConnectionEachCategory | ProductsConnectionVrImg | ProductsConnectionCreated_by | ProductsConnectionUpdated_by | createProductPayload | updateProductPayload | deleteProductPayload | Publications | PublicationsConnection | PublicationsAggregator | PublicationsGroupBy | PublicationsConnectionId | PublicationsConnectionCreated_at | PublicationsConnectionUpdated_at | PublicationsConnectionTitle | PublicationsConnectionExcerpt | PublicationsConnectionDescription | PublicationsConnectionPicture | PublicationsConnectionAuthor | PublicationsConnectionFeatured | PublicationsConnectionCreated_by | PublicationsConnectionUpdated_by | createPublicationPayload | updatePublicationPayload | deletePublicationPayload | Report | ReportConnection | ReportAggregator | ReportGroupBy | ReportConnectionId | ReportConnectionCreated_at | ReportConnectionUpdated_at | ReportConnectionTitle | ReportConnectionType | ReportConnectionExcerpt | ReportConnectionAttachments | ReportConnectionFeatured | ReportConnectionCreated_by | ReportConnectionUpdated_by | createReportPayload | updateReportPayload | deleteReportPayload | Services | updateServicePayload | deleteServicePayload | Showroom | ShowroomConnection | ShowroomAggregator | ShowroomGroupBy | ShowroomConnectionId | ShowroomConnectionCreated_at | ShowroomConnectionUpdated_at | ShowroomConnectionDescription | ShowroomConnectionDate | ShowroomConnectionCreated_by | ShowroomConnectionUpdated_by | createShowroomPayload | updateShowroomPayload | deleteShowroomPayload | Vacancy | VacancyConnection | VacancyAggregator | VacancyAggregatorSum | VacancyAggregatorAvg | VacancyAggregatorMin | VacancyAggregatorMax | VacancyGroupBy | VacancyConnectionId | VacancyConnectionCreated_at | VacancyConnectionUpdated_at | VacancyConnectionTitle | VacancyConnectionType | VacancyConnectionLocation | VacancyConnectionDeadline | VacancyConnectionDescription | VacancyConnectionRequirements | VacancyConnectionAttachment | VacancyConnectionHowToApply | VacancyConnectionSalaryPeriod | VacancyConnectionQuantity | VacancyConnectionSalary | VacancyConnectionApplyByCV | VacancyConnectionCreated_by | VacancyConnectionUpdated_by | createVacancyPayload | updateVacancyPayload | deleteVacancyPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload | ComponentBoardMessageBoardMessage | ComponentBranchDealerType | ComponentBranchEmail | ComponentBranchPhoneNumbers | ComponentDealerTypeDealerType | ComponentProductTypeProductType | ComponentServiceTypeServiceType | ComponentSpecificationSpecification
 
 type Mutation {
   updateAbout(input: updateAboutInput): updateAboutPayload
