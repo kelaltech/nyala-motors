@@ -18,6 +18,11 @@ const nissanCars = [
     name: 'Almera',
     to: 'http://www.nissanethiopia.com/vehicles/almera/',
   },
+  {
+    type: 'PASSENGER',
+    name: 'Sunny',
+    to: 'http://www.nissanethiopia.com/vehicles/sunny/',
+  },
 
   {
     type: 'CROSSOVER',
