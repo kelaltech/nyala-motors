@@ -15,13 +15,13 @@ type ProductCardProps = {
 const nissanCars = [
   {
     type: 'PASSENGER',
-    name: 'Almera',
-    to: 'http://www.nissanethiopia.com/vehicles/almera/',
+    name: 'Sunny',
+    to: 'http://www.nissanethiopia.com/vehicles/sunny/',
   },
   {
     type: 'PASSENGER',
-    name: 'Sunny',
-    to: 'http://www.nissanethiopia.com/vehicles/sunny/',
+    name: 'Almera',
+    to: 'http://www.nissanethiopia.com/vehicles/almera/',
   },
 
   {
