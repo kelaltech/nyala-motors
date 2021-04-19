@@ -31,7 +31,9 @@ module.exports = ({ env }) => {
           host: parsed.hostname,
           port: parsed.port,
           database: parsed.path.join('/'),
-          ssl: parsed.params && parsed.params.ssl === 'true',
+          ssl: {
+            rejectUnauthorized: parsed.params && parsed.params.ssl === 'true', // For self-signed certificates
+          },
         },
         options: {},
       },
